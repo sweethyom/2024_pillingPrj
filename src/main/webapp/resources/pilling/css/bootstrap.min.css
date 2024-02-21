@@ -43,7 +43,7 @@
 }
 body {
   margin: 0;
-  font-family: 'Open', sans-serif;
+  font-family: 'Noto Sans KR', sans-serif;
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
@@ -141,6 +141,10 @@ abbr[data-bs-original-title] {
   -webkit-text-decoration-skip-ink: none;
   text-decoration-skip-ink: none;
 }
+
+.buttonHidden {
+  display: none;
+}
 address {
   margin-bottom: 1rem;
   font-style: normal;
@@ -231,6 +235,7 @@ pre code {
   color: inherit;
   word-break: normal;
 }
+
 code {
   font-size: 0.875em;
   color: #d63384;
@@ -10058,4 +10063,18 @@ fieldset:disabled .btn {
   .d-print-none {
     display: none !important;
   }
+}
+
+.noDot {
+  list-style: none;
+  padding-left: 0px;
+}
+
+.keywordName {
+  display: inline-block;
+  padding: 0px 10px;
+  border-radius: 21px;
+  background: yellow;
+  color: black;
+  font-weight: 400;
 }

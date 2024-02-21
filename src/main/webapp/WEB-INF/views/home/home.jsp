@@ -10,7 +10,7 @@
     <div class="container-fluid carousel px-0 mb-5 pb-5">
       <div id="carouselId" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner" role="listbox">
-          <div class="carousel-item active"> 
+          <div class="carousel-item active">
             <img src="resources/pilling/img/carousel-2.jpg" class="img-fluid w-100" alt="First slide" />
             <div class="carousel-caption">
               <div class="container carousel-content">
@@ -32,7 +32,7 @@
       <div class="container py-5">
         <div class="bg-light px-4 py-5 rounded">
           <div class="text-center">
-            <h1 class="display-5 mb-5">Find Your Pest Control Services</h1>
+            <h1 class="display-5 mb-5">당신의 타입을 골라주세요</h1>
           </div>
           <form class="text-center mb-4" action="#">
             <div class="row g-4">

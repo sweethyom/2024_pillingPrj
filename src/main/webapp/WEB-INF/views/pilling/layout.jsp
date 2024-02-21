@@ -17,10 +17,12 @@
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800&display=swap" rel="stylesheet"> 
 <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Jua&family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
         
 <!-- Icon Font Stylesheet -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
 
 <!-- Libraries Stylesheet -->
 <link href="resources/pilling/lib/animate/animate.min.css" rel="stylesheet">
@@ -67,6 +69,7 @@
 <script src="resources/pilling/lib/easing/easing.min.js"></script>
 <script src="resources/pilling/lib/waypoints/waypoints.min.js"></script>
 <script src="resources/pilling/lib/owlcarousel/owl.carousel.min.js"></script>
+<script src="https://kit.fontawesome.com/14e995bc13.js" crossorigin="anonymous"></script>
 
 <!-- Template Javascript -->
 <script src="resources/pilling/js/main.js"></script>
