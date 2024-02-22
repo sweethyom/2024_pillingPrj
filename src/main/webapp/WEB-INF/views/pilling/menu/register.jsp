@@ -9,13 +9,13 @@
     <!-- Section: Design Block -->
     <section class="text-center text-lg-start">
       <style>
-        .cascading-right {
-          margin-right: -50px;
+        .cascading-left {
+          margin-left: -50px;
         }
 
         @media (max-width: 991.98px) {
-          .cascading-right {
-            margin-right: 0;
+          .cascading-left {
+            margin-left: 0;
           }
         }
 
@@ -26,7 +26,7 @@
 
       <div class="container-fluid page-header py-5">
         <div class="container text-center py-5">
-          <h1 class="display-2 text-white mb-4 animated slideInDown">당신의 단 하나의 영양제</h1>
+          <h1 class="display-2 text-white mb-4 animated slideInDown">당신을 위한, 단 하나의 영양제</h1>
           <h1 class="text-primary mb-0">Pi1l<span class="text-white">ing</span></h1>
         </div>
       </div>
@@ -38,7 +38,7 @@
             <img src="resources/pilling/img/login/loginimage.jpg" class="w-100 rounded-4 shadow-4" alt="" />
           </div>
           <div class="col-lg-6 mb-5 mb-lg-0">
-            <div class="card cascading-right" style="background: hsla(0, 0%, 100%, 0.55); backdrop-filter: blur(30px)">
+            <div class="card cascading-left" style="background: hsla(0, 0%, 100%, 0.55); backdrop-filter: blur(30px)">
               <div class="card-body login-site-padding shadow-5 text-center">
                 <h2 class="fw-bold mb-5">회원가입</h2>
                 <form id="registerForm" action="memberregister" method="post">
@@ -81,18 +81,18 @@
                     />
                     <span id="passwordConfirmMsg"></span>
                   </div>
-                  <div class="d-flex form-outline mb-4">
-                    <label class="form-label" for="lastName"
+                  <div class="d-flex form-outline mb-4 justify-content-between">
+                    <label class="form-label name-item" for="lastName"
                       >성
                       <input type="text" id="lastName" name="lastName" class="form-control" required />
                     </label>
-                    <label class="form-label" for="firstName"
+                    <label class="form-label name-item" for="firstName"
                       >이름
                       <input type="text" id="firstName" name="firstName" class="form-control" required />
                     </label>
                   </div>
                   <div>
-                    <label class="form-label" for="birthDate"
+                    <label class="form-label name-item" for="birthDate"
                       >생년월일 &nbsp;&nbsp;
                       <input type="date" id="birthDate" min="1900-01-01" value="2024-02-22" />
                     </label>

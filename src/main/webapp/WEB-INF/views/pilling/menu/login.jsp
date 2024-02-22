@@ -26,7 +26,7 @@
 
       <div class="container-fluid page-header py-5">
         <div class="container text-center py-5">
-          <h1 class="display-2 text-white mb-4 animated slideInDown">당신의 단 하나의 영양제</h1>
+          <h1 class="display-2 text-white mb-4 animated slideInDown">당신을 위한, 단 하나의 영양제</h1>
           <h1 class="text-primary mb-0">Pi1l<span class="text-white">ing</span></h1>
         </div>
       </div>
