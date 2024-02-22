@@ -27,4 +27,9 @@ public class HomeController {
 		return "pilling/menu/login";
 	}
 	
+	@RequestMapping("registerpage")
+	public String userRegister(Model model) {
+		return "pilling/menu/register";
+	}
+	
 }
