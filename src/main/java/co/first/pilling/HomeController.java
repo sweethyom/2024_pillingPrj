@@ -12,4 +12,19 @@ public class HomeController {
 		return "home/home";
 	}
 	
+	@RequestMapping("home")
+	public String mainhome(Model model) {
+		return "home/home";
+	}
+	
+	@RequestMapping("productpurchase")
+	public String productPurchase(Model model) {
+		return "pilling/menu/productpurchase";
+	}
+	
+	@RequestMapping("login")
+	public String userLogin(Model model) {
+		return "pilling/menu/login";
+	}
+	
 }
