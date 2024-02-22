@@ -23,7 +23,7 @@ prefix="tiles"%>
     <!-- Navbar Start -->
     <div class="d-flex container-fluid bg-dark flex-row-reverse">
       <div class="container">
-        <nav class="navbar navbar-dark navbar-expand-lg py-lg-0">
+        <nav class="navbar navbar-dark navbar-expand-lg py-lg-0 justify-content-between">
           <a href="home" class="navbar-brand">
             <h1 class="text-primary mb-0 display-5">Pi1l<span class="text-white">ing</span><i class="fa-solid fa-pills text-primary ms-2"></i></h1>
           </a>
@@ -35,39 +35,27 @@ prefix="tiles"%>
               <a href="productpurchase" class="d-flex nav-item nav-link">상품구매</a>
               <a href="service.html" class="nav-item nav-link">방문예약</a>
               <a href="project.html" class="nav-item nav-link">회사정보</a>
-
-              <!-- 나중에 쓸수 도 있는 네비바  -->
-              <!--               <div class="nav-item dropdown">
-                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
-                <div class="dropdown-menu m-0 bg-primary">
-                  <a href="price.html" class="dropdown-item">Pricing Plan</a> <a href="blog.html" class="dropdown-item">Blog Post</a>
-                  <a href="team.html" class="dropdown-item">Team Members</a> <a href="testimonial.html" class="dropdown-item">Testimonial</a>
-                  <a href="404.html" class="dropdown-item">404 Page</a>
-                </div>
-              </div> -->
-              <!-- 나중에 쓸수 도 있는 네비바 끝 -->
-
               <a href="contact.html" class="nav-item nav-link">Contact</a>
-              <div class="search-form align-items">
-                <form method="post" action="index.html" style="margin-left: auto">
-                  <div class="form-group">
-                    <div class="d-flex">
-                      <input
-                        type="search"
-                        class="form-control border-0 rounded-pill"
-                        name="search-input"
-                        value=""
-                        placeholder="찾을 제품을 기입해주세요."
-                        required=""
-                      />
-                      <button type="submit" value="Search Now!" class="buttonHidden">
-                        <i class="fa fa-search text-dark"></i>
-                      </button>
-                    </div>
-                  </div>
-                </form>
-              </div>
             </div>
+          </div>
+          <div class="search-form align-items">
+            <form method="post" action="index.html" style="margin-left: auto">
+              <div class="form-group">
+                <div class="d-flex">
+                  <input
+                    type="search"
+                    class="form-control border-0 rounded-pill"
+                    name="search-input"
+                    value=""
+                    placeholder="찾을 제품을 기입해주세요."
+                    required=""
+                  />
+                  <button type="submit" value="Search Now!" class="buttonHidden">
+                    <i class="fa fa-search text-dark"></i>
+                  </button>
+                </div>
+              </div>
+            </form>
           </div>
         </nav>
       </div>

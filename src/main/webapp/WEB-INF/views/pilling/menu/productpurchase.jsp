@@ -124,10 +124,10 @@
                         <h4>Grapes</h4>
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt</p>
                         <div>
-                        <a class="keywordName">피로 회복</a>
-                        <a class="keywordName">면역 증강</a>
+                          <a class="keywordName">피로 회복</a>
+                          <a class="keywordName">면역 증강</a>
                         </div>
-                        <br>
+                        <br />
                         <div class="d-flex justify-content-between flex-lg-wrap">
                           <p class="text-dark fs-5 fw-bold mb-0">$4.99 / kg</p>
                           <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary">
