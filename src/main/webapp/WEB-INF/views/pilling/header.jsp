@@ -21,7 +21,7 @@ prefix="tiles"%>
     <!-- Topbar End -->
 
     <!-- Navbar Start -->
-    <div class="d-flex container-fluid bg-dark flex-row-reverse">
+    <div class="d-flex container-fluid bg-pillgreen flex-row-reverse">
       <div class="container">
         <nav class="navbar navbar-dark navbar-expand-lg py-lg-0 justify-content-between">
           <a href="home" class="navbar-brand">
@@ -35,7 +35,7 @@ prefix="tiles"%>
               <a href="productpurchase" class="d-flex nav-item nav-link">상품구매</a>
               <a href="service.html" class="nav-item nav-link">방문예약</a>
               <a href="project.html" class="nav-item nav-link">회사정보</a>
-              <a href="contact.html" class="nav-item nav-link">Contact</a>
+              <a href="contact.html" class="nav-item nav-link">고객센터</a>
             </div>
           </div>
           <div class="search-form align-items">
@@ -56,6 +56,11 @@ prefix="tiles"%>
                 </div>
               </div>
             </form>
+          </div>
+          <div class="d-flex align-items-center">
+            <h2>
+              <a href="login"><i class="fa-regular fa-user text-white"></i></a>
+            </h2>
           </div>
         </nav>
       </div>

@@ -4,6 +4,11 @@
   <head>
     <meta charset="UTF-8" />
     <title>Insert title here</title>
+    <style>
+      .main-page-image {
+        background-size: cover;
+      }
+    </style>
   </head>
   <body>
     <!-- Carousel Start -->
@@ -11,10 +16,10 @@
       <div id="carouselId" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner" role="listbox">
           <div class="carousel-item active">
-            <img src="resources/pilling/img/carousel-2.jpg" class="img-fluid w-100" alt="First slide" />
+            <img src="resources/pilling/img/carousel-2.jpg" class="main-page-image img-fluid w-100" alt="First slide" />
             <div class="carousel-caption">
               <div class="container carousel-content">
-                <h4 class="text-white mb-4 animated slideInDown">당신의 첫번째 영양제, Pi1ling</h4>
+                <h4 class="text-white display-6 mb-4 animated slideInDown">당신의 첫번째 영양제, Pi1ling</h4>
                 <h1 class="text-white display-1 mb-4 animated slideInDown">지금 영양제 추천을 도와드리겠습니다.</h1>
                 <a href="" class="me-2"
                   ><button type="button" class="px-5 py-3 btn btn-primary border-2 rounded-pill animated slideInDown">설문조사 시작</button></a
@@ -74,8 +79,8 @@
         <div class="row g-5">
           <div class="col-lg-6 col-md-12 wow fadeInUp" data-wow-delay=".3s">
             <div class="about-img">
-              <div class="rotate-left bg-dark"></div>
-              <div class="rotate-right bg-dark"></div>
+              <div class="rotate-left bg-pillgreen"></div>
+              <div class="rotate-right bg-pillgreen"></div>
               <img src="resources/pilling/img/about-img.jpg" class="img-fluid h-100" alt="img" />
               <div class="bg-white experiences">
                 <h1 class="display-3">20</h1>
@@ -94,7 +99,7 @@
               <div class="row">
                 <div class="col-3">
                   <div class="text-center">
-                    <div class="p-4 bg-dark rounded d-flex" style="align-items: center; justify-content: center">
+                    <div class="p-4 bg-pillgreen rounded d-flex" style="align-items: center; justify-content: center">
                       <i class="fas fa-city fa-4x text-primary"></i>
                     </div>
                     <div class="my-2">
@@ -105,7 +110,7 @@
                 </div>
                 <div class="col-3">
                   <div class="text-center">
-                    <div class="p-4 bg-dark rounded d-flex" style="align-items: center; justify-content: center">
+                    <div class="p-4 bg-pillgreen rounded d-flex" style="align-items: center; justify-content: center">
                       <i class="fas fa-school fa-4x text-primary"></i>
                     </div>
                     <div class="my-2">
@@ -116,7 +121,7 @@
                 </div>
                 <div class="col-3">
                   <div class="text-center">
-                    <div class="p-4 bg-dark rounded d-flex" style="align-items: center; justify-content: center">
+                    <div class="p-4 bg-pillgreen rounded d-flex" style="align-items: center; justify-content: center">
                       <i class="fas fa-warehouse fa-4x text-primary"></i>
                     </div>
                     <div class="my-2">
@@ -127,7 +132,7 @@
                 </div>
                 <div class="col-3">
                   <div class="text-center">
-                    <div class="p-4 bg-dark rounded d-flex" style="align-items: center; justify-content: center">
+                    <div class="p-4 bg-pillgreen rounded d-flex" style="align-items: center; justify-content: center">
                       <i class="fas fa-hospital fa-4x text-primary"></i>
                     </div>
                     <div class="my-2">
@@ -217,48 +222,48 @@
         <div class="row g-5">
           <div class="col-xxl-4 col-lg-6 col-md-6 col-sm-12 wow fadeInUp" data-wow-delay=".3s">
             <div class="project-item">
-              <div class="project-left bg-dark"></div>
-              <div class="project-right bg-dark"></div>
+              <div class="project-left bg-pillgreen"></div>
+              <div class="project-right bg-pillgreen"></div>
               <img src="resources/pilling/img/project-1.jpg" class="img-fluid h-100" alt="img" />
               <a href="" class="fs-4 fw-bold text-center">Whole Home Sanitizing</a>
             </div>
           </div>
           <div class="col-xxl-4 col-lg-6 col-md-6 col-sm-12 wow fadeInUp" data-wow-delay=".5s">
             <div class="project-item">
-              <div class="project-left bg-dark"></div>
-              <div class="project-right bg-dark"></div>
+              <div class="project-left bg-pillgreen"></div>
+              <div class="project-right bg-pillgreen"></div>
               <img src="resources/pilling/img/project-2.jpg" class="img-fluid h-100" alt="img" />
               <a href="" class="fs-4 fw-bold text-center">Education center Cleaning</a>
             </div>
           </div>
           <div class="col-xxl-4 col-lg-6 col-md-6 col-sm-12 wow fadeInUp" data-wow-delay=".7s">
             <div class="project-item">
-              <div class="project-left bg-dark"></div>
-              <div class="project-right bg-dark"></div>
+              <div class="project-left bg-pillgreen"></div>
+              <div class="project-right bg-pillgreen"></div>
               <img src="resources/pilling/img/project-3.jpg" class="img-fluid h-100" alt="img" />
               <a href="" class="fs-4 fw-bold text-center">Warehouse Cleaning</a>
             </div>
           </div>
           <div class="col-xxl-4 col-lg-6 col-md-6 col-sm-12 wow fadeInUp" data-wow-delay=".3s">
             <div class="project-item">
-              <div class="project-left bg-dark"></div>
-              <div class="project-right bg-dark"></div>
+              <div class="project-left bg-pillgreen"></div>
+              <div class="project-right bg-pillgreen"></div>
               <img src="resources/pilling/img/project-4.jpg" class="img-fluid h-100" alt="img" />
               <a href="" class="fs-4 fw-bold text-center">Hospital Cleaning</a>
             </div>
           </div>
           <div class="col-xxl-4 col-lg-6 col-md-6 col-sm-12 wow fadeInUp" data-wow-delay=".5s">
             <div class="project-item">
-              <div class="project-left bg-dark"></div>
-              <div class="project-right bg-dark"></div>
+              <div class="project-left bg-pillgreen"></div>
+              <div class="project-right bg-pillgreen"></div>
               <img src="resources/pilling/img/project-5.jpg" class="img-fluid h-100" alt="img" />
               <a href="" class="fs-4 fw-bold text-center">Factory Cleaning</a>
             </div>
           </div>
           <div class="col-xxl-4 col-lg-6 col-md-6 col-sm-12 wow fadeInUp" data-wow-delay=".7s">
             <div class="project-item">
-              <div class="project-left bg-dark"></div>
-              <div class="project-right bg-dark"></div>
+              <div class="project-left bg-pillgreen"></div>
+              <div class="project-right bg-pillgreen"></div>
               <img src="resources/pilling/img/project-6.jpg" class="img-fluid h-100" alt="img" />
               <a href="" class="fs-4 fw-bold text-center">Furniture Sanitizing</a>
             </div>
@@ -410,10 +415,10 @@
           </div>
           <div class="col-lg-4 col-md-6 col-sm-12 wow fadeInUp" data-wow-delay=".5s">
             <div class="rounded bg-light pricing-item">
-              <div class="bg-dark py-3 px-5 text-center rounded-top border-bottom border-primary">
+              <div class="bg-pillgreen py-3 px-5 text-center rounded-top border-bottom border-primary">
                 <h2 class="m-0 text-primary">Standerd</h2>
               </div>
-              <div class="px-4 py-5 text-center bg-dark pricing-label pricing-featured mb-2">
+              <div class="px-4 py-5 text-center bg-pillgreen pricing-label pricing-featured mb-2">
                 <h1 class="mb-0 text-primary">$80<span class="fs-5 fw-normal">/mo</span></h1>
                 <p class="mb-0 text-white">Standard Pest Control</p>
               </div>

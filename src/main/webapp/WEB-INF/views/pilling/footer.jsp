@@ -1,12 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="UTF-8" />
-<title>Insert title here</title>
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Insert title here</title>
+  </head>
+  <body>
     <!-- Footer Start -->
     <div class="container-fluid footer py-5 wow fadeIn" data-wow-delay=".3s">
       <div class="container py-5">
@@ -63,11 +62,13 @@
     <!-- Footer End -->
 
     <!-- Copyright Start -->
-    <div class="container-fluid copyright bg-dark py-4">
+    <div class="container-fluid copyright bg-pillgreen py-4">
       <div class="container">
         <div class="row">
           <div class="col-md-4 text-center text-md-start mb-3 mb-md-0">
-            <a href="#" class="text-primary mb-0 display-6">Pest<span class="text-white">Kit</span><i class="fa fa-spider text-primary ms-2"></i></a>
+            <a href="home" class="navbar-brand">
+              <h1 class="text-primary mb-0 display-6">Pi1l<span class="text-white">ing</span><i class="fa-solid fa-pills text-primary ms-2"></i></h1>
+            </a>
           </div>
           <div class="col-md-4 copyright-btn text-center text-md-start mb-3 mb-md-0 flex-shrink-0">
             <a class="btn btn-primary rounded-circle me-3 copyright-icon" href=""><i class="fab fa-twitter"></i></a>
@@ -85,5 +86,5 @@
       </div>
     </div>
     <!-- Copyright End -->
-</body>
+  </body>
 </html>

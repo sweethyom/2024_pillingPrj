@@ -31,14 +31,14 @@
                       <br />
                       <br />
                       <h5>성별 효능 별</h5>
-                      <ul class="filterList noDot">
-                        <li class="filterItem noDot">
+                      <ul class="filterList ">
+                        <li class="filterItem ">
                           <div class="filterName">
                             <input type="checkbox" name="effectId" id="effect22" value="effectId" />
                             <label for="effect22">&nbsp;남성용</label>
                           </div>
                         </li>
-                        <li class="filterItem noDot">
+                        <li class="filterItem ">
                           <div class="filterName">
                             <input type="checkbox" name="effectId" id="effect21" value="effectId" />
                             <label for="effect21">&nbsp;여성용</label>
@@ -47,62 +47,62 @@
                       </ul>
                       <br /><br />
                       <h5>효능 별</h5>
-                      <ul class="filterList noDot">
-                        <li class="filterItem noDot">
+                      <ul class="filterList ">
+                        <li class="filterItem ">
                           <div class="filterName">
                             <input type="checkbox" name="effectId" id="effect1" value="effectId" />
                             <label for="effect1">&nbsp;피로 회복</label>
                           </div>
                         </li>
-                        <li class="filterItem noDot">
+                        <li class="filterItem ">
                           <div class="filterName">
                             <input type="checkbox" name="effectId" id="effect2" value="effectId" />
                             <label for="effect2">&nbsp;피부 건강</label>
                           </div>
                         </li>
-                        <li class="filterItem noDot">
+                        <li class="filterItem ">
                           <div class="filterName">
                             <input type="checkbox" name="effectId" id="effect3" value="effectId" />
                             <label for="effect3">&nbsp;혈류 및 혈액 건강</label>
                           </div>
                         </li>
-                        <li class="filterItem noDot">
+                        <li class="filterItem ">
                           <div class="filterName">
                             <input type="checkbox" name="effectId" id="effect4" value="effectId" />
                             <label for="effect4">&nbsp;면역 증강</label>
                           </div>
                         </li>
-                        <li class="filterItem noDot">
+                        <li class="filterItem ">
                           <div class="filterName">
                             <input type="checkbox" name="effectId" id="effect5" value="effectId" />
                             <label for="effect5">&nbsp;수면질 개선</label>
                           </div>
                         </li>
-                        <li class="filterItem noDot">
+                        <li class="filterItem ">
                           <div class="filterName">
                             <input type="checkbox" name="effectId" id="effect6" value="effectId" />
                             <label for="effect6">&nbsp;스트레스 및 긴장 완화</label>
                           </div>
                         </li>
-                        <li class="filterItem noDot">
+                        <li class="filterItem ">
                           <div class="filterName">
                             <input type="checkbox" name="effectId" id="effect7" value="effectId" />
                             <label for="effect7">&nbsp;안구 건강</label>
                           </div>
                         </li>
-                        <li class="filterItem noDot">
+                        <li class="filterItem ">
                           <div class="filterName">
                             <input type="checkbox" name="effectId" id="effect8" value="effectId" />
                             <label for="effect8">&nbsp;당뇨병에 도움</label>
                           </div>
                         </li>
-                        <li class="filterItem noDot">
+                        <li class="filterItem ">
                           <div class="filterName">
                             <input type="checkbox" name="effectId" id="effect9" value="effectId" />
                             <label for="effect9">&nbsp;노화&항산화 도움</label>
                           </div>
                         </li>
-                        <li class="filterItem noDot">
+                        <li class="filterItem ">
                           <div class="filterName">
                             <input type="checkbox" name="effectId" id="effect10" value="effectId" />
                             <label for="effect10">&nbsp;피부 건강</label>

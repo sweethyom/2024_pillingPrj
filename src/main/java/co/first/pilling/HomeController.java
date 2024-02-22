@@ -22,4 +22,9 @@ public class HomeController {
 		return "pilling/menu/productpurchase";
 	}
 	
+	@RequestMapping("login")
+	public String userLogin(Model model) {
+		return "pilling/menu/login";
+	}
+	
 }

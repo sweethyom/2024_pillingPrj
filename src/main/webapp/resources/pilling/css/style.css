@@ -259,10 +259,10 @@
 }
 
 .about-img::before {
+  background-color: #3faf08;
   content: '';
   width: 100%;
   height: 40%;
-  background: var(--bs-dark);
   position: absolute;
   top: 0px;
   left: 0px;
@@ -397,7 +397,7 @@
   content: '';
   width: 100%;
   height: 40%;
-  background: var(--bs-dark);
+  background: #3faf08;
   position: absolute;
   top: 0px;
   left: 0px;
@@ -746,3 +746,27 @@
 }
 
 /*** Copywright End ***/
+
+/* Hyunwoo Style Start */
+
+li {
+  list-style: none;
+  
+}
+
+.filterItem {
+	padding-left: 0px;
+}
+
+.keywordName {
+  display: inline-block;
+  padding: 0px 10px;
+  border-radius: 21px;
+  background: yellow;
+  color: black;
+  font-weight: 400;
+}
+
+.bg-pillgreen {
+  background-color: #3faf08 !important;
+}
