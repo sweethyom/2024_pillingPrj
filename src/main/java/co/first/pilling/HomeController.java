@@ -31,5 +31,4 @@ public class HomeController {
 	public String userRegister(Model model) {
 		return "pilling/menu/register";
 	}
-	
 }
