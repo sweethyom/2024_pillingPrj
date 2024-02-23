@@ -32,4 +32,9 @@ public class HomeController {
 		return "pilling/menu/register";
 	}
 	
+	@RequestMapping("mypage")
+	public String myPage(Model model) {
+		return "pilling/menu/mypage";
+	}
+	
 }
