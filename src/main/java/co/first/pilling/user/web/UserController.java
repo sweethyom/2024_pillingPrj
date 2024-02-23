@@ -1,6 +1,5 @@
 package co.first.pilling.user.web;
 
-import javax.inject.Inject;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
@@ -9,6 +8,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -20,8 +20,7 @@ import co.first.pilling.user.service.UserVO;
 public class UserController {
 	
 private static final Logger logger = LoggerFactory.getLogger(UserController.class);
-	
-	
+		
 	@Autowired
 	private UserService udao;
 	
@@ -47,18 +46,27 @@ private static final Logger logger = LoggerFactory.getLogger(UserController.clas
 			return "redirect:home";
 	}
 	
-	@Inject UserService us;
 	
-	@RequestMapping(value="/memberregister", method = RequestMethod.GET)
+	@RequestMapping(value="/register", method = RequestMethod.GET)
 		public void getRegister() throws Exception {
 			logger.info("get userInsert");
 			}
-	@RequestMapping(value="/memberregister", method = RequestMethod.POST)
+	@PostMapping("registerForm")
 		public String postRegister(UserVO vo) throws Exception {
 			logger.info("post userInsert");
 			
-			us.userInsert(vo);
+			udao.userInsert(vo);
 			
-			return null;
+			return "redirect:/home";
 	}
 }
+//	@RequestMapping("registerForm")
+//		public String userRegister(Model model, UserVO vo, HttpSession session, HttpServletResponse response) {
+//		String viewPage = null;
+//		vo = udao.userInsert(vo);
+//			if(vo != null) {
+//				session.getAttribute("user", viewPage);
+//		
+	//}
+		
+

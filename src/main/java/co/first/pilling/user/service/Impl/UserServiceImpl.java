@@ -50,7 +50,7 @@ public class UserServiceImpl implements UserService {
 	
 	@Override
 	public void userInsert(UserVO vo) throws Exception {
-		sql.insert("userMapper.userInsert", vo);
+		sql.insert("userInsert", vo);
 	}
 
 }
