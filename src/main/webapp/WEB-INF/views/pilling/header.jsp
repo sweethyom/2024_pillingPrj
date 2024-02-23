@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%> <%@ taglib uri="http://tiles.apache.org/tags-tiles"
 prefix="tiles"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> 
 <!DOCTYPE html>
 <html>
   <head>
@@ -8,16 +9,18 @@ prefix="tiles"%>
   </head>
   <body>
     <!-- Topbar Start -->
-    <div class="container-fluid topbar-top bg-primary">
-      <div class="container">
-        <div class="topbar py-2">
-          <div class="text-center align-items-center flex-shrink-0 topbar-info">
-            <span class="text-secondary align-items-center">가입하는 즉시, 할인쿠폰이 증정됩니다! </span> &nbsp;&nbsp;&nbsp;
-            <a href="registerpage" class="text-secondary"><i class="fas fa-sign-in-alt text-dark"></i>&nbsp;&nbsp;지금 회원가입 하기</a>
-          </div>
-        </div>
-      </div>
-    </div>
+    <c:if test="${empty userId}">
+	    <div class="container-fluid topbar-top bg-primary">
+	      <div class="container">
+	        <div class="topbar py-2">
+	          <div class="text-center align-items-center flex-shrink-0 topbar-info">
+	            <span class="text-secondary align-items-center">가입하는 즉시, 할인쿠폰이 증정됩니다! </span> &nbsp;&nbsp;&nbsp;
+	            <a href="registerpage" class="text-secondary"><i class="fas fa-sign-in-alt text-dark"></i>&nbsp;&nbsp;지금 회원가입 하기</a>
+	          </div>
+	        </div>
+	      </div>
+	    </div>
+    </c:if>
     <!-- Topbar End -->
 
     <!-- Navbar Start -->
@@ -59,7 +62,13 @@ prefix="tiles"%>
           </div>
           <div class="d-flex align-items-center">
             <h2>
-              <a href="login"><i class="fa-regular fa-user text-white"></i></a>
+            	<c:if test="${empty userId}">
+	            	<a href="login"><i class="fa-regular fa-user text-white"></i></a>
+	            </c:if>
+	            <c:if test="${not empty userId}">
+	            	<a href="mypage">${userFirstname }</a>
+	            	<a href="logout">로그아웃</a>
+	            </c:if>
             </h2>
           </div>
         </nav>
