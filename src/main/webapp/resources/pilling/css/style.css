@@ -779,4 +779,17 @@ li {
   margin: 5px !important;
 }
 
+/* productdetailpage에서 사용하는 것들 START */
+
+.sub-product-name {
+  color: #7f848b !important;
+  margin: 0.5rem 0px 1.625rem;
+}
+
+.main-product-name {
+  font-size: 5rem;
+}
+
+/* productdetailpage에서 사용하는 것들 END */
+
 /* Hyunwoo Style END */
