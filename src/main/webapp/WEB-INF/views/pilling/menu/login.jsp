@@ -39,16 +39,16 @@
               <div class="card-body login-site-padding shadow-5 text-center">
                 <h2 class="fw-bold mb-5">로그인</h2>
                 <form>
-                  <!-- Email input -->
+                  <!-- ID input -->
                   <div class="form-outline mb-4">
-                    <label class="form-label" for="form3Example3">아이디</label>
-                    <input type="email" id="form3Example3" class="form-control" />
+                    <label class="form-label" for="userId">아이디</label>
+                    <input type="text" id="userId" name="userId" class="form-control" />
                   </div>
 
                   <!-- Password input -->
                   <div class="form-outline mb-4">
-                    <label class="form-label" for="form3Example4">비밀번호</label>
-                    <input type="password" id="form3Example4" class="form-control" />
+                    <label class="form-label" for="userPswd">비밀번호</label>
+                    <input type="password" id="userPswd" name="userPswd" class="form-control" />
                   </div>
                   <br />
                   <br />
