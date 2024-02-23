@@ -13,7 +13,7 @@ prefix="tiles"%>
         <div class="topbar py-2">
           <div class="text-center align-items-center flex-shrink-0 topbar-info">
             <span class="text-secondary align-items-center">가입하는 즉시, 할인쿠폰이 증정됩니다! </span> &nbsp;&nbsp;&nbsp;
-            <a href="#" class="text-secondary"><i class="fas fa-sign-in-alt text-dark"></i>&nbsp;&nbsp;지금 회원가입 하기</a>
+            <a href="registerpage" class="text-secondary"><i class="fas fa-sign-in-alt text-dark"></i>&nbsp;&nbsp;지금 회원가입 하기</a>
           </div>
         </div>
       </div>
