@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> 
 <html>
   <head>
     <meta charset="UTF-8" />
@@ -38,18 +39,24 @@
             <div class="card cascading-right" style="background: hsla(0, 0%, 100%, 0.55); backdrop-filter: blur(30px)">
               <div class="card-body login-site-padding shadow-5 text-center">
                 <h2 class="fw-bold mb-5">로그인</h2>
-                <form>
+                <form action="loginresult" method="post">
                   <!-- Email input -->
                   <div class="form-outline mb-4">
                     <label class="form-label" for="form3Example3">아이디</label>
-                    <input type="email" id="form3Example3" class="form-control" />
+                    <input type="text" id="form3Example3" name="userId" class="form-control" />
                   </div>
 
                   <!-- Password input -->
                   <div class="form-outline mb-4">
                     <label class="form-label" for="form3Example4">비밀번호</label>
-                    <input type="password" id="form3Example4" class="form-control" />
+                    <input type="password" id="form3Example4" name="userPswd" class="form-control" />
                   </div>
+                  
+                  <!-- 아이디, 패스워드 불일치 시 붉은 문구 삽입 -->
+                  <c:if test="${not empty message}">
+                  	<label id="message">${message }</label>
+                  </c:if>
+                  
                   <br />
                   <br />
                   <!-- Submit button -->
@@ -68,5 +75,9 @@
       <!-- Jumbotron -->
     </section>
     <!-- Section: Design Block -->
+    <script>
+	    let wrongColor = '#ff0000';
+    	message.style.color = wrongColor;
+    </script>
   </body>
 </html>
