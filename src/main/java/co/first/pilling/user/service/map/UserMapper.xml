@@ -9,7 +9,27 @@
 		AND USER_PSWD = #{userPswd}
 	</if> 
 </select>
-<insert id="userInsert"></insert>
+<insert id="userInsert">
+	INSERT INTO 'user' {
+	VALUES {
+	#{userNo}, 
+	#{levelId}, 
+	#{userId}, 
+	#{userPswd}, 
+	#{userLastname}, 
+	#{userFirstname}, 
+	#{userBirthdate}, 
+	#{userGender}, 
+	#{userEmail}, 
+	#{userTel}, 
+	#{userAddr}, 
+	#{userAddrdetail}, 
+	#{userTotalamount},
+	#{userMarketingYn},
+	#{userAuthor},
+	#{userSignout}
+	}
+</insert>
 <update id="userDelete"></update>
 <delete id="userUpdate"></delete>
 
