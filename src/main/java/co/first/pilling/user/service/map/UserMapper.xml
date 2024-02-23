@@ -4,7 +4,7 @@
 
 <select id="userSelectList"></select>
 <select id="userSelect">
-	SELECT * FROM `USER` WHERE USER_ID = #{userId}
+	SELECT * FROM `user` WHERE USER_ID = #{userId}
 	<if test="userPswd != null">
 		AND USER_PSWD = #{userPswd}
 	</if> 
