@@ -31,10 +31,9 @@ public class HomeController {
 	public String userRegister(Model model) {
 		return "pilling/menu/register";
 	}
-	
+  
 	@RequestMapping("mypage")
 	public String myPage(Model model) {
 		return "pilling/menu/mypage";
 	}
-	
 }

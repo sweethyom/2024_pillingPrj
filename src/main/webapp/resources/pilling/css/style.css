@@ -774,4 +774,9 @@ li {
   width: 47%;
 }
 
+/* p 태그 상하좌우 마진을 없애는 클래스 CSS  */
+.ptag-margin {
+  margin: 5px !important;
+}
+
 /* Hyunwoo Style END */
