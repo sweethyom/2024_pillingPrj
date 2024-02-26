@@ -41,5 +41,9 @@ public class HomeController {
 	@RequestMapping("productdetailpage")
 	public String productDetailPage(Model model) {
 		return "pilling/product/productdetailpage";
+  
+	@RequestMapping("mypage")
+	public String myPage(Model model) {
+		return "pilling/menu/mypage";
 	}
 }
