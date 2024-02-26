@@ -7,9 +7,9 @@
   </head>
   <body>
     <!-- Page Header Start -->
-    <div class="container-fluid page-header py-5">
-      <div class="container text-center py-5">
-        <h1 class="display-2 text-white mb-4 animated slideInDown">제품구매</h1>
+    <div class="container-fluid productpurchase-header py-5">
+      <div class="container py-5">
+        <h1 class="display-2 text-dark mb-4 animated slideInDown">제품구매</h1>
         <nav aria-label="breadcrumb">검색바 필요하면 여기다 넣으면 됩니다.</nav>
       </div>
     </div>
@@ -116,7 +116,7 @@
               <div class="col-lg-9">
                 <div class="row g-4 justify-content-center">
                   <div class="col-md-6 col-lg-6 col-xl-4">
-                    <div class="rounded position-relative fruite-item" onclick="location.href='productdetailpage'" style=" cursor: pointer;">
+                    <div class="rounded position-relative fruite-item" onclick="location.href='productdetailpage'" style="cursor: pointer">
                       <div class="fruite-img">
                         <img src="resources/pilling/img/productimage/testimage01.png" class="img-fluid w-100 rounded-top" alt="" />
                       </div>
@@ -135,7 +135,7 @@
                     </div>
                   </div>
                   <div class="col-md-6 col-lg-6 col-xl-4">
-                    <div class="rounded position-relative fruite-item" >
+                    <div class="rounded position-relative fruite-item">
                       <div class="fruite-img">
                         <img src="resources/pilling/img/productimage/testimage01.png" class="img-fluid w-100 rounded-top" alt="" />
                       </div>
