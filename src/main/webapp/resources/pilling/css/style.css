@@ -33,12 +33,12 @@
 }
 
 .btn.btn-primary {
-  box-shadow: inset 0 0 0 0 var(--bs-dark);
+  box-shadow: inset 0 0 0 0 #3faf08;
 }
 
 .btn.btn-primary:hover {
-  box-shadow: inset 200px 0 0 0 var(--bs-dark) !important;
-  color: var(--bs-primary) !important;
+  box-shadow: inset 200px 0 0 0 #3faf08 !important;
+  color: #ffffff !important;
 }
 
 .btn.btn-dark {
@@ -175,6 +175,7 @@
   height: 100%;
   top: 0;
   right: 0;
+  opacity: 20%;
   background: rgba(0, 0, 0, 0.7);
 }
 
@@ -602,12 +603,12 @@
 }
 
 .team-item .team-content {
-  box-shadow: inset 0 0 0 0 var(--bs-dark);
+  box-shadow: inset 0 0 0 0 #3faf08;
   transition: 1s;
 }
 
 .team-item:hover .team-content {
-  box-shadow: inset 550px 0 0 0 var(--bs-dark);
+  box-shadow: inset 550px 0 0 0 #3faf08;
   color: var(--bs-primary) !important;
 }
 /*** Team End ***/
@@ -715,7 +716,7 @@
 
 /*** Footer Start ***/
 .footer {
-  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(../img/carousel-2.jpg) center center no-repeat;
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(../img/productimage/productrbanner.jpg) center center no-repeat;
   background-size: cover;
   color: rgba(255, 255, 255, 0.7);
   margin-top: 6rem;
@@ -757,15 +758,6 @@ li {
   padding-left: 0px;
 }
 
-.keywordName {
-  display: inline-block;
-  padding: 0px 10px;
-  border-radius: 21px;
-  background: yellow;
-  color: black;
-  font-weight: 400;
-}
-
 .bg-pillgreen {
   background-color: #3faf08 !important;
 }
@@ -774,9 +766,137 @@ li {
   width: 47%;
 }
 
+.keywordName {
+  display: inline-block;
+  padding: 0px 10px;
+  border-radius: 21px;
+  background: yellow;
+  color: black;
+  font-weight: 400;
+  margin: 2px;
+}
+
 /* p 태그 상하좌우 마진을 없애는 클래스 CSS  */
 .ptag-margin {
   margin: 5px !important;
 }
+
+/* productdetailpage에서 사용하는 것들 START */
+
+.sub-product-name {
+  color: #7f848b !important;
+  margin: 0.5rem 0px 1.625rem;
+  font-size: 2.25rem;
+}
+
+.main-product-name {
+  font-size: 5rem;
+}
+
+.keywordHeader {
+  flex-wrap: wrap;
+  border-bottom: 0.125rem solid #d0d0d0;
+  padding-bottom: 1rem;
+  font-size: 1rem;
+}
+
+.product-discription {
+  padding: 0%;
+  margin: 0%;
+  margin-bottom: 1rem;
+}
+
+.product-detail-header {
+  flex: 0 0 auto;
+  width: 50%;
+}
+
+.product-detail-image {
+  flex: 0 0 auto;
+  width: 50%;
+}
+
+.product-discription-list {
+  font-size: 1.2rem;
+  margin: 0.25rem;
+}
+
+.mid-line {
+  margin: 7rem;
+}
+
+.detail-buy-button {
+  margin-right: 1rem;
+}
+
+.product-detail-content-img {
+  width: 40%;
+  text-align: center;
+  margin-left: 2rem;
+}
+
+.product-detail-content {
+  width: 60%;
+  text-align: center;
+}
+
+.boundary-border {
+  border-bottom: 0.125rem solid #d0d0d0;
+  padding-bottom: 1rem;
+}
+
+.content-card-wrap {
+  padding: 10px 40px;
+  width: 60%;
+  background: #fff;
+  border: 1px solid #e6e9ed;
+  border-radius: 20px;
+}
+
+.taking-method {
+  padding: 20px 0px;
+  width: 100%;
+  border: 1px solid #e6e9ed;
+  border-radius: 20px;
+}
+
+.taking-method img {
+  width: 70px;
+  height: 70px;
+  display: block;
+  float: left;
+}
+
+.taking-text1 {
+  margin-left: 40px;
+  display: block;
+  float: left;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.taking-text2 {
+  float: right;
+  background: #fdf001;
+  border-radius: 15px;
+  text-align: center;
+  font-weight: 700;
+  font-size: 16px;
+  color: #000000;
+  margin: 20px 0px 0px;
+  padding: 0px 15px;
+  height: 30px;
+  line-height: 30px;
+}
+/* productdetailpage에서 사용하는 것들 END */
+
+/* productpurchase 에서 사용하는 것들 START */
+.productpurchase-header {
+  background: url(../img/productimage/productrbanner.jpg) center center no-repeat;
+  background-size: cover;
+  margin-bottom: 6rem;
+}
+
+/* productpurchase 에서 사용하는 것들 END */
 
 /* Hyunwoo Style END */
