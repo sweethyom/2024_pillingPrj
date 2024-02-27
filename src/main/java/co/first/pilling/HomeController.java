@@ -43,8 +43,15 @@ public class HomeController {
 		return "pilling/product/productdetailpage";
 	}
 	
+	// 마이페이지로 이동
 	@RequestMapping("mypage")
 	public String myPage(Model model) {
 		return "pilling/menu/mypage";
+	}
+	
+	// 설문조사 페이지로 이동
+	@RequestMapping("surveypage")
+	public String surveyPage(Model model) {
+		return "pilling/notiles/survey/surveypage";
 	}
 }
