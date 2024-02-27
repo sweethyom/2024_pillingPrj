@@ -49,9 +49,15 @@ public class HomeController {
 		return "pilling/menu/mypage";
 	}
 	
+  //고객센터 이동
+  @RequestMapping("customerservice")
+	public String customerService(Model model) {
+		return "pilling/menu/customerservice";
+
 	//방문예약 페이지 이동
 	@RequestMapping("book")
 	public String book(Model model) {
 		return "pilling/menu/book";
+
 	}
 }
