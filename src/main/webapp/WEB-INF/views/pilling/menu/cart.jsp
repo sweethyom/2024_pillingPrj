@@ -160,7 +160,11 @@
                                 <h5 class="mb-0 ps-4 me-4">총 합계</h5>
                                 <p class="mb-0 pe-4">111111원</p>
                             </div>
-                            <button type="button" class="px-5 py-3 btn btn-primary border-2 rounded-pill animated slideInDown mb-4 ms-4" style="float:right;">구매하기</button>
+                            <button type="button"
+                            	class="px-5 py-3 btn btn-primary border-2 rounded-pill animated slideInDown mb-4 ms-4"
+                            	style="float:right;"
+                            	onclick="location.href='order'">
+                            	구매하기</button>
                         </div>
                     </div>
                 </div>
