@@ -141,7 +141,7 @@
                       <input type="text" class="form-control" id="userAddr" name="userAddr" style="width: 70%" placeholder="도로명주소" required />
                     </div>
                     <span id="guide" style="color: #999; display: none"></span>
-                    <input type="text" class="form-control" id="userAddrdetail" name="" placeholder="상세주소" required />
+                    <input type="text" class="form-control" id="userAddrdetail" name="userAddrdetail" placeholder="상세주소" required />
                   </div>
                   <p id="addressConfirmMsg"></p>
                   <!-- 회원가입 완료 버튼 -->

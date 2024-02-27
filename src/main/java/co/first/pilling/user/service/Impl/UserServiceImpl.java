@@ -13,6 +13,7 @@ import co.first.pilling.user.service.map.UserMapper;
 @Service
 @Primary
 public class UserServiceImpl implements UserService {
+	
 	@Autowired
 	private UserMapper map;
 	
@@ -25,12 +26,12 @@ public class UserServiceImpl implements UserService {
 	public UserVO userSelect(UserVO vo) {
 		return map.userSelect(vo);
 	}
-
+	
 	@Override
-	public int userInsert(UserVO vo) {
-		return map.userInsert(vo);
+	public void userInsert(UserVO vo) throws Exception{
+		map.userInsert(vo);
 	}
-
+	
 	@Override
 	public int userDelete(UserVO vo) {
 		return map.userDelete(vo);
@@ -40,5 +41,6 @@ public class UserServiceImpl implements UserService {
 	public int userUpdate(UserVO vo) {
 		return map.userUpdate(vo);
 	}
+
 
 }
