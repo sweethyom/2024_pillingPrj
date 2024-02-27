@@ -900,3 +900,18 @@ li {
 /* productpurchase 에서 사용하는 것들 END */
 
 /* Hyunwoo Style END */
+
+/* Hyomi Style Start */
+.customerservice-header {
+	background : linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(../img/customerservice/customerservice.png) center center no-repeat;
+	background-size: 600px;
+	width:100%;
+	margin-bottom: 2rem;
+}
+
+.customerservice-button {
+  position:relative;
+	left:1500px;
+	botton:-5px;
+}
+/*hyoi Style End */

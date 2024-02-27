@@ -38,7 +38,7 @@ prefix="tiles"%>
               <a href="productpurchase" class="d-flex nav-item nav-link">상품구매</a>
               <a href="book" class="nav-item nav-link">방문예약</a>
               <a href="project.html" class="nav-item nav-link">회사정보</a>
-              <a href="contact.html" class="nav-item nav-link">고객센터</a>
+              <a href="customerservice" class="nav-item nav-link">고객센터</a>
             </div>
           </div>
           <div class="search-form align-items">
