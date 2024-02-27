@@ -36,4 +36,9 @@ public class HomeController {
 	public String myPage(Model model) {
 		return "pilling/menu/mypage";
 	}
+	
+	@RequestMapping("book")
+	public String book(Model model) {
+		return "pilling/menu/book";
+	}
 }
