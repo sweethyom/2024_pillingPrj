@@ -60,4 +60,15 @@ public class HomeController {
 		return "pilling/menu/book";
 
 	}
+	
+	//장바구니 페이지 이동
+	@RequestMapping("cart")
+	public String cart(Model model) {
+		return "pilling/menu/cart";
+	}
+	
+	@RequestMapping("order")
+	public String order(Model model) {
+		return "pilling/product/order";
+	}
 }

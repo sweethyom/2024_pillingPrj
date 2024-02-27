@@ -39,7 +39,7 @@
                 <i class="fa-regular fa-credit-card me-1"></i>
                 구매하기
               </button>
-              <button class="btn btn-outline-dark flex-shrink-0" type="button">
+              <button class="btn btn-outline-dark flex-shrink-0" type="button" onclick="location.href='cart'">
                 <i class="bi-cart-fill me-1"></i>
                 장바구니 담기
               </button>
@@ -239,5 +239,21 @@
       </form>
   </div>
     </section>
+  
+  <!-- 장바구니에 상품 번호를 넘겨줄 히든폼 
+  <div>
+    <form id="cartform" action="addcart" method="post">
+    	<input type="hidden" id="productId" name="productId">
+    </form>
+  </div>
+  -->
+  <!-- 장바구니에 상품 번호를 넘겨줄 함수
+  <script>
+  	function addCart(id){
+  		document.getElementById("productId").value=id;
+  		cartform.submit();
+  	}
+  </script>
+  -->
   </body>
 </html>
