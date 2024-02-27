@@ -60,6 +60,7 @@
       <div class="d-flex survey-question-container">
         <div class="survey-question-card">
           <div><h3>1. 최근(4주 이내) 피곤함을 느끼거나, 현기증을 느끼신적이 있으십니까?</h3></div>
+          <br />
           <div class="container d-flex" style="justify-content: space-between">
             <div class="col-5">
               <button class="form-control btn py-3" type="button">예</button>
@@ -71,6 +72,7 @@
         </div>
         <div class="survey-question-card">
           <div><h3>2. 최근(4주 이내) 피부가 푸석하거나, 까칠하신가요?</h3></div>
+          <br />
           <div class="container d-flex" style="justify-content: space-between">
             <div class="col-5">
               <button class="form-control btn py-3" type="button">예</button>
@@ -82,6 +84,7 @@
         </div>
         <div class="survey-question-card">
           <div><h3>3. 최근(4주 이내) 손,발이 저리신 느낌이나, 뒷목이 당기는 증상을 겪은적이 있으신가요?</h3></div>
+          <br />
           <div class="container d-flex" style="justify-content: space-between">
             <div class="col-5">
               <button class="form-control btn py-3" type="button">예</button>

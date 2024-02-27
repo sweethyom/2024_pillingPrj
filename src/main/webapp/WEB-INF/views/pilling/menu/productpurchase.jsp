@@ -9,7 +9,7 @@
     <!-- Page Header Start -->
     <div class="container-fluid productpurchase-header py-5">
       <div class="container py-5">
-        <h1 class="display-2 text-dark mb-4 animated slideInDown">제품구매</h1>
+        <h1 class="display-2 text-dark mb-4 animated slideInDown">상품구매</h1>
         <nav aria-label="breadcrumb">검색바 필요하면 여기다 넣으면 됩니다.</nav>
       </div>
     </div>
@@ -18,7 +18,6 @@
     <!-- Fruits Shop Start-->
     <div class="container-fluid fruite">
       <div class="container">
-        <h1 class="mb-4">영양제 구매</h1>
         <div class="row g-4">
           <div class="col-lg-12">
             <div class="row g-4">
