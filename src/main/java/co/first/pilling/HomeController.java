@@ -41,12 +41,15 @@ public class HomeController {
 	@RequestMapping("productdetailpage")
 	public String productDetailPage(Model model) {
 		return "pilling/product/productdetailpage";
-  
+	}
+	
+	//마이페이지 이동
 	@RequestMapping("mypage")
 	public String myPage(Model model) {
 		return "pilling/menu/mypage";
 	}
 	
+	//방문예약 페이지 이동
 	@RequestMapping("book")
 	public String book(Model model) {
 		return "pilling/menu/book";

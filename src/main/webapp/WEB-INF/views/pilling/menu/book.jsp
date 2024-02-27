@@ -1,6 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<!-- 
+	calendarChoiceDay 함수를 통해서 달력의 날짜를 클릭하면 예약현황에 있는 날짜가 바뀌도록 설정되어 있다.
+ -->
+
 <html>
 <head>
 <meta charset="UTF-8">
@@ -12,8 +16,14 @@
 	text-align: center;
 }
 
+.div-flex {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+
 a {
-	color: #000000;
 	text-decoration: none;
 }
 
@@ -31,7 +41,7 @@ a {
 }
 
 .scriptCalendar>thead>tr:last-child>td {
-	background-color: #90EE90;
+	background-color: #fdf227;
 }
 
 .scriptCalendar>tbody>tr>td
@@ -39,6 +49,63 @@ a {
 	float: left;
 	width: 30%;
 	padding: 0%;
+}
+
+.box-white {
+	display: inline-block;
+	padding: 0px 10px;
+	border-radius: 21px;
+	border-style: solid;
+	border-width: 1px;
+	border-color: black;
+	background: white;
+	color: black;
+	font-weight: 400;
+	margin: 2px;
+	padding: 10px;
+}
+
+.box-bg-green {
+	display: inline-block;
+	padding: 0px 10px;
+	border-radius: 10px;
+	border-style: solid;
+	border-width: 1px;
+	border-color: #fdf227;
+	background: #fdf227;
+	color: black;
+	font-weight: 400;
+	margin: 2px;
+	padding: 10px;
+	font-weight: 400;
+}
+
+.box-green {
+	display: inline-block;
+	padding: 0px 10px;
+	border-radius: 21px;
+	border-style: solid;
+	border-width: 1px;
+	border-color: green;
+	background: white;
+	color: black;
+	font-weight: 400;
+	margin: 2px;
+	padding: 10px;
+}
+
+.box-gay {
+	display: inline-block;
+	padding: 0px 10px;
+	border-radius: 21px;
+	border-style: solid;
+	border-width: 1px;
+	border-color: gray;
+	background: white;
+	color: black;
+	font-weight: 400;
+	margin: 2px;
+	padding: 10px;
 }
 </style>
 
@@ -154,7 +221,7 @@ a {
 
 					// @details 현재일보다 이전인 경우이면서 현재월에 포함되는 일인경우
 					if (nowDate.getDate() > day && Math.sign(day) == 1) {
-						column.style.backgroundColor = "#E5E5E5";
+						column.style.backgroundColor = "#F1F3F5";
 					}
 
 					// @details 현재일보다 이후이면서 현재월에 포함되는 일인경우
@@ -246,12 +313,18 @@ a {
 
 		// @param 선택일 클래스명 변경
 		column.classList.add("choiceDay");
-		
+
 		console.log(document.getElementById("calYear").innerText);
 		console.log(document.getElementById("calMonth").innerText);
 		console.log(document.getElementsByClassName("choiceDay")[0].innerText);
-		
-		document.getElementsById("bookDate").innerText = "2024-03-03";
+
+		document.getElementById("selectDate").innerText = document
+				.getElementById("calYear").innerText
+				+ "년 "
+				+ document.getElementById("calMonth").innerText
+				+ "월 "
+				+ document.getElementsByClassName("choiceDay")[0].innerText
+				+ "일";
 	}
 
 	/**
@@ -276,12 +349,13 @@ a {
 	</div>
 	<!-- Page Header End -->
 
-	<section class="features-icons bg-light text-center">
+	<section class="features-icons text-center">
 		<div class="container">
 			<div class="row">
-				<div class="col-lg-4">
+
+				<!-- 달력 시작 -->
+				<div class="col-lg-4 div-center">
 					<div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
-						<!-- 예약현황일람 -->
 						<div class="div-horizontal">
 							<br />
 							<table class="scriptCalendar div-center">
@@ -307,58 +381,129 @@ a {
 						</div>
 					</div>
 				</div>
+				<!-- 달력 끝 -->
+
+				<!-- 예약현황 시작 -->
 				<div class="col-lg-4">
 					<div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
-						<h3>■ 예약 현황</h3>
+						<h2 class="mb-3">예약 현황</h2>
+						<a id="selectDate" class="box-bg-green mb-3">예약일자를 선택하세요</a><br>
+						<table class="div-center">
+							<tr>
+								<td><a class="box-green">
+										<div>09:00</div>
+										<div>예약가능</div>
+								</a></td>
+								<td><a class="box-green">
+										<div>10:00</div>
+										<div>예약가능</div>
+								</a></td>
+								<td><a class="box-green">
+										<div>11:00</div>
+										<div>예약가능</div>
+								</a></td>
+							</tr>
+							<tr>
+								<td><a class="box-green">
+										<div>12:00</div>
+										<div>예약가능</div>
+								</a></td>
+								<td><a class="box-green">
+										<div>13:00</div>
+										<div>예약가능</div>
+								</a></td>
+								<td><a class="box-green">
+										<div>14:00</div>
+										<div>예약가능</div>
+								</a></td>
+							</tr>
+							<tr>
+								<td><a class="box-green">
+										<div>15:00</div>
+										<div>예약가능</div>
+								</a></td>
+								<td><a class="box-green">
+										<div>16:00</div>
+										<div>예약가능</div>
+								</a></td>
+								<td><a class="box-green">
+										<div>17:00</div>
+										<div>예약가능</div>
+								</a></td>
+							</tr>
+						</table>
 					</div>
 				</div>
-				<div class="col-lg-4">
+				<!-- 예약현황 끝 -->
+
+				<!-- 방문일자 및 시간 INPUT 시작 -->
+				<div class="col-lg-4 div-center">
 					<div class="features-icons-item mx-auto mb-0 mb-lg-3">
-						<!-- 방문일자 및 시간 INPUT -->
 						<div class="div-horizontal">
 							<form>
-								<h3>■ 예약하기</h3>
-								<div class="div-center">
-									<label>예약일자</label> &nbsp;&nbsp; <input size="200" type="date"
-										id="bookDate" name="bookDate" min="1900-01-01"
-										max="" required /> <br> <br>
-										<label>예약시간</label>
-										<select id="bookTime" name="bookTime" style="width: 140px;" required>
-										<option value="09:00">09:00
-										<option value="10:00">10:00
-										<option value="11:00">11:00
-										<option value="12:00">12:00
-										<option value="13:00">13:00
-										<option value="14:00">14:00
-										<option value="15:00">15:00
-										<option value="16:00">16:00
-										<option value="17:00">17:00
-									</select>
-								</div>
-								<p>
-								<p>
+								<h2>예약하기</h2>
+								<div class="div-flex" style="height: 300px;">
+									<div>
+										<label>예약일자</label> &nbsp;&nbsp; <input class="mb-3"
+											size="200" type="date" id="bookDate" name="bookDate"
+											min="1900-01-01" max="" required />
+									</div>
+									<div>
+										<label>예약시간</label> <select id="bookTime" name="bookTime"
+											class="mb-4" style="width: 140px;" required>
+											<option value="09:00:00">09:00
+											<option value="10:00:00">10:00
+											<option value="11:00:00">11:00
+											<option value="12:00:00">12:00
+											<option value="13:00:00">13:00
+											<option value="14:00:00">14:00
+											<option value="15:00:00">15:00
+											<option value="16:00:00">16:00
+											<option value="17:00:00">17:00
+										</select>
+									</div>
 
 									<!-- Submit button -->
-									<button type="submit" class="btn btn-primary btn-block mb-4">예약</button>
+									<div>
+										<button type="submit" class="btn btn-primary btn-block mb-4">예약</button>
+									</div>
+								</div>
 							</form>
 						</div>
 						<br />
-						<div></div>
 					</div>
 				</div>
-				<div id="map" style="width:500px;height:400px;"></div>
-					<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=ef352e65df90eb0c8a3326a0f1f84a70"></script>
-					<script>
-						var container = document.getElementById('map');
-						var options = {
-							center: new kakao.maps.LatLng(33.450701, 126.570667),
-							level: 3
-						};
-				
-						var map = new kakao.maps.Map(container, options);
-					</script>
+				<!-- 방문일자 및 시간 INPUT 끝 -->
 			</div>
 	</section>
+	<!-- 찾아오시는 길 시작 -->
+				<div class="container-fluid py-5">
+					<div class="container py-5">
+						<div class="row gx-4 gx-lg-5 align-items-center">
+							<div class="col-lg-6 col-md-12 wow fadeInUp" data-wow-delay=".3s">
+								<div class="about-img">
+									<div class="rotate-left bg-pillgreen"></div>
+									<div class="rotate-right bg-pillgreen"></div>
+									<img src="resources/pilling/img/book/mapimg.png"
+										class="img-fluid h-100" alt="img" />
+								</div>
+							</div>
+							<br>
+							<div class="col-lg-6 col-md-12 wow fadeInUp" data-wow-delay=".6s">
+								<div class="about-item overflow-hidden">
+									<h1 class="display-5 mb-2">찾아오시는 길</h1>
+									<p class="fs-5" style="text-align: justify">
+										대구 서구 서대구로 30 3층 <br>
+										(지번) 내당1동 230-6 <br>
+										브레이크타임월~금 12:00 ~ 13:00 <br>
+										053-555-1333
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- 찾아오시는 길 끝 -->
 
 </body>
 </html>
