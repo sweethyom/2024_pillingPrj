@@ -281,64 +281,7 @@
 							this.value == 0 ? this.value = '' : this.value
 						})
 					});
-					JotForm.handleProductLightbox();
-					JotForm.paymentProperties = {
-						"styleColor" : "gold",
-						"styleShape" : "rect",
-						"styleSize" : "medium",
-						"styleLabel" : "checkout",
-						"styleLayout" : "vertical",
-						"payLaterEnabled" : "No",
-						"paymentFormProperties" : {
-							"products" : [ {
-								"hasExpandedOption" : "",
-								"hasQuantity" : "",
-								"hasSpecialPricing" : "",
-								"icon" : "",
-								"images" : "[]",
-								"name" : "신제품 1",
-								"options" : [],
-								"period" : "Monthly",
-								"pid" : "1001",
-								"price" : "5",
-								"setupfee" : "",
-								"trial" : "None"
-							}, {
-								"icon" : "",
-								"name" : "신제품 2",
-								"period" : "Monthly",
-								"pid" : "1002",
-								"price" : "10",
-								"setupfee" : "",
-								"trial" : "None"
-							}, {
-								"icon" : "",
-								"name" : "신제품 3",
-								"period" : "Monthly",
-								"pid" : "1003",
-								"price" : "20",
-								"setupfee" : "",
-								"trial" : "None"
-							}, {
-								"customPrice" : "",
-								"customPriceSource" : "0",
-								"description" : "",
-								"hasExpandedOption" : "",
-								"hasQuantity" : "",
-								"hasSpecialPricing" : "",
-								"icon" : "",
-								"images" : "[]",
-								"name" : "신제품 4",
-								"options" : [],
-								"period" : "Monthly",
-								"pid" : "1004",
-								"price" : "30",
-								"recurringtimes" : "No Limit",
-								"setupfee" : "",
-								"trial" : "None"
-							} ]
-						}
-					}
+					
 					JotForm
 							.setPhoneMaskingValidator(
 									'input_9_full',
