@@ -30,6 +30,7 @@ prefix="tiles"%>
 
     <!-- Template Stylesheet -->
     <link href="resources/pilling/css/style.css" rel="stylesheet" />
+    <link href="resources/pilling/css/hyunwoostyle.css" rel="stylesheet" />
   </head>
 
   <body>
@@ -71,5 +72,6 @@ prefix="tiles"%>
 
     <!-- Template Javascript -->
     <script src="resources/pilling/js/main.js"></script>
+    <script src="resources/pilling/js/hyunwoojavascript.js"></script>
   </body>
 </html>

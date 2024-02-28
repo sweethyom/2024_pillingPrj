@@ -42,18 +42,23 @@ public class HomeController {
 	public String productDetailPage(Model model) {
 		return "pilling/product/productdetailpage";
 	}
-
-	// 마이페이지 이동
+  
+	//마이페이지 이동
 	@RequestMapping("mypage")
 	public String myPage(Model model) {
 		return "pilling/menu/mypage";
 	}
-
-	// 고객센터 이동
-	@RequestMapping("customerservice")
+  
+	// 설문조사 페이지로 이동
+	@RequestMapping("surveypage")
+	public String surveyPage(Model model) {
+		return "pilling/notiles/survey/surveypage";
+    
+  //고객센터 이동
+  @RequestMapping("customerservice")
 	public String customerService(Model model) {
 		return "pilling/menu/customerservice";
-	}
+  }
 
 	// 방문예약 페이지 이동
 	@RequestMapping("book")
@@ -61,8 +66,13 @@ public class HomeController {
 		return "pilling/menu/book";
 
 	}
-
-	// 장바구니 페이지 이동
+    
+	@RequestMapping("introduction")
+	public String introduction(Model model) {
+		return "pilling/menu/introduction";
+}
+    
+	//장바구니 페이지 이동
 	@RequestMapping("cart")
 	public String cart(Model model) {
 		return "pilling/menu/cart";

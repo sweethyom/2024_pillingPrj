@@ -11,7 +11,7 @@
     </style>
   </head>
   <body>
-    <!-- Carousel Start -->
+    <!-- 설문조사 안내 section Start -->
     <div class="container-fluid carousel px-0 mb-5 pb-5">
       <div id="carouselId" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner" role="listbox">
@@ -21,7 +21,7 @@
               <div class="container carousel-content">
                 <h4 class="text-white display-6 mb-4 animated slideInDown">당신의 첫번째 영양제, Pi1ling</h4>
                 <h1 class="text-white display-1 mb-4 animated slideInDown">지금 영양제 추천을 도와드리겠습니다.</h1>
-                <a href="" class="me-2"
+                <a href="surveypage" class="me-2"
                   ><button type="button" class="px-5 py-3 btn btn-primary border-2 rounded-pill animated slideInDown">설문조사 시작</button></a
                 >
               </div>
@@ -30,7 +30,7 @@
         </div>
       </div>
     </div>
-    <!-- Carousel End -->
+    <!-- 설문조사 안내 section End -->
 
     <!-- About Start -->
     <div class="container-fluid py-5">
