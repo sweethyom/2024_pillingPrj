@@ -54,6 +54,7 @@ public class HomeController {
 	@RequestMapping("surveypage")
 	public String surveyPage(Model model) {
 		return "pilling/notiles/survey/surveypage";
+	}
     
   //고객센터 이동
   @RequestMapping("customerservice")
@@ -83,5 +84,10 @@ public class HomeController {
 	@RequestMapping("order")
 	public String order(Model model) {
 		return "pilling/product/order";
+	}
+	
+	@RequestMapping("myinfo")
+	public String myinfo(Model model) {
+		return "pilling/mypage/myinfo";
 	}
 }

@@ -782,5 +782,12 @@
 	display: flex;
 }
 
+.myinfocheck-table{
+	text-align: center;
+	margin-right: auto;
+	margin-left: auto;
+	vertical-align: center;
+}
+
 /*hyomi Style End */
 

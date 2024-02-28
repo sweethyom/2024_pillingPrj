@@ -58,7 +58,28 @@ public class UserController {
 		
 			return "redirect:login";    
 	}
+	
+	//회원정보확인 비밀번호입력
+	@RequestMapping(value="myinfochk", method=RequestMethod.GET)
+	public void getMyInfoChk() {
+	}
+	
+	@RequestMapping(value="myinfochk", method=RequestMethod.POST)
+	public String postMyInfoChk(Model model, UserVO vo) {
+		String viewPage = null;
+		vo = udao.userSelect(vo);
+		if(vo != null) { //아이디, 비밀번호가 일치하면 회원정보접근가능
+			viewPage = "redirect:myinfo";
+		}else { //비밀번호가 틀릴 시 주의문구를 삽입, 페이지 새로고침
+			model.addAttribute("message", "비밀번호를 잘못 입력했습니다.");
+			viewPage = "pilling/menu/myinfo";
+		}
+		return viewPage;
+	}
 }
+
+
+	
 			
 
 //	
