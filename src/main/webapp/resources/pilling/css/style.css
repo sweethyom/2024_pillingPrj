@@ -912,6 +912,27 @@ li {
 .customerservice-button {
   position:relative;
 	left:1500px;
-	botton:-5px;
+	bottom:-5px;
 }
-/*hyoi Style End */
+
+.introduction-background {
+	background : linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(../img/introduction/introduction-5.jpg) center center;
+	background-size: cover;
+	width:100%;
+	margin-bottom: 2rem;
+}
+
+.introduction-text {
+	text-align: justify;
+}
+
+.introduction-textindent{
+	font-size : 18px;
+	text-indent : 50px;
+}
+
+.container-display{
+	display: flex;
+}
+
+/*hyomi Style End */
