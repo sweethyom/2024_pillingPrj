@@ -18,7 +18,6 @@
     <!-- Fruits Shop Start-->
     <div class="container-fluid fruite">
       <div class="container">
-        <h1 class="mb-4">영양제 구매</h1>
         <div class="row g-4">
           <div class="col-lg-12">
             <div class="row g-4">
@@ -280,17 +279,23 @@
                       </div>
                     </div>
                   </div>
-                  <div class="col-12">
-                    <div class="pagination d-flex justify-content-center mt-5">
-                      <a href="#" class="rounded">&laquo;</a>
-                      <a href="#" class="active rounded">1</a>
-                      <a href="#" class="rounded">2</a>
-                      <a href="#" class="rounded">3</a>
-                      <a href="#" class="rounded">4</a>
-                      <a href="#" class="rounded">5</a>
-                      <a href="#" class="rounded">6</a>
-                      <a href="#" class="rounded">&raquo;</a>
-                    </div>
+                  <div class="container productpurchase-pagination">
+                    <ul class="pagination justify-content-center">
+                      <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                      <!-- 첫페이지에선 없음/시작인덱스 -10 -->
+                      <li class="page-item"><a class="page-link" href="#"> 1</a></li>
+                      <li class="page-item"><a class="page-link" href="#"> 2</a></li>
+                      <li class="page-item"><a class="page-link" href="#"> 3</a></li>
+                      <li class="page-item"><a class="page-link" href="#"> 4</a></li>
+                      <li class="page-item"><a class="page-link" href="#"> 5</a></li>
+                      <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                      <!-- 마지막인덱스 +10 /마지막 인덱스에서는 없음 -->
+                    </ul>
+                  </div>
+                  <div class="productAddBtn">
+                    <a href="productaddpage">
+                      <button type="button" class="btn btn-primary border-0 rounded-pill px-4 py-3">상품추가</button>
+                    </a>
                   </div>
                 </div>
               </div>

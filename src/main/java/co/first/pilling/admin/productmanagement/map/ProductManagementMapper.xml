@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper
+	namespace="co.first.pilling.admin.productmanagement.map.ProductManagementMapper">
+
+	<insert id="productInsert">
+		INSERT INTO product(
+		PRODUCT_NAME,
+		PRODUCT_PRICE,
+		PRODUCT_DESCRIPTION1,
+		PRODUCT_DESCRIPTION2,
+		PRODUCT_DESCRIPTION3,
+		PRODUCT_DESCRIPTION4,
+		PRODUCT_DESCRIPTION5,
+		TAKING_METHOD,
+		DOSE_TIME)
+		VALUES(#{productName},
+		#{productPrice},
+		#{productDescription1},
+		#{productDescription2},
+		#{productDescription3},
+		#{productDescription4},
+		#{productDescription5},
+		#{takingMethod},
+		#{doseTime})
+	</insert>
+</mapper>

@@ -146,7 +146,16 @@ li {
 .productpurchase-header {
   background: url(../img/productimage/productrbanner.jpg) center center no-repeat;
   background-size: cover;
-  margin-bottom: 6rem;
+  margin-bottom: 2rem;
+}
+
+.productpurchase-pagination {
+  margin-top: 3rem;
+}
+
+.productAddBtn {
+  text-align: end;
+  margin-top: 0rem !important;
 }
 
 /* productpurchase 에서 사용하는 것들 END */
