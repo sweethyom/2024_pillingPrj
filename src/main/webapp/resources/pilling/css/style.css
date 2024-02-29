@@ -789,5 +789,10 @@
 	vertical-align: center;
 }
 
+.myinfopage-header {
+  background: url(../img/productimage/productrbanner.jpg) center center no-repeat;
+  background-size: cover;
+  margin-bottom: 2rem;
+}
 /*hyomi Style End */
 

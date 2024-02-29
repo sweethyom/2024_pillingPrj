@@ -7,6 +7,13 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
+<style>
+.width-myinfo {
+	margin-left:auto;
+	margin-right:auto;
+	width: 60%;
+}
+</style>
 <body>
 	<!-- 회원정보확인 -->
 	<div class="container-fluid">
@@ -20,25 +27,19 @@
 			</div>
 			<form action="myinfochk"  method="post">
 				<div class="card-body">
-					<div class="table-responsive">
+					<div class="width-myinfo table-responsive">
 						<div class="myinfocheck-table">
 								<table class="table table-bordered">
 									<thead>
-										<tr>
-											<th width=100 style="background-color: #f5f6f6">아이디</th>
-											<td width=200>${userId }</td>
-										<tr>
-											<th class="myinfocheck-th" style="background-color: #f5f6f6">비밀번호</th>
-											<td><input type="password" id="userPswd" name="userPswd"
-												class="form-control" /></td>
-
+											<th width="100" style="background-color: #f5f6f6">비밀번호</th>
+											<td width="300"><input type="password" id="userPswd" name="userPswd"
+												class="form-control" placeholder="비밀번호를 입력하세요."/></td>
 											<c:if test="${not empty message}">
-												<label id="message">${message }</label>
+												<label for="userPswd" id="message">${message }</label>
 											</c:if>
 										<tr>
 									</thead>
 								</table>
-								<br /> <br />
 								<!-- Submit button -->
 								<button type="submit" class="btn btn-primary btn-block mb-4">확인</button>
 								&nbsp;&nbsp;&nbsp;&nbsp; <a href="mypage" class="btn btn-primary btn-block mb-4">돌아가기</a>

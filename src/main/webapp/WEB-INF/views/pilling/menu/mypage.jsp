@@ -140,7 +140,7 @@
                 			<td width="450" class="td-cente">
                             	<i class="fa-regular fa-address-card h4"></i>
                             		&nbsp;
-                            		<label for="myinfo" class="h5"><a href="mypage/myinfo" id="myinfo" class="nav-item nav-link"></a>나의정보</label>
+                            		<label class="h5"><a href="myinfo" id="myinfo" class="nav-item nav-link" style="color:black;">나의정보</a></label>
                             </td>
                 			<td width="450" class="td-center">
                             	<i class="fa-solid fa-circle-question h4"></i>
