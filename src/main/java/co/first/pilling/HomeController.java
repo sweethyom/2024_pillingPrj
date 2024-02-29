@@ -61,13 +61,6 @@ public class HomeController {
 		return "pilling/menu/customerservice";
 	}
 
-	// 방문예약 페이지 이동
-	@RequestMapping("book")
-	public String book(Model model) {
-		return "pilling/menu/book";
-
-	}
-
 	@RequestMapping("introduction")
 	public String introduction(Model model) {
 		return "pilling/menu/introduction";
@@ -95,5 +88,29 @@ public class HomeController {
 	@RequestMapping("myinquiry")
 	public String myinquiry(Model model) {
 		return "pilling/mypage/myinquiry";
+	}
+	
+	// 공지사항 조회 페이지 이동
+	@RequestMapping("infodetail")
+	public String infodetail(Model model) {
+		return "pilling/board/infodetail";
+	}
+	
+	// 공지사항 작성 페이지 이동
+	@RequestMapping("infoform")
+	public String infoform(Model model) {
+		return "pilling/board/infoform";
+	}
+	
+	// 문의사항 조회 페이지 이동
+	@RequestMapping("questiondetail")
+	public String questiondetail(Model model) {
+		return "pilling/board/questiondetail";
+	}
+	
+	// 문의사항 작성 페이지 이동
+	@RequestMapping("questionform")
+	public String questionform(Model model) {
+		return "pilling/board/questionform";
 	}
 }
