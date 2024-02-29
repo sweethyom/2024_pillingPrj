@@ -158,7 +158,7 @@ td {
 								<tr height="60">
 									<td width="450" class="td-cente"><i
 										class="fa-regular fa-address-card h4"></i> &nbsp; <label type="button"
-										class="h5">나의정보</label></td>
+										class="h5"><a href="myinfo" id="myinfo" class="nav-item nav-link" style="color:black;">나의정보</a></label></td>
 									<td width="450" class="td-center"><i
 										class="fa-regular fa-newspaper h5"></i> &nbsp; <label type="button"
 										class="h5" onclick="location.href='myreview'">리뷰내역</label></td>

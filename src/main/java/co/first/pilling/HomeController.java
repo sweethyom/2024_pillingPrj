@@ -55,8 +55,9 @@ public class HomeController {
 		return "pilling/notiles/survey/surveypage";
 	}
 
-	// 고객센터 이동
-	@RequestMapping("customerservice")
+    
+  //고객센터 이동
+  @RequestMapping("customerservice")
 	public String customerService(Model model) {
 		return "pilling/menu/customerservice";
 	}
@@ -85,6 +86,12 @@ public class HomeController {
 		return "pilling/product/order";
 	}
 	
+
+	@RequestMapping("myinfo")
+	public String myinfo(Model model) {
+		return "pilling/mypage/myinfo";
+  }
+
 	// 나의 리뷰 페이지 이동
 	@RequestMapping("myreview")
 	public String myreview(Model model) {
@@ -95,5 +102,6 @@ public class HomeController {
 	@RequestMapping("myinquiry")
 	public String myinquiry(Model model) {
 		return "pilling/mypage/myinquiry";
+
 	}
 }

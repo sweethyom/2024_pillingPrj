@@ -30,7 +30,7 @@
 					<thead>
 						<tr>
 							<td width="100">순 번</td>
-							<td width="800" >제 목</td>
+							<td width="800">제 목</td>
 							<td width="300">작성자</td>
 							<td width="300">작성일</td>
 						</tr>
