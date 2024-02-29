@@ -6,19 +6,24 @@
 <meta charset="UTF-8">
 <title>장바구니</title>
 </head>
+<style>
+.width-cart{
+	width: 72%;
+}
+</style>
 <body>
 <!-- Cart Page Start -->
-        <div class="container-fluid py-5">
+        <div class="container-fluid width-cart">
             <div class="container py-5">
                 <div class="table-responsive">
                     <table class="table">
                         <thead>
                           <tr>
-                            <th scope="col">Products</th>
-                            <th scope="col">Name</th>
-                            <th scope="col">Price</th>
-                            <th scope="col">Quantity</th>
-                            <th scope="col">Total</th>
+                            <th scope="col">제품</th>
+                            <th scope="col">제품명</th>
+                            <th scope="col">가격</th>
+                            <th scope="col">개수</th>
+                            <th scope="col">총 가격</th>
                             <th scope="col"></th>
                           </tr>
                         </thead>

@@ -35,7 +35,7 @@
             </div>
             <div class="d-flex">
               <input class="form-control text-center me-3" id="inputQuantity" type="num" value="1" style="max-width: 3rem" />
-              <button class="detail-buy-button btn btn-outline-dark flex-shrink-0" type="button">
+              <button class="detail-buy-button btn btn-outline-dark flex-shrink-0" type="button" onclick="location.href='order'">
                 <i class="fa-regular fa-credit-card me-1"></i>
                 구매하기
               </button>
