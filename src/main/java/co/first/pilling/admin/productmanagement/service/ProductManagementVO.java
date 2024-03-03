@@ -23,5 +23,6 @@ public class ProductManagementVO {
 	private String productDescription5;
 	private String takingMethod;
 	private String doseTime;
-	private int keywordId;
+	private String keywordId;
+	private String keywordArr;
 }

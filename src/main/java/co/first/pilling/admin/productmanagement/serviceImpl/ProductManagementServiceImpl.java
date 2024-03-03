@@ -39,7 +39,14 @@ public class ProductManagementServiceImpl implements ProductManagementService {
 
 	@Override
 	public int keywordInsert(ProductManagementVO vo) {
-		return map.keywordInsert(vo);
+		String[] inputArr = vo.getKeywordArr().split(",");
+		int cnt = 0;
+	    for(int i = 0; i < inputArr.length ; i++){
+	    	vo.setKeywordId(inputArr[i]);
+	    	map.keywordInsert(vo);
+	    	cnt++;
+	    }
+		return cnt;
 	}
 
 }

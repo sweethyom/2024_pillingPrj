@@ -18,5 +18,5 @@ public interface ProductManagementMapper {
 	int productDelete(ProductManagementVO vo);
 	
 	// 제품ID == 키워드ID 매핑테이블 등록
-	int keywordInsert(ProductManagementVO vo);
+	void keywordInsert(ProductManagementVO vo);
 }

@@ -161,32 +161,32 @@
                     </td>
                   </tr>
                   <!-- 제품 키워드선택 INPUT -->
+                  <!-- checkbox값의 배열을 String으로 정제 -->
+                  <input type="hidden" id="keywordArr" name="keywordArr" value="" />
                   <tr>
                     <td width="200" style="background-color: #f5f6f6">제품 키워드(태그)</td>
                     <td>
-                      <label><input type="checkbox" id="keywordId1" name="keywordId" value="1" /><a class="keywordName">피로 회복</a></label>
-                      <label><input type="checkbox" id="keywordId2" name="keywordId" value="2" /><a class="keywordName">피부 건강</a></label>
-                      <label><input type="checkbox" id="keywordId3" name="keywordId" value="3" /><a class="keywordName">혈류 및 혈액 건강</a></label>
-                      <label><input type="checkbox" id="keywordId4" name="keywordId" value="4" /><a class="keywordName">면역 증강</a></label>
-                      <label><input type="checkbox" id="keywordId5" name="keywordId" value="5" /><a class="keywordName">수면질 개선</a></label>
-                      <label>
-                        <input type="checkbox" id="keywordId6" name="keywordId" value="6" /><a class="keywordName">스트레스 및 긴장 완화</a>
-                      </label>
-                      <label><input type="checkbox" id="keywordId7" name="keywordId" value="7" /><a class="keywordName">안구 건강</a></label>
-                      <label><input type="checkbox" id="keywordId8" name="keywordId" value="8" /><a class="keywordName">당뇨병에 도움</a></label>
-                      <label><input type="checkbox" id="keywordId9" name="keywordId" value="9" /><a class="keywordName">노화&항산화 도움</a></label>
-                      <label><input type="checkbox" id="keywordId10" name="keywordId" value="10" /><a class="keywordName">기억력 개선</a></label>
-                      <label><input type="checkbox" id="keywordId11" name="keywordId" value="11" /><a class="keywordName">장건강</a></label>
-                      <label><input type="checkbox" id="keywordId12" name="keywordId" value="12" /><a class="keywordName">뼈건강</a></label>
-                      <label><input type="checkbox" id="keywordId13" name="keywordId" value="13" /><a class="keywordName">간 건강</a></label>
-                      <label><input type="checkbox" id="keywordId14" name="keywordId" value="14" /><a class="keywordName">모발, 손톱 건강</a></label>
-                      <label><input type="checkbox" id="keywordId15" name="keywordId" value="15" /><a class="keywordName">남성 건강</a></label>
-                      <label><input type="checkbox" id="keywordId16" name="keywordId" value="16" /><a class="keywordName">여성 건강</a></label>
-                      <label><input type="checkbox" id="keywordId17" name="keywordId" value="17" /><a class="keywordName">운동능력개선</a></label>
-                      <label><input type="checkbox" id="keywordId18" name="keywordId" value="18" /><a class="keywordName">체지방 감소</a></label>
-                      <label><input type="checkbox" id="keywordId19" name="keywordId" value="19" /><a class="keywordName">임신중 도움</a></label>
-                      <label><input type="checkbox" id="keywordId20" name="keywordId" value="20" /><a class="keywordName">여성용</a></label>
-                      <label><input type="checkbox" id="keywordId21" name="keywordId" value="21" /><a class="keywordName">남성용</a></label>
+                      <label><input type="checkbox" name="keywordId" value="1" /><a class="keywordName">피로 회복</a></label>
+                      <label><input type="checkbox" name="keywordId" value="2" /><a class="keywordName">피부 건강</a></label>
+                      <label><input type="checkbox" name="keywordId" value="3" /><a class="keywordName">혈류 및 혈액 건강</a></label>
+                      <label><input type="checkbox" name="keywordId" value="4" /><a class="keywordName">면역 증강</a></label>
+                      <label><input type="checkbox" name="keywordId" value="5" /><a class="keywordName">수면질 개선</a></label>
+                      <label><input type="checkbox" name="keywordId" value="6" /><a class="keywordName">스트레스 및 긴장 완화</a></label>
+                      <label><input type="checkbox" name="keywordId" value="7" /><a class="keywordName">안구 건강</a></label>
+                      <label><input type="checkbox" name="keywordId" value="8" /><a class="keywordName">당뇨병에 도움</a></label>
+                      <label><input type="checkbox" name="keywordId" value="9" /><a class="keywordName">노화&항산화 도움</a></label>
+                      <label><input type="checkbox" name="keywordId" value="10" /><a class="keywordName">기억력 개선</a></label>
+                      <label><input type="checkbox" name="keywordId" value="11" /><a class="keywordName">장건강</a></label>
+                      <label><input type="checkbox" name="keywordId" value="12" /><a class="keywordName">뼈건강</a></label>
+                      <label><input type="checkbox" name="keywordId" value="13" /><a class="keywordName">간 건강</a></label>
+                      <label><input type="checkbox" name="keywordId" value="14" /><a class="keywordName">모발, 손톱 건강</a></label>
+                      <label><input type="checkbox" name="keywordId" value="15" /><a class="keywordName">남성 건강</a></label>
+                      <label><input type="checkbox" name="keywordId" value="16" /><a class="keywordName">여성 건강</a></label>
+                      <label><input type="checkbox" name="keywordId" value="17" /><a class="keywordName">운동능력개선</a></label>
+                      <label><input type="checkbox" name="keywordId" value="18" /><a class="keywordName">체지방 감소</a></label>
+                      <label><input type="checkbox" name="keywordId" value="19" /><a class="keywordName">임신중 도움</a></label>
+                      <label><input type="checkbox" name="keywordId" value="20" /><a class="keywordName">여성용</a></label>
+                      <label><input type="checkbox" name="keywordId" value="21" /><a class="keywordName">남성용</a></label>
                     </td>
                   </tr>
                   <!-- 첨부파일 (메인이미지, 서브이미지 받기) -->
@@ -212,7 +212,12 @@
 
         <!-- 상품등록 Button START -->
         <div class="center">
-          <button type="submit" form="productAdd" class="px-5 py-3 btn btn-primary border-2 rounded-pill animated slideInDown mb-4 ms-4">
+          <button
+            type="submit"
+            form="productAdd"
+            class="px-5 py-3 btn btn-primary border-2 rounded-pill animated slideInDown mb-4 ms-4"
+            onclick="makeArr()"
+          >
             상품등록
           </button>
           <a href="productpurchase" class="me-2">
@@ -222,5 +227,17 @@
         <!-- 상품등록 Button END -->
       </div>
     </div>
+    <script type="text/javascript">
+      function makeArr() {
+        var values = document.getElementsByName('keywordId');
+        var valueArr = new Array();
+        for (var i = 0; i < values.length; i++) {
+          if (values[i].checked) {
+            valueArr.push(values[i].value);
+          }
+        }
+        document.getElementById('keywordArr').value = valueArr.toString();
+      }
+    </script>
   </body>
 </html>

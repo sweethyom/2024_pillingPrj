@@ -25,8 +25,8 @@ public class AdminController {
 	// 상품등록 알고리즘
 	@PostMapping("productadd")
 	public String productAdd(ProductManagementVO vo) {
-		System.out.println(vo.getKeywordId());
 		pms.productInsert(vo);
+		pms.keywordInsert(vo); // 키워드 mapping테이블에 insert
 		return "redirect:productpurchase";
 	}
 	
