@@ -1,4 +1,4 @@
-package co.first.pilling.notice.service;
+package co.first.pilling.customerservice.service;
 
 import java.sql.Date;
 
@@ -17,4 +17,7 @@ public class NoticeVO {
 	private String noticeImg;
 	private String noticeAttach;
 	private String noticeAttachpath;
+	
+	private int pageOffset;
+	private int totalPage; //전체 게시글 갯수
 }

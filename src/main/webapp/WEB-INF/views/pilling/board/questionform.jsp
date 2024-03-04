@@ -56,11 +56,11 @@ td {
 
 			<!-- 버튼 START -->
 			<div class="btn-center mt-2">
-				<button type="submit"
-					class="btn btn-primary border-0 rounded-pill px-4 py-3">수정</button>
-				&nbsp;&nbsp;
 				<button type="reset"
-					class="btn btn-primary border-0 rounded-pill px-4 py-3">취소</button>
+					class="btn btn-primary border-0 rounded-pill px-4 py-3" onclick="location.href='customerservice'">취소</button>
+				&nbsp;&nbsp;
+				<button type="submit"
+					class="btn btn-primary border-0 rounded-pill px-4 py-3">작성</button>
 			</div>
 			<!-- 버튼 END -->
 		</form>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper
+	namespace="co.first.pilling.customerservice.map.CustomerserviceMapper">
+	<select id="noticeSelectList">
+		SELECT * FROM notice
+		ORDER BY CAST(notice_id AS UNSIGNED) DESC
+		LIMIT #{offset}, 5
+	</select>
+	<select id="noticeSearchList"></select>
+	<select id="noticeDetail">
+		SELECT * FROM notice
+		WHERE notice_id = #{noticeId}
+	</select>
+	<insert id="noticeInsert"></insert>
+	<update id="noticeUpdate"></update>
+	<delete id="noticeDelete"></delete>
+	<select id="selectCount">
+		SELECT COUNT(*) AS TOTAL_RECORD_COUNT FROM notice
+	</select>
+</mapper>

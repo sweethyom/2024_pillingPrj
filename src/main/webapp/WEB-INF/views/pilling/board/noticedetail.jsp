@@ -26,20 +26,20 @@ td {
 		<!-- 공지사항 조회 START -->
 		<div class="card-body col-12 div-center pl-5 pr-5">
 			<div class="row g-5">
-				<h3 style="vertical-align: bottom;" class="px-2">첫번째 공지사항입니다.</h3>
+				<h3 style="vertical-align: bottom;" class="px-2">${notice.noticeTitle }</h3>
 				<div style="height: 0.3rem; background-color: #fdf001;"
 					class="mb-0 mt-0"></div>
 				<table class="table mb-0 mt-0">
 					<tbody>
 						<tr>
 							<td colspan="2" width="500"><small>작성자 Pi1ling</small></td>
-							<td style="text-align: right;"><small>조회수 11</small></td>
+							<td style="text-align: right;"><small>조회수 ${notice.noticeHit }</small></td>
 						</tr>
 						<tr>
-							<td colspan="3"><small>작성일 22/11/11</small></td>
+							<td colspan="3"><small>작성일 ${notice.noticeDate }</small></td>
 						</tr>
 						<tr>
-							<td colspan="3"><div class="mt-3 mb-5">약 복용법을 잘 지키세요.</div></td>
+							<td colspan="3"><div class="mt-3 mb-5">${notice.noticeContent }</div></td>
 						</tr>
 						<tr>
 							<td width="100"><small>첨부파일</small></td>
