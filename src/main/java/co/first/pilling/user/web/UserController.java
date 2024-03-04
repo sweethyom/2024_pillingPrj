@@ -4,6 +4,7 @@ package co.first.pilling.user.web;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.tiles.request.Request;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -64,10 +65,36 @@ public class UserController {
 	   public void getMyInfoChk() {
 	   }
 	   
+	   //나의 정보 창으로 이동
 	   @RequestMapping(value="myinfochk", method=RequestMethod.POST)
-	   public String postMyInfoChk(Model model){
+	   public String postMyInfoChk(Model model, UserVO vo, HttpSession session){
 	      String viewPage = null;
-	      viewPage="pilling/mypage/myinfopage";
+//	      String enteredPassword = vo.getUserPswd();
+	      UserVO loginUser = udao.userSelect(id, pswd);
+	      
+	      session.setAttribute("UserId", loginUser);
+	      UserVO user =(UserVO)session.getAttribute("UserId"); 
+	      udao.userSelect("UserId");
+	      //vo=udao.userPassword(vo);
+	      if (checkpw != null && enteredPassword.equals(checkpw.getUserPswd())) {
+	         viewPage = "pilling/mypage/myinfopage";   
+	      }else{
+	    	  model.addAttribute("message", "비밀번호를 잘못 입력했습니다.");
+	      viewPage = "pilling/mypage/mypage";
+	      }
 	      return viewPage;
 	   }
 }
+	      
+	      
+//	      String viewPage = null;
+//	      boolean result = udao.checkPswd(vo.getUserId(), vo.getUserPswd());
+//	      if(result) { //아이디, 비밀번호가 일치하면 회원정보접근가능
+//	         return "pilling/mypage/myinfopage";
+//	      }else { //비밀번호가 틀릴 시 주의문구를 삽입, 페이지 새로고침
+//	         model.addAttribute("message", "비밀번호를 잘못 입력했습니다.");
+//	         viewPage = "pilling/mypage/myinfo";
+//	      }
+//	      return viewPage;
+	//   }
+

@@ -11,5 +11,5 @@ public interface UserMapper {
 	public void userInsert(UserVO vo) throws Exception;
 	int userDelete(UserVO vo); //회원탈퇴
 	int userUpdate(UserVO vo); //회원수정
-//	UserVO userPassword(UserVO vo);
+	UserVO userPassword(UserVO vo);
 }
