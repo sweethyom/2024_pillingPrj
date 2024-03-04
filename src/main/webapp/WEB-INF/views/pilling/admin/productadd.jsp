@@ -5,8 +5,6 @@
     <meta charset="UTF-8" />
     <title>제품등록</title>
   </head>
-  <!-- 다음 주소 받기 API CDN주소 -->
-  <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
   <style>
     td {
       vertical-align: middle;
@@ -42,7 +40,7 @@
             </div>
           </div>
           <div class="card-body mb-3">
-            <form id="productAdd" action="productadd" method="post">
+            <form id="productAddForm">
               <!-- 배송지 정보 -->
               <div class="mb-4">
                 <table class="table table-bordered" id="productAddTable">
@@ -160,9 +158,6 @@
                       />
                     </td>
                   </tr>
-                  <!-- 제품 키워드선택 INPUT -->
-                  <!-- checkbox값의 배열을 String으로 정제 -->
-                  <input type="hidden" id="keywordArr" name="keywordArr" value="" />
                   <tr>
                     <td width="200" style="background-color: #f5f6f6">제품 키워드(태그)</td>
                     <td>
@@ -174,7 +169,7 @@
                       <label><input type="checkbox" name="keywordId" value="6" /><a class="keywordName">스트레스 및 긴장 완화</a></label>
                       <label><input type="checkbox" name="keywordId" value="7" /><a class="keywordName">안구 건강</a></label>
                       <label><input type="checkbox" name="keywordId" value="8" /><a class="keywordName">당뇨병에 도움</a></label>
-                      <label><input type="checkbox" name="keywordId" value="9" /><a class="keywordName">노화&항산화 도움</a></label>
+                      <label><input type="checkbox" name="keywordId" value="9" /><a class="keywordName">노화&amp;항산화 도움</a></label>
                       <label><input type="checkbox" name="keywordId" value="10" /><a class="keywordName">기억력 개선</a></label>
                       <label><input type="checkbox" name="keywordId" value="11" /><a class="keywordName">장건강</a></label>
                       <label><input type="checkbox" name="keywordId" value="12" /><a class="keywordName">뼈건강</a></label>
@@ -204,6 +199,9 @@
                   </tr>
                 </table>
               </div>
+                  <!-- 제품 키워드선택 INPUT -->
+                  <!-- checkbox값의 배열을 String으로 정제 -->
+                  <input type="hidden" id="keywordArr" name="keywordArr">
             </form>
             <!-- 제품등록 END -->
           </div>
@@ -213,8 +211,7 @@
         <!-- 상품등록 Button START -->
         <div class="center">
           <button
-            type="submit"
-            form="productAdd"
+            type="button"
             class="px-5 py-3 btn btn-primary border-2 rounded-pill animated slideInDown mb-4 ms-4"
             onclick="makeArr()"
           >
@@ -227,7 +224,11 @@
         <!-- 상품등록 Button END -->
       </div>
     </div>
+    
+    
     <script type="text/javascript">
+    
+    /* keyword mapping 하기 위한 함수 */
       function makeArr() {
         var values = document.getElementsByName('keywordId');
         var valueArr = new Array();
@@ -237,6 +238,28 @@
           }
         }
         document.getElementById('keywordArr').value = valueArr.toString();
+        AjaxCall();
+      }
+      
+      /* response 받은 값을 이용하여, AJAX 활용하기 */
+      function AjaxCall(){
+    	  let form = document.getElementById('productAddForm');
+          let formData = new FormData(form);
+          let payload = new URLSearchParams(formData);
+          let url ='productadd';
+          fetch(url, {
+            method: 'POST',
+            body: payload,
+          })
+            .then((response) => response.text())
+            .then((text) => {
+            	if(text == 'Yes'){
+            		alert("상품 등록이 완료되었습니다.");
+            		location.href = "productpurchase";
+            	}else {
+            		alert("상품 등록이 실패되었습니다!!!!!!");
+            	}
+            });
       }
     </script>
   </body>
