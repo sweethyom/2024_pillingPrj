@@ -40,7 +40,7 @@
             </div>
           </div>
           <div class="card-body mb-3">
-            <form id="productAddForm">
+            <form id="productAddForm" enctype="multipart/form-data">
               <!-- 배송지 정보 -->
               <div class="mb-4">
                 <table class="table table-bordered" id="productAddTable">
@@ -188,20 +188,20 @@
                   <tr>
                     <td width="200" style="background-color: #f5f6f6">메인이미지 첨부</td>
                     <td>
-                      <input type="file" id="productMainImage" name="productMainImage" class="form-control" />
+                      <input type="file" class="form-control" id="productMainImage" name="productMainImage" />
                     </td>
                   </tr>
-                  <tr>
+                  <!--                   <tr>
                     <td width="200" style="background-color: #f5f6f6">서브이미지 첨부</td>
                     <td>
-                      <input type="file" id="productSubImage" name="productSubImage" class="form-control" />
+                      <input type="file" class="form-control" name="productSubImage" multiple="multiple" />
                     </td>
-                  </tr>
+                  </tr> -->
                 </table>
               </div>
-                  <!-- 제품 키워드선택 INPUT -->
-                  <!-- checkbox값의 배열을 String으로 정제 -->
-                  <input type="hidden" id="keywordArr" name="keywordArr">
+              <!-- 제품 키워드선택 INPUT -->
+              <!-- checkbox값의 배열을 String으로 정제 -->
+              <input type="hidden" id="keywordArr" name="keywordArr" />
             </form>
             <!-- 제품등록 END -->
           </div>
@@ -210,11 +210,7 @@
 
         <!-- 상품등록 Button START -->
         <div class="center">
-          <button
-            type="button"
-            class="px-5 py-3 btn btn-primary border-2 rounded-pill animated slideInDown mb-4 ms-4"
-            onclick="makeArr()"
-          >
+          <button type="button" class="px-5 py-3 btn btn-primary border-2 rounded-pill animated slideInDown mb-4 ms-4" onclick="makeArr()">
             상품등록
           </button>
           <a href="productpurchase" class="me-2">
@@ -224,11 +220,9 @@
         <!-- 상품등록 Button END -->
       </div>
     </div>
-    
-    
+
     <script type="text/javascript">
-    
-    /* keyword mapping 하기 위한 함수 */
+      /* keyword mapping 하기 위한 함수 */
       function makeArr() {
         var values = document.getElementsByName('keywordId');
         var valueArr = new Array();
@@ -240,26 +234,36 @@
         document.getElementById('keywordArr').value = valueArr.toString();
         AjaxCall();
       }
-      
+
       /* response 받은 값을 이용하여, AJAX 활용하기 */
-      function AjaxCall(){
-    	  let form = document.getElementById('productAddForm');
-          let formData = new FormData(form);
-          let payload = new URLSearchParams(formData);
-          let url ='productadd';
-          fetch(url, {
-            method: 'POST',
-            body: payload,
+      function AjaxCall() {
+        let form = document.getElementById('productAddForm');
+        let formData = new FormData(form);
+        let url = 'productadd';
+
+        fetch(url, {
+          method: 'POST',
+          body: formData,
+        })
+          .then((response) => {
+            if (response.ok) {
+              return response.text();
+            } else {
+              throw new Error('Network response was not ok.');
+            }
           })
-            .then((response) => response.text())
-            .then((text) => {
-            	if(text == 'Yes'){
-            		alert("상품 등록이 완료되었습니다.");
-            		location.href = "productpurchase";
-            	}else {
-            		alert("상품 등록이 실패되었습니다!!!!!!");
-            	}
-            });
+          .then((text) => {
+            if (text === 'Yes') {
+              alert('상품 등록이 완료되었습니다.');
+              location.href = 'productpurchase';
+            } else {
+              alert('상품 등록이 실패하였습니다.');
+            }
+          })
+          .catch((error) => {
+            console.error('There was an error!', error);
+            alert('상품 등록 중 오류가 발생하였습니다.');
+          });
       }
     </script>
   </body>

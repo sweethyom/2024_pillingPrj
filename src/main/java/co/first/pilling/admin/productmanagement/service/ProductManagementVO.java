@@ -23,6 +23,10 @@ public class ProductManagementVO {
 	private String productDescription5;
 	private String takingMethod;
 	private String doseTime;
+	private String filename1;
+	private String filepath1;
+	private String filename2;
+	private String filepath2;
 	private String keywordId;
 	private String keywordArr;
 }

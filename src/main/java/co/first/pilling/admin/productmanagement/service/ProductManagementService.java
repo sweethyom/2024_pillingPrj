@@ -18,5 +18,7 @@ public interface ProductManagementService {
 	
 	// 제품ID == 키워드ID 매핑테이블 등록
 	int keywordInsert(ProductManagementVO vo);
+
+
 	
 }

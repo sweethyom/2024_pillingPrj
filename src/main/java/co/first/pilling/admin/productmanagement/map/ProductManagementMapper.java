@@ -2,6 +2,8 @@ package co.first.pilling.admin.productmanagement.map;
 
 import java.util.List;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import co.first.pilling.admin.productmanagement.service.ProductManagementVO;
 
 public interface ProductManagementMapper {

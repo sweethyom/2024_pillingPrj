@@ -1,10 +1,14 @@
 package co.first.pilling.admin.productmanagement.serviceImpl;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import co.first.pilling.admin.productmanagement.map.ProductManagementMapper;
 import co.first.pilling.admin.productmanagement.service.ProductManagementService;
@@ -22,6 +26,7 @@ public class ProductManagementServiceImpl implements ProductManagementService {
 		return map.productAddAllList();
 	}
 
+	//제품 등록 처리
 	@Override
 	public int productInsert(ProductManagementVO vo) {
 		return map.productInsert(vo);

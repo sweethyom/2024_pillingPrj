@@ -14,7 +14,9 @@
 		PRODUCT_DESCRIPTION4,
 		PRODUCT_DESCRIPTION5,
 		TAKING_METHOD,
-		DOSE_TIME)
+		DOSE_TIME,
+		FILENAME1,
+		FILEPATH1)
 		VALUES(#{productName},
 		#{productPrice},
 		#{productDescription1},
@@ -23,7 +25,9 @@
 		#{productDescription4},
 		#{productDescription5},
 		#{takingMethod},
-		#{doseTime})
+		#{doseTime},
+		#{filename1},
+		#{filepath1})
 	</insert>
 	
 	<!-- keyword_mapping insert -->
