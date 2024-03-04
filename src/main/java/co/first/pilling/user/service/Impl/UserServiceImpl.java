@@ -41,6 +41,9 @@ public class UserServiceImpl implements UserService {
 	public int userUpdate(UserVO vo) {
 		return map.userUpdate(vo);
 	}
-
-
+	
+//	@Override
+//	public UserVO userPassword(UserVO vo) {
+//		return map.userPassword(vo);
+//	}
 }

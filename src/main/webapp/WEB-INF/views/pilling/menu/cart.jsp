@@ -20,7 +20,7 @@
                         <thead>
                           <tr>
                             <th scope="col">제품</th>
-                            <th scope="col">상품명</th>
+                            <th scope="col">제품명</th>
                             <th scope="col">가격</th>
                             <th scope="col">개수</th>
                             <th scope="col">총 가격</th>

@@ -58,44 +58,16 @@ public class UserController {
 		
 			return "redirect:login";    
 	}
+	
+	   //회원정보확인창으로 이동
+	   @RequestMapping(value="myinfochk", method=RequestMethod.GET)
+	   public void getMyInfoChk() {
+	   }
+	   
+	   @RequestMapping(value="myinfochk", method=RequestMethod.POST)
+	   public String postMyInfoChk(Model model){
+	      String viewPage = null;
+	      viewPage="pilling/mypage/myinfopage";
+	      return viewPage;
+	   }
 }
-			
-
-//	
-//	@PostMapping("registerForm")
-//		public String postRegister(UserVO vo) {
-//			udao.userInsert(vo);
-//			return "redirect: home";
-//	}
-//}
-//	@Inject
-//	private UserVO vo = new UserVO();
-//	
-//	vo.setUserId(request.getParameter("userId"));
-//	vo.setUserPswd(request.getParameter("userPassword"));
-//	vo.setUserLastname(request.getParameter("userLastname"));
-//	vo.setUserFirstname(request.getParameter("userFirstname"));
-//	vo.setUserBirthdate(request.getParameter("userBirthdate"));
-//	vo.setUserAddress(request.getParameter("userAddr"));
-//	vo.setUserAddress(request.getParameter("userAddrdetail"));	
-//	vo.setuserTel(request.getParameter("userTel"));
-//			
-//	int n = udao.userInsert(vo);
-//	String message="회원가입이 정상적으로 처리되었습니다.";
-//	if(n == 0) {
-//		message = "회원가입에 실패했습니다.";
-//	}
-//	request.setAttribute("message", message);
-//	
-//	String viewPage="WEB-INF/views/menu/register.jsp";
-//}
-//	@RequestMapping("registerForm")
-//		public String userRegister(Model model, UserVO vo, HttpSession session, HttpServletResponse response) {
-//		String viewPage = null;
-//		vo = udao.userInsert(vo);
-//			if(vo != null) {
-//				session.getAttribute("user", viewPage);
-//		
-	//}
-		
-
