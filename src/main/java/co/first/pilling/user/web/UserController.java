@@ -59,4 +59,15 @@ public class UserController {
 			return "redirect:login";    
 	}
 	
+	   //회원정보확인창으로 이동
+	   @RequestMapping(value="myinfochk", method=RequestMethod.GET)
+	   public void getMyInfoChk() {
+	   }
+	   
+	   @RequestMapping(value="myinfochk", method=RequestMethod.POST)
+	   public String postMyInfoChk(Model model){
+	      String viewPage = null;
+	      viewPage="pilling/mypage/myinfopage";
+	      return viewPage;
+	   }
 }
