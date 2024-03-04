@@ -157,8 +157,8 @@ td {
 							<table>
 								<tr height="60">
 									<td width="450" class="td-cente"><i
-										class="fa-regular fa-address-card h4"></i> &nbsp; <label type="button"
-										class="h5"><a href="myinfo" id="myinfo" class="nav-item nav-link" style="color:black;">나의정보</a></label></td>
+										class="fa-regular fa-address-card h4"></i>&nbsp;<label type="button"
+										class="h5"><a href="myinfo" id="myinfo"style="color:black;">나의정보</a></label></td>
 									<td width="450" class="td-center"><i
 										class="fa-regular fa-newspaper h5"></i> &nbsp; <label type="button"
 										class="h5" onclick="location.href='myreview'">리뷰내역</label></td>
@@ -187,7 +187,7 @@ td {
 								<h6 class="m-0">주문내역</h6>
 							</div>
 							<div class="div-right">
-								<h6 class="text-muted m-0"><a type="button">>>상세보기</a></h6>
+								<h6 class="text-muted m-0"><a type="button" onclick="location.href='myorderdetail'">>>상세보기</a></h6>
 							</div>
 						</div>
 						<div class="card-body">
@@ -225,7 +225,7 @@ td {
 								<h6 class="m-0 font-weight-bold">구매내역</h6>
 							</div>
 							<div class="div-right">
-								<h6 class="text-muted m-0"><a type="button">>>상세보기</a></h6>
+								<h6 class="text-muted m-0"><a type="button" onclick="location.href='mypurchasedetail'">>>상세보기</a></h6>
 							</div>
 						</div>
 						<div class="card-body">
