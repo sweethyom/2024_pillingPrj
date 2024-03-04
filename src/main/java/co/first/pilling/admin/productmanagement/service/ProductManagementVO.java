@@ -1,4 +1,4 @@
-package co.first.pilling.product.service;
+package co.first.pilling.admin.productmanagement.service;
 
 import java.sql.Date;
 
@@ -7,7 +7,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class ProductVO {
+public class ProductManagementVO {
 	private int productId;
 	private int categoryId;
 	private String productName;
@@ -23,4 +23,10 @@ public class ProductVO {
 	private String productDescription5;
 	private String takingMethod;
 	private String doseTime;
+	private String filename1;
+	private String filepath1;
+	private String filename2;
+	private String filepath2;
+	private String keywordId;
+	private String keywordArr;
 }

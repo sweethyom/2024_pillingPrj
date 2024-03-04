@@ -1,11 +1,18 @@
 package co.first.pilling;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import co.first.pilling.user.service.UserService;
+import co.first.pilling.user.service.UserVO;
+
 @Controller
 public class HomeController {
+	
+	@Autowired
+	private UserService userService;
 
 	// 홈으로 이동
 	@RequestMapping("/")
@@ -24,6 +31,7 @@ public class HomeController {
 	public String productPurchase(Model model) {
 		return "pilling/menu/productpurchase";
 	}
+
 
 	// 로그인페이지 이동
 	@RequestMapping("login")
@@ -68,6 +76,7 @@ public class HomeController {
 
 	}
 
+	// 브랜드소개 페이지 이동
 	@RequestMapping("introduction")
 	public String introduction(Model model) {
 		return "pilling/menu/introduction";
