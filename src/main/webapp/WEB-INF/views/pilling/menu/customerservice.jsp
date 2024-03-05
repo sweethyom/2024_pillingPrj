@@ -30,9 +30,11 @@
 	<br>
 	<!--  board start -->
 	<div class="customerservice-button">
-		<button type="button"
+		<c:if test="${author eq 'ADMIN'}">
+			<button type="button"
 			class="btn btn-primary border-0 rounded-pill px-4 py-3"
 			onclick="location.href='noticeform'">공지작성</button>
+		</c:if>
 	</div>
 	<div class="container-xxl py-5">
 		<div class="container text-center">
@@ -140,7 +142,7 @@
 		<form id="noticefrm" action="noticedetail" method="post">
 			<input type="hidden" id="noticeId" name="noticeId">
 		</form>
-		<form id="questionfrm" action="questionselect" method="post">
+		<form id="questionfrm" action="questiondetail" method="post">
 			<input type="hidden" id="questionId" name="questionId">
 		</form>
 	</div>

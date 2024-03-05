@@ -4,7 +4,8 @@
 	namespace="co.first.pilling.customerservice.map.CustomerserviceMapper">
 	<select id="noticeSelectList">
 		SELECT * FROM notice
-		ORDER BY CAST(notice_id AS UNSIGNED) DESC
+		ORDER BY CAST(notice_id AS
+		UNSIGNED) DESC
 		LIMIT #{offset}, 5
 	</select>
 	<select id="noticeSearchList"></select>
@@ -12,7 +13,13 @@
 		SELECT * FROM notice
 		WHERE notice_id = #{noticeId}
 	</select>
-	<insert id="noticeInsert"></insert>
+	<insert id="noticeInsert">
+		INSERT INTO notice (notice_id, user_no, notice_title,
+		notice_content, notice_img, notice_attach, notice_attachpath)
+		VALUES
+		((SELECT IFNULL(MAX(notice_id), 0)+1 FROM (SELECT notice_id FROM
+		notice) AS dummy), #{userNo}, #{noticeTitle}, #{noticeContent}, #{noticeImg}, #{noticeAttach}, #{noticeAttachpath})
+	</insert>
 	<update id="noticeUpdate"></update>
 	<delete id="noticeDelete"></delete>
 	<select id="selectCount">

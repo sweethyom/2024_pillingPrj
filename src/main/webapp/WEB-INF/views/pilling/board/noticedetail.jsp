@@ -59,7 +59,7 @@ td {
 			<c:if test="${author eq 'ADMIN'}">
 	            	&nbsp;&nbsp;
 			<button type="button"
-					class="btn btn-primary border-0 rounded-pill px-4 py-3">수정</button>
+					class="btn btn-primary border-0 rounded-pill px-4 py-3" onclick="location.href='noticeeditform'">수정</button>
 			&nbsp;&nbsp;
 			<button type="button"
 					class="btn btn-primary border-0 rounded-pill px-4 py-3">삭제</button>

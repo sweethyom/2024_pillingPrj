@@ -84,12 +84,6 @@ public class HomeController {
 		return "pilling/mypage/myinquiry";
 	}
 	
-	// 공지사항 작성 페이지 이동
-	@RequestMapping("noticeform")
-	public String noticeform(Model model) {
-		return "pilling/board/noticeform";
-	}
-	
 	// 문의사항 조회 페이지 이동
 	@RequestMapping("questiondetail")
 	public String questiondetail(Model model) {

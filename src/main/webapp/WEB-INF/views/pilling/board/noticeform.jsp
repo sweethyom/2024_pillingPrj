@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>공지 수정</title>
+<title>공지 작성</title>
 </head>
 <style>
 td {
@@ -23,8 +23,8 @@ td {
 </style>
 <body>
 	<div class="container-xxl py-5">
-		<!-- 공지사항 수정 form START -->
-		<form>
+		<!-- 공지사항 작성 form START -->
+		<form action="noticeinsert" method="post">
 			<div class="card-body col-12 div-center pl-5 pr-5">
 				<div class="row g-5">
 					<h3 style="vertical-align: bottom;" class="px-2">
@@ -52,7 +52,7 @@ td {
 							</tr>
 						</tbody>
 					</table>
-
+					<input type="hidden" id="userNo" name="userNo" value=${userNo }>
 				</div>
 			</div>
 
@@ -65,7 +65,7 @@ td {
 					class="btn btn-primary border-0 rounded-pill px-4 py-3">작성</button>
 			</div>
 		</form>
-		<!-- 공지사항 수정 END -->
+		<!-- 공지사항 작성 END -->
 	</div>
 </body>
 </html>

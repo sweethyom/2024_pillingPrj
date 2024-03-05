@@ -1,5 +1,7 @@
 package co.first.pilling.customerservice.web;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -43,9 +45,25 @@ public class CustomerserviceController {
 		return "pilling/board/noticedetail";
 	}
 	
+	@RequestMapping("noticeform")
+	public String noticeform() {
+		return "pilling/board/noticeform";
+	}
+	
 	@RequestMapping("noticeinsert")
 	public String noticeinsert(NoticeVO vo, Model model) {
-		model.addAttribute("notice", cs.noticeInsert(vo));
-		return "pilling/board/noticeform";
+		model.addAttribute(cs.noticeInsert(vo));
+		return "redirect:/customerservice";
+	}
+	
+	@RequestMapping("noticeeditform")
+	public String noticeeditform() {
+		return "pilling/board/noticeeditform";
+	}
+	
+	@RequestMapping("noticeupdate")
+	public String noticeupdate(NoticeVO vo, Model model) {
+		model.addAttribute("notice", cs.noticeDetail(vo));
+		return "redirect:/noticedetail";
 	}
 }
