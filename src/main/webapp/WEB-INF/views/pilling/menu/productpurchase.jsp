@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -123,216 +124,42 @@
 								</div>
 							</div>
 						</div>
+						<!-- 제품 나열 -->
 						<div class="col-lg-9">
 							<div class="row g-4 justify-content-center">
-								<div class="col-md-6 col-lg-6 col-xl-4">
-									<div class="rounded position-relative fruite-item"
-										onclick="location.href='productdetailpage'"
-										style="cursor: pointer">
-										<div class="fruite-img">
-											<img src="resources/pilling/img/productimage/testimage01.png"
-												class="img-fluid w-100 rounded-top" alt="" />
-										</div>
-										<div
-											class="p-4 border border-secondary border-top-0 rounded-bottom">
-											<h4>Grapes</h4>
-											<p>Lorem ipsum dolor sit amet consectetur adipisicing
-												elit sed do eiusmod te incididunt</p>
+								<!-- 제품 1개 카드 -->
+								<c:forEach var="product" items="${productlist }">
+									<div class="col-md-6 col-lg-6 col-xl-4">
+										<div class="rounded position-relative"
+											onclick="location.href='productdetailpage'"
+											style="cursor: pointer">
 											<div>
-												<a class="keywordName">피로 회복</a> <a class="keywordName">면역
-													증강</a>
+												<img src="${product.filepath1}"
+													class="img-fluid w-100 rounded-top" alt="" />
 											</div>
-											<br />
-											<div class="d-flex justify-content-between flex-lg-wrap">
-												<p class="text-dark fs-5 fw-bold mb-0">$4.99 / kg</p>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="col-md-6 col-lg-6 col-xl-4">
-									<div class="rounded position-relative fruite-item">
-										<div class="fruite-img">
-											<img src="resources/pilling/img/productimage/testimage01.png"
-												class="img-fluid w-100 rounded-top" alt="" />
-										</div>
-										<div
-											class="p-4 border border-secondary border-top-0 rounded-bottom">
-											<h4>Grapes</h4>
-											<p>Lorem ipsum dolor sit amet consectetur adipisicing
-												elit sed do eiusmod te incididunt</p>
-											<div>
-												<a class="keywordName">피로회복</a>
-											</div>
-											<div class="d-flex justify-content-between flex-lg-wrap">
-												<p class="text-dark fs-5 fw-bold mb-0">$4.99 / kg</p>
-												<a href="#"
-													class="btn border border-secondary rounded-pill px-3 text-primary"><i
-													class="fa fa-shopping-bag me-2 text-primary"></i>장바구니 담기</a>
+											<div
+												class="p-4 border border-secondary border-top-0 rounded-bottom">
+												<h4>${product.productName }</h4>
+												<p>${product.productDescription1 }</p>
+												<div>
+													<c:forEach var="keywordname" items="${keywordMapping}">
+														<a class="keywordName">${keywordname.keywordName}</a>
+													</c:forEach>
+												</div>
+												<br />
+												<div class="d-flex justify-content-between flex-lg-wrap">
+													<p class="text-dark fs-5 fw-bold mb-0">
+														<fmt:formatNumber value="${product.productPrice }"
+															pattern="###,###,###" />
+														원
+													</p>
+												</div>
 											</div>
 										</div>
 									</div>
-								</div>
-								<div class="col-md-6 col-lg-6 col-xl-4">
-									<div class="rounded position-relative fruite-item">
-										<div class="fruite-img">
-											<img src="resources/pilling/img/productimage/testimage01.png"
-												class="img-fluid w-100 rounded-top" alt="" />
-										</div>
-										<div
-											class="text-white bg-secondary px-3 py-1 rounded position-absolute"
-											style="top: 10px; left: 10px">Fruits</div>
-										<div
-											class="p-4 border border-secondary border-top-0 rounded-bottom">
-											<h4>Raspberries</h4>
-											<p>Lorem ipsum dolor sit amet consectetur adipisicing
-												elit sed do eiusmod te incididunt</p>
-											<div class="d-flex justify-content-between flex-lg-wrap">
-												<p class="text-dark fs-5 fw-bold mb-0">$4.99 / kg</p>
-												<a href="#"
-													class="btn border border-secondary rounded-pill px-3 text-primary"><i
-													class="fa fa-shopping-bag me-2 text-primary"></i>장바구니 담기</a>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="col-md-6 col-lg-6 col-xl-4">
-									<div class="rounded position-relative fruite-item">
-										<div class="fruite-img">
-											<img src="resources/pilling/img/productimage/testimage01.png"
-												class="img-fluid w-100 rounded-top" alt="" />
-										</div>
-										<div
-											class="text-white bg-secondary px-3 py-1 rounded position-absolute"
-											style="top: 10px; left: 10px">Fruits</div>
-										<div
-											class="p-4 border border-secondary border-top-0 rounded-bottom">
-											<h4>Apricots</h4>
-											<p>Lorem ipsum dolor sit amet consectetur adipisicing
-												elit sed do eiusmod te incididunt</p>
-											<div class="d-flex justify-content-between flex-lg-wrap">
-												<p class="text-dark fs-5 fw-bold mb-0">$4.99 / kg</p>
-												<a href="#"
-													class="btn border border-secondary rounded-pill px-3 text-primary"><i
-													class="fa fa-shopping-bag me-2 text-primary"></i>장바구니 담기</a>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="col-md-6 col-lg-6 col-xl-4">
-									<div class="rounded position-relative fruite-item">
-										<div class="fruite-img">
-											<img src="resources/pilling/img/productimage/testimage01.png"
-												class="img-fluid w-100 rounded-top" alt="" />
-										</div>
-										<div
-											class="text-white bg-secondary px-3 py-1 rounded position-absolute"
-											style="top: 10px; left: 10px">Fruits</div>
-										<div
-											class="p-4 border border-secondary border-top-0 rounded-bottom">
-											<h4>Banana</h4>
-											<p>Lorem ipsum dolor sit amet consectetur adipisicing
-												elit sed do eiusmod te incididunt</p>
-											<div class="d-flex justify-content-between flex-lg-wrap">
-												<p class="text-dark fs-5 fw-bold mb-0">$4.99 / kg</p>
-												<a href="#"
-													class="btn border border-secondary rounded-pill px-3 text-primary"><i
-													class="fa fa-shopping-bag me-2 text-primary"></i>장바구니 담기</a>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="col-md-6 col-lg-6 col-xl-4">
-									<div class="rounded position-relative fruite-item">
-										<div class="fruite-img">
-											<img src="resources/pilling/img/productimage/testimage01.png"
-												class="img-fluid w-100 rounded-top" alt="" />
-										</div>
-										<div
-											class="text-white bg-secondary px-3 py-1 rounded position-absolute"
-											style="top: 10px; left: 10px">Fruits</div>
-										<div
-											class="p-4 border border-secondary border-top-0 rounded-bottom">
-											<h4>Oranges</h4>
-											<p>Lorem ipsum dolor sit amet consectetur adipisicing
-												elit sed do eiusmod te incididunt</p>
-											<div class="d-flex justify-content-between flex-lg-wrap">
-												<p class="text-dark fs-5 fw-bold mb-0">$4.99 / kg</p>
-												<a href="#"
-													class="btn border border-secondary rounded-pill px-3 text-primary"><i
-													class="fa fa-shopping-bag me-2 text-primary"></i>장바구니 담기</a>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="col-md-6 col-lg-6 col-xl-4">
-									<div class="rounded position-relative fruite-item">
-										<div class="fruite-img">
-											<img src="resources/pilling/img/productimage/testimage01.png"
-												class="img-fluid w-100 rounded-top" alt="" />
-										</div>
-										<div
-											class="text-white bg-secondary px-3 py-1 rounded position-absolute"
-											style="top: 10px; left: 10px">Fruits</div>
-										<div
-											class="p-4 border border-secondary border-top-0 rounded-bottom">
-											<h4>Raspberries</h4>
-											<p>Lorem ipsum dolor sit amet consectetur adipisicing
-												elit sed do eiusmod te incididunt</p>
-											<div class="d-flex justify-content-between flex-lg-wrap">
-												<p class="text-dark fs-5 fw-bold mb-0">$4.99 / kg</p>
-												<a href="#"
-													class="btn border border-secondary rounded-pill px-3 text-primary"><i
-													class="fa fa-shopping-bag me-2 text-primary"></i>장바구니 담기</a>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="col-md-6 col-lg-6 col-xl-4">
-									<div class="rounded position-relative fruite-item">
-										<div class="fruite-img">
-											<img src="resources/pilling/img/productimage/testimage01.png"
-												class="img-fluid w-100 rounded-top" alt="" />
-										</div>
-										<div
-											class="text-white bg-secondary px-3 py-1 rounded position-absolute"
-											style="top: 10px; left: 10px">Fruits</div>
-										<div
-											class="p-4 border border-secondary border-top-0 rounded-bottom">
-											<h4>Grapes</h4>
-											<p>Lorem ipsum dolor sit amet consectetur adipisicing
-												elit sed do eiusmod te incididunt</p>
-											<div class="d-flex justify-content-between flex-lg-wrap">
-												<p class="text-dark fs-5 fw-bold mb-0">$4.99 / kg</p>
-												<a href="#"
-													class="btn border border-secondary rounded-pill px-3 text-primary"><i
-													class="fa fa-shopping-bag me-2 text-primary"></i>장바구니 담기</a>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="col-md-6 col-lg-6 col-xl-4">
-									<div class="rounded position-relative fruite-item">
-										<div class="fruite-img">
-											<img src="resources/pilling/img/productimage/testimage01.png"
-												class="img-fluid w-100 rounded-top" alt="" />
-										</div>
-										<div
-											class="text-white bg-secondary px-3 py-1 rounded position-absolute"
-											style="top: 10px; left: 10px">Fruits</div>
-										<div
-											class="p-4 border border-secondary border-top-0 rounded-bottom">
-											<h4>Oranges</h4>
-											<p>Lorem ipsum dolor sit amet consectetur adipisicing
-												elit sed do eiusmod te incididunt</p>
-											<div class="d-flex justify-content-between flex-lg-wrap">
-												<p class="text-dark fs-5 fw-bold mb-0">$4.99 / kg</p>
-												<a href="#"
-													class="btn border border-secondary rounded-pill px-3 text-primary"><i
-													class="fa fa-shopping-bag me-2 text-primary"></i>장바구니 담기</a>
-											</div>
-										</div>
-									</div>
-								</div>
+								</c:forEach>
+
+								<!-- pagenation 부분 -->
 								<div class="container productpurchase-pagination">
 									<ul class="pagination justify-content-center">
 										<li class="page-item"><a class="page-link" href="#">Previous</a></li>

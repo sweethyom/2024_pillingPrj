@@ -11,7 +11,7 @@
       <div class="container px-4 px-lg-5 my-5">
         <div class="row gx-4 gx-lg-5 align-items-center">
           <div class="product-detail-image">
-            <img class="card-img-top mb-5 mb-md-0" src="resources/pilling/img/productimage/vitamincSample.jpeg" alt="..." />
+            <img class="product-image-radius card-img-top mb-5 mb-md-0" src="resources/pilling/img/productimage/vitamincSample.jpeg" alt="..." />
           </div>
           <div class="product-detail-header">
             <div class="d-flex small mb-1 keywordHeader">
@@ -176,7 +176,7 @@
                 </div>
               </div>
               <div class="product-detail-image">
-                <img class="card-img-top mb-5 mb-md-0" src="resources/pilling/img/productimage/vitamincSample.jpeg" alt="..." />
+                <img class="product-image-radius card-img-top mb-5 mb-md-0" src="resources/pilling/img/productimage/vitamincSample.jpeg" alt="..." />
               </div>
             </div>
           </div>

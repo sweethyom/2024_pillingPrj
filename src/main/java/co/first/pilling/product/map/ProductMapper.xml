@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="co.first.pilling.product.map.ProductMapper">
+
+	<!-- product 테이블 전체 select -->
+	<select id="productAllList">
+	SELECT *
+	FROM product;
+	</select>
+	
+	<select id="productKeywordMapping">
+	SELECT p.product_id, GROUP_CONCAT(k.keyword_name SEPARATOR ', ') AS keywords
+	FROM product p
+	LEFT JOIN keyword_mapping km ON p.product_id = km.product_id
+	LEFT JOIN keyword k ON km.keyword_id = k.keyword_id
+	GROUP BY p.product_id;
+	</select>
+	
+</mapper>
