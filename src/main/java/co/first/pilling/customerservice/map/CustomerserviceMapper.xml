@@ -20,8 +20,17 @@
 		((SELECT IFNULL(MAX(notice_id), 0)+1 FROM (SELECT notice_id FROM
 		notice) AS dummy), #{userNo}, #{noticeTitle}, #{noticeContent}, #{noticeImg}, #{noticeAttach}, #{noticeAttachpath})
 	</insert>
-	<update id="noticeUpdate"></update>
-	<delete id="noticeDelete"></delete>
+	<update id="noticeUpdate">
+		UPDATE notice
+		<set>
+			notice_title = #{noticeTitle},
+			notice_content = #{noticeContent}
+		</set>
+		WHERE notice_id = #{noticeId}
+	</update>
+	<delete id="noticeDelete">
+		DELETE FROM notice WHERE notice_id = #{noticeId}
+	</delete>
 	<select id="selectCount">
 		SELECT COUNT(*) AS TOTAL_RECORD_COUNT FROM notice
 	</select>

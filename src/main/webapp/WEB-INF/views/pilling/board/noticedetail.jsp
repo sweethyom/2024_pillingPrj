@@ -33,7 +33,8 @@ td {
 					<tbody>
 						<tr>
 							<td colspan="2" width="500"><small>작성자 Pi1ling</small></td>
-							<td style="text-align: right;"><small>조회수 ${notice.noticeHit }</small></td>
+							<td style="text-align: right;"><small>조회수
+									${notice.noticeHit }</small></td>
 						</tr>
 						<tr>
 							<td colspan="3"><small>작성일 ${notice.noticeDate }</small></td>
@@ -55,16 +56,37 @@ td {
 		<!-- 공지사항 버튼/일반 사용자는 목록만, 어드민 권한을 가지고 있으면 수정, 삭제 버튼도 보인다. -->
 		<div class="btn-center mt-2">
 			<button type="button"
-				class="btn btn-primary border-0 rounded-pill px-4 py-3" onclick="location.href='customerservice'">목록</button>
+				class="btn btn-primary border-0 rounded-pill px-4 py-3"
+				onclick="location.href='customerservice'">목록</button>
 			<c:if test="${author eq 'ADMIN'}">
 	            	&nbsp;&nbsp;
 			<button type="button"
-					class="btn btn-primary border-0 rounded-pill px-4 py-3" onclick="location.href='noticeeditform'">수정</button>
+					class="btn btn-primary border-0 rounded-pill px-4 py-3"
+					onclick="noticeEditForm()">수정</button>
 			&nbsp;&nbsp;
 			<button type="button"
-					class="btn btn-primary border-0 rounded-pill px-4 py-3">삭제</button>
+					class="btn btn-primary border-0 rounded-pill px-4 py-3"
+					onclick="noticeDelete()">삭제</button>
 			</c:if>
 		</div>
+
+		<!-- 공지사항id를 수정, 삭제로 보내줄 히든폼 -->
+		<div>
+			<form id="frm" method="post">
+				<input type="hidden" id="noticeId" name="noticeId" value=${notice.noticeId }>
+			</form>
+		</div>
+
+		<script type="text/javascript">
+			function noticeEditForm() {
+				frm.action = "noticeeditform";
+				frm.submit();
+			}
+			function noticeDelete() {
+				frm.action = "noticedelete";
+				frm.submit();
+			}
+		</script>
 	</div>
 </body>
 </html>

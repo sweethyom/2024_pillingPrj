@@ -24,13 +24,12 @@ td {
 <body>
 	<div class="container-xxl py-5">
 		<!-- 공지사항 수정 form START -->
-		<form>
+		<form action="noticeupdate" method="post">
 			<div class="card-body col-12 div-center pl-5 pr-5">
 				<div class="row g-5">
 					<h3 style="vertical-align: bottom;" class="px-2">
-						<input type="text" size="89%" placeholder="공지 제목을 입력해주세요."
-							id="noticeTitle" name="noticeTitle"
-							required="required">
+						<input type="text" size="89%" value=${notice.noticeTitle }
+							id="noticeTitle" name="noticeTitle" required="required">
 					</h3>
 					<div style="height: 0.3rem; background-color: #fdf001;"
 						class="mb-0 mt-0"></div>
@@ -41,8 +40,8 @@ td {
 							</tr>
 							<tr>
 								<td colspan="3"><div class="mt-1 mb-1">
-										<textarea rows="10" cols="160" placeholder="내용을 입력해주세요." 
-										id="noticeContent" name="noticeContent" required="required"></textarea>
+										<textarea rows="10" cols="160" id="noticeContent"
+											name="noticeContent" required="required">${notice.noticeContent }</textarea>
 									</div></td>
 							</tr>
 							<tr>
@@ -52,14 +51,15 @@ td {
 							</tr>
 						</tbody>
 					</table>
-
+					<input type="hidden" id="noticeId" name="noticeId" value=${notice.noticeId }>
 				</div>
 			</div>
 
 			<!-- 버튼 -->
 			<div class="btn-center mt-2">
 				<button type="reset"
-					class="btn btn-primary border-0 rounded-pill px-4 py-3" onclick="location.href='customerservice'">취소</button>
+					class="btn btn-primary border-0 rounded-pill px-4 py-3"
+					onclick="location.href='customerservice'">취소</button>
 				&nbsp;&nbsp;
 				<button type="submit"
 					class="btn btn-primary border-0 rounded-pill px-4 py-3">수정</button>

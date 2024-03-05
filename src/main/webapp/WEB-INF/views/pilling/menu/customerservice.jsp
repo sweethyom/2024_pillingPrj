@@ -32,8 +32,8 @@
 	<div class="customerservice-button">
 		<c:if test="${author eq 'ADMIN'}">
 			<button type="button"
-			class="btn btn-primary border-0 rounded-pill px-4 py-3"
-			onclick="location.href='noticeform'">공지작성</button>
+				class="btn btn-primary border-0 rounded-pill px-4 py-3"
+				onclick="location.href='noticeform'">공지작성</button>
 		</c:if>
 	</div>
 	<div class="container-xxl py-5">
@@ -71,18 +71,16 @@
 			</div>
 		</div>
 		<div class="container mt-3">
-			<ul class="pagination justify-content-center">
-				<li class="page-item"><a class="page-link" href="#">Previous</a></li>
-				<!-- 첫페이지에선 없음/시작인덱스 -10 -->
-				<li class="page-item"><a class="page-link" href="#"> 1</a>
-				<li class="page-item"><a class="page-link" href="#"> 2</a>
-				<li class="page-item"><a class="page-link" href="#"> 3</a>
-				<li class="page-item"><a class="page-link" href="#"> 4</a>
-				<li class="page-item"><a class="page-link" href="#"> 5</a></li>
-				<li class="page-item"><a class="page-link" href="#">Next</a></li>
-				<!-- 마지막인덱스 +10 /마지막 인덱스에서는 없음 -->
-			</ul>
-		</div>
+         	<ul class="pagination justify-content-center">
+			    <li class="page-item"><a class="page-link" href="javascript:void(0);"  onclick="callFunction(${index}-6);">Previous</a></li>
+			    <c:forEach var="index" begin="${p.firstPageNoOnPageList }" end="${p.lastPageNoOnPageList }" step="1">
+			    	<li class="page-item">
+			    	<script>console.log(${p.firstPageNoOnPageList }, ${p.lastPageNoOnPageList })</script>
+			    	<a class="page-link" href="javascript:void(0);" onclick="callFunction(${index});">${index }</a></li>
+			   	</c:forEach>
+			    <li class="page-item"><a class="page-link" href="javascript:void(0);" onclick="callFunction(${index}+6);">Next</a></li>
+		  </ul>
+         </div>
 	</div>
 	<!--  board start -->
 	<div class="customerservice-button">
@@ -145,6 +143,10 @@
 		<form id="questionfrm" action="questiondetail" method="post">
 			<input type="hidden" id="questionId" name="questionId">
 		</form>
+		
+		<form id="pageFrm" action="customerservice" method="post">
+    		<input type="hidden" id="currentPageNo" name="currentPageNo">
+    	</form>
 	</div>
 	<script type="text/javascript">
 	function noticeDetail(id){
@@ -155,8 +157,10 @@
 		document.getElementById("questionId").value=id;
 		questionfrm.submit();
 	}
-	
-	
+	function callFunction(page){
+		document.getElementById("currentPageNo").value=page;
+		pageFrm.submit();
+	}
 </script>
 
 </body>
