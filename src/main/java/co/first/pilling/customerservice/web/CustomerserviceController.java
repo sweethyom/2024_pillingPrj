@@ -50,6 +50,7 @@ public class CustomerserviceController {
 
 		vo.setFirstPageNoOnPageList(firstPage);
 		vo.setLastPageNoOnPageList(lastPage);
+		vo.setTotalPageCount(totalPageCount);
 
 		model.addAttribute("p", vo);
 		model.addAttribute("notices", cs.noticeSelectList(pageOffset));
