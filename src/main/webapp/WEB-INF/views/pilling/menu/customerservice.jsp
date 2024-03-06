@@ -38,7 +38,8 @@
 	</div>
 	<div class="container-xxl py-5">
 		<div class="container text-center">
-			<h4 class="display-6 text-dark mb-4 animated slideInDown">공 지 사 항</h4>
+			<h4 class="display-6 text-dark mb-4 animated slideInDown">공 지 사
+				항</h4>
 			<div class="row g-5">
 				<table class="table table-bordered table-hover">
 					<thead>
@@ -69,22 +70,38 @@
 				</table>
 			</div>
 		</div>
+		<!-- 페이지네이션 START -->
 		<div class="container mt-3">
 			<ul class="pagination justify-content-center">
-				<li class="page-item"><a class="page-link"
-					href="javascript:void(0);"
-					onclick="callPage(${p.firstPageNoOnPageList}-1);">Previous</a></li>
+				<!-- c:if 로 이전 페이지가 없으면 이전 버튼이 비활성화되게 한다. -->
+				<c:if test="${p.firstPageNoOnPageList <= 1}">
+					<li class="page-item"><a class="page-link">Previous</a></li>
+				</c:if>
+				<c:if test="${p.firstPageNoOnPageList > 1}">
+					<li class="page-item"><a class="page-link"
+						href="javascript:void(0);"
+						onclick="callPage(${p.firstPageNoOnPageList}-1);">Previous</a></li>
+				</c:if>
+				
+				<!-- 페이지네이션 -->
 				<c:forEach var="index" begin="${p.firstPageNoOnPageList }"
 					end="${p.lastPageNoOnPageList }" step="1">
-					<li class="page-item"><script>console.log(${p.firstPageNoOnPageList }, ${p.lastPageNoOnPageList })</script>
-						<a class="page-link" href="javascript:void(0);"
-						onclick="callPage(${index});">${index }</a></li>
+					<li class="page-item"><a class="page-link"
+						href="javascript:void(0);" onclick="callPage(${index});">${index }</a></li>
 				</c:forEach>
-				<li class="page-item"><a class="page-link"
-					href="javascript:void(0);"
-					onclick="callPage(${p.lastPageNoOnPageList}+1);">Next</a></li>
+				
+				<!-- c:if 로 다음 페이지가 없으면 다음 버튼이 비활성화되게 한다. -->
+				<c:if test="${p.firstPageNoOnPageList eq p.totalPageCount}">
+					<li class="page-item"><a class="page-link">Next</a></li>
+				</c:if>
+				<c:if test="${p.firstPageNoOnPageList ne p.totalPageCount}">
+					<li class="page-item"><a class="page-link"
+						href="javascript:void(0);"
+						onclick="callPage(${p.lastPageNoOnPageList}+1);">Next</a></li>
+				</c:if>
 			</ul>
 		</div>
+		<!-- 페이지네이션 END -->
 	</div>
 	<!--  board start -->
 	<div class="customerservice-button">
