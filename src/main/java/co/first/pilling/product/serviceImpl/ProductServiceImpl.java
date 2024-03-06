@@ -7,6 +7,7 @@ import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
 import co.first.pilling.product.map.ProductMapper;
+import co.first.pilling.product.service.KeywordVO;
 import co.first.pilling.product.service.ProductService;
 import co.first.pilling.product.service.ProductVO;
 
@@ -25,6 +26,16 @@ public class ProductServiceImpl implements ProductService {
 	@Override
 	public List<ProductVO> productKeywordMapping() {
 		return pm.productKeywordMapping();
+	}
+
+	@Override
+	public List<KeywordVO> checkboxAllKeywordName() {
+		return pm.checkboxAllKeywordName();
+	}
+
+	@Override
+	public List<ProductVO> filterByKeywords(List<String> keywords) {
+		return pm.filterByKeywords(keywords);
 	}
 
 }

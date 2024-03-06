@@ -28,7 +28,7 @@ public class ProductVO {
 	private String filepath1;
 	private String filename2;
 	private String filepath2;
-	private String keywordId;
+	private int keywordId;
 	private String keywordArr;
 	private String keywords;
 	private List<String> keywordName;
