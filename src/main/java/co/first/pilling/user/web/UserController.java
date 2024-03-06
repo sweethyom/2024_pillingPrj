@@ -25,8 +25,9 @@ public class UserController {
 		public String userLogin(Model model, UserVO vo, HttpSession session, HttpServletResponse response) {
 			String viewPage = null;
 			vo = udao.userSelect(vo); //아이디, 비밀번호가 일치하면 값을 가져오고
-			if(vo != null) { //아이디, 비밀번호가 일치하면 세션에 id, 이름, 권한 정보를 담은 후 홈으로 돌아간다.
+			if(vo != null) { //아이디, 비밀번호가 일치하면 세션에 id, 이름, 유저Number, 권한 정보를 담은 후 홈으로 돌아간다.
 				session.setAttribute("userId", vo.getUserId());
+				session.setAttribute("userNo", vo.getUserNo());
 				session.setAttribute("userFirstname", vo.getUserFirstname());
 				session.setAttribute("author", vo.getUserAuthor());
 				viewPage = "redirect:home";
