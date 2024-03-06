@@ -4,7 +4,6 @@ import java.util.List;
 
 import co.first.pilling.common.PageVO;
 import co.first.pilling.customerservice.service.NoticeVO;
-import co.first.pilling.question.service.QuestionVO;
 
 public interface CustomerserviceMapper {
 	List<NoticeVO> noticeSelectList(int offSet); // 공지 리스트 보기

@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
-<body>
+<body onload="restoreScrollPostion()">
 	<section>
 		<div class="container-fluid customerservice-header py-5">
 			<div class="container text-center py-4">
@@ -71,16 +71,21 @@
 			</div>
 		</div>
 		<div class="container mt-3">
-         	<ul class="pagination justify-content-center">
-			    <li class="page-item"><a class="page-link" href="javascript:void(0);"  onclick="callFunction(${index}-6);">Previous</a></li>
-			    <c:forEach var="index" begin="${p.firstPageNoOnPageList }" end="${p.lastPageNoOnPageList }" step="1">
-			    	<li class="page-item">
-			    	<script>console.log(${p.firstPageNoOnPageList }, ${p.lastPageNoOnPageList })</script>
-			    	<a class="page-link" href="javascript:void(0);" onclick="callFunction(${index});">${index }</a></li>
-			   	</c:forEach>
-			    <li class="page-item"><a class="page-link" href="javascript:void(0);" onclick="callFunction(${index}+6);">Next</a></li>
-		  </ul>
-         </div>
+			<ul class="pagination justify-content-center">
+				<li class="page-item"><a class="page-link"
+					href="javascript:void(0);"
+					onclick="callPage(${p.firstPageNoOnPageList}-1);">Previous</a></li>
+				<c:forEach var="index" begin="${p.firstPageNoOnPageList }"
+					end="${p.lastPageNoOnPageList }" step="1">
+					<li class="page-item"><script>console.log(${p.firstPageNoOnPageList }, ${p.lastPageNoOnPageList })</script>
+						<a class="page-link" href="javascript:void(0);"
+						onclick="callPage(${index});">${index }</a></li>
+				</c:forEach>
+				<li class="page-item"><a class="page-link"
+					href="javascript:void(0);"
+					onclick="callPage(${p.lastPageNoOnPageList}+1);">Next</a></li>
+			</ul>
+		</div>
 	</div>
 	<!--  board start -->
 	<div class="customerservice-button">
@@ -143,10 +148,9 @@
 		<form id="questionfrm" action="questiondetail" method="post">
 			<input type="hidden" id="questionId" name="questionId">
 		</form>
-		
 		<form id="pageFrm" action="customerservice" method="post">
-    		<input type="hidden" id="currentPageNo" name="currentPageNo">
-    	</form>
+			<input type="hidden" id="currentPageNo" name="currentPageNo">
+		</form>
 	</div>
 	<script type="text/javascript">
 	function noticeDetail(id){
@@ -157,9 +161,28 @@
 		document.getElementById("questionId").value=id;
 		questionfrm.submit();
 	}
-	function callFunction(page){
+	function callPage(page){
+		saveScrollPosition();
 		document.getElementById("currentPageNo").value=page;
 		pageFrm.submit();
+	}
+	
+	//페이지 이동 전 스크롤 위치를 저장하는 함수
+	function saveScrollPosition(){
+		var scrollPosition = window.scrollY || document.documentElement.scrollTop;
+		sessionStorage.setItem('scrollPosition', scrollPosition);
+	}
+	
+	//페이지 이동 후, 스크롤 위치를 저장된 위치로 이동시키는 함수
+	function restoreScrollPostion(){
+		var scrollPosition = sessionStorage.getItem('scrollPosition');
+		if(scrollPosition !== null) {
+			window.scrollTo({
+				top:scrollPosition,
+				behavior: 'auto'
+			});
+			sessionStorage.removeItem('scrollPosition');
+		}
 	}
 </script>
 

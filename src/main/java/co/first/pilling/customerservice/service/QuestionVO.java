@@ -1,4 +1,4 @@
-package co.first.pilling.question.service;
+package co.first.pilling.customerservice.service;
 
 import java.time.LocalDate;
 
@@ -15,4 +15,7 @@ public class QuestionVO {
 	private LocalDate questionDate;
 	private String questionImg;
 	private int questionHit;
+	
+	private int pageOffset;
+	private int totalPage; //전체 게시글 갯수
 }

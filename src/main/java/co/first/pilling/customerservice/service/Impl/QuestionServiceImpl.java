@@ -10,7 +10,7 @@ import co.first.pilling.common.PageVO;
 import co.first.pilling.customerservice.map.QuestionMapper;
 import co.first.pilling.customerservice.service.NoticeVO;
 import co.first.pilling.customerservice.service.QuestionService;
-import co.first.pilling.question.service.QuestionVO;
+import co.first.pilling.customerservice.service.QuestionVO;
 
 @Service
 @Primary
@@ -21,43 +21,43 @@ public class QuestionServiceImpl implements QuestionService {
 	@Override
 	public List<QuestionVO> questionSelectList(int offSet) {
 		// TODO Auto-generated method stub
-		return null;
+		return map.questionSelectList(offSet);
 	}
 
 	@Override
-	public List<QuestionVO> questionSearchList(NoticeVO vo) {
+	public List<QuestionVO> questionSearchList(QuestionVO vo) {
 		// TODO Auto-generated method stub
-		return null;
+		return map.questionSearchList(vo);
 	}
 
 	@Override
-	public NoticeVO questionDetail(NoticeVO vo) {
+	public NoticeVO questionDetail(QuestionVO vo) {
 		// TODO Auto-generated method stub
-		return null;
+		return map.questionDetail(vo);
 	}
 
 	@Override
-	public int questionInsert(NoticeVO vo) {
+	public int questionInsert(QuestionVO vo) {
 		// TODO Auto-generated method stub
-		return 0;
+		return map.questionInsert(vo);
 	}
 
 	@Override
-	public int questionUpdate(NoticeVO vo) {
+	public int questionUpdate(QuestionVO vo) {
 		// TODO Auto-generated method stub
-		return 0;
+		return map.questionUpdate(vo);
 	}
 
 	@Override
-	public int questionDelete(NoticeVO vo) {
+	public int questionDelete(QuestionVO vo) {
 		// TODO Auto-generated method stub
-		return 0;
+		return map.questionDelete(vo);
 	}
 
 	@Override
 	public PageVO questionSelectCount() {
 		// TODO Auto-generated method stub
-		return null;
+		return map.questionSelectCount();
 	}
 
 }

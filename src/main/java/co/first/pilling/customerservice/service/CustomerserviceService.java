@@ -3,7 +3,6 @@ package co.first.pilling.customerservice.service;
 import java.util.List;
 
 import co.first.pilling.common.PageVO;
-import co.first.pilling.question.service.QuestionVO;
 
 public interface CustomerserviceService {
 	List<NoticeVO> noticeSelectList(int offSet);
