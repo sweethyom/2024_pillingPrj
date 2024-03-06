@@ -38,8 +38,7 @@
 	</div>
 	<div class="container-xxl py-5">
 		<div class="container text-center">
-			<h4 class="display-6 text-dark mb-4 animated slideInDown">공 지 사
-				항</h4>
+			<h4 class="display-6 text-dark mb-4 animated slideInDown">공 지 사 항</h4>
 			<div class="row g-5">
 				<table class="table table-bordered table-hover">
 					<thead>

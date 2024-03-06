@@ -16,5 +16,7 @@
 </insert>
 <update id="userUpdate"></update>
 <delete id="userDelete"></delete>
-
+<!-- <select id="userPassword" parameterType="String">
+	SELECT * FROM `user` WHERE USER_ID=#{userId} AND USER_PSWD=#{userPswd}
+</select> -->
 </mapper>
