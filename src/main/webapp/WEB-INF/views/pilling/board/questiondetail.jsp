@@ -26,20 +26,20 @@ td {
 		<!-- 문의사항 조회 START -->
 		<div class="card-body col-12 div-center pl-5 pr-5">
 			<div class="row g-5">
-				<h3 style="vertical-align: bottom;" class="px-2">ㅇㅁㅇㄻㄴㄹ 할까요?</h3>
+				<h3 style="vertical-align: bottom;" class="px-2">${questionTitle }</h3>
 				<div style="height: 0.3rem; background-color: #fdf001;"
 					class="mb-0 mt-0"></div>
 				<table class="table mb-0 mt-0">
 					<tbody>
 						<tr>
-							<td colspan="2" width="500"><small>작성자 <a>유저이름</a></small></td>
+							<td colspan="2" width="500"><small>작성자 <a>${userId }</a></small></td>
 							<td style="text-align: right;"><small>조회수 <a>212</a></small></td>
 						</tr>
 						<tr>
 							<td colspan="3"><small>작성일 22/11/11</small></td>
 						</tr>
 						<tr>
-							<td colspan="3"><div class="mt-3 mb-5">많이많이많이먹어도되나요??</div></td>
+							<td colspan="3"><div class="mt-3 mb-5">${questionContent }</div></td>
 						</tr>
 					</tbody>
 				</table>
@@ -76,31 +76,7 @@ td {
 					<td style="vertical-align: top;" class="pt-1">
 						<div class="rounded py-2 px-3" style="background-color:#3faf08; color:white;">Pi1ling</div>
 					</td>
-					<td class="px-2">복용법을 잘 참고해서 드세요.복용법을 잘 참고해서 드세요.복용법을 잘 참고해서
-						드세요.복용법을 잘 참고해서 드세요.복용법을 잘 참고해서 드세요.복용법을 잘 참고해서 드세요.복용법을 잘 참고해서
-						드세요.복용법을 잘 참고해서 드세요.복용법을 잘 참고해서 드세요.복용법을 잘 참고해서 드세요.복용법을 잘 참고해서
-						드세요.복용법을 잘 참고해서 드세요.복용법을 잘 참고해서 드세요.복용법을 잘 참고해서 드세요.복용법을 잘 참고해서
-						드세요.복용법을 잘 참고해서 드세요.복용법을 잘 참고해서 드세요.복용법을 잘 참고해서 드세요.복용법을 잘 참고해서
-						드세요.복용법을 잘 참고해서 드세요.복용법을 잘 참고해서 드세요.복용법을 잘 참고해서 드세요.복용법을 잘 참고해서
-						드세요.복용법을 잘 참고해서 드세요.복용법을 잘 참고해서 드세요.복용법을 잘 참고해서 드세요.복용법을 잘 참고해서
-						드세요.복용법을 잘 참고해서 드세요.복용법을 잘 참고해서 드세요.복용법을 잘 참고해서 드세요.복용법을 잘 참고해서
-						드세요.복용법을 잘 참고해서 드세요.복용법을 잘 참고해서 드세요.복용법을 잘 참고해서 드세요.</td>
-				</tr>
-				<tr>
-					<td style="vertical-align: top;" class="pt-1">
-						<div class="rounded py-2 px-3" style="background-color:#3faf08; color:white;">Pi1ling</div>
-					</td>
-					<td class="px-2">복용법을 잘 참고해서 드세요.복용법을 잘 참고해서 드세요.</td>
-				</tr>
-				<tr>
-					<td style="vertical-align: top;" class="pt-1">
-						<div class="rounded py-2 px-3" style="background-color:#3faf08; color:white;">Pi1ling</div>
-					</td>
-					<td class="px-2">복용법을 잘 참고해서 드세요.복용법을 잘 참고해서 드세요.복용법을 잘 참고해서
-						드세요.복용법을 잘 참고해서 드세요.복용법을 잘 참고해서 드세요.복용법을 잘 참고해서 드세요.복용법을 잘 참고해서
-						드세요.복용법을 잘 참고해서 드세요.복용법을 잘 참고해서 드세요.복용법을 잘 참고해서 드세요.복용법을 잘 참고해서
-						드세요.복용법을 잘 참고해서 드세요.복용법을 잘 참고해서 드세요.복용법을 잘 참고해서 드세요.복용법을 잘 참고해서
-						드세요.복용법을 잘 참고해서 드세요.복용법을 잘 참고해서 드세요.복용법을 잘 참고해서 드세요.</td>
+					<td class="px-2">${questionreplyContent }</td>
 				</tr>
 			</table>
 		</div>

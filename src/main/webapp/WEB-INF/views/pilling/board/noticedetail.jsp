@@ -40,7 +40,7 @@ td {
 							<td colspan="3"><small>작성일 ${notice.noticeDate }</small></td>
 						</tr>
 						<tr>
-							<td colspan="3"><div class="mt-3 mb-5">${notice.noticeContent }</div></td>
+							<td colspan="3"><div class="mt-3 mb-5"><img src="${notice.noticeAttachpath}&#92;${notice.noticeAttach}"><br>${notice.noticeContent }</div></td>
 						</tr>
 						<tr>
 							<td width="100"><small>첨부파일</small></td>
