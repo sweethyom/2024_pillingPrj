@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper
+	namespace="co.first.pilling.customerservice.map.QuestionMapper">
+	<select id="questionSelectList">
+		SELECT * FROM question
+		ORDER BY CAST(question_id AS
+		UNSIGNED) DESC
+		LIMIT #{offset}, 5
+	</select>
+	<select id="questionSearchList"></select>
+	<select id="questionDetail">
+		SELECT * FROM notice
+		WHERE question_id = #{questionId}
+	</select>
+	<insert id="questionInsert">
+		INSERT INTO notice (question_id, user_no,
+		question_title,
+		question_content, notice_img)
+		VALUES
+		((SELECT
+		IFNULL(MAX(notice_id), 0)+1 FROM (SELECT notice_id FROM
+		notice) AS
+		dummy), #{userNo}, #{noticeTitle}, #{noticeContent}, #{noticeImg})
+	</insert>
+	<update id="questionUpdate">
+		UPDATE question
+		<set>
+			question_title = #{questionTitle},
+			question_content =
+			#{questionContent}
+		</set>
+		WHERE question_id = #{questionId}
+	</update>
+	<delete id="questionDelete">
+		DELETE FROM question WHERE question_id =
+		#{questionId}
+	</delete>
+	<select id="questionSelectCount">
+		SELECT COUNT(*) AS TOTAL_RECORD_COUNT FROM question
+	</select>
+</mapper>

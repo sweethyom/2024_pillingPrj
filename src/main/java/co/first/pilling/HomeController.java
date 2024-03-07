@@ -56,20 +56,7 @@ public class HomeController {
 	public String surveyPage(Model model) {
 		return "pilling/notiles/survey/surveypage";
 	}
-
-	// 고객센터 이동
-	@RequestMapping("customerservice")
-	public String customerService(Model model) {
-		return "pilling/menu/customerservice";
-	}
-
-	// 방문예약 페이지 이동
-	@RequestMapping("book")
-	public String book(Model model) {
-		return "pilling/menu/book";
-
-	}
-
+  
 	// 브랜드소개 페이지 이동
 	@RequestMapping("introduction")
 	public String introduction(Model model) {
@@ -125,4 +112,15 @@ public class HomeController {
 		return "pilling/mypage/mypurchasedetail";
 	}
 	
+	// 문의사항 조회 페이지 이동
+	@RequestMapping("questiondetail")
+	public String questiondetail(Model model) {
+		return "pilling/board/questiondetail";
+	}
+	
+	// 문의사항 작성 페이지 이동
+	@RequestMapping("questionform")
+	public String questionform(Model model) {
+		return "pilling/board/questionform";
+	}
 }
