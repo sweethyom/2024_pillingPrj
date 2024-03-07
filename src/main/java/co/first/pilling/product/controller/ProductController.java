@@ -1,6 +1,5 @@
 package co.first.pilling.product.controller;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -82,11 +81,32 @@ public class ProductController {
 		// 받아온 키워드 ID를 키워드 리스트로 생성
 		List<String> keywordList = Arrays.asList(keywords.split(","));
 		System.out.println("===============" + keywordList);
-		
 		List<ProductVO> filteredProducts = ps.filterByKeywords(keywordList);
 		System.out.println("최종으로 나오는 값은?" + filteredProducts);
 		
+		for(ProductVO product : filteredProducts) {
+			String webPath = product.getFilepath1().replace("C:\\DEV\\eclipse_202103\\workspace\\PillingProject\\src\\main\\webapp\\", "");
+			webPath = webPath.replace("\\", "/"); // 웹에서는 \(백슬래쉬)나 \\(윈도우슬래쉬)를 인식하지 못하여 /(웹구분자)로 바꿔주는 작업이다.
+			product.setFilepath1(webPath); // 변환한 웹전용 webPath를 setFilepath1 여기로 담아준다.
+		}
+		
 		return filteredProducts;
+	}
+	
+	
+	// 체크 해제 시 전 품목을 반환 할 때 사용 하는 컨트롤러
+	// 사용처는 productpurchase.jsp에 있고, products/all 검색하면 ajax쪽 삼항연산자가 나오니 참고!
+	@GetMapping("products/all")
+	public @ResponseBody List<ProductVO> getAllProducts() {
+		List<ProductVO> productList = ps.productAllList();
+		
+		for(ProductVO product : productList) {
+			String webPath = product.getFilepath1().replace("C:\\DEV\\eclipse_202103\\workspace\\PillingProject\\src\\main\\webapp\\", "");
+			webPath = webPath.replace("\\", "/"); // 웹에서는 \(백슬래쉬)나 \\(윈도우슬래쉬)를 인식하지 못하여 /(웹구분자)로 바꿔주는 작업이다.
+			product.setFilepath1(webPath); // 변환한 웹전용 webPath를 setFilepath1 여기로 담아준다.
+		}
+		
+		return productList;
 	}
 
 }

@@ -121,7 +121,7 @@
 
     <!-- JAVASCRIPT START -->
     <script type="text/javascript">
-      // checkbox의 값을 AJAX로 서버단에 넘기기 위한 작업 시작!
+      /* 값을 받아와서 서버(controller)에 넘기고, 다시 서버에서 값을 받아서 비동기화 통신을 하는 AJAX 생성 부분 */
       document.addEventListener('DOMContentLoaded', function () {
         document.querySelectorAll("input[type='checkbox'][name='effectId']").forEach(function (checkbox) {
           checkbox.addEventListener('change', function () {
@@ -131,7 +131,7 @@
             });
 
             var xhr = new XMLHttpRequest();
-            var url = selectedKeywords.length > 0 ? 'filterproducts?keywords=' + selectedKeywords.join(',') : 'filterproducts';
+            var url = selectedKeywords.length > 0 ? 'filterproducts?keywords=' + selectedKeywords.join(',') : 'products/all';
             xhr.open('GET', url, true);
 
             xhr.onload = function () {
@@ -146,6 +146,12 @@
         });
       });
 
+      /* 숫자를 한국식 (예를들면, 50000 이라는 숫자를 50,000 이런식으로) 바꾸는 함수 */
+      function formatNumber(number) {
+        return new Intl.NumberFormat('ko-KR').format(number);
+      }
+
+      /* AJAX에 이용 할 실시간 innerHTML 함수 */
       function updateProductList(products) {
         var productListHtml = '';
         products.forEach(function (product) {
@@ -168,7 +174,7 @@
             // 키워드 처리 등 추가 정보
             '<div class="d-flex justify-content-between flex-lg-wrap">' +
             '<p class="text-dark fs-5 fw-bold mb-0">' +
-            product.productPrice +
+            formatNumber(product.productPrice) +
             '원' +
             '</p>' +
             '</div>' +

@@ -38,13 +38,11 @@ public class AdminController {
 		String mainImagePath = saveFile(mainImage, "C:\\DEV\\eclipse_202103\\workspace\\PillingProject\\src\\main\\webapp\\resources\\pilling\\img\\productmainimage");
 		vo.setFilename1(mainImage.getOriginalFilename());
 		vo.setFilepath1(mainImagePath);
-		System.out.println("메인이미지 경로와 이름 : " +  mainImagePath);
 		
 		// 서브이미지를 저장할 경로
 		String subImagePath = saveFile(subImage, "C:\\DEV\\eclipse_202103\\workspace\\PillingProject\\src\\main\\webapp\\resources\\pilling\\img\\productsubimage");
 		vo.setFilename2(subImage.getOriginalFilename());
 		vo.setFilepath2(subImagePath);
-		System.out.println("서브이미지 경로와 이름 : " +  subImagePath);
 		
 		//DB에 저장하기 위한 코드
 		pms.productInsert(vo);
