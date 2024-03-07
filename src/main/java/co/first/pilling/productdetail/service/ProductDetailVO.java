@@ -1,4 +1,4 @@
-package co.first.pilling.product.service;
+package co.first.pilling.productdetail.service;
 
 import java.sql.Date;
 import java.util.List;
@@ -8,14 +8,11 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class ProductVO {
+public class ProductDetailVO {
 	private int productId;
-	private int categoryId;
 	private String productName;
 	private int productPrice;
-	private String productDelete;
 	private Date productDate;
-	private String productNew;
 	private String productDescription1;
 	private String productDescription2;
 	private String productDescription3;
