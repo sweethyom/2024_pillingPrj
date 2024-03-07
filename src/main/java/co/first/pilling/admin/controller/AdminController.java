@@ -6,6 +6,7 @@ import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -32,30 +33,18 @@ public class AdminController {
 	// 상품등록 알고리즘
 	@PostMapping("productadd")
 	@ResponseBody
-	public String productAdd(ProductManagementVO vo, @RequestParam("productMainImage") CommonsMultipartFile file) {		
-		// 업로드된 파일을 저장할 경로
-		String insertPath = "C:\\DEV\\eclipse_202103\\workspace\\PillingProject\\src\\main\\webapp\\resources\\pilling\\img\\uploadimage";
-		System.out.println(file.getOriginalFilename());
-		System.out.println(insertPath);
+	public String productAdd(ProductManagementVO vo, @RequestParam("productMainImage") CommonsMultipartFile mainImage, @RequestParam("productSubImage") CommonsMultipartFile subImage, Model model) {		
+		// 메인이미지를 저장할 경로
+		String mainImagePath = saveFile(mainImage, "C:\\DEV\\eclipse_202103\\workspace\\PillingProject\\src\\main\\webapp\\resources\\pilling\\img\\productmainimage");
+		vo.setFilename1(mainImage.getOriginalFilename());
+		vo.setFilepath1(mainImagePath);
 		
-		// 파일 업로드 구현
-		// UUID를 랜덤으로 만들어 주는 것
-		UUID uuid = UUID.randomUUID();
-		// 파일 이름을 안겹치도록 만들기 위한 알고리즘
-		String fileName = uuid + "_" + file.getOriginalFilename();
+		// 서브이미지를 저장할 경로
+		String subImagePath = saveFile(subImage, "C:\\DEV\\eclipse_202103\\workspace\\PillingProject\\src\\main\\webapp\\resources\\pilling\\img\\productsubimage");
+		vo.setFilename2(subImage.getOriginalFilename());
+		vo.setFilepath2(subImagePath);
 		
-		File saveFile = new File(insertPath, fileName);
-		
-		System.out.println(saveFile + "==================================");
-		
-		try {
-			file.transferTo(saveFile);
-			vo.setFilename1(fileName);
-			vo.setFilepath1(insertPath);
-		} catch (IllegalStateException | IOException e) {
-			e.printStackTrace();
-		}
-		
+		//DB에 저장하기 위한 코드
 		pms.productInsert(vo);
 		pms.keywordInsert(vo);
 		
@@ -63,4 +52,21 @@ public class AdminController {
 		return str;
 	}
 	
+	// 파일 이름 변경과 저장을 위한 알고리즘
+	private String saveFile(CommonsMultipartFile file, String directoryPath) {
+		
+		//UUID를 랜덤으로 생성해, 파일 명의 중복을 예방
+	    UUID uuid = UUID.randomUUID();
+	    
+	    //생성된 UUID와 파일이름을 합쳐서 파일이름을 구성
+	    String fileName = uuid + "_" + file.getOriginalFilename();
+	    File saveFile = new File(directoryPath, fileName);
+	    
+	    try {
+	        file.transferTo(saveFile);
+	    } catch (IllegalStateException | IOException e) {
+	        e.printStackTrace();
+	    }
+	    return directoryPath + "\\" + fileName; // 저장된 파일의 전체 경로 반환
+	}
 }
