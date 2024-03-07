@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper
+	namespace="co.first.pilling.customerservice.map.QuestionreplyMapper">
+	<select id="questionreplySelectList">
+		SELECT * FROM questionreply WHERE question_id =
+		#{questionId};
+	</select>
+	<insert id="questionreplyInsert">
+		INSERT INTO questionreply (question_id,
+		questionreply_content) VALUES (#{questionId}, #{questionreplyContent})
+	</insert>
+	<update id="questionreplyUpdate">
+		
+	</update>
+	<delete id="questionreplyDelete">
+		ROM questionreply WHERE questionreply_id = #{questionreplyId}
+	</delete>
+</mapper>

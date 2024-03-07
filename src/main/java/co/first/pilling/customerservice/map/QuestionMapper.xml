@@ -20,7 +20,18 @@
 	</select>
 	<select id="questionSearchList"></select>
 	<select id="questionDetail">
-		SELECT * FROM question
+		SELECT q.question_id AS questionId, q.question_title
+		AS questionTitle,
+		q.question_content AS
+		questionContent, q.question_date
+		AS questionDate,
+		q.question_hit AS questionHit,
+		u.user_id AS userId
+		FROM
+		question q
+		JOIN
+		user u
+		ON q.user_no = u.user_no
 		WHERE question_id =
 		#{questionId}
 	</select>
@@ -52,4 +63,11 @@
 	<select id="questionSelectCount">
 		SELECT COUNT(*) AS TOTAL_RECORD_COUNT FROM question
 	</select>
+	<update id="questionUpdateHit">
+		UPDATE question
+		<set>
+			question_hit = question_hit+1
+		</set>
+		WHERE question_id = #{questionId}
+	</update>
 </mapper>

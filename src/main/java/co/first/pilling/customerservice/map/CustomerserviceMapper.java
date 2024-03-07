@@ -19,4 +19,6 @@ public interface CustomerserviceMapper {
 	int noticeDelete(NoticeVO vo); // 공지 삭제
 
 	PageVO selectCount(); // 공지 페이지네이션
+	
+	int noticeUpdateHit(NoticeVO vo); // 조회수 1 올리기
 }

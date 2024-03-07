@@ -16,6 +16,8 @@ import co.first.pilling.customerservice.service.CustomerserviceService;
 import co.first.pilling.customerservice.service.NoticeVO;
 import co.first.pilling.customerservice.service.QuestionService;
 import co.first.pilling.customerservice.service.QuestionVO;
+import co.first.pilling.customerservice.service.QuestionreplyService;
+import co.first.pilling.customerservice.service.QuestionreplyVO;
 
 @Controller
 public class CustomerserviceController {
@@ -24,6 +26,9 @@ public class CustomerserviceController {
 
 	@Autowired
 	private QuestionService qs;
+	
+	@Autowired
+	private QuestionreplyService qrs;
 
 	@RequestMapping("customerservice")
 	public String customerservice(Model model, Model qmodel, PageVO vo, PageVO qvo) {
@@ -109,6 +114,7 @@ public class CustomerserviceController {
 	// 공지 조회
 	@RequestMapping("noticedetail")
 	public String noticedetail(NoticeVO vo, Model model) {
+		model.addAttribute(cs.noticeUpdateHit(vo));
 		model.addAttribute("notice", cs.noticeDetail(vo));
 		return "pilling/board/noticedetail";
 	}
@@ -174,20 +180,22 @@ public class CustomerserviceController {
 	// 문의 조회
 	@RequestMapping("questiondetail")
 	public String questiondetail(QuestionVO vo, Model model) {
-		model.addAttribute("notice", qs.questionDetail(vo));
+		model.addAttribute(qs.questionUpdateHit(vo));
+		model.addAttribute("question", qs.questionDetail(vo));
+		model.addAttribute("questionreply", qrs.questionreplySelectList(vo));
 		return "pilling/board/questiondetail";
 	}
 
 	// 문의 작성 폼 호출
 	@RequestMapping("questionform")
-	public String questiondetail() {
+	public String questionform() {
 		return "pilling/board/questionform";
 	}
 
 	// 문의 수정 폼 호출
 	@RequestMapping("questioneditform")
 	public String questioneditform(QuestionVO vo, Model model) {
-		model.addAttribute("notice", qs.questionDetail(vo));
+		model.addAttribute("question", qs.questionDetail(vo));
 		return "pilling/board/questioneditform";
 	}
 
@@ -202,7 +210,7 @@ public class CustomerserviceController {
 	@RequestMapping("questionupdate")
 	public String questionupdate(QuestionVO vo, Model model) {
 		model.addAttribute(qs.questionUpdate(vo));
-		model.addAttribute("notice", qs.questionDetail(vo));
+		model.addAttribute("question", qs.questionDetail(vo));
 		return "pilling/board/questiondetail";
 	}
 
@@ -211,5 +219,12 @@ public class CustomerserviceController {
 	public String questiondelete(QuestionVO vo, Model model) {
 		model.addAttribute(qs.questionDelete(vo));
 		return "redirect:/customerservice";
+	}
+	
+	// 문의사항 댓글 삽입
+	@RequestMapping("questionreplyinsert")
+	public String questionreplyinsert(QuestionreplyVO vo, Model model) {
+		model.addAttribute("questionreply", qrs.questionreplyInsert(vo));
+		return "redirect:/questiondetail";
 	}
 }
