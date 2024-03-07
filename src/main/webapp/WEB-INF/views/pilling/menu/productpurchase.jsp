@@ -137,7 +137,6 @@
             xhr.onload = function () {
               if (xhr.status == 200) {
                 var products = JSON.parse(xhr.responseText);
-                console.log(products);
                 updateProductList(products);
               }
             };
@@ -151,12 +150,23 @@
         return new Intl.NumberFormat('ko-KR').format(number);
       }
 
+      /* 자바스크립트에서는 jstl(예를 들면 c:foreach 같은것을 사용 못한다.) 현재 키워드는 foreach가 되지않으니 아래의 updateProductList 함수에서 이용하기 위한 함수 */
+      function generateKeywordsHtml(keywords) {
+        return keywords
+          .map(function (keyword) {
+            return '<a class="keywordName">' + keyword + '</a>';
+          })
+          .join(' ');
+      }
+
       /* AJAX에 이용 할 실시간 innerHTML 함수 */
       function updateProductList(products) {
         var productListHtml = '';
         products.forEach(function (product) {
           // 서버로부터 받은 각 제품 정보를 사용하여 HTML 마크업 생성
-          productListHtml +=
+          var keywordsHtml = generateKeywordsHtml(product.keywordName || []);
+
+          var keywordHtml = (productListHtml +=
             '<div class="col-md-6 col-lg-6 col-xl-4">' +
             '<div class="rounded position-relative" onclick="location.href=\'productdetailpage\'" style="cursor: pointer">' +
             '<div>' +
@@ -172,6 +182,9 @@
             product.productDescription1 +
             '</p>' +
             // 키워드 처리 등 추가 정보
+            '<div>' +
+            keywordsHtml +
+            '</div>' +
             '<div class="d-flex justify-content-between flex-lg-wrap">' +
             '<p class="text-dark fs-5 fw-bold mb-0">' +
             formatNumber(product.productPrice) +
@@ -180,7 +193,7 @@
             '</div>' +
             '</div>' +
             '</div>' +
-            '</div>';
+            '</div>');
         });
         document.getElementById('productsContainer').innerHTML = productListHtml;
       }
