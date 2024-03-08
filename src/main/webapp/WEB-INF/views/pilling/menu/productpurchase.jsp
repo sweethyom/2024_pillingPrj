@@ -5,6 +5,9 @@
   <head>
     <meta charset="UTF-8" />
     <title>Insert title here</title>
+    <script>
+      var pageContextPath = '${pageContext.request.contextPath}';
+    </script>
   </head>
   <body>
     <!-- Page Header Start -->
@@ -66,27 +69,29 @@
                   <!-- 제품 1개 카드 -->
                   <c:forEach var="product" items="${productlist }">
                     <div class="col-md-6 col-lg-6 col-xl-4">
-                      <div class="rounded position-relative" onclick="location.href='productdetailpage'" style="cursor: pointer">
-                        <div>
-                          <img src="${product.filepath1}" class="img-fluid w-100 rounded-top" alt="" />
-                        </div>
-                        <div class="p-4 border border-secondary border-top-0 rounded-bottom">
-                          <h4>${product.productName }</h4>
-                          <p>${product.productDescription1 }</p>
+                      <a href="${pageContext.request.contextPath}/productdetailpage?productId=${product.productId}">
+                        <div class="rounded position-relative" style="cursor: pointer">
                           <div>
-                            <c:forEach var="keyword" items="${product.keywordName}">
-                              <a class="keywordName">${keyword}</a>
-                            </c:forEach>
+                            <img src="${product.filepath1}" class="img-fluid w-100 rounded-top" alt="" />
                           </div>
-                          <br />
-                          <div class="d-flex justify-content-between flex-lg-wrap">
-                            <p class="text-dark fs-5 fw-bold mb-0">
-                              <fmt:formatNumber value="${product.productPrice }" pattern="###,###,###" />
-                              원
-                            </p>
+                          <div class="p-4 border border-secondary border-top-0 rounded-bottom">
+                            <h4>${product.productName }</h4>
+                            <p class="text-dark">${product.productDescription1 }</p>
+                            <div>
+                              <c:forEach var="keyword" items="${product.keywordName}">
+                                <a class="keywordName">${keyword}</a>
+                              </c:forEach>
+                            </div>
+                            <br />
+                            <div class="d-flex justify-content-between flex-lg-wrap">
+                              <p class="text-dark fs-5 fw-bold mb-0">
+                                <fmt:formatNumber value="${product.productPrice }" pattern="###,###,###" />
+                                원
+                              </p>
+                            </div>
                           </div>
                         </div>
-                      </div>
+                      </a>
                     </div>
                   </c:forEach>
 
@@ -166,9 +171,14 @@
           // 서버로부터 받은 각 제품 정보를 사용하여 HTML 마크업 생성
           var keywordsHtml = generateKeywordsHtml(product.keywordName || []);
 
-          var keywordHtml = (productListHtml +=
+          productListHtml +=
             '<div class="col-md-6 col-lg-6 col-xl-4">' +
-            '<div class="rounded position-relative" onclick="location.href=\'productdetailpage\'" style="cursor: pointer">' +
+            '<a href="' +
+            pageContextPath +
+            '/productdetailpage?productId=' +
+            product.productId +
+            '" style="text-decoration: none; color: inherit;">' +
+            '<div class="rounded position-relative" style="cursor: pointer">' +
             '<div>' +
             '<img src="' +
             product.filepath1 +
@@ -181,7 +191,6 @@
             '<p>' +
             product.productDescription1 +
             '</p>' +
-            // 키워드 처리 등 추가 정보
             '<div>' +
             keywordsHtml +
             '</div>' +
@@ -193,7 +202,8 @@
             '</div>' +
             '</div>' +
             '</div>' +
-            '</div>');
+            '</a>' +
+            '</div>';
         });
         document.getElementById('productsContainer').innerHTML = productListHtml;
       }

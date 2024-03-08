@@ -10,7 +10,7 @@ import co.first.pilling.user.service.UserVO;
 
 @Controller
 public class HomeController {
-	
+
 	@Autowired
 	private UserService userService;
 
@@ -26,7 +26,6 @@ public class HomeController {
 		return "home/home";
 	}
 
-
 	// 로그인페이지 이동
 	@RequestMapping("login")
 	public String userLogin(Model model) {
@@ -37,12 +36,6 @@ public class HomeController {
 	@RequestMapping("registerpage")
 	public String userRegister(Model model) {
 		return "pilling/menu/register";
-	}
-
-	// 제품상세페이지 이동
-	@RequestMapping("productdetailpage")
-	public String productDetailPage(Model model) {
-		return "pilling/product/productdetailpage";
 	}
 
 	// 마이페이지 이동
@@ -56,7 +49,7 @@ public class HomeController {
 	public String surveyPage(Model model) {
 		return "pilling/notiles/survey/surveypage";
 	}
-  
+
 	// 브랜드소개 페이지 이동
 	@RequestMapping("introduction")
 	public String introduction(Model model) {
@@ -110,5 +103,17 @@ public class HomeController {
 	@RequestMapping("mypurchasedetail")
 	public String mypurchasedetail(Model model) {
 		return "pilling/mypage/mypurchasedetail";
+	}
+
+	// 문의사항 조회 페이지 이동
+	@RequestMapping("questiondetail")
+	public String questiondetail(Model model) {
+		return "pilling/board/questiondetail";
+	}
+
+	// 문의사항 작성 페이지 이동
+	@RequestMapping("questionform")
+	public String questionform(Model model) {
+		return "pilling/board/questionform";
 	}
 }

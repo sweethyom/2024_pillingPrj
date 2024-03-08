@@ -41,6 +41,10 @@ li {
   font-size: 2.25rem;
 }
 
+.bottom-padding {
+  padding-bottom: 3rem !important;
+}
+
 .main-product-name {
   font-size: 5rem;
 }
