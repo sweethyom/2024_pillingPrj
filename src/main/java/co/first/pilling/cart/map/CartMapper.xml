@@ -1,8 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="co.first.pilling.cart.map.CartMapper">
-	<select id="cartSelectList"></select>
-	<insert id="cartInsert"></insert>
+	<select id="cartSelectList">
+		SELECT c.cart_id AS cartId, p.filepath1 AS filepath, p.product_name AS
+		productName, p.product_price AS productPrice, c.cart_prodcnt AS
+		cartProdcnt
+		FROM cart c
+		JOiN product p
+		ON c.product_id = p.product_id
+		WHERE user_no = #{userNo};
+	</select>
+	<insert id="cartInsert">
+		INSERT INTO cart (user_no, product_id, cart_prodcnt)
+		VALUES (#{userNo}, #{productId}, #{cartProdcnt})
+	</insert>
 	<update id="cartUpdate"></update>
-	<delete id="cartDelete"></delete>
+	<delete id="cartDelete">
+		DELETE FROM cart WHERE cart_id = #{cartId}
+	</delete>
 </mapper>

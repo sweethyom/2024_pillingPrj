@@ -13,4 +13,8 @@ public class CartVO {
 	private int productId;
 	private int cartProdcnt;
 	private Date cartDate;
+	
+	private String filepath;
+	private String productName;
+	private int productPrice;
 }

@@ -3,7 +3,7 @@ package co.first.pilling.cart.service;
 import java.util.List;
 
 public interface CartService {
-	List<CartVO> cartSelectList(); // 장바구니 목록 보기
+	List<CartVO> cartSelectList(CartVO vo); // 장바구니 목록 보기
 
 	int cartInsert(CartVO vo); // 장바구니 추가
 
