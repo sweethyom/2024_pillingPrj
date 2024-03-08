@@ -15,14 +15,13 @@
 			<div class="row gx-4 gx-lg-5 align-items-center">
 				<div class="product-detail-image">
 					<img class="product-image-radius card-img-top mb-5 mb-md-0"
-						src="${detail.filepath1 }"
-						alt="..." />
+						src="${detail.filepath1 }" alt="..." />
 				</div>
 				<div class="product-detail-header">
 					<div class="d-flex small mb-1 keywordHeader">
-                              <c:forEach var="keyword" items="${detail.keywordName}">
-                                <a class="keywordName">${keyword}</a>
-                              </c:forEach>
+						<c:forEach var="keyword" items="${detail.keywordName}">
+							<a class="keywordName">${keyword}</a>
+						</c:forEach>
 					</div>
 					<br />
 					<h1 class="sub-product-name">${detail.productName }</h1>
@@ -60,125 +59,129 @@
 		</div>
 	</section>
 	<!-- 직원들 후기 START -->
-	<section class="bottom-padding">
+	<section>
 		<div class="container px-4 px-lg-5 my-5">
-		<h2>Pi1ling 직원들이 체험한 후기</h2>
-		<br>
-		<div class="owl-carousel testimonial-carousel wow fadeInUp"
-			data-wow-delay=".5s">
-			<div class="testimonial-item">
-				<div class="testimonial-content rounded mb-4 p-4">
-					<p class="fs-5 m-0">
-					<h4>와! 이 영양제 실화냐? 가슴이 웅장해진다.</h4>
-					</p>
-				</div>
-				<div class="d-flex align-items-center mb-4"
-					style="padding: 0 0 0 25px">
-					<div class="position-relative">
-						<img src="resources/pilling/img/productimage/employeeimg01.jpg"
-							class="img-fluid rounded-circle py-2" alt="" />
-						<div class="position-absolute" style="top: 33px; left: -25px">
-							<i class="fa fa-quote-left rounded-pill bg-primary text-dark p-3"></i>
+			<h2>Pi1ling 직원들이 체험한 후기</h2>
+			<br>
+			<div class="owl-carousel testimonial-carousel wow fadeInUp"
+				data-wow-delay=".5s">
+				<div class="testimonial-item">
+					<div class="testimonial-content rounded mb-4 p-4">
+						<p class="fs-5 m-0">
+						<h4>와! 이 영양제 실화냐? 가슴이 웅장해진다.</h4>
+						</p>
+					</div>
+					<div class="d-flex align-items-center mb-4"
+						style="padding: 0 0 0 25px">
+						<div class="position-relative">
+							<img src="resources/pilling/img/productimage/employeeimg01.jpg"
+								class="img-fluid rounded-circle py-2" alt="" />
+							<div class="position-absolute" style="top: 33px; left: -25px">
+								<i
+									class="fa fa-quote-left rounded-pill bg-primary text-dark p-3"></i>
+							</div>
+						</div>
+						<div class="ms-3">
+							<h4 class="mb-0">박현웅(쌍둥이) 사원</h4>
+							<p class="mb-1">개발자팀</p>
+							<div class="d-flex">
+								<small class="fas fa-star text-primary me-1"></small> <small
+									class="fas fa-star text-primary me-1"></small> <small
+									class="fas fa-star text-primary me-1"></small> <small
+									class="fas fa-star text-primary me-1"></small> <small
+									class="fas fa-star text-primary me-1"></small>
+							</div>
 						</div>
 					</div>
-					<div class="ms-3">
-						<h4 class="mb-0">박현웅(쌍둥이) 사원</h4>
-						<p class="mb-1">개발자팀</p>
-						<div class="d-flex">
-							<small class="fas fa-star text-primary me-1"></small> <small
-								class="fas fa-star text-primary me-1"></small> <small
-								class="fas fa-star text-primary me-1"></small> <small
-								class="fas fa-star text-primary me-1"></small> <small
-								class="fas fa-star text-primary me-1"></small>
+				</div>
+				<div class="testimonial-item">
+					<div class="testimonial-content rounded mb-4 p-4">
+						<p class="fs-5 m-0">
+						<h3>따봉</h3>
+						</p>
+					</div>
+					<div class="d-flex align-items-center mb-4"
+						style="padding: 0 0 0 25px">
+						<div class="position-relative">
+							<img src="resources/pilling/img/productimage/employeeimg02.jpg"
+								class="img-fluid rounded-circle py-2" alt="" />
+							<div class="position-absolute" style="top: 33px; left: -25px">
+								<i
+									class="fa fa-quote-left rounded-pill bg-primary text-dark p-3"></i>
+							</div>
+						</div>
+						<div class="ms-3">
+							<h4 class="mb-0">손지은 사원</h4>
+							<p class="mb-1">개발자팀</p>
+							<div class="d-flex">
+								<small class="fas fa-star text-primary me-1"></small> <small
+									class="fas fa-star text-primary me-1"></small> <small
+									class="fas fa-star text-primary me-1"></small> <small
+									class="fas fa-star text-primary me-1"></small> <small
+									class="fas fa-star text-primary me-1"></small>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="testimonial-item">
+					<div class="testimonial-content rounded mb-4 p-4">
+						<p class="fs-5 m-0">
+						<h4>이 영양제 먹고, 새 인생을 살고있어요! 마약같아요!</h4>
+						</p>
+					</div>
+					<div class="d-flex align-items-center mb-4"
+						style="padding: 0 0 0 25px">
+						<div class="position-relative">
+							<img src="resources/pilling/img/productimage/employeeimg01.jpg"
+								class="img-fluid rounded-circle py-2" alt="" />
+							<div class="position-absolute" style="top: 33px; left: -25px">
+								<i
+									class="fa fa-quote-left rounded-pill bg-primary text-dark p-3"></i>
+							</div>
+						</div>
+						<div class="ms-3">
+							<h4 class="mb-0">박현우 사원</h4>
+							<p class="mb-1">개발자팀</p>
+							<div class="d-flex">
+								<small class="fas fa-star text-primary me-1"></small> <small
+									class="fas fa-star text-primary me-1"></small> <small
+									class="fas fa-star text-primary me-1"></small> <small
+									class="fas fa-star text-primary me-1"></small> <small
+									class="fas fa-star text-primary me-1"></small>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="testimonial-item">
+					<div class="testimonial-content rounded mb-4 p-4">
+						<p class="fs-5 m-0">
+						<h3>그저 그런 영양제가 아니라, 퓌1일링 영양제입니다.</h3>
+						</p>
+					</div>
+					<div class="d-flex align-items-center mb-4"
+						style="padding: 0 0 0 25px">
+						<div class="position-relative">
+							<img src="resources/pilling/img/productimage/employeeimg03.jpg"
+								class="img-fluid rounded-circle py-2" alt="" />
+							<div class="position-absolute" style="top: 33px; left: -25px">
+								<i
+									class="fa fa-quote-left rounded-pill bg-primary text-dark p-3"></i>
+							</div>
+						</div>
+						<div class="ms-3">
+							<h4 class="mb-0">이효미 팀장</h4>
+							<p class="mb-1">개발자팀</p>
+							<div class="d-flex">
+								<small class="fas fa-star text-primary me-1"></small> <small
+									class="fas fa-star text-primary me-1"></small> <small
+									class="fas fa-star text-primary me-1"></small> <small
+									class="fas fa-star text-primary me-1"></small> <small
+									class="fas fa-star text-primary me-1"></small>
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-			<div class="testimonial-item">
-				<div class="testimonial-content rounded mb-4 p-4">
-					<p class="fs-5 m-0">
-					<h3>따봉</h3>
-					</p>
-				</div>
-				<div class="d-flex align-items-center mb-4"
-					style="padding: 0 0 0 25px">
-					<div class="position-relative">
-						<img src="resources/pilling/img/productimage/employeeimg02.jpg"
-							class="img-fluid rounded-circle py-2" alt="" />
-						<div class="position-absolute" style="top: 33px; left: -25px">
-							<i class="fa fa-quote-left rounded-pill bg-primary text-dark p-3"></i>
-						</div>
-					</div>
-					<div class="ms-3">
-						<h4 class="mb-0">손지은 사원</h4>
-						<p class="mb-1">개발자팀</p>
-						<div class="d-flex">
-							<small class="fas fa-star text-primary me-1"></small> <small
-								class="fas fa-star text-primary me-1"></small> <small
-								class="fas fa-star text-primary me-1"></small> <small
-								class="fas fa-star text-primary me-1"></small> <small
-								class="fas fa-star text-primary me-1"></small>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="testimonial-item">
-				<div class="testimonial-content rounded mb-4 p-4">
-					<p class="fs-5 m-0">
-					<h4>이 영양제 먹고, 새 인생을 살고있어요! 마약같아요!</h4>
-					</p>
-				</div>
-				<div class="d-flex align-items-center mb-4"
-					style="padding: 0 0 0 25px">
-					<div class="position-relative">
-						<img src="resources/pilling/img/productimage/employeeimg01.jpg"
-							class="img-fluid rounded-circle py-2" alt="" />
-						<div class="position-absolute" style="top: 33px; left: -25px">
-							<i class="fa fa-quote-left rounded-pill bg-primary text-dark p-3"></i>
-						</div>
-					</div>
-					<div class="ms-3">
-						<h4 class="mb-0">박현우 사원</h4>
-						<p class="mb-1">개발자팀</p>
-						<div class="d-flex">
-							<small class="fas fa-star text-primary me-1"></small> <small
-								class="fas fa-star text-primary me-1"></small> <small
-								class="fas fa-star text-primary me-1"></small> <small
-								class="fas fa-star text-primary me-1"></small> <small
-								class="fas fa-star text-primary me-1"></small>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="testimonial-item">
-				<div class="testimonial-content rounded mb-4 p-4">
-					<p class="fs-5 m-0">
-					<h3>그저 그런 영양제가 아니라, 퓌1일링 영양제입니다.</h3>
-					</p>
-				</div>
-				<div class="d-flex align-items-center mb-4"
-					style="padding: 0 0 0 25px">
-					<div class="position-relative">
-						<img src="resources/pilling/img/productimage/employeeimg03.jpg"
-							class="img-fluid rounded-circle py-2" alt="" />
-						<div class="position-absolute" style="top: 33px; left: -25px">
-							<i class="fa fa-quote-left rounded-pill bg-primary text-dark p-3"></i>
-						</div>
-					</div>
-					<div class="ms-3">
-						<h4 class="mb-0">이효미 팀장</h4>
-						<p class="mb-1">개발자팀</p>
-						<div class="d-flex">
-							<small class="fas fa-star text-primary me-1"></small> <small
-								class="fas fa-star text-primary me-1"></small> <small
-								class="fas fa-star text-primary me-1"></small> <small
-								class="fas fa-star text-primary me-1"></small> <small
-								class="fas fa-star text-primary me-1"></small>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
 		</div>
 	</section>
 	<!-- 직원들 후기 END -->
@@ -203,8 +206,7 @@
 				</div>
 				<div class="product-detail-image">
 					<img class="product-image-radius card-img-top mb-5 mb-md-0"
-						src="${detail.filepath2 }"
-						alt="..." />
+						src="${detail.filepath2 }" alt="..." />
 				</div>
 			</div>
 		</div>
@@ -255,32 +257,26 @@
 				</div>
 			</div>
 		</div>
-		<div class="container px-4 px-lg-5 my-5 bg-light rounded p-4">
-			<h4 class="mb-4">Leave A Comment</h4>
-			<form action="#">
-				<div class="row g-4">
-					<div class="col-lg-6">
-						<input type="text" class="form-control py-3"
-							placeholder="Full Name">
-					</div>
-					<div class="col-lg-6">
-						<input type="email" class="form-control py-3"
-							placeholder="Email Address">
-					</div>
-					<div class="col-12">
-						<textarea class="form-control" name="textarea" id="" cols="30"
-							rows="7" placeholder="Write Your Comment Here"></textarea>
-					</div>
-					<div class="col-12">
-						<button class="form-control btn py-3" type="button">작성완료</button>
-					</div>
-				</div>
-			</form>
+		<!-- Pagination START -->
+		<div class="container productpurchase-pagination">
+			<ul class="pagination justify-content-center">
+				<li class="page-item"><a class="page-link" href="#">이전</a></li>
+				<!-- 첫페이지에선 없음/시작인덱스 -10 -->
+				<li class="page-item"><a class="page-link" href="#"> 1</a></li>
+				<li class="page-item"><a class="page-link" href="#"> 2</a></li>
+				<li class="page-item"><a class="page-link" href="#"> 3</a></li>
+				<li class="page-item"><a class="page-link" href="#"> 4</a></li>
+				<li class="page-item"><a class="page-link" href="#"> 5</a></li>
+				<li class="page-item"><a class="page-link" href="#">다음</a></li>
+				<!-- 마지막인덱스 +10 /마지막 인덱스에서는 없음 -->
+			</ul>
 		</div>
+		<!-- Pagination END  -->
 	</section>
 
+
 	<!-- 제품 후기 END  -->
-	
+
 	<!-- 장바구니에 제품 번호를 넘겨줄 히든폼 
   <div>
     <form id="cartform" action="addcart" method="post">

@@ -166,7 +166,7 @@ li {
 
 /* surveypage 에서 사용 하는 것들 START */
 .survey-container {
-  padding: 5%;
+  padding: 2%;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -184,10 +184,12 @@ li {
   flex-direction: column;
   -webkit-box-align: center;
   align-items: center;
-  margin: 0.5rem 0px;
-  padding: 1rem;
+  margin: 1rem 0px;
   transition: border-color 0.8s ease 0s;
-  padding: 3rem;
+  padding: 2rem;
+  text-align: left;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .product-image-radius {
@@ -195,5 +197,32 @@ li {
   border-top-right-radius: 9px;
   border-bottom-left-radius: 9px;
   border-bottom-right-radius: 9px;
+}
+
+.btn-white {
+  color: black;
+  background-color: white;
+  border-color: #ddd;
+  font-size: 18px; /* 버튼의 글자 크기를 조정 */
+  padding: 10px 24px; /* 버튼의 패딩을 조정하여 크기를 조절 */
+}
+
+.btn-white:hover,
+.btn-white:focus {
+  color: white;
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+.btn-white.active {
+  color: white;
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+.btn-group-toggle > .btn input[type='radio'] {
+  position: absolute;
+  clip: rect(0, 0, 0, 0);
+  pointer-events: none;
 }
 /* Hyunwoo Style END */
