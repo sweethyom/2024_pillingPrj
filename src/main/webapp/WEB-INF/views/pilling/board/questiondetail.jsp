@@ -20,26 +20,31 @@ td {
 	margin: auto;
 	text-align: center;
 }
+
+.td-r {
+	vertical-align: top;
+	text-align: right;
+}
 </style>
 <body>
 	<div class="container-xxl py-5">
 		<!-- 문의사항 조회 START -->
 		<div class="card-body col-12 div-center pl-5 pr-5">
 			<div class="row g-5">
-				<h3 style="vertical-align: bottom;" class="px-2">ㅇㅁㅇㄻㄴㄹ 할까요?</h3>
+				<h3 style="vertical-align: bottom;" class="px-2">${question.questionTitle }</h3>
 				<div style="height: 0.3rem; background-color: #fdf001;"
 					class="mb-0 mt-0"></div>
 				<table class="table mb-0 mt-0">
 					<tbody>
 						<tr>
-							<td colspan="2" width="500"><small>작성자 <a>유저이름</a></small></td>
-							<td style="text-align: right;"><small>조회수 <a>212</a></small></td>
+							<td colspan="2" width="500"><small>작성자 <a>${question.userId }</a></small></td>
+							<td style="text-align: right;"><small>조회수 <a>${question.questionHit }</a></small></td>
 						</tr>
 						<tr>
-							<td colspan="3"><small>작성일 22/11/11</small></td>
+							<td colspan="3"><small>작성일 ${question.questionDate }</small></td>
 						</tr>
 						<tr>
-							<td colspan="3"><div class="mt-3 mb-5">많이많이많이먹어도되나요??</div></td>
+							<td colspan="3"><div class="mt-3 mb-5">${question.questionContent }</div></td>
 						</tr>
 					</tbody>
 				</table>
@@ -56,74 +61,97 @@ td {
 				class="btn btn-primary border-0 rounded-pill px-4 py-3"
 				onclick="location.href='customerservice'">목록</button>
 			<!-- 글 작성자와 로그인한 작성자가 일치할 경우 -->
-			<c:if test="${userNo eq userNo}"> 
+			<c:if test="${question.userId eq userId}"> 
 	            	&nbsp;&nbsp;
 			<button type="button"
-					class="btn btn-primary border-0 rounded-pill px-4 py-3">수정</button>
+					class="btn btn-primary border-0 rounded-pill px-4 py-3"
+					onclick="questionEditForm()">수정</button>
 			</c:if>
 			<!-- 글 작성자와 로그인한 작성자가 일치할 경우 or ADMIN 권한을 가질 경우 -->
-			<c:if test="${author eq 'ADMIN'}"> 
+			<c:if test="${(author eq 'ADMIN') or (question.userId eq userId)}"> 
 	            	&nbsp;&nbsp;
 			<button type="button"
-					class="btn btn-primary border-0 rounded-pill px-4 py-3">삭제</button>
+					class="btn btn-primary border-0 rounded-pill px-4 py-3"
+					onclick="questionDelete()">삭제</button>
 			</c:if>
 		</div>
 		<!-- 버튼 END -->
 		<!-- 문의사항 댓글 START -->
-		<div>
-			<table style="border-collapse: separate; border-spacing: 10px 10px;">
-				<tr>
-					<td style="vertical-align: top;" class="pt-1">
-						<div class="rounded py-2 px-3" style="background-color:#3faf08; color:white;">Pi1ling</div>
-					</td>
-					<td class="px-2">복용법을 잘 참고해서 드세요.복용법을 잘 참고해서 드세요.복용법을 잘 참고해서
-						드세요.복용법을 잘 참고해서 드세요.복용법을 잘 참고해서 드세요.복용법을 잘 참고해서 드세요.복용법을 잘 참고해서
-						드세요.복용법을 잘 참고해서 드세요.복용법을 잘 참고해서 드세요.복용법을 잘 참고해서 드세요.복용법을 잘 참고해서
-						드세요.복용법을 잘 참고해서 드세요.복용법을 잘 참고해서 드세요.복용법을 잘 참고해서 드세요.복용법을 잘 참고해서
-						드세요.복용법을 잘 참고해서 드세요.복용법을 잘 참고해서 드세요.복용법을 잘 참고해서 드세요.복용법을 잘 참고해서
-						드세요.복용법을 잘 참고해서 드세요.복용법을 잘 참고해서 드세요.복용법을 잘 참고해서 드세요.복용법을 잘 참고해서
-						드세요.복용법을 잘 참고해서 드세요.복용법을 잘 참고해서 드세요.복용법을 잘 참고해서 드세요.복용법을 잘 참고해서
-						드세요.복용법을 잘 참고해서 드세요.복용법을 잘 참고해서 드세요.복용법을 잘 참고해서 드세요.복용법을 잘 참고해서
-						드세요.복용법을 잘 참고해서 드세요.복용법을 잘 참고해서 드세요.복용법을 잘 참고해서 드세요.</td>
-				</tr>
-				<tr>
-					<td style="vertical-align: top;" class="pt-1">
-						<div class="rounded py-2 px-3" style="background-color:#3faf08; color:white;">Pi1ling</div>
-					</td>
-					<td class="px-2">복용법을 잘 참고해서 드세요.복용법을 잘 참고해서 드세요.</td>
-				</tr>
-				<tr>
-					<td style="vertical-align: top;" class="pt-1">
-						<div class="rounded py-2 px-3" style="background-color:#3faf08; color:white;">Pi1ling</div>
-					</td>
-					<td class="px-2">복용법을 잘 참고해서 드세요.복용법을 잘 참고해서 드세요.복용법을 잘 참고해서
-						드세요.복용법을 잘 참고해서 드세요.복용법을 잘 참고해서 드세요.복용법을 잘 참고해서 드세요.복용법을 잘 참고해서
-						드세요.복용법을 잘 참고해서 드세요.복용법을 잘 참고해서 드세요.복용법을 잘 참고해서 드세요.복용법을 잘 참고해서
-						드세요.복용법을 잘 참고해서 드세요.복용법을 잘 참고해서 드세요.복용법을 잘 참고해서 드세요.복용법을 잘 참고해서
-						드세요.복용법을 잘 참고해서 드세요.복용법을 잘 참고해서 드세요.복용법을 잘 참고해서 드세요.</td>
-				</tr>
-			</table>
-		</div>
+		<c:if test="${not empty questionreply}">
+			<c:forEach items="${questionreply}" var="qr">
+				<div>
+					<table
+						style="width: 100%; border-collapse: separate; border-spacing: 10px 10px;"
+						class="mb-0">
+						<tr>
+							<td style="vertical-align: top; width: 7%;" class="pt-1">
+								<div class="rounded py-2 px-3"
+									style="background-color: #3faf08; color: white;">Pi1ling</div>
+							</td>
+							<td class="px-2"><div style="width: 100%;" class="mb-1">${qr.questionreplyContent }</div>
+								<div align="right">
+									<!-- ADMIN 권한을 가질 경우에만 답변 삭제가 보이게 한다.-->
+									<c:if test="${author eq 'ADMIN'}">
+										<form action="questionreplydelete" method="post">
+											<input type="hidden" name="questionreplyId" value="${qr.questionreplyId }">
+											<input type="hidden" name="questionId" value=${question.questionId }>
+											<small><button type="submit" style="background-color:white; border: none;">삭제</button></small>
+										</form>
+									</c:if>
+									<small>${qr.questionreplyDate }</small>
+								</div></td>
+						</tr>
+					</table>
+				</div>
+			</c:forEach>
+		</c:if>
 		<!-- 문의사항 댓글 END -->
 
 		<!-- 문의사항 댓글 작성 STRAT -->
 		<!-- AMDIN 권한을 가진 사람에게만 보인다. -->
-		<div class="bg-light rounded p-4 my-4">
-			<h4 class="mb-4">Leave A Reply</h4>
-			<form action="#">
-				<div class="row g-4">
-					<div class="col-12">
-						<textarea class="form-control" name="textarea" id="" cols="30"
-							rows="4" placeholder="답변 내용을 입력해주세요." required="required"></textarea>
+		<c:if test="${author eq 'ADMIN'}">
+			<div class="bg-light rounded p-4 my-4">
+				<h4 class="mb-4">Leave A Reply</h4>
+				<form>
+					<div class="row g-4">
+						<div class="col-12">
+							<textarea class="form-control" name="qrContent" id="qrContent"
+								cols="30" rows="4" placeholder="답변 내용을 입력해주세요."
+								required="required"></textarea>
+						</div>
+						<div class="col-12">
+							<button class="form-control btn-primary border-0 py-3"
+								type="button" onclick=questionreplyInsert()>작성완료</button>
+						</div>
 					</div>
-					<div class="col-12">
-						<button class="form-control btn-primary border-0 py-3"
-							type="submit">작성완료</button>
-					</div>
-				</div>
+				</form>
+			</div>
+		</c:if>
+		<!-- 댓글 작성 END -->
+
+		<!-- 문의사항id를 수정, 삭제로 보내줄 히든폼 -->
+		<div>
+			<form id="frm" method="post">
+				<input type="hidden" id="questionId" name="questionId"
+					value=${question.questionId }> <input type="hidden"
+					id="questionreplyContent" name="questionreplyContent">
 			</form>
 		</div>
-		<!-- 댓글 작성 END -->
+		<script type="text/javascript">
+			function questionEditForm() {
+				frm.action = "questioneditform";
+				frm.submit();
+			}
+			function questionDelete() {
+				frm.action = "questiondelete";
+				frm.submit();
+			}
+			function questionreplyInsert() {
+				frm.action = "questionreplyinsert";
+				document.getElementById("questionreplyContent").value = document.getElementById("qrContent").value;
+				frm.submit();
+			}
+		</script>
 	</div>
 </body>
 </html>
