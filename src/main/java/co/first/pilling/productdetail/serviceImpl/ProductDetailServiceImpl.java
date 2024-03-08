@@ -20,4 +20,8 @@ public class ProductDetailServiceImpl implements ProductDetailService {
 		return pdm.productDetail(productId);
 	}
 
+	@Override
+	public String productKeywordMapping(int productId) {
+		return pdm.productKeywordMapping(productId);
+	}
 }

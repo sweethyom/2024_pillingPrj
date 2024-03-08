@@ -10,18 +10,19 @@
 </head>
 <body>
 	<!-- Product section-->
-	<section class="py-5 boundary-border">
+	<section class="bottom-padding boundary-border">
 		<div class="container px-4 px-lg-5 my-5">
 			<div class="row gx-4 gx-lg-5 align-items-center">
 				<div class="product-detail-image">
 					<img class="product-image-radius card-img-top mb-5 mb-md-0"
-						src="resources/pilling/img/productimage/vitamincSample.jpeg"
+						src="${detail.filepath1 }"
 						alt="..." />
 				</div>
 				<div class="product-detail-header">
 					<div class="d-flex small mb-1 keywordHeader">
-						<a class="keywordName">피부 건강</a> <a class="keywordName">피로 회복</a>
-						<a class="keywordName">노화&항산화 도움</a>
+                              <c:forEach var="keyword" items="${detail.keywordName}">
+                                <a class="keywordName">${keyword}</a>
+                              </c:forEach>
 					</div>
 					<br />
 					<h1 class="sub-product-name">${detail.productName }</h1>
@@ -32,7 +33,10 @@
 							class="fa-solid fa-check">&nbsp;&nbsp;</i>${detail.productDescription2 }</li>
 						<li class="product-discription-list"><i
 							class="fa-solid fa-check">&nbsp;&nbsp;</i>${detail.productDescription3 }</li>
-						<li></li>
+						<li class="product-discription-list"><i
+							class="fa-solid fa-check">&nbsp;&nbsp;</i>${detail.productDescription4 }</li>
+						<li class="product-discription-list"><i
+							class="fa-solid fa-check">&nbsp;&nbsp;</i>${detail.productDescription5 }</li>
 					</ul>
 					<div class="fs-5 mb-5">
 						<span><fmt:formatNumber value="${detail.productPrice }"
@@ -56,9 +60,10 @@
 		</div>
 	</section>
 	<!-- 직원들 후기 START -->
-	<section class="mid-line">
+	<section class="bottom-padding">
+		<div class="container px-4 px-lg-5 my-5">
 		<h2>Pi1ling 직원들이 체험한 후기</h2>
-		<br> <br> <br>
+		<br>
 		<div class="owl-carousel testimonial-carousel wow fadeInUp"
 			data-wow-delay=".5s">
 			<div class="testimonial-item">
@@ -174,11 +179,12 @@
 				</div>
 			</div>
 		</div>
+		</div>
 	</section>
 	<!-- 직원들 후기 END -->
 
 	<!-- 상세 콘텐츠 START -->
-	<section class="py-5 boundary-border">
+	<section class="bottom-padding boundary-border">
 		<div class="container px-4 px-lg-5 my-5">
 			<div class="row gx-4 gx-lg-5 align-items-center">
 				<div class="product-detail-header">
@@ -189,25 +195,25 @@
 								<td width="20%" align="center"><img
 									src="https://cdn.pillyze.io/icons/intake_time/breakfast.png"
 									alt="아침 그림"></td>
-								<td>여기 복용법</td>
-								<td width="20%">1정</td>
+								<td>${detail.takingMethod }</td>
+								<td width="20%">${detail.doseTime }</td>
 							</tr>
 						</table>
 					</div>
 				</div>
 				<div class="product-detail-image">
 					<img class="product-image-radius card-img-top mb-5 mb-md-0"
-						src="resources/pilling/img/productimage/vitamincSample.jpeg"
+						src="${detail.filepath2 }"
 						alt="..." />
 				</div>
 			</div>
 		</div>
 	</section>
 	<!-- 상세 콘텐츠 END -->
-	<!-- 리뷰 페이지 START -->
-	<section class="mid-line">
-		<div class="bg-light rounded p-4">
-			<h4 class="mb-4">상품 후기</h4>
+	<!-- 제품 후기 페이지 START -->
+	<section class="bottom-padding">
+		<div class="container px-4 px-lg-5 my-5 bg-light rounded p-4">
+			<h4 class="mb-4">제품 후기</h4>
 			<div class="p-4 bg-white rounded mb-4">
 				<div class="row g-4">
 					<div class="col-3">
@@ -216,8 +222,6 @@
 					<div class="col-9">
 						<div class="d-flex justify-content-between">
 							<h5>James Boreego</h5>
-							<a href="#" class="link-hover text-body fs-6"><i
-								class="fas fa-long-arrow-alt-right me-1"></i> Reply</a>
 						</div>
 						<small class="text-body d-block mb-3"><i
 							class="fas fa-calendar-alt me-1"></i> Dec 9, 2024</small>
@@ -238,8 +242,6 @@
 					<div class="col-9">
 						<div class="d-flex justify-content-between">
 							<h5>James Boreego</h5>
-							<a href="#" class="link-hover text-body fs-6"><i
-								class="fas fa-long-arrow-alt-right me-1"></i> Reply</a>
 						</div>
 						<small class="text-body d-block mb-3"><i
 							class="fas fa-calendar-alt me-1"></i> Dec 9, 2024</small>
@@ -253,7 +255,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="bg-light rounded p-4 my-4">
+		<div class="container px-4 px-lg-5 my-5 bg-light rounded p-4">
 			<h4 class="mb-4">Leave A Comment</h4>
 			<form action="#">
 				<div class="row g-4">
@@ -276,14 +278,17 @@
 			</form>
 		</div>
 	</section>
-	<!-- 장바구니에 상품 번호를 넘겨줄 히든폼 
+
+	<!-- 제품 후기 END  -->
+	
+	<!-- 장바구니에 제품 번호를 넘겨줄 히든폼 
   <div>
     <form id="cartform" action="addcart" method="post">
     	<input type="hidden" id="productId" name="productId">
     </form>
   </div>
   -->
-	<!-- 장바구니에 상품 번호를 넘겨줄 함수
+	<!-- 장바구니에 제품 번호를 넘겨줄 함수
   <script>
   	function addCart(id){
   		document.getElementById("productId").value=id;

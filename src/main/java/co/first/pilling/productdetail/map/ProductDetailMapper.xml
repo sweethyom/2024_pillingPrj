@@ -6,4 +6,15 @@
 	<select id="productDetail">
 		SELECT * FROM product WHERE product_id = #{productId};
 	</select>
+	
+	<!-- 제품테이블의 제품ID와 mapping 테이블 및 키워드 테이블을 매핑해서 각 제품 ID에 키워드명 및 키워드ID 연결  -->
+	<select id="productKeywordMapping" resultType="String">
+	    SELECT GROUP_CONCAT(k.keyword_name SEPARATOR ', ') AS keywords
+	    FROM product p
+	    LEFT JOIN keyword_mapping km ON p.product_id = km.product_id
+	    LEFT JOIN keyword k ON km.keyword_id = k.keyword_id
+	    WHERE p.product_id = #{productId}
+	    GROUP BY p.product_id;
+	</select>
+
 </mapper>
