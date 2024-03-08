@@ -117,6 +117,7 @@
                         name="productDescription4"
                         class="form-control"
                         placeholder="키포인트(설명)을 입력해주세요."
+                        required
                       />
                     </td>
                   </tr>
@@ -130,6 +131,7 @@
                         name="productDescription5"
                         class="form-control"
                         placeholder="키포인트(설명)을 입력해주세요."
+                        required
                       />
                     </td>
                   </tr>
