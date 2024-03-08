@@ -75,6 +75,7 @@
                         name="productDescription1"
                         class="form-control"
                         placeholder="키포인트(설명)을 입력해주세요."
+                        required
                       />
                     </td>
                   </tr>
@@ -88,6 +89,7 @@
                         name="productDescription2"
                         class="form-control"
                         placeholder="키포인트(설명)을 입력해주세요."
+                        required
                       />
                     </td>
                   </tr>
@@ -101,6 +103,7 @@
                         name="productDescription3"
                         class="form-control"
                         placeholder="키포인트(설명)을 입력해주세요."
+                        required
                       />
                     </td>
                   </tr>
@@ -188,15 +191,29 @@
                   <tr>
                     <td width="200" style="background-color: #f5f6f6">메인이미지 첨부</td>
                     <td>
-                      <input type="file" class="form-control" id="productMainImage" name="productMainImage" />
+                      <input
+                        type="file"
+                        class="form-control"
+                        id="productMainImage"
+                        name="productMainImage"
+                        accept="image/gif, image/jpeg, image/png"
+                        required
+                      />
                     </td>
                   </tr>
-                  <!--                   <tr>
+                  <tr>
                     <td width="200" style="background-color: #f5f6f6">서브이미지 첨부</td>
                     <td>
-                      <input type="file" class="form-control" name="productSubImage" multiple="multiple" />
+                      <input
+                        type="file"
+                        class="form-control"
+                        id="productSubImage"
+                        name="productSubImage"
+                        accept="image/gif, image/jpeg, image/png"
+                        required
+                      />
                     </td>
-                  </tr> -->
+                  </tr>
                 </table>
               </div>
               <!-- 제품 키워드선택 INPUT -->

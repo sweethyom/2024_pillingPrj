@@ -26,12 +26,6 @@ public class HomeController {
 		return "home/home";
 	}
 
-	// 제품구매리스트로 이동
-	@RequestMapping("productpurchase")
-	public String productPurchase(Model model) {
-		return "pilling/menu/productpurchase";
-	}
-
 
 	// 로그인페이지 이동
 	@RequestMapping("login")

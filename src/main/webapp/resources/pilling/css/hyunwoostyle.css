@@ -186,4 +186,10 @@ li {
   padding: 3rem;
 }
 
+.product-image-radius {
+  border-top-left-radius: 9px;
+  border-top-right-radius: 9px;
+  border-bottom-left-radius: 9px;
+  border-bottom-right-radius: 9px;
+}
 /* Hyunwoo Style END */
