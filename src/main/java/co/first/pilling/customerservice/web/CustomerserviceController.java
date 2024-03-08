@@ -225,6 +225,21 @@ public class CustomerserviceController {
 	@RequestMapping("questionreplyinsert")
 	public String questionreplyinsert(QuestionreplyVO vo, Model model) {
 		model.addAttribute("questionreply", qrs.questionreplyInsert(vo));
-		return "redirect:/questiondetail";
+		return "redirect:/questionreplyreload?questionId=" + vo.getQuestionId();
+	}
+	
+	// 문의사항 댓글 삭제
+	@RequestMapping("questionreplydelete")
+	public String questionreplydelete(QuestionreplyVO vo, Model model) {
+		model.addAttribute(qrs.questionreplyDelete(vo));
+		return "redirect:/questionreplyreload?questionId=" + vo.getQuestionId();
+	}
+	
+	// 문의 댓글 삽입/삭제 후 페이지 다시 불러오기
+	@RequestMapping("questionreplyreload")
+	public String questionreplyreload(QuestionVO vo, Model model) {
+		model.addAttribute("question", qs.questionDetail(vo));
+		model.addAttribute("questionreply", qrs.questionreplySelectList(vo));
+		return "pilling/board/questiondetail";
 	}
 }

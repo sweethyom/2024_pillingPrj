@@ -92,8 +92,12 @@ td {
 								<div align="right">
 									<!-- ADMIN 권한을 가질 경우에만 답변 삭제가 보이게 한다.-->
 									<c:if test="${author eq 'ADMIN'}">
-										<small>삭제</small>&nbsp;&nbsp;
-						</c:if>
+										<form action="questionreplydelete" method="post">
+											<input type="hidden" name="questionreplyId" value="${qr.questionreplyId }">
+											<input type="hidden" name="questionId" value=${question.questionId }>
+											<small><button type="submit" style="background-color:white; border: none;">삭제</button></small>
+										</form>
+									</c:if>
 									<small>${qr.questionreplyDate }</small>
 								</div></td>
 						</tr>
@@ -111,9 +115,9 @@ td {
 				<form>
 					<div class="row g-4">
 						<div class="col-12">
-							<textarea class="form-control" name="qrContent"
-								id="qrContent" cols="30" rows="4"
-								placeholder="답변 내용을 입력해주세요." required="required"></textarea>
+							<textarea class="form-control" name="qrContent" id="qrContent"
+								cols="30" rows="4" placeholder="답변 내용을 입력해주세요."
+								required="required"></textarea>
 						</div>
 						<div class="col-12">
 							<button class="form-control btn-primary border-0 py-3"
@@ -129,8 +133,8 @@ td {
 		<div>
 			<form id="frm" method="post">
 				<input type="hidden" id="questionId" name="questionId"
-					value=${question.questionId }>
-				<input type="hidden" id="questionreplyContent" name="questionreplyContent">
+					value=${question.questionId }> <input type="hidden"
+					id="questionreplyContent" name="questionreplyContent">
 			</form>
 		</div>
 		<script type="text/javascript">

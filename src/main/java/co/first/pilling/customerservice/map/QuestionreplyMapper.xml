@@ -14,6 +14,6 @@
 		
 	</update>
 	<delete id="questionreplyDelete">
-		ROM questionreply WHERE questionreply_id = #{questionreplyId}
+		DELETE FROM questionreply WHERE questionreply_id = #{questionreplyId}
 	</delete>
 </mapper>
