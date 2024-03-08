@@ -34,4 +34,11 @@
 	<select id="selectCount">
 		SELECT COUNT(*) AS TOTAL_RECORD_COUNT FROM notice
 	</select>
+	<update id="noticeUpdateHit">
+		UPDATE notice
+		<set>
+			notice_hit = notice_hit+1
+		</set>
+		WHERE notice_id = #{noticeId}
+	</update>
 </mapper>

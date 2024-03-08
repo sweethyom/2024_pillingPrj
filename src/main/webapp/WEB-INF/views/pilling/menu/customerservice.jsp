@@ -111,8 +111,7 @@
 	</div>
 	<div class="container-xxl py-5">
 		<div class="container text-center">
-			<h4 class="display-6 text-dark mb-4 animated slideInDown">문 의 사
-				항</h4>
+			<h4 class="display-6 text-dark mb-4 animated slideInDown">문 의 사 항</h4>
 			<div class="row g-5">
 				<table class="table table-bordered table-hover">
 					<thead>
@@ -129,7 +128,7 @@
 								<tr onclick="questionDetail(${q.questionId})">
 									<td>${q.questionId}</td>
 									<td>${q.questionTitle}</td>
-									<td>${q.questionName}</td>
+									<td>${q.userId}</td>
 									<td>${q.questionDate}</td>
 								</tr>
 							</c:forEach>
@@ -143,19 +142,38 @@
 				</table>
 			</div>
 		</div>
+		<!-- 페이지네이션 START -->
 		<div class="container mt-3">
 			<ul class="pagination justify-content-center">
-				<li class="page-item"><a class="page-link" href="#">Previous</a></li>
-				<!-- 첫페이지에선 없음/시작인덱스 -10 -->
-				<li class="page-item"><a class="page-link" href="#"> 1</a>
-				<li class="page-item"><a class="page-link" href="#"> 2</a>
-				<li class="page-item"><a class="page-link" href="#"> 3</a>
-				<li class="page-item"><a class="page-link" href="#"> 4</a>
-				<li class="page-item"><a class="page-link" href="#"> 5</a></li>
-				<li class="page-item"><a class="page-link" href="#">Next</a></li>
-				<!-- 마지막인덱스 +10 /마지막 인덱스에서는 없음 -->
+				<!-- c:if 로 이전 페이지가 없으면 이전 버튼이 비활성화되게 한다. -->
+				<c:if test="${qp.firstPageNoOnPageList <= 1}">
+					<li class="page-item"><a class="page-link">Previous</a></li>
+				</c:if>
+				<c:if test="${qp.firstPageNoOnPageList > 1}">
+					<li class="page-item"><a class="page-link"
+						href="javascript:void(0);"
+						onclick="callPageQuestion(${qp.firstPageNoOnPageList}-1);">Previous</a></li>
+				</c:if>
+				
+				<!-- 페이지네이션 -->
+				<c:forEach var="index" begin="${qp.firstPageNoOnPageList }"
+					end="${qp.lastPageNoOnPageList }" step="1">
+					<li class="page-item"><a class="page-link"
+						href="javascript:void(0);" onclick="callPageQuestion(${index});">${index }</a></li>
+				</c:forEach>
+				
+				<!-- c:if 로 다음 페이지가 없으면 다음 버튼이 비활성화되게 한다. -->
+				<c:if test="${qp.firstPageNoOnPageList eq qp.totalPageCount}">
+					<li class="page-item"><a class="page-link">Next</a></li>
+				</c:if>
+				<c:if test="${qp.firstPageNoOnPageList ne qp.totalPageCount}">
+					<li class="page-item"><a class="page-link"
+						href="javascript:void(0);"
+						onclick="callPageQuestion(${qp.lastPageNoOnPageList}+1);">Next</a></li>
+				</c:if>
 			</ul>
 		</div>
+		<!-- 페이지네이션 END -->
 	</div>
 	<div>
 		<form id="noticefrm" action="noticedetail" method="post">
@@ -166,6 +184,7 @@
 		</form>
 		<form id="pageFrm" action="customerservice" method="post">
 			<input type="hidden" id="currentPageNo" name="currentPageNo">
+			<input type="hidden" id="currentPageNoQuestion" name="currentPageNoQuestion">
 		</form>
 	</div>
 	<script type="text/javascript">
@@ -181,6 +200,11 @@
 		saveScrollPosition();
 		document.getElementById("currentPageNo").value=page;
 		pageFrm.submit();
+	}
+	function callPageQuestion(page){
+		saveScrollPosition();
+		document.getElementById("currentPageNoQuestion").value=page;
+		pageFrmQuestion.submit();
 	}
 	
 	//페이지 이동 전 스크롤 위치를 저장하는 함수

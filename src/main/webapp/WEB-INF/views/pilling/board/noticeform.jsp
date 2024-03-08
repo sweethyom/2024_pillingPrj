@@ -24,7 +24,7 @@ td {
 <body>
 	<div class="container-xxl py-5">
 		<!-- 공지사항 작성 form START -->
-		<form action="noticeinsert" method="post">
+		<form action="noticeinsert" method="post" enctype="multipart/form-data">
 			<div class="card-body col-12 div-center pl-5 pr-5">
 				<div class="row g-5">
 					<h3 style="vertical-align: bottom;" class="px-2">
@@ -47,7 +47,7 @@ td {
 							</tr>
 							<tr>
 								<td width="100"><small>첨부파일</small></td>
-								<td colspan="2"><small><input type="file" id="file"
+								<td colspan="2"><small><input type="file" class="form-control" id="file"
 										name="file"></small></td>
 							</tr>
 						</tbody>
