@@ -9,7 +9,7 @@ public interface QuestionService {
 
 	List<QuestionVO> questionSearchList(QuestionVO vo); // 리스트내 검색
 
-	NoticeVO questionDetail(QuestionVO vo); // 문의 상세보기
+	QuestionVO questionDetail(QuestionVO vo); // 문의 상세보기
 
 	int questionInsert(QuestionVO vo); // 문의 작성
 
@@ -18,4 +18,6 @@ public interface QuestionService {
 	int questionDelete(QuestionVO vo); // 문의 삭제
 
 	PageVO questionSelectCount(); // 문의 페이지네이션
+	
+	int questionUpdateHit(QuestionVO vo); // 문의 조회수 올리기
 }

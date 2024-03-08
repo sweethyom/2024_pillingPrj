@@ -18,4 +18,6 @@ public interface CustomerserviceService {
 	int noticeDelete(NoticeVO vo); // 공지 삭제
 
 	PageVO selectCount();
+	
+	int noticeUpdateHit(NoticeVO vo); // 조회수 1 올리기
 }

@@ -9,7 +9,7 @@ import lombok.Setter;
 @Setter
 public class QuestionVO {
 	private int questionId;
-	private int userId;
+	private int userNo;
 	private String questionTitle;
 	private String questionContent;
 	private LocalDate questionDate;
@@ -18,4 +18,6 @@ public class QuestionVO {
 	
 	private int pageOffset;
 	private int totalPage; //전체 게시글 갯수
+	
+	private String userId;
 }

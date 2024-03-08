@@ -111,16 +111,4 @@ public class HomeController {
 	public String mypurchasedetail(Model model) {
 		return "pilling/mypage/mypurchasedetail";
 	}
-	
-	// 문의사항 조회 페이지 이동
-	@RequestMapping("questiondetail")
-	public String questiondetail(Model model) {
-		return "pilling/board/questiondetail";
-	}
-	
-	// 문의사항 작성 페이지 이동
-	@RequestMapping("questionform")
-	public String questionform(Model model) {
-		return "pilling/board/questionform";
-	}
 }

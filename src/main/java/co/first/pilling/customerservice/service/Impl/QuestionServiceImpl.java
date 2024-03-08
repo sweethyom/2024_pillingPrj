@@ -31,7 +31,7 @@ public class QuestionServiceImpl implements QuestionService {
 	}
 
 	@Override
-	public NoticeVO questionDetail(QuestionVO vo) {
+	public QuestionVO questionDetail(QuestionVO vo) {
 		// TODO Auto-generated method stub
 		return map.questionDetail(vo);
 	}
@@ -58,6 +58,12 @@ public class QuestionServiceImpl implements QuestionService {
 	public PageVO questionSelectCount() {
 		// TODO Auto-generated method stub
 		return map.questionSelectCount();
+	}
+
+	@Override
+	public int questionUpdateHit(QuestionVO vo) {
+		// TODO Auto-generated method stub
+		return map.questionUpdateHit(vo);
 	}
 
 }
