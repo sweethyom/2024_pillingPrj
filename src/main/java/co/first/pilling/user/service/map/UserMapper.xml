@@ -14,9 +14,13 @@
 	user_id, user_pswd, user_lastname, user_firstname, user_birthdate, user_gender, user_email, user_tel, user_addr, user_addrdetail)
 		VALUES(#{userId},#{userPswd},#{userLastname},#{userFirstname},#{userBirthdate},#{userGender},#{userEmail},#{userTel},#{userAddr},#{userAddrdetail})
 </insert>
-<update id="userUpdate"></update>
+<update id="userUpdate">
+	UPDATE `user`
+	SET user_pswd=#{userPswd}, user_tel=#{userTel}, user_eamil=#{userEmail}, user_addr=#{userAddr}, user_addrdetail=#{userAddrdetail}, user_marketingYn=#{userMarketingYn}, user_signout=#{userSignout}
+	WHERE user_id = #{userId}
+	</update>
 <delete id="userDelete"></delete>
-<!-- <select id="userPassword" parameterType="String">
+<select id="userPassword" parameterType="String">
 	SELECT * FROM `user` WHERE USER_ID=#{userId} AND USER_PSWD=#{userPswd}
-</select> -->
+</select>
 </mapper>

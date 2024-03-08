@@ -9,9 +9,12 @@
 </head>
 <style>
 .width-myinfo {
-	margin-left:auto;
-	margin-right:auto;
+	margin-left: auto;
+	margin-right: auto;
 	width: 60%;
+}
+.table-round{
+	border-radius:4px;
 }
 </style>
 <body>
@@ -22,33 +25,41 @@
 			<div class="card-header py-3">
 				<div align="center">
 					<h6 class="m-0">회원정보확인</h6>
-					<p>${userFirstname }님의정보를안전하게 보호하기 위해 비밀번호를 다시 한 번 확인합니다.
+					<p>${userFirstname }님의정보를안전하게
+						보호하기 위해 비밀번호를 다시 한 번 확인합니다.
+						<br>
+						<c:if test="${not empty message}">
+							<label id="message">${message}</label>
+						</c:if>
 				</div>
 			</div>
-			<form action="myinfochk"  method="post">
+			<form action="myinfochk" method="post">
 				<div class="card-body">
 					<div class="width-myinfo table-responsive">
 						<div class="myinfocheck-table">
-								<table class="table table-bordered">
-									<thead>
-											<th width="100" style="background-color: #f5f6f6">비밀번호</th>
-											<td width="300"><input type="password" id="userPswd" name="userPswd"
-												class="form-control" placeholder="비밀번호를 입력하세요."/></td>
-											<c:if test="${not empty message}">
-												<label for="userPswd" id="message">${message }</label>
-											</c:if>
-										<tr>
-									</thead>
-								</table>
-								<!-- Submit button -->
-								<button type="submit" class="btn btn-primary btn-block mb-4">확인</button>
-								&nbsp;&nbsp;&nbsp;&nbsp; <a href="mypage" class="btn btn-primary btn-block mb-4">돌아가기</a>
-							</div>
+							<table class="table table-bordered card">
+								<thead>
+									<th class="password-text" width="100"
+										style="background-color: #f5f6f6;" valign=middle>비밀번호</th>
+									<td width="300"><input type="password" id="userPswd"
+										name="userPswd" class="form-control"
+										placeholder="비밀번호를 입력하세요." /></td>
+									<tr>
+								</thead>
+							</table>
+							<!-- Submit button -->
+							<button type="submit" class="btn btn-primary btn-block mb-4">확인</button>
+							&nbsp;&nbsp;&nbsp;&nbsp; <a href="mypage"
+								class="btn btn-primary btn-block mb-4">돌아가기</a>
+						</div>
 					</div>
 				</div>
 			</form>
 		</div>
 	</div>
-
+	<script>
+		let wrongColor = '#ff0000';
+		message.style.color = wrongColor;
+	</script>
 </body>
 </html>

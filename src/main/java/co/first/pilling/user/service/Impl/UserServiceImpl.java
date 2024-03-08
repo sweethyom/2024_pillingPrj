@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
+import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
 
 import co.first.pilling.user.service.UserService;
@@ -28,7 +29,7 @@ public class UserServiceImpl implements UserService {
 	}
 	
 	@Override
-	public void userInsert(UserVO vo) throws Exception{
+	public void userInsert(UserVO vo) throws DataAccessException{
 		map.userInsert(vo);
 	}
 	
