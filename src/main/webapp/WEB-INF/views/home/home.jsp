@@ -59,7 +59,9 @@
                 나와 가족을 위한 영양제를 모르시겠다구요?<br />
                 그렇다면 pi1ling과 함께하세요!
               </p>
+              <a href="productpurchase">
               <button type="button" class="btn btn-primary border-0 rounded-pill px-4 py-3 mt-5">제품 구매하기</button>
+            </a>
             </div>
           </div>
         </div>
