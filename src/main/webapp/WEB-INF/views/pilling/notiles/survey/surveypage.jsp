@@ -59,9 +59,10 @@
       <h1 class="text-dark display-6">당신의 첫번째 영양제,</h1>
       <h1 class="text-primary mb-0 display-3">Pi1l<span style="color: #3faf08">ing</span><i class="fa-solid fa-pills text-primary ms-2"></i></h1>
       <div class="d-flex survey-question-container">
+        <!-- 설문조사 3개씩 보여주기 첫번째 세트 START -->
         <div class="question-set" id="set1">
           <div class="survey-question-card">
-            <h3 style="text">1. 최근(4주 이내) 피곤함을 느끼거나, 현기증을 느끼신적이 있으십니까?</h3>
+            <h3>1. 최근(4주 이내) 피곤함을 느끼거나, 현기증을 느끼신적이 있으십니까?</h3>
             <br />
             <div data-toggle="buttons" style="gap: 80px; display: flex; justify-content: center">
               <input type="radio" class="btn-check" name="question1" value="yes" id="success-outlined1" autocomplete="off" />
@@ -92,9 +93,12 @@
               <label class="btn btn-outline-danger" for="danger-outlined3">아니오</label>
             </div>
           </div>
+          <button class="btn btn-success next-btn" onclick="showNextSet('set1')" disabled>다음</button>
         </div>
+        <!-- 첫번째 세트 END -->
 
-        <div class="question-set" id="set2" style="display: none">
+        <!-- 설문조사 3개씩 보여주기 두번째 세트 START -->
+        <div class="question-set" id="set2">
           <div class="survey-question-card">
             <h3>4. 최근(4주 이내) 감기에 걸렸거나, 기타 감염 질환에 걸린적이 있으십니까?</h3>
             <br />
@@ -127,10 +131,201 @@
               <label class="btn btn-outline-danger" for="danger-outlined6">아니오</label>
             </div>
           </div>
+          <button class="btn btn-success next-btn" onclick="showNextSet('set2')" disabled>다음</button>
+          <button class="btn btn-secondary prev-btn" onclick="showPrevSet('set2')">이전</button>
         </div>
+        <!-- 두번째 세트 END -->
+        <!-- 설문조사 3개씩 보여주기 세번째 세트 START -->
+        <div class="question-set" id="set3">
+          <div class="survey-question-card">
+            <h3>7. 최근(4주 이내) 눈이 뻑뻑하거나, 눈에 대한 피로감이 크다고 느끼셨습니까?</h3>
+            <br />
+            <div data-toggle="buttons" style="gap: 80px; display: flex; justify-content: center">
+              <input type="radio" class="btn-check" name="question7" value="yes" id="success-outlined7" autocomplete="off" />
+              <label class="btn btn-outline-success" for="success-outlined7">예</label>
+              <input type="radio" class="btn-check" name="question7" id="danger-outlined7" value="no" autocomplete="off" />
+              <label class="btn btn-outline-danger" for="danger-outlined7">아니오</label>
+            </div>
+          </div>
 
-        <button id="nextBtn" onclick="goToNextSet()" class="px-5 py-3 border-2 rounded-pill">다음</button>
+          <div class="survey-question-card">
+            <h3>8. 당뇨병 진단을 받으신적 있거나, 건강검진 상에 혈당이 약간 높다고 나오신적이 있으십니까?</h3>
+            <br />
+            <div data-toggle="buttons" style="gap: 80px; display: flex; justify-content: center">
+              <input type="radio" class="btn-check" name="question8" value="yes" id="success-outlined8" autocomplete="off" />
+              <label class="btn btn-outline-success" for="success-outlined8">예</label>
+              <input type="radio" class="btn-check" name="question8" id="danger-outlined8" value="no" autocomplete="off" />
+              <label class="btn btn-outline-danger" for="danger-outlined8">아니오</label>
+            </div>
+          </div>
+
+          <div class="survey-question-card">
+            <h3>9. 3달 이내, '내가 나이가 조금 들었나?' 라고 느낄 정도로 몸에 대한 변화가 있으셨습니까?</h3>
+            <br />
+            <div data-toggle="buttons" style="gap: 80px; display: flex; justify-content: center">
+              <input type="radio" class="btn-check" name="question9" value="yes" id="success-outlined9" autocomplete="off" />
+              <label class="btn btn-outline-success" for="success-outlined9">예</label>
+              <input type="radio" class="btn-check" name="question9" id="danger-outlined9" value="no" autocomplete="off" />
+              <label class="btn btn-outline-danger" for="danger-outlined9">아니오</label>
+            </div>
+          </div>
+          <button class="btn btn-success next-btn" onclick="showNextSet('set3')" disabled>다음</button>
+          <button class="btn btn-secondary prev-btn" onclick="showPrevSet('set3')">이전</button>
+        </div>
+        <!-- 세번째 세트 END -->
+        <!-- 설문조사 3개씩 보여주기 네번째 세트 START -->
+        <div class="question-set" id="set4">
+          <div class="survey-question-card">
+            <h3>10. 최근(4주 이내) 물건 같은 것을 자주 잃어버린다거나, 할 일을 깜빡하고 놓칠때가 있으십니까?</h3>
+            <br />
+            <div data-toggle="buttons" style="gap: 80px; display: flex; justify-content: center">
+              <input type="radio" class="btn-check" name="question10" value="yes" id="success-outlined10" autocomplete="off" />
+              <label class="btn btn-outline-success" for="success-outlined10">예</label>
+              <input type="radio" class="btn-check" name="question10" id="danger-outlined10" value="no" autocomplete="off" />
+              <label class="btn btn-outline-danger" for="danger-outlined10">아니오</label>
+            </div>
+          </div>
+
+          <div class="survey-question-card">
+            <h3>11. 최근(4주 이내) 배변이상증상(설사, 변비, 복통)등을 겪거나, 복부에 가스가 찬다는 느낌을 자주 받으십니까?</h3>
+            <br />
+            <div data-toggle="buttons" style="gap: 80px; display: flex; justify-content: center">
+              <input type="radio" class="btn-check" name="question11" value="yes" id="success-outlined11" autocomplete="off" />
+              <label class="btn btn-outline-success" for="success-outlined11">예</label>
+              <input type="radio" class="btn-check" name="question11" id="danger-outlined11" value="no" autocomplete="off" />
+              <label class="btn btn-outline-danger" for="danger-outlined11">아니오</label>
+            </div>
+          </div>
+
+          <div class="survey-question-card">
+            <h3>12. 최근(4주 이내) 뼈가 약해졌다는 증상(주로 관절통)이나 느낌(주로 시리다라는 느낌)을 받으신적이 있으십니까?</h3>
+            <br />
+            <div data-toggle="buttons" style="gap: 80px; display: flex; justify-content: center">
+              <input type="radio" class="btn-check" name="question12" value="yes" id="success-outlined12" autocomplete="off" />
+              <label class="btn btn-outline-success" for="success-outlined12">예</label>
+              <input type="radio" class="btn-check" name="question12" id="danger-outlined12" value="no" autocomplete="off" />
+              <label class="btn btn-outline-danger" for="danger-outlined12">아니오</label>
+            </div>
+          </div>
+          <button class="btn btn-success next-btn" onclick="showNextSet('set4')" disabled>다음</button>
+          <button class="btn btn-secondary prev-btn" onclick="showPrevSet('set4')">이전</button>
+        </div>
+        <!-- 네번째 세트 END -->
+
+        <!-- 설문조사 3개씩 보여주기 다섯번째 세트 START -->
+        <div class="question-set" id="set5">
+          <div class="survey-question-card">
+            <h3>
+              13. 최근(4주 이내) 피로감을 평소보다 더 느끼거나, 피부색이 어두워졌다고 생각한 적이 있습니까? 또는 음주를(월 3회 이상) 과하게 하시나요?
+            </h3>
+            <br />
+            <div data-toggle="buttons" style="gap: 80px; display: flex; justify-content: center">
+              <input type="radio" class="btn-check" name="question13" value="yes" id="success-outlined13" autocomplete="off" />
+              <label class="btn btn-outline-success" for="success-outlined13">예</label>
+              <input type="radio" class="btn-check" name="question13" id="danger-outlined13" value="no" autocomplete="off" />
+              <label class="btn btn-outline-danger" for="danger-outlined13">아니오</label>
+            </div>
+          </div>
+
+          <div class="survey-question-card">
+            <h3>14. 최근(4주 이내) 모발이 얇아진 느낌 또는 손톱&발톱이 자주 깨지거나 갈라지시나요?</h3>
+            <br />
+            <div data-toggle="buttons" style="gap: 80px; display: flex; justify-content: center">
+              <input type="radio" class="btn-check" name="question14" value="yes" id="success-outlined14" autocomplete="off" />
+              <label class="btn btn-outline-success" for="success-outlined14">예</label>
+              <input type="radio" class="btn-check" name="question14" id="danger-outlined14" value="no" autocomplete="off" />
+              <label class="btn btn-outline-danger" for="danger-outlined14">아니오</label>
+            </div>
+          </div>
+
+          <div class="survey-question-card">
+            <h3>15. *설문답변자가 남성일시 답변* 최근들어, 성기능이 떨어진다거나, 근력 및 지구력이 감소했다고 느낀적이 있으십니까?</h3>
+            <br />
+            <div data-toggle="buttons" style="gap: 80px; display: flex; justify-content: center">
+              <input type="radio" class="btn-check" name="question15" value="yes" id="success-outlined15" autocomplete="off" />
+              <label class="btn btn-outline-success" for="success-outlined15">예</label>
+              <input type="radio" class="btn-check" name="question15" id="danger-outlined15" value="no" autocomplete="off" />
+              <label class="btn btn-outline-danger" for="danger-outlined15">아니오</label>
+            </div>
+          </div>
+          <button class="btn btn-success next-btn" onclick="showNextSet('set5')" disabled>다음</button>
+          <button class="btn btn-secondary prev-btn" onclick="showPrevSet('set5')">이전</button>
+        </div>
+        <!-- 다섯번째 세트 END -->
+        <!-- 설문조사 3개씩 보여주기 여섯번째 세트 START -->
+        <div class="question-set" id="set6">
+          <div class="survey-question-card">
+            <h3>
+              16. *설문답변자가 여성일시 답변* 최근들어, 여성갱년기 증상(안면홍조, 갑작스런 발열 및 오한, 월경주기 불안정, 기타 등)을 느끼셨습니까?
+            </h3>
+            <br />
+            <div data-toggle="buttons" style="gap: 80px; display: flex; justify-content: center">
+              <input type="radio" class="btn-check" name="question16" value="yes" id="success-outlined16" autocomplete="off" />
+              <label class="btn btn-outline-success" for="success-outlined16">예</label>
+              <input type="radio" class="btn-check" name="question16" id="danger-outlined16" value="no" autocomplete="off" />
+              <label class="btn btn-outline-danger" for="danger-outlined16">아니오</label>
+            </div>
+          </div>
+
+          <div class="survey-question-card">
+            <h3>17. 최근(4주 이내) 운동을 할 때, 쉽게 지치거나 힘들어하십니까?</h3>
+            <br />
+            <div data-toggle="buttons" style="gap: 80px; display: flex; justify-content: center">
+              <input type="radio" class="btn-check" name="question17" value="yes" id="success-outlined17" autocomplete="off" />
+              <label class="btn btn-outline-success" for="success-outlined17">예</label>
+              <input type="radio" class="btn-check" name="question17" id="danger-outlined17" value="no" autocomplete="off" />
+              <label class="btn btn-outline-danger" for="danger-outlined17">아니오</label>
+            </div>
+          </div>
+
+          <div class="survey-question-card">
+            <h3>18. 현재 다이어트 중이지만, 좀 처럼 체지방이 느리게 감소되거나, 감소가 되지 않으십니까?</h3>
+            <br />
+            <div data-toggle="buttons" style="gap: 80px; display: flex; justify-content: center">
+              <input type="radio" class="btn-check" name="question18" value="yes" id="success-outlined18" autocomplete="off" />
+              <label class="btn btn-outline-success" for="success-outlined18">예</label>
+              <input type="radio" class="btn-check" name="question18" id="danger-outlined18" value="no" autocomplete="off" />
+              <label class="btn btn-outline-danger" for="danger-outlined18">아니오</label>
+            </div>
+          </div>
+          <button class="btn btn-success next-btn" onclick="showNextSet('set6')" disabled>다음</button>
+          <button class="btn btn-secondary prev-btn" onclick="showPrevSet('set6')">이전</button>
+        </div>
+        <!-- 여섯번째 세트 END -->
+        <!-- 설문조사 3개씩 보여주기 일곱번째 세트 START -->
+        <div class="question-set" id="set7">
+          <div class="survey-question-card">
+            <h3>19. 현재 임신중이십니까?</h3>
+            <br />
+            <div data-toggle="buttons" style="gap: 80px; display: flex; justify-content: center">
+              <input type="radio" class="btn-check" name="question19" value="yes" id="success-outlined19" autocomplete="off" />
+              <label class="btn btn-outline-success" for="success-outlined19">예</label>
+              <input type="radio" class="btn-check" name="question19" id="danger-outlined19" value="no" autocomplete="off" />
+              <label class="btn btn-outline-danger" for="danger-outlined19">아니오</label>
+            </div>
+          </div>
+
+          <div class="survey-question-card">
+            <h3>20. 마지막 질문입니다. 당신의 성별은?</h3>
+            <br />
+            <div data-toggle="buttons" style="gap: 80px; display: flex; justify-content: center">
+              <input type="radio" class="btn-check" name="question20" value="yes" id="success-outlined20" autocomplete="off" />
+              <label class="btn btn-outline-success" for="success-outlined20">남자</label>
+              <input type="radio" class="btn-check" name="question20" id="danger-outlined20" value="no" autocomplete="off" />
+              <label class="btn btn-outline-danger" for="danger-outlined20">여자</label>
+            </div>
+          </div>
+          <button class="btn btn-success submit-btn" onclick="submitSurvey()" disabled>제출</button>
+        </div>
+        <!-- 여섯번째 세트 END -->
       </div>
+      <!-- 설문조사 취소하고 홈으로 돌아가는 버튼 START -->
+      <div>
+        <a href="home">
+          <button class="btn btn-danger">메인으로 돌아가기</button>
+        </a>
+      </div>
+      <!-- 설문조사 취소하고 홈으로 돌아가는 버튼 END -->
     </div>
 
     <!-- 설문조사 END -->
@@ -151,57 +346,67 @@
 
     <!-- JavaScript START -->
     <script type="text/javascript">
-      let currentSet = 1;
-      let totalSets = 2;
-
-      function goToNextSet() {
-        // 현재 질문 세트를 비활성화하고 다음 세트로 이동
-        let currentSetElement = document.getElementById(`set${currentSet}`);
-        currentSetElement.classList.remove('active'); // 현재 세트 비활성화
-        currentSetElement.style.display = 'none'; // 현재 세트 숨기기
-
-        currentSet += 1; // 다음 세트로 넘어가기
-
-        let nextSetElement = document.getElementById(`set${currentSet}`);
-        if (nextSetElement) {
-          nextSetElement.classList.add('active'); // 다음 세트 활성화
-          nextSetElement.style.display = 'block'; // 다음 세트 표시
-          checkAnswers(currentSet); // 다음 세트에 대한 검사 수행
-        }
-
-        // 모든 세트가 완료되었는지 확인하여 '다음' 버튼의 상태 업데이트
-        if (currentSet >= totalSets) {
-          document.getElementById('nextBtn').style.display = 'none'; // 마지막 세트인 경우 '다음' 버튼 숨기기
-        } else {
-          document.getElementById('nextBtn').disabled = true; // 아직 답변하지 않은 질문이 있다면 버튼 비활성화
+      // 다음 버튼 누르면 다음 질문지 보여주는 함수
+      function showNextSet(currentSetId) {
+        var currentSet = document.getElementById(currentSetId);
+        var nextSet = currentSet.nextElementSibling;
+        if (nextSet && nextSet.classList.contains('question-set')) {
+          // 현재 세트 숨기기
+          currentSet.style.display = 'none';
+          // 다음 세트 보이기
+          nextSet.style.display = 'block';
         }
       }
 
-      function enableNextButtonOnComplete() {
-        document.querySelectorAll('.btn-check').forEach(function (button) {
-          button.addEventListener('change', function () {
-            checkAnswers(currentSet);
-          });
-        });
+      // 이전 버튼 누르면 이전 질문지 보여주는 함수
+      function showPrevSet(currentSetId) {
+        var currentSet = document.getElementById(currentSetId);
+        var prevSet = currentSet.previousElementSibling;
+        if (prevSet && prevSet.classList.contains('question-set')) {
+          // 현재 세트 숨기기
+          currentSet.style.display = 'none';
+          // 이전 세트 보이기
+          prevSet.style.display = 'block';
+        }
       }
 
-      function checkAnswers(setNumber) {
-        let questions = document.querySelectorAll(`#set${setNumber} .survey-question-card`);
+      // 설문지에 답을 했는지 체크하는 함수
+      function checkAnswersAndUpdateButton(setId) {
+        const set = document.getElementById(setId);
+        const questions = set.querySelectorAll('.survey-question-card');
         let allAnswered = true;
 
-        questions.forEach(function (question) {
-          let radios = question.querySelectorAll('input[type="radio"]');
-          let answered = Array.from(radios).some((radio) => radio.checked);
+        questions.forEach((question) => {
+          const inputs = question.querySelectorAll('input[type="radio"]');
+          const answered = Array.from(inputs).some((input) => input.checked);
           if (!answered) {
             allAnswered = false;
           }
         });
 
-        document.getElementById(`set${currentSet}`).classList.add('active');
-        enableNextButtonOnComplete();
-        document.getElementById('nextBtn').disabled = !allAnswered;
+        const nextButton = set.querySelector('.next-btn');
+        if (allAnswered) {
+          nextButton.removeAttribute('disabled');
+        } else {
+          nextButton.setAttribute('disabled', 'true');
+        }
       }
-      console.log(document.getElementById(`set${currentSet}`));
+
+      // submit이 잘 되었는지 일단 alert 확인 + 로직 짜야함
+      function submitSurvey() {
+        alert('설문이 제출되었습니다!');
+      }
+
+      // survey 페이지 자체에 event 추가하는 함수
+      document.addEventListener('DOMContentLoaded', function () {
+        const radioButtons = document.querySelectorAll('input[type="radio"]');
+        radioButtons.forEach((button) => {
+          button.addEventListener('change', function () {
+            const setId = this.closest('.question-set').id;
+            checkAnswersAndUpdateButton(setId);
+          });
+        });
+      });
     </script>
     <!-- JavaScript END -->
   </body>

@@ -225,4 +225,24 @@ li {
   clip: rect(0, 0, 0, 0);
   pointer-events: none;
 }
+
+.question-set {
+  display: none;
+}
+
+.question-set:first-of-type {
+  display: block;
+}
+
+.backhomeBtn {
+  color: #fff;
+  background-color: #198754;
+  border-color: #198754;
+}
+
+.backhomeBtn:hover {
+  color: #fff;
+  background-color: #157347;
+  border-color: #146c43;
+}
 /* Hyunwoo Style END */
