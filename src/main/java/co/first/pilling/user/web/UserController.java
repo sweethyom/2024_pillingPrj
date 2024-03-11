@@ -29,6 +29,7 @@ public class UserController {
 				session.setAttribute("userId", vo.getUserId());
 				session.setAttribute("userNo", vo.getUserNo());
 				session.setAttribute("userFirstname", vo.getUserFirstname());
+				session.setAttribute("userLastname", vo.getUserLastname());
 				session.setAttribute("author", vo.getUserAuthor());
 				viewPage = "redirect:home";
 			}else { //아이디, 비밀번호가 틀리면 주의문구를 삽입하고 login 페이지로 돌아간다.

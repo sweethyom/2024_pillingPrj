@@ -56,8 +56,8 @@
   <body>
     <!-- 설문조사 START -->
     <div class="d-flex container carousel-content survey-container animated slideInDown">
-      <h1 class="text-dark display-6">당신의 첫번째 영양제,</h1>
-      <h1 class="text-primary mb-0 display-3">Pi1l<span style="color: #3faf08">ing</span><i class="fa-solid fa-pills text-primary ms-2"></i></h1>
+      <h1 class="text-dark display-6">Pi1ling 영양제 추천 설문조사</h1>
+      <h2 class="text-dark display-6">${userLastname }${userFirstname }님에게 맞는 영양제를 추천드리겠습니다.</h2>
       <div class="d-flex survey-question-container">
         <!-- 설문조사 3개씩 보여주기 첫번째 세트 START -->
         <div class="question-set" id="set1">
@@ -309,10 +309,10 @@
             <h3>20. 마지막 질문입니다. 당신의 성별은?</h3>
             <br />
             <div data-toggle="buttons" style="gap: 80px; display: flex; justify-content: center">
-              <input type="radio" class="btn-check" name="question20" value="20" id="success-outlined20" autocomplete="off" />
-              <label class="btn btn-outline-success" for="success-outlined20">여자</label>
-              <input type="radio" class="btn-check" name="question20" id="danger-outlined20" value="21" autocomplete="off" />
-              <label class="btn btn-outline-danger" for="danger-outlined20">남자</label>
+              <input type="radio" class="btn-check" name="question20" value="21" id="success-outlined20" autocomplete="off" />
+              <label class="btn btn-outline-success" for="success-outlined20">남자</label>
+              <input type="radio" class="btn-check" name="question20" id="danger-outlined20" value="20" autocomplete="off" />
+              <label class="btn btn-outline-danger" for="danger-outlined20">여자</label>
             </div>
           </div>
           <button class="btn btn-success submit-btn" onclick="submitSurvey()" disabled>제출</button>
@@ -385,17 +385,58 @@
           }
         });
 
-        const nextButton = set.querySelector('.next-btn');
-        if (allAnswered) {
-          nextButton.removeAttribute('disabled');
+        //아래는 마지막 세트의 질문이 체크가 되었으면 서브밋버튼 활성화를 시켜주는 로직과 다른 세트에서 다 체크되면 다음버튼 활성화를 시켜주는 로직
+        if (setId === 'set7') {
+          const submitButton = document.querySelector('.submit-btn');
+          if (allAnswered) {
+            submitButton.removeAttribute('disabled');
+          } else {
+            submitButton.setAttribute('disabled', 'true');
+          }
         } else {
-          nextButton.setAttribute('disabled', 'true');
+          const nextButton = set.querySelector('.next-btn');
+          if (allAnswered) {
+            nextButton.removeAttribute('disabled');
+          } else {
+            nextButton.setAttribute('disabled', 'true');
+          }
         }
       }
 
-      // submit이 잘 되었는지 일단 alert 확인 + 로직 짜야함
+      // 설문조사 제출 (Ajax 활용)
       function submitSurvey() {
-        alert('설문이 제출되었습니다!');
+        // 아래는 submit된 radio type의 value들을 담을 배열 타입 생성
+        const surveyResponses = [];
+
+        // 위의 배열 변수에 값을 담기위한 로직
+        document.querySelectorAll('input[type="radio"]:checked').forEach((input) => {
+          if (input.value !== '0') {
+            surveyResponses.push({ keywordId: parseInt(input.value) });
+          }
+        });
+
+        //fetch API를 이용해서 Ajax 사용 (서버에 설문 응답 데이터 제출)
+        fetch('survey/submit', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(surveyResponses),
+        })
+          .then((response) => {
+            if (!response.ok) {
+              throw new Error('Network response was not ok');
+            }
+            return response.text();
+          })
+          .then((data) => {
+            console.log(data);
+            alert('설문조사가 성공적으로 제출되었습니다.');
+          })
+          .catch((error) => {
+            console.error('There has been a problem with your fetch operation:', error);
+            alert('설문 제출 중 오류가 발생했습니다.');
+          });
       }
 
       // survey 페이지 자체에 event 추가하는 함수
