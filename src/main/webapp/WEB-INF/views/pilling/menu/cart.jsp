@@ -42,7 +42,7 @@
 										<p class="mb-0 mt-4">${c.productName}</p>
 									</td>
 									<td>
-										<p class="mb-0 mt-4">${c.productPrice}</p>
+										<p class="mb-0 mt-4 prodprice">${c.productPrice}</p>
 									</td>
 									<td>
 										<div class="input-group quantity mt-4" style="width: 100px;">
@@ -54,6 +54,8 @@
 												</button>
 											</div>
 											<input type="text"
+												oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
+												maxlength="2"
 												class="form-control form-control-sm text-center border-0 prodcnt"
 												value="${c.cartProdcnt }">
 											<div class="input-group-btn">
@@ -66,7 +68,9 @@
 										</div>
 									</td>
 									<td>
-										<p class="mb-0 mt-4"></p>
+										<p class="mb-0 mt-4 prod-total-price">
+											${c.productPrice * c.cartProdcnt }원
+										</p>
 									</td>
 									<td>
 										<button
@@ -104,7 +108,7 @@
 							</h1>
 							<div class="d-flex justify-content-between mb-4">
 								<h5 class="mb-0 me-4">제품가격</h5>
-								<p class="mb-0">100억원</p>
+								<p class="mb-0 order-total-price" id="orderTotalprice" name="orderTotalprice"></p>
 							</div>
 							<div class="d-flex justify-content-between">
 								<h5 class="mb-0 me-4">배송료</h5>
@@ -131,7 +135,7 @@
 		<!-- 수정, 삭제를 위해 cartId를 넘겨주는 히든폼 -->
 		<form id="idform" name="idform">
 			<input type="hidden" id="cartId" name="cartId"> <input
-				type="hidden" id="cartProdcnt" name="cartProdcnt">
+				type="hidden" id="cartProdcnt" name="cartProdcnt" value=0>
 		</form>
 	</div>
 	<script>
@@ -185,103 +189,160 @@
 		var cartIdElement = itemRow.getAttribute('data-cart-id');
   		var prodcntElement = inputField.value;
   		
-		document.getElementById("cartId").value=cartIdElement;
-		document.getElementById("cartProdcnt").value=prodcntElement;
-  		
-  		let form = document.getElementById('idform');
-  		let formData = new FormData(form);
-  		let url = 'updatecart'
-  		
-  		fetch(url, {
-  			method: 'POST',
-  			body: formData,
-  		})
-  		.then((response) => {
-  			if (response.ok) {
-  				return response.text();
-  			} else {
-  				throw new Error('Network response was not ok.');
-  			}
-  		})
-  		.then((text) => {
-  			if(text === 'Yes'){
-  				console.log('수량 업데이트 완료');
-  			} else {
-  				alert('수량 업데이트에 실패하였습니다.');
-  			}
-  		})
-  		.catch((error) => {
-  			console.error('There was an error!', error);
-  			alert('수량 업데이트 중 오류가 발생하였습니다.');
-  		});
+  		if(prodcntElement == "" || prodcntElement == 0){
+  			inputField.value = 1;
+  			prodcntElement=1;
+  		}
+  		document.getElementById("cartId").value=cartIdElement;
+			document.getElementById("cartProdcnt").value=prodcntElement;
+	  		
+	  		let form = document.getElementById('idform');
+	  		let formData = new FormData(form);
+	  		let url = 'updatecart'
+	  		
+	  		fetch(url, {
+	  			method: 'POST',
+	  			body: formData,
+	  		})
+	  		.then((response) => {
+	  			if (response.ok) {
+	  				return response.text();
+	  			} else {
+	  				throw new Error('Network response was not ok.');
+	  			}
+	  		})
+	  		.then((text) => {
+	  			if(text === 'Yes'){
+	  				console.log('수량 업데이트 완료');
+	  				
+	  				//총 가격 계산, total1은 각 제품 별 가격이고, total2는 총 주문 가격이다.
+	  				var total1 = prodTotalCal(cartIdElement);
+	  				var total2 = orderTotalCal();
+	  				var totalPriceElement1 = document.querySelector('.item-row[data-cart-id="' + cartIdElement + '"] .prod-total-price');
+	  				var totalPriceElement2 = document.getElementById('orderTotalprice');
+	  				totalPriceElement1.textContent = total1 + "원";
+	  				totalPriceElement2.textContent = total2 + "원";
+	  			} else {
+	  				alert('수량 업데이트에 실패하였습니다.');
+	  			}
+	  		})
+	  		.catch((error) => {
+	  			console.error('There was an error!', error);
+	  			alert('수량 업데이트 중 오류가 발생하였습니다.');
+	  		});
 	}
 	
 	// 카트 수량 업데이트(마이너스 버튼)
 	function cntMinus(id){
-		document.getElementById("cartId").value=id;
-  		
-  		let form = document.getElementById('idform');
-  		let formData = new FormData(form);
-  		let url = 'minuscart'
-  		
-  		fetch(url, {
-  			method: 'POST',
-  			body: formData,
-  		})
-  		.then((response) => {
-  			if (response.ok) {
-  				return response.text();
-  			} else {
-  				throw new Error('Network response was not ok.');
-  			}
-  		})
-  		.then((text) => {
-  			if(text === 'Yes'){
-  				var prodcntElement = document.querySelector('.item-row[data-cart-id="' + id + '"] .prodcnt');
-  				prodcntElement.value = parseInt(prodcntElement.value)-1;
-  				console.log('수량 - 1 완료');
-  			} else {
-  				alert('수량 업데이트에 실패하였습니다.');
-  			}
-  		})
-  		.catch((error) => {
-  			console.error('There was an error!', error);
-  			alert('수량 업데이트 중 오류가 발생하였습니다.');
-  		});
+		var cartProdcntElement = document.querySelector('.item-row[data-cart-id="' + id + '"] .prodcnt');
+		if(cartProdcntElement.value == 1){
+			console.log("제품 수량은 1보다 작을 수 없다.")
+		}else{
+			document.getElementById("cartId").value=id;
+	  		let form = document.getElementById('idform');
+	  		let formData = new FormData(form);
+	  		let url = 'minuscart'
+	  		fetch(url, {
+	  			method: 'POST',
+	  			body: formData,
+	  		})
+	  		.then((response) => {
+	  			if (response.ok) {
+	  				return response.text();
+	  			} else {
+	  				throw new Error('Network response was not ok.');
+	  			}
+	  		})
+	  		.then((text) => {
+	  			if(text === 'Yes'){
+	  				var prodcntElement = document.querySelector('.item-row[data-cart-id="' + id + '"] .prodcnt');
+	  				prodcntElement.value = parseInt(prodcntElement.value)-1;
+	  				console.log('수량 - 1 완료');
+	  				
+	  				var total1 = prodTotalCal(id);
+	  				var total2 = orderTotalCal();
+	  				var totalPriceElement1 = document.querySelector('.item-row[data-cart-id="' + id + '"] .prod-total-price');
+	  				var totalPriceElement2 = document.getElementById('orderTotalprice');
+	  				totalPriceElement1.textContent = total1 + "원";
+	  				totalPriceElement2.textContent = total2 + "원";
+	  			} else {
+	  				alert('수량 업데이트에 실패하였습니다.');
+	  			}
+	  		})
+	  		.catch((error) => {
+	  			console.error('There was an error!', error);
+	  			alert('수량 업데이트 중 오류가 발생하였습니다.');
+	  		});	
+		}
 	}
 	
 	// 카트 수량 업데이트 (플러스 버튼)
 	function cntPlus(id){
-		document.getElementById("cartId").value=id;
-  		
-  		let form = document.getElementById('idform');
-  		let formData = new FormData(form);
-  		let url = 'pluscart'
-  		
-  		fetch(url, {
-  			method: 'POST',
-  			body: formData,
-  		})
-  		.then((response) => {
-  			if (response.ok) {
-  				return response.text();
-  			} else {
-  				throw new Error('Network response was not ok.');
-  			}
-  		})
-  		.then((text) => {
-  			if(text === 'Yes'){
-  				var prodcntElement = document.querySelector('.item-row[data-cart-id="' + id + '"] .prodcnt');
-  				prodcntElement.value = parseInt(prodcntElement.value)+1;
-  				console.log('수량 + 1 완료');
-  			} else {
-  				alert('수량 업데이트에 실패하였습니다.');
-  			}
-  		})
-  		.catch((error) => {
-  			console.error('There was an error!', error);
-  			alert('수량 업데이트 중 오류가 발생하였습니다.');
-  		});
+		var cartProdcntElement = document.querySelector('.item-row[data-cart-id="' + id + '"] .prodcnt');
+		if(cartProdcntElement.value == 99){
+			console.log("제품 수량은 99보다 클 수 없다.")
+		}else{
+			document.getElementById("cartId").value=id;
+	  		
+	  		let form = document.getElementById('idform');
+	  		let formData = new FormData(form);
+	  		let url = 'pluscart'
+	  		
+	  		fetch(url, {
+	  			method: 'POST',
+	  			body: formData,
+	  		})
+	  		.then((response) => {
+	  			if (response.ok) {
+	  				return response.text();
+	  			} else {
+	  				throw new Error('Network response was not ok.');
+	  			}
+	  		})
+	  		.then((text) => {
+	  			if(text === 'Yes'){
+	  				var prodcntElement = document.querySelector('.item-row[data-cart-id="' + id + '"] .prodcnt');
+	  				prodcntElement.value = parseInt(prodcntElement.value)+1;
+	  				console.log('수량 + 1 완료');
+	  				
+	  				var total1 = prodTotalCal(id);
+	  				var total2 = orderTotalCal();
+	  				var totalPriceElement1 = document.querySelector('.item-row[data-cart-id="' + id + '"] .prod-total-price');
+	  				var totalPriceElement2 = document.getElementById('orderTotalprice');
+	  				totalPriceElement1.textContent = total1 + "원";
+	  				totalPriceElement2.textContent = total2 + "원";
+	  			} else {
+	  				alert('수량 업데이트에 실패하였습니다.');
+	  			}
+	  		})
+	  		.catch((error) => {
+	  			console.error('There was an error!', error);
+	  			alert('수량 업데이트 중 오류가 발생하였습니다.');
+	  		});	
+		}
+	}
+	
+	// 제품별 총 가격을 계산한다.
+	function prodTotalCal(id){
+		var productPriceElement = document.querySelector('.item-row[data-cart-id="' + id + '"] .prodprice');
+		var cartProdcntElement = document.querySelector('.item-row[data-cart-id="' + id + '"] .prodcnt');
+		var totalPriceElement = productPriceElement.textContent * cartProdcntElement.value;
+		
+		return totalPriceElement;
+	}
+	
+	// 주문 총 합계를 계산한다.
+	function orderTotalCal(){
+		var totalPrice = 0;
+		console.log(totalPrice);
+		document.querySelectorAll('.order-total-price').forEach(function(element){
+			var priceArr = (element.textContent).split('원');
+			var price = priceArr[0];
+			price = parseInt(price);
+			totalPrice += price;
+			console.log(totalPrice);
+		});
+		return totalPrice;
 	}
 	</script>
 	<!-- Cart Page End -->
