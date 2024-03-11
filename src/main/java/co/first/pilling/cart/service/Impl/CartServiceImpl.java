@@ -29,15 +29,27 @@ public class CartServiceImpl implements CartService {
 	}
 
 	@Override
-	public int cartUpdate(CartVO vo) {
-		// TODO Auto-generated method stub
-		return map.cartUpdate(vo);
-	}
-
-	@Override
 	public int cartDelete(CartVO vo) {
 		// TODO Auto-generated method stub
 		return map.cartDelete(vo);
+	}
+
+	@Override
+	public int cartUpdateMinus(CartVO vo) {
+		// TODO Auto-generated method stub
+		return map.cartUpdateMinus(vo);
+	}
+
+	@Override
+	public int cartUpdatePlus(CartVO vo) {
+		// TODO Auto-generated method stub
+		return map.cartUpdatePlus(vo);
+	}
+
+	@Override
+	public int cartUpdate(CartVO vo) {
+		// TODO Auto-generated method stub
+		return map.cartUpdate(vo);
 	}
 
 }

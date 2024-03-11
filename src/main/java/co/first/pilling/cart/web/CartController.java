@@ -37,4 +37,28 @@ public class CartController {
 		String str = "Yes";
 		return str;
 	}
+	
+	@PostMapping("minuscart")
+	@ResponseBody
+	public String minuscart(CartVO vo) {
+		cs.cartUpdateMinus(vo);
+		String str = "Yes";
+		return str;
+	}
+	
+	@PostMapping("pluscart")
+	@ResponseBody
+	public String pluscart(CartVO vo) {
+		cs.cartUpdatePlus(vo);
+		String str = "Yes";
+		return str;
+	}
+	
+	@PostMapping("updatecart")
+	@ResponseBody
+	public String updatecart(CartVO vo) {
+		cs.cartUpdate(vo);
+		String str = "Yes";
+		return str;
+	}
 }
