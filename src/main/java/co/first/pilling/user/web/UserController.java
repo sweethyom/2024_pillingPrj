@@ -26,7 +26,9 @@ public class UserController {
 				session.setAttribute("userId", vo.getUserId());
 				session.setAttribute("userNo", vo.getUserNo());
 				session.setAttribute("userFirstname", vo.getUserFirstname());
+				session.setAttribute("userLastname", vo.getUserLastname());
 				session.setAttribute("author", vo.getUserAuthor());
+				session.setAttribute("userGender", vo.getUserGender());
 				viewPage = "redirect:home";
 			}else { //아이디, 비밀번호가 틀리면 주의문구를 삽입하고 login 페이지로 돌아간다.
 				model.addAttribute("message", "아이디 또는 비밀번호를 잘못 입력했습니다.");
