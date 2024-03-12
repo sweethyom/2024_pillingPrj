@@ -1,6 +1,5 @@
 package co.first.pilling.user.web;
 
-
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
@@ -15,12 +14,10 @@ import co.first.pilling.user.service.UserVO;
 
 @Controller
 public class UserController {
-	
-//private static final Logger logger = LoggerFactory.getLogger(UserController.class);
-		
+
 	@Autowired
 	private UserService udao;
-	
+
 	@RequestMapping("loginresult")
 		public String userLogin(Model model, UserVO vo, HttpSession session, HttpServletResponse response) {
 			String viewPage = null;
@@ -29,7 +26,9 @@ public class UserController {
 				session.setAttribute("userId", vo.getUserId());
 				session.setAttribute("userNo", vo.getUserNo());
 				session.setAttribute("userFirstname", vo.getUserFirstname());
+				session.setAttribute("userLastname", vo.getUserLastname());
 				session.setAttribute("author", vo.getUserAuthor());
+				session.setAttribute("userGender", vo.getUserGender());
 				viewPage = "redirect:home";
 			}else { //아이디, 비밀번호가 틀리면 주의문구를 삽입하고 login 페이지로 돌아간다.
 				model.addAttribute("message", "아이디 또는 비밀번호를 잘못 입력했습니다.");
@@ -37,38 +36,27 @@ public class UserController {
 			}
 			return viewPage;
 	}
-	
+
 	@RequestMapping("logout")
-		public String userLogout(HttpSession session, Model model) {
-			session.invalidate();
-			return "redirect:home";
+	public String userLogout(HttpSession session, Model model) {
+		session.invalidate();
+		return "redirect:home";
 	}
-	
+
 //	//회원가입 페이지 이동
-	@RequestMapping(value="registerForm", method=RequestMethod.GET)
-	public void getRegister(){
-		
+	@RequestMapping(value = "registerForm", method = RequestMethod.GET)
+	public void getRegister() {
+
 //		return "/register";
-		}
-	
-	//로그인으로 이동
-	@RequestMapping(value="registerForm", method=RequestMethod.POST)
-		public String postRegister(UserVO vo) throws Exception{		
-		
-			udao.userInsert(vo);
-		
-			return "redirect:login";    
 	}
-	
-	   //회원정보확인창으로 이동
-	   @RequestMapping(value="myinfochk", method=RequestMethod.GET)
-	   public void getMyInfoChk() {
-	   }
-	   
-	   @RequestMapping(value="myinfochk", method=RequestMethod.POST)
-	   public String postMyInfoChk(Model model){
-	      String viewPage = null;
-	      viewPage="pilling/mypage/myinfopage";
-	      return viewPage;
-	   }
+
+	// 로그인으로 이동
+	@RequestMapping(value = "registerForm", method = RequestMethod.POST)
+	public String postRegister(UserVO vo) throws Exception {
+
+		udao.userInsert(vo);
+
+		return "redirect:login";
+	}
+
 }

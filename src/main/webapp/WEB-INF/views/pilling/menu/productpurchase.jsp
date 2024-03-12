@@ -95,20 +95,21 @@
                     </div>
                   </c:forEach>
 
-                  <!-- pagenation 부분 -->
+                  <!-- Pagination START -->
                   <div class="container productpurchase-pagination">
                     <ul class="pagination justify-content-center">
-                      <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                      <li class="page-item"><a class="page-link" href="#">이전</a></li>
                       <!-- 첫페이지에선 없음/시작인덱스 -10 -->
                       <li class="page-item"><a class="page-link" href="#"> 1</a></li>
                       <li class="page-item"><a class="page-link" href="#"> 2</a></li>
                       <li class="page-item"><a class="page-link" href="#"> 3</a></li>
                       <li class="page-item"><a class="page-link" href="#"> 4</a></li>
                       <li class="page-item"><a class="page-link" href="#"> 5</a></li>
-                      <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                      <li class="page-item"><a class="page-link" href="#">다음</a></li>
                       <!-- 마지막인덱스 +10 /마지막 인덱스에서는 없음 -->
                     </ul>
                   </div>
+                  <!-- Pagination END  -->
                   <c:if test="${author == 'ADMIN'}">
                     <div class="productAddBtn">
                       <a href="productaddpage">

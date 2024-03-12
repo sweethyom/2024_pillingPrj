@@ -37,10 +37,9 @@ public class ProductDetailController {
 		String convertedFilePath1 = convertFilePath(productDetail.getFilepath1());
 		String convertedFilePath2 = convertFilePath(productDetail.getFilepath2());
 		
+		// 다시 productDetailVO에 변환한 값을 setter로 저장한다.
 		productDetail.setFilepath1(convertedFilePath1);
 		productDetail.setFilepath2(convertedFilePath2);
-		System.out.println("첫번째 사진의 변환 경로는 : " + convertedFilePath1);
-		System.out.println("두번째 사진의 변환 경로는 : " + convertedFilePath2);
 
 		
 	    model.addAttribute("detail", productDetail);

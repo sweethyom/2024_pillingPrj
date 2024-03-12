@@ -1,5 +1,7 @@
 package co.first.pilling;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,13 +18,19 @@ public class HomeController {
 
 	// 홈으로 이동
 	@RequestMapping("/")
-	public String home(Model model) {
+	public String home(Model model, HttpSession session) {
+		// 아래는 Boolean 타입으로 로그인을 해서 userId 세션이 있으면 참을 반환한다.
+		Boolean isLoggedIn = (session.getAttribute("userId") != null);
+		model.addAttribute("isLoggedIn", isLoggedIn);
 		return "home/home";
 	}
 
 	// 홈으로 이동
 	@RequestMapping("home")
-	public String mainhome(Model model) {
+	public String mainhome(Model model, HttpSession session) {
+		// 아래는 Boolean 타입으로 로그인을 해서 userId 세션이 있으면 참을 반환한다.
+		Boolean isLoggedIn = (session.getAttribute("userId") != null);
+		model.addAttribute("isLoggedIn", isLoggedIn);
 		return "home/home";
 	}
 
@@ -91,5 +99,11 @@ public class HomeController {
 	@RequestMapping("mypurchasedetail")
 	public String mypurchasedetail(Model model) {
 		return "pilling/mypage/mypurchasedetail";
+	}
+	
+	// 탈퇴페이지 이동
+	@RequestMapping("withdrawal")
+	public String withdrawal(Model model) {
+		return "pilling/mypage/withdrawal";
 	}
 }
