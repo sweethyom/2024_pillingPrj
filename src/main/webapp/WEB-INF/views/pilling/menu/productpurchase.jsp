@@ -171,7 +171,6 @@
         products.forEach(function (product) {
           // 서버로부터 받은 각 제품 정보를 사용하여 HTML 마크업 생성
           var keywordsHtml = generateKeywordsHtml(product.keywordName || []);
-          console.log(product);
 
           productListHtml +=
             '<div class="col-md-6 col-lg-6 col-xl-4">' +

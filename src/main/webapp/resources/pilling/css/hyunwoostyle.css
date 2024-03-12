@@ -166,7 +166,7 @@ li {
 
 /* surveypage 에서 사용 하는 것들 START */
 .survey-container {
-  padding: 2%;
+  padding: 1rem;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -244,5 +244,35 @@ li {
   color: #fff;
   background-color: #157347;
   border-color: #146c43;
+}
+
+.comeback-home {
+  width: 100vh;
+  text-align: end;
+  margin-bottom: 3rem;
+}
+
+.comeback-homeBtn {
+  width: 30vh;
+  font-size: 1.25rem;
+}
+
+.nextprve-btn-container {
+  justify-content: space-evenly;
+}
+
+.next-btn {
+  width: 30vh;
+  font-size: 1.25rem;
+}
+
+.prev-btn {
+  width: 30vh;
+  font-size: 1.25rem;
+}
+
+.submit-btn {
+  width: 30vh;
+  font-size: 1.25rem;
 }
 /* Hyunwoo Style END */

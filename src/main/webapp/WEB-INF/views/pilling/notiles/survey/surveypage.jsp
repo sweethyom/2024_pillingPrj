@@ -61,6 +61,13 @@
   <body>
     <!-- 설문조사 START -->
     <div class="d-flex container carousel-content survey-container animated slideInDown">
+      <!-- 설문조사 취소하고 홈으로 돌아가는 버튼 START -->
+      <div class="comeback-home">
+        <a href="home">
+          <button class="comeback-homeBtn btn btn-danger">메인으로 돌아가기</button>
+        </a>
+      </div>
+      <!-- 설문조사 취소하고 홈으로 돌아가는 버튼 END -->
       <h1 class="text-dark display-6">Pi1ling 영양제 추천 설문조사</h1>
       <h2 class="text-dark display-6">${userLastname }${userFirstname }님에게 맞는 영양제를 추천드리겠습니다.</h2>
       <div class="d-flex survey-question-container">
@@ -98,7 +105,10 @@
               <label class="btn btn-outline-danger" for="danger-outlined3">아니오</label>
             </div>
           </div>
-          <button class="btn btn-success next-btn" onclick="showNextSet('set1')" disabled>다음</button>
+          <!-- 다음버튼 -->
+          <div class="d-flex nextprve-btn-container">
+            <button class="btn btn-success next-btn" onclick="showNextSet('set1')" disabled>다음</button>
+          </div>
         </div>
         <!-- 첫번째 세트 END -->
 
@@ -136,8 +146,10 @@
               <label class="btn btn-outline-danger" for="danger-outlined6">아니오</label>
             </div>
           </div>
-          <button class="btn btn-success next-btn" onclick="showNextSet('set2')" disabled>다음</button>
-          <button class="btn btn-secondary prev-btn" onclick="showPrevSet('set2')">이전</button>
+          <div class="d-flex nextprve-btn-container">
+            <button class="btn btn-success next-btn" onclick="showNextSet('set2')" disabled>다음</button>
+            <button class="btn btn-secondary prev-btn" onclick="showPrevSet('set2')">이전</button>
+          </div>
         </div>
         <!-- 두번째 세트 END -->
         <!-- 설문조사 3개씩 보여주기 세번째 세트 START -->
@@ -174,8 +186,10 @@
               <label class="btn btn-outline-danger" for="danger-outlined9">아니오</label>
             </div>
           </div>
-          <button class="btn btn-success next-btn" onclick="showNextSet('set3')" disabled>다음</button>
-          <button class="btn btn-secondary prev-btn" onclick="showPrevSet('set3')">이전</button>
+          <div class="d-flex nextprve-btn-container">
+            <button class="btn btn-success next-btn" onclick="showNextSet('set3')" disabled>다음</button>
+            <button class="btn btn-secondary prev-btn" onclick="showPrevSet('set3')">이전</button>
+          </div>
         </div>
         <!-- 세번째 세트 END -->
         <!-- 설문조사 3개씩 보여주기 네번째 세트 START -->
@@ -212,8 +226,10 @@
               <label class="btn btn-outline-danger" for="danger-outlined12">아니오</label>
             </div>
           </div>
-          <button class="btn btn-success next-btn" onclick="showNextSet('set4')" disabled>다음</button>
-          <button class="btn btn-secondary prev-btn" onclick="showPrevSet('set4')">이전</button>
+          <div class="d-flex nextprve-btn-container">
+            <button class="btn btn-success next-btn" onclick="showNextSet('set4')" disabled>다음</button>
+            <button class="btn btn-secondary prev-btn" onclick="showPrevSet('set4')">이전</button>
+          </div>
         </div>
         <!-- 네번째 세트 END -->
 
@@ -254,8 +270,10 @@
               <label class="btn btn-outline-danger" for="danger-outlined15">아니오</label>
             </div>
           </div>
-          <button class="btn btn-success next-btn" onclick="showNextSet('set5')" disabled>다음</button>
-          <button class="btn btn-secondary prev-btn" onclick="showPrevSet('set5')">이전</button>
+          <div class="d-flex nextprve-btn-container">
+            <button class="btn btn-success next-btn" onclick="showNextSet('set5')" disabled>다음</button>
+            <button class="btn btn-secondary prev-btn" onclick="showPrevSet('set5')">이전</button>
+          </div>
         </div>
         <!-- 다섯번째 세트 END -->
         <!-- 설문조사 3개씩 보여주기 여섯번째 세트 START -->
@@ -293,8 +311,10 @@
               <label class="btn btn-outline-danger" for="danger-outlined18">아니오</label>
             </div>
           </div>
-          <button class="btn btn-success next-btn" onclick="showNextSet('set6')" disabled>다음</button>
-          <button class="btn btn-secondary prev-btn" onclick="showPrevSet('set6')">이전</button>
+          <div class="d-flex nextprve-btn-container">
+            <button class="btn btn-success next-btn" onclick="showNextSet('set6')" disabled>다음</button>
+            <button class="btn btn-secondary prev-btn" onclick="showPrevSet('set6')">이전</button>
+          </div>
         </div>
         <!-- 여섯번째 세트 END -->
         <!-- 설문조사 3개씩 보여주기 일곱번째 세트 START -->
@@ -320,21 +340,16 @@
               <label class="btn btn-outline-danger" for="danger-outlined20">여자</label>
             </div>
           </div>
-          <button class="btn btn-success submit-btn" onclick="submitSurvey()" disabled>제출</button>
-          <button class="btn btn-secondary prev-btn" onclick="showPrevSet('set7')">이전</button>
+          <div class="d-flex nextprve-btn-container">
+            <button class="btn btn-success submit-btn" onclick="submitSurvey()" disabled>제출</button>
+            <button class="btn btn-secondary prev-btn" onclick="showPrevSet('set7')">이전</button>
+          </div>
         </div>
         <!-- 일곱번째 세트 END -->
         <!-- 제품 추천 START -->
         <div id="productsContainer" class="row g-4 justify-content-center"></div>
         <!-- 제품 추천 END -->
       </div>
-      <!-- 설문조사 취소하고 홈으로 돌아가는 버튼 START -->
-      <div>
-        <a href="home">
-          <button class="btn btn-danger">메인으로 돌아가기</button>
-        </a>
-      </div>
-      <!-- 설문조사 취소하고 홈으로 돌아가는 버튼 END -->
     </div>
 
     <!-- 설문조사 END -->
