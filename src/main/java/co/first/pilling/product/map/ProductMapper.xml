@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="co.first.pilling.product.map.ProductMapper">
+
+	<!-- product 테이블 전체 select -->
+	<select id="productAllList">
+	SELECT *
+	FROM product;
+	</select>
+	
+	<!-- 제품테이블의 제품ID와 mapping 테이블 및 키워드 테이블을 매핑해서 각 제품 ID에 키워드명 및 키워드ID 연결  -->
+	<select id="productKeywordMapping">
+	SELECT p.product_id, GROUP_CONCAT(k.keyword_name SEPARATOR ', ') AS keywords
+	FROM product p
+	LEFT JOIN keyword_mapping km ON p.product_id = km.product_id
+	LEFT JOIN keyword k ON km.keyword_id = k.keyword_id
+	GROUP BY p.product_id;
+	</select>
+	
+	<!-- 제품구매 페이지에 체크박스에 키워드를 반복해서 깔기위한 쿼리 -->
+	<select id="checkboxAllKeywordName">
+	SELECT *
+	FROM keyword;
+	</select>
+	
+	<!-- 필터링을 통한 제품 갱신에 필요한 쿼리 -->
+	<select id="filterByKeywords">
+		SELECT DISTINCT p.*
+		FROM product p
+		JOIN keyword_mapping km 
+		ON p.product_id = km.product_id
+		WHERE km.keyword_id IN
+		<foreach item="keywordId" collection="list" open="(" separator="," close=")">
+			#{keywordId}
+		</foreach>
+	</select>
+	
+</mapper>

@@ -19,19 +19,20 @@ public class UserController {
 	private UserService udao;
 
 	@RequestMapping("loginresult")
-	public String userLogin(Model model, UserVO vo, HttpSession session, HttpServletResponse response) {
-		String viewPage = null;
-		vo = udao.userSelect(vo); // 아이디, 비밀번호가 일치하면 값을 가져오고
-		if (vo != null) { // 아이디, 비밀번호가 일치하면 세션에 id, 이름, 권한 정보를 담은 후 홈으로 돌아간다.
-			session.setAttribute("userId", vo.getUserId());
-			session.setAttribute("userFirstname", vo.getUserFirstname());
-			session.setAttribute("author", vo.getUserAuthor());
-			viewPage = "redirect:home";
-		} else { // 아이디, 비밀번호가 틀리면 주의문구를 삽입하고 login 페이지로 돌아간다.
-			model.addAttribute("message", "아이디 또는 비밀번호를 잘못 입력했습니다.");
-			viewPage = "pilling/menu/login";
-		}
-		return viewPage;
+		public String userLogin(Model model, UserVO vo, HttpSession session, HttpServletResponse response) {
+			String viewPage = null;
+			vo = udao.userSelect(vo); //아이디, 비밀번호가 일치하면 값을 가져오고
+			if(vo != null) { //아이디, 비밀번호가 일치하면 세션에 id, 이름, 유저Number, 권한 정보를 담은 후 홈으로 돌아간다.
+				session.setAttribute("userId", vo.getUserId());
+				session.setAttribute("userNo", vo.getUserNo());
+				session.setAttribute("userFirstname", vo.getUserFirstname());
+				session.setAttribute("author", vo.getUserAuthor());
+				viewPage = "redirect:home";
+			}else { //아이디, 비밀번호가 틀리면 주의문구를 삽입하고 login 페이지로 돌아간다.
+				model.addAttribute("message", "아이디 또는 비밀번호를 잘못 입력했습니다.");
+				viewPage = "pilling/menu/login";
+			}
+			return viewPage;
 	}
 
 	@RequestMapping("logout")

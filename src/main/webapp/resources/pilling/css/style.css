@@ -750,36 +750,41 @@
 
 /* Hyomi Style Start */
 .customerservice-header {
-	background : linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(../img/customerservice/customerservice.png) center center no-repeat;
-	background-size: 600px;
-	width:100%;
-	margin-bottom: 2rem;
+  background: url(../img/productimage/productrbanner.jpg) center center no-repeat;
+  background-size: cover;
+  margin-bottom: 2rem;
 }
 
 .customerservice-button {
-  position:relative;
-	left:1500px;
-	bottom:-5px;
+  position: relative;
+  left: 1500px;
+  bottom: -5px;
 }
 
 .introduction-background {
-	background : linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(../img/introduction/introduction-5.jpg) center center;
-	background-size: cover;
-	width:100%;
-	margin-bottom: 2rem;
+  background: url(../img/productimage/productrbanner.jpg) center center no-repeat;
+  background-size: cover;
+  width: 100%;
 }
+
+/* .introduction-background {
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(../img/introduction/introduction-5.jpg) center center;
+  background-size: cover;
+  width: 100%;
+  margin-bottom: 2rem;
+} */
 
 .introduction-text {
-	text-align: justify;
+  text-align: justify;
 }
 
-.introduction-textindent{
-	font-size : 18px;
-	text-indent : 50px;
+.introduction-textindent {
+  font-size: 18px;
+  text-indent: 50px;
 }
 
-.container-display{
-	display: flex;
+.container-display {
+  display: flex;
 }
 
 .myinfocheck-table{
@@ -795,4 +800,3 @@
   margin-bottom: 2rem;
 }
 /*hyomi Style End */
-

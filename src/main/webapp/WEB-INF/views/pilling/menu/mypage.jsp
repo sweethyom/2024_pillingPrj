@@ -157,17 +157,20 @@ td {
 							<table>
 								<tr height="60">
 									<td width="450" class="td-cente"><i
-										class="fa-regular fa-address-card h4"></i>&nbsp;<label type="button"
-										class="h5"><a href="myinfo" id="myinfo"style="color:black;">나의정보</a></label></td>
+										class="fa-regular fa-address-card h4"></i>&nbsp;<label
+										type="button" class="h5"><a href="myinfo" id="myinfo"
+											style="color: black;">나의정보</a></label></td>
 									<td width="450" class="td-center"><i
-										class="fa-regular fa-newspaper h5"></i> &nbsp; <label type="button"
-										class="h5" onclick="location.href='myreview'">리뷰내역</label></td>
+										class="fa-regular fa-newspaper h5"></i> &nbsp; <label
+										type="button" class="h5" onclick="location.href='myreview'">리뷰내역</label></td>
 								</tr>
 								<tr height="50">
 									<td class="td-center"><i class="fa-solid fa-cart-shopping"></i>
-										&nbsp; <label type="button" class="h5" onclick="location.href='cart'">장바구니</label></td>
-									<td class="td-center"><i class="fa-regular fa-circle-question h5"></i> &nbsp; <label type="button"
-										class="h5" onclick="location.href='myinquiry'">문의내역</label></td>
+										&nbsp; <label type="button" class="h5"
+										onclick="moveCart()">장바구니</label></td>
+									<td class="td-center"><i
+										class="fa-regular fa-circle-question h5"></i> &nbsp; <label
+										type="button" class="h5" onclick="location.href='myinquiry'">문의내역</label></td>
 								</tr>
 							</table>
 						</div>
@@ -187,7 +190,9 @@ td {
 								<h6 class="m-0">주문내역</h6>
 							</div>
 							<div class="div-right">
-								<h6 class="text-muted m-0"><a type="button" onclick="location.href='myorderdetail'">>>상세보기</a></h6>
+								<h6 class="text-muted m-0">
+									<a type="button" onclick="location.href='myorderdetail'">>>상세보기</a>
+								</h6>
 							</div>
 						</div>
 						<div class="card-body">
@@ -225,7 +230,9 @@ td {
 								<h6 class="m-0 font-weight-bold">구매내역</h6>
 							</div>
 							<div class="div-right">
-								<h6 class="text-muted m-0"><a type="button" onclick="location.href='mypurchasedetail'">>>상세보기</a></h6>
+								<h6 class="text-muted m-0">
+									<a type="button" onclick="location.href='mypurchasedetail'">>>상세보기</a>
+								</h6>
 							</div>
 						</div>
 						<div class="card-body">
@@ -261,5 +268,18 @@ td {
 				<img src="resources/pilling/img/mypage/banner.png" alt="적립금 안내 배너">
 			</div>
 		</div>
+		<!-- 각 상세페이지에 유저 넘버를 넘겨줄 히든폼 -->
+		<div>
+			<form id="cartform" method="post">
+				<input type="hidden" id="userNo" name="userNo" value="${userNo }">
+			</form>
+		</div>
+		<script>
+			// 유저 넘버를 담고 장바구니로 이동시킨다.
+			function moveCart() {
+				cartform.action = "cart";
+				cartform.submit();
+			}
+		</script>
 </body>
 </html>
