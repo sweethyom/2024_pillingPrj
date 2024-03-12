@@ -23,7 +23,7 @@ public class OrderController {
 		os.orderInsert(ov);
 		ss.shippingInsert(sv);
 		model.addAttribute("order", os.orderSelect(ov));
-		model.addAttribute("shipping", ss.shippingSelect(sv));
+		model.addAttribute("shipping", sv.getShippingId());
 		return "pilling/product/orderresult";
 	}
 }
