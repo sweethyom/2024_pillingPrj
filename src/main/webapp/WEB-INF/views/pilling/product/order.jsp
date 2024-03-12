@@ -361,11 +361,14 @@ td {
 			
 			//폼으로 보내기 전에 폼의 값을 채워준다.
 			var selectPayment = document.querySelector('input[name="payment"]:checked').value;
-			document.getElementById('orderTotalprice').value = document.getElementById('resultTotalprice').textContent;
+			var resultTotalPrice = document.getElementById('resultTotalprice').textContent;
+			var resultTotalPriceArr = resultTotalPrice.split('원');
+			resultTotalPrice = resultTotalPriceArr[0];
+			document.getElementById('orderTotalprice').value = resultTotalPrice;
 			document.getElementById('orderCard').value = selectPayment;
 			
 			//입력 값 전송
-			document.shippingForm.submit(); //유효성 검사의 포인트
+			document.getElementById('shippingForm').submit(); //유효성 검사의 포인트
 		}
 		
 		//구매자 정보와 배송지 정보가 같냐고 물어보는 라디오버튼에 '네'를 클릭하면
