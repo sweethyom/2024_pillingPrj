@@ -11,11 +11,16 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import co.first.pilling.cart.service.CartService;
 import co.first.pilling.cart.service.CartVO;
+import co.first.pilling.user.service.UserService;
+import co.first.pilling.user.service.UserVO;
 
 @Controller
 public class CartController {
 	@Autowired
 	private CartService cs;
+	
+	@Autowired
+	private UserService us;
 	
 	@PostMapping("addcart")
 	@ResponseBody
@@ -40,8 +45,8 @@ public class CartController {
 	}
 	
 	@RequestMapping("order")
-	public String order(CartVO vo, Model model) {
-		List<CartVO> cartList = cs.cartSelectList(vo);
+	public String order(CartVO cv, UserVO uv, Model model) {
+		List<CartVO> cartList = cs.cartSelectList(cv);
 		for(CartVO cart : cartList) {
 			String webPath = cart.getFilepath().replace("C:\\DEV\\eclipse_202103\\workspace\\PillingProject\\src\\main\\webapp\\", "");
 			webPath = webPath.replace("\\", "/");
@@ -49,6 +54,7 @@ public class CartController {
 		}
 		
 		model.addAttribute("carts", cartList);
+		model.addAttribute("user", us.userSelect(uv));
 		
 		return "pilling/product/order";
 	}

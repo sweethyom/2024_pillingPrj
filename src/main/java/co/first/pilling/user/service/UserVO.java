@@ -24,4 +24,5 @@ public class UserVO {
 	private String userMarketingYn;
 	private String userAuthor;
 	private String userSignout;
+	private String userPoint;
 }

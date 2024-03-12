@@ -6,7 +6,7 @@
 		p.product_name AS
 		productName, p.product_price AS productPrice,
 		c.cart_prodcnt AS
-		cartProdcnt
+		cartProdcnt, p.product_id AS productId
 		FROM cart c
 		JOiN product p
 		ON c.product_id =
@@ -20,17 +20,20 @@
 	<update id="cartUpdate">
 		UPDATE cart
 		SET cart_prodcnt = #{cartProdcnt}
-		WHERE cart_id = #{cartId};
+		WHERE
+		cart_id = #{cartId};
 	</update>
 	<update id="cartUpdateMinus">
 		UPDATE cart
 		SET cart_prodcnt = cart_prodcnt-1
-		WHERE cart_id = #{cartId};
+		WHERE
+		cart_id = #{cartId};
 	</update>
 	<update id="cartUpdatePlus">
 		UPDATE cart
 		SET cart_prodcnt = cart_prodcnt+1
-		WHERE cart_id = #{cartId};
+		WHERE
+		cart_id = #{cartId};
 	</update>
 	<delete id="cartDelete">
 		DELETE FROM cart WHERE cart_id = #{cartId}
