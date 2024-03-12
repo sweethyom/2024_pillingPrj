@@ -136,8 +136,9 @@
 			<input type="hidden" id="cartId" name="cartId"> <input
 				type="hidden" id="cartProdcnt" name="cartProdcnt" value=0>
 		</form>
-		<!-- 구매 페이지로 userNo을 넘겨주는 히든폼 -->
+		<!-- 구매 페이지로 userId, userNo을 넘겨주는 히든폼 -->
 		<form id="orderform" name="orderform" action="order" method="post">
+			<input type="hidden" id="userId" name="userId" value="${userId }">
 			<input type="hidden" id="userNo" name="userNo" value="${userNo }">
 		</form>
 	</div>
@@ -369,7 +370,7 @@
 		return totalPrice;
 	}
 	
-	// Cart Total 초기값 설정
+	// Cart Total 초기값 할당
 	window.onload = function(){
 		var totalPrice1 = orderTotalCal();
 		var totalPrice2 = totalPrice1 + 3000;

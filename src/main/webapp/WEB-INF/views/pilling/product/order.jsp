@@ -59,13 +59,13 @@ td {
 							</thead>
 							<tbody>
 								<c:forEach items="${carts}" var="c">
-									<tr>
+									<tr class="item-row">
 										<td width="100"><img src="${c.filepath }" alt="제품 이미지"
 											width="80px" height="80px"></td>
 										<td width="500">${c.productName}</td>
 										<td width="200">${c.productPrice}</td>
 										<td width="200">${c.cartProdcnt }</td>
-										<td>${c.productPrice * c.cartProdcnt }원</td>
+										<td><p class="prodprice">${c.productPrice * c.cartProdcnt }원</p></td>
 									</tr>
 								</c:forEach>
 							</tbody>
@@ -81,23 +81,23 @@ td {
 				<table class="table table-bordered" id="dataTable">
 					<tr>
 						<td width="150" style="background-color: #f5f6f6;">이름</td>
-						<td class="td-rightnone"><a id="userLastname">${userLastname }</a><a
-							id="userFirstname">${userFirstname }</a></td>
+						<td class="td-rightnone"><a id="userLastname">${user.userLastname }</a><a
+							id="userFirstname">${user.userFirstname }</a></td>
 					</tr>
 					<tr>
 						<td style="background-color: #f5f6f6;">주소</td>
-						<td class="td-rightnone"><a id="userAddr">${userAddr }</a>&nbsp;<a
-							id="userAddrdetail">${userAddrdetail }</a></td>
+						<td class="td-rightnone"><a id="userAddr">${user.userAddr }</a>&nbsp;<a
+							id="userAddrdetail">${user.userAddrdetail }</a></td>
 					</tr>
 					<tr>
 						<td style="background-color: #f5f6f6;">연락처</td>
-						<td class="td-rightnone"><a id="userTel">${userTel }</a></td>
+						<td class="td-rightnone"><a id="userTel">${user.userTel }</a></td>
 					</tr>
 				</table>
 			</div>
 			<!-- 구매자 정보 END -->
 			<!-- 배송지 정보 Form START -->
-			<form id="shippingForm" action="" method="post">
+			<form id="shippingForm" action="makepayment" method="post">
 				<!-- 배송지 정보 -->
 				<div class="mb-4">
 					<h5>배송지 정보</h5>
@@ -105,15 +105,15 @@ td {
 						<tr>
 							<!-- 성 INPUT -->
 							<td width="150" style="background-color: #f5f6f6;">성</td>
-							<td><input type="text" id="shippingaddrlistRecipientln"
-								name="shippingaddrlistRecipientln" class="form-control"
+							<td><input type="text" id="shippingRecipientln"
+								name="shippingRecipientln" class="form-control"
 								placeholder="성을 입력해주세요." required /><span id="lnameConfirmMsg"></span></td>
 						</tr>
 						<tr>
 							<!-- 이름 INPUT -->
 							<td width="150" style="background-color: #f5f6f6;">이름</td>
-							<td><input type="text" id="shippingaddrlistRecipientfn"
-								name="shippingaddrlistRecipientfn" class="form-control"
+							<td><input type="text" id="shippingRecipientfn"
+								name="shippingRecipientfn" class="form-control"
 								placeholder="이름을 입력해주세요." required /> <span
 								id="fnameConfirmMsg"></span></td>
 						</tr>
@@ -122,18 +122,16 @@ td {
 							<td>
 								<!-- 주소 찾기 INPUT (다음 API 이용) -->
 								<div style="margin-bottom: 20px">
-									<p class="ptag-margin">주소</p>
 									<div class="d-flex" style="margin-bottom: 5px">
 										<input type="button" class="form-control" style="width: 30%"
 											onclick="userAddressInput()" value="주소 찾기" />
 										&nbsp;&nbsp;&nbsp; <input type="text" class="form-control"
-											id="shippingaddrlistAddr" name="shippingaddrlistAddr"
-											style="width: 70%" placeholder="도로명주소" required />
+											id="shippingAddr" name="shippingAddr" style="width: 70%"
+											placeholder="도로명주소" required />
 									</div>
 									<span id="guide" style="color: #999; display: none"></span> <input
-										type="text" class="form-control"
-										id="shippingaddrlistAddrdetail"
-										name="shippingaddrlistAddrdetail" placeholder="상세주소" required />
+										type="text" class="form-control" id="shippingAddrdetail"
+										name="shippingAddrdetail" placeholder="상세주소" required />
 								</div>
 								<p id="addressConfirmMsg"></p>
 							</td>
@@ -141,9 +139,8 @@ td {
 						<tr>
 							<!-- 연락처 INPUT -->
 							<td style="background-color: #f5f6f6;">연락처</td>
-							<td><input type="tel" id="shippingaddrlistTel"
-								class="form-control" name="shippingaddrlistTel"
-								oninput="hypenTel(this)" maxlength="13"
+							<td><input type="tel" id="shippingTel" class="form-control"
+								name="shippingTel" oninput="hypenTel(this)" maxlength="13"
 								placeholder="전화번호를 입력해주세요.(- 제외)" required /> <span
 								id="telConfirmMsg"></span></td>
 						</tr>
@@ -177,15 +174,15 @@ td {
 					<table class="table table-bordered" id="dataTable">
 						<tr>
 							<td width="150" style="background-color: #f5f6f6;">총 상품가격</td>
-							<td><a id="orderTotalprice">${orderTotalprice }</a></td>
+							<td><a id="prodtotalprice"></a></td>
 						</tr>
 						<tr>
 							<td style="background-color: #f5f6f6;">멤버십 할인</td>
-							<td><a id="levelAccumrate">${levelAccumrate }</a></td>
+							<td><a id="levelAccumrate">없음${levelAccumrate }</a></td>
 						</tr>
 						<tr>
 							<td style="background-color: #f5f6f6;">적립금</td>
-							<td><a id="userPoint">${userPoint }</a></td>
+							<td><a id="userPoint">${user.userPoint }원</a></td>
 						</tr>
 						<tr>
 							<td style="background-color: #f5f6f6;">배송비</td>
@@ -193,7 +190,7 @@ td {
 						</tr>
 						<tr>
 							<td style="background-color: #f5f6f6;">총 결제금액</td>
-							<td><a id="orderdetailPrice" name="orderdetailPrice"></a></td>
+							<td><a id="resultTotalprice" name="resultTotalprice"></a></td>
 						</tr>
 						<tr>
 							<td style="background-color: #f5f6f6;">결제방법</td>
@@ -202,6 +199,12 @@ td {
 						</tr>
 					</table>
 				</div>
+				<input type="hidden" id="userNo" name="userNo" value="${userNo }">
+				<input type="hidden" id="productId" name="productId"
+					value="${carts[0].productId }"> <input type="hidden"
+					id="orderstatusId" name="orderstatusId" value=1> <input
+					type="hidden" id="orderTotalprice" name="orderTotalprice">
+				<input type="hidden" id="orderCard" name="orderCard">
 			</form>
 			<!-- 배송지 정보 Form END -->
 			<!-- 결제정보 END -->
@@ -217,6 +220,29 @@ td {
 
 	</div>
 	<script>
+		// 총 상품가격 초기값 할당
+		window.onload = function(){
+			var totalPrice1 = orderTotalCal();
+			var totalPrice2 = totalPrice1 + 3000;
+			document.getElementById('prodtotalprice').textContent = totalPrice1 + "원";
+			document.getElementById('resultTotalprice').textContent = totalPrice2 + "원";
+		};
+		
+		
+		// 주문 총 합계를 계산한다.
+		function orderTotalCal(){
+			var totalPrice = 0;
+			
+			var rows = document.querySelectorAll('.item-row');
+			
+			rows.forEach(row => {
+				var productPrice = parseInt(row.querySelector('.prodprice').textContent);
+				totalPrice += productPrice;
+			});
+			
+			return totalPrice;
+		}
+	
 		// 전화번호 자동 하이픈 넣어주기
 	    const hypenTel = (target) => {
 	      target.value = target.value.replace(/[^0-9]/g, '').replace(/^(\d{2,3})(\d{3,4})(\d{4})$/, `$1-$2-$3`);
@@ -248,7 +274,7 @@ td {
 					}
 
 					// 우편번호와 주소 정보를 해당 필드에 넣는다.
-					document.getElementById('shippingaddrlistAddr').value = roadAddr;
+					document.getElementById('shippingAddr').value = roadAddr;
 
 					var guideTextBox = document.getElementById('guide');
 					// 사용자가 '선택 안함'을 클릭한 경우, 예상 주소라는 표시를 해준다.
@@ -273,11 +299,11 @@ td {
 		//배송지 정보 유효성 검사 함수
 		function shippingFormCheck() {
 			//입력값 변수 담아주기
-			var shippingaddrlistRecipientln = document.getElementById('shippingaddrlistRecipientln');
-			var shippingaddrlistRecipientfn = document.getElementById('shippingaddrlistRecipientfn');
-			var shippingaddrlistTel = document.getElementById('shippingaddrlistTel');
-			var shippingaddrlistAddr = document.getElementById('shippingaddrlistAddr');
-			var shippingaddrlistAddrdetail = document.getElementById('shippingaddrlistAddrdetail');
+			var shippingRecipientln = document.getElementById('shippingRecipientln');
+			var shippingRecipientfn = document.getElementById('shippingRecipientfn');
+			var shippingTel = document.getElementById('shippingTel');
+			var shippingAddr = document.getElementById('shippingAddr');
+			var shippingAddrdetail = document.getElementById('shippingAddrdetail');
 
 			//에러메시지 변수 담아주기
 			let correctColor = '#00ff00'; //맞았을 때 출력되는 색깔.
@@ -288,51 +314,56 @@ td {
 			let addressConfirmMsg = document
 					.getElementById('addressConfirmMsg');
 			
-			if (shippingaddrlistRecipientln.value == '') {
+			if (shippingRecipientln.value == '') {
 				lnameConfirmMsg.style.color = wrongColor;
 				lnameConfirmMsg.innerHTML = '성을 입력해주세요.';
-				shippingaddrlistRecipientln.focus();
+				shippingRecipientln.focus();
 				return false;
 			} else {
 				lnameConfirmMsg.innerHTML = '';
 			}
 
-			if (shippingaddrlistRecipientfn.value == '') {
+			if (shippingRecipientfn.value == '') {
 				fnameConfirmMsg.style.color = wrongColor;
 				fnameConfirmMsg.innerHTML = '이름을 입력해주세요.';
-				shippingaddrlistRecipientfn.focus();
+				shippingRecipientfn.focus();
 				return false;
 			} else {
 				fnameConfirmMsg.innerHTML = '';
 			}
 
-			if (shippingaddrlistAddr.value == '') {
+			if (shippingAddr.value == '') {
 				addressConfirmMsg.style.color = wrongColor;
 				addressConfirmMsg.innerHTML = '주소를 검색해서 입력해주세요.';
-				shippingaddrlistAddr.focus(); //focus(): 커서가 깜빡이는 현상, blur(): 커서가 사라지는 현상
+				shippingAddr.focus(); //focus(): 커서가 깜빡이는 현상, blur(): 커서가 사라지는 현상
 				return false; //return: 반환하다 return false:  아무것도 반환하지 말아라 아래 코드부터 아무것도 진행하지 말것
 			} else {
 				addressConfirmMsg.innerHTML = '';
 			}
 
-			if (shippingaddrlistAddrdetail.value == '') {
+			if (shippingAddrdetail.value == '') {
 				addressConfirmMsg.style.color = wrongColor;
 				addressConfirmMsg.innerHTML = '나머자 상세주소를 입력해주세요.';
-				shippingaddrlistAddrdetail.focus(); //focus(): 커서가 깜빡이는 현상, blur(): 커서가 사라지는 현상
+				shippingAddrdetail.focus(); //focus(): 커서가 깜빡이는 현상, blur(): 커서가 사라지는 현상
 				return false; //return: 반환하다 return false:  아무것도 반환하지 말아라 아래 코드부터 아무것도 진행하지 말것
 			} else {
 				addressConfirmMsg.innerHTML = '';
 			}
 			
-			if (shippingaddrlistTel.value == '') {
+			if (shippingTel.value == '') {
 				telConfirmMsg.style.color = wrongColor;
 				telConfirmMsg.innerHTML = '전화번호를 입력해주세요.';
-				shippingaddrlistTel.focus();
+				shippingTel.focus();
 				return false;
 			} else {
 				telConfirmMsg.innerHTML = '';
 			}
-
+			
+			//폼으로 보내기 전에 폼의 값을 채워준다.
+			var selectPayment = document.querySelector('input[name="payment"]:checked').value;
+			document.getElementById('orderTotalprice').value = document.getElementById('resultTotalprice').textContent;
+			document.getElementById('orderCard').value = selectPayment;
+			
 			//입력 값 전송
 			document.shippingForm.submit(); //유효성 검사의 포인트
 		}
@@ -345,11 +376,11 @@ td {
 			var userAddr = document.getElementById('userAddr');
 			var userAddrdetail = document.getElementById('userAddrdetail');
 			var userTel = document.getElementById('userTel');
-			document.getElementById('shippingaddrlistRecipientln').value = userLastname.text;
-			document.getElementById('shippingaddrlistRecipientfn').value = userFirstname.text;
-			document.getElementById('shippingaddrlistAddr').value = userAddr.text;
-			document.getElementById('shippingaddrlistAddrdetail').value = userAddrdetail.text;
-			document.getElementById('shippingaddrlistTel').value = userTel.text;
+			document.getElementById('shippingRecipientln').value = userLastname.text;
+			document.getElementById('shippingRecipientfn').value = userFirstname.text;
+			document.getElementById('shippingAddr').value = userAddr.text;
+			document.getElementById('shippingAddrdetail').value = userAddrdetail.text;
+			document.getElementById('shippingTel').value = userTel.text;
 		}
 	</script>
 </body>
