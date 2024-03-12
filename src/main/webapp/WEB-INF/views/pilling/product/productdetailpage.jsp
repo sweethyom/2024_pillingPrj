@@ -7,6 +7,8 @@
 <head>
 <meta charset="UTF-8" />
 <title>Insert title here</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.10/dist/sweetalert2.min.css">
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
 	<!-- Product section-->
@@ -51,7 +53,7 @@
 							<i class="fa-regular fa-credit-card me-1"></i> 구매하기
 						</button>
 						<button class="btn btn-outline-dark flex-shrink-0" type="button"
-							onclick="location.href='cart'">
+							onclick="addCartCall(${detail.productId})">
 							<i class="bi-cart-fill me-1"></i> 장바구니 담기
 						</button>
 					</div>
@@ -281,20 +283,73 @@
 
 	<!-- 제품 후기 END  -->
 	
-	<!-- 장바구니에 제품 번호를 넘겨줄 히든폼 
+	<!-- 장바구니에 제품 번호를 넘겨줄 히든폼 -->
   <div>
-    <form id="cartform" action="addcart" method="post">
+    <form id="cartform" method="post">
     	<input type="hidden" id="productId" name="productId">
+    	<input type="hidden" id="userNo" name="userNo" value="${userNo }">
+		<input type="hidden" id="cartProdcnt" name="cartProdcnt">
     </form>
   </div>
-  -->
-	<!-- 장바구니에 제품 번호를 넘겨줄 함수
+  
+	<!-- 장바구니에 제품 번호를 넘겨줄 함수 -->
   <script>
-  	function addCart(id){
+  	// AJAX를 통해서 제품을 장바구니에 넣는다.
+  	function addCartCall(id){
   		document.getElementById("productId").value=id;
+  		document.getElementById("cartProdcnt").value=document.getElementById("inputQuantity").value;
+  		
+  		let form = document.getElementById('cartform');
+  		let formData = new FormData(form);
+  		let url = 'addcart'
+  		
+  		fetch(url, {
+  			method: 'POST',
+  			body: formData,
+  		})
+  		.then((response) => {
+  			if (response.ok) {
+  				return response.text();
+  			} else {
+  				throw new Error('Network response was not ok.');
+  			}
+  		})
+  		.then((text) => {
+  			if(text === 'Yes'){
+  				cartAlert();
+  			} else {
+  				alert('장바구니 추가에 실패하였습니다.');
+  			}
+  		})
+  		.catch((error) => {
+  			console.error('There was an error!', error);
+  			alert('장바구니 추가 중 오류가 발생하였습니다.');
+  		});
+  	}
+  	
+  	function cartAlert(){
+  		Swal.fire({
+  			title: "장바구니에 제품 추가",
+  			text: "제품에 장바구니에 담겼습니다. 장바구니로 이동하시겠습니까?",
+  			icon: "success",
+  			showCancelButton: true,
+  			confirmButtonText: "예",
+  			cancelButtonText: "아니오"
+  		}).then((result) => {
+  			if(result.isConfirmed){
+  				moveCart();
+  			}
+  			else{
+  				console.log("장바구니로 안 감");
+  			}
+  		})
+  	} 
+  	
+  	// 유저 넘버를 담고 장바구니로 이동시킨다.
+  	function moveCart(){
+  		cartform.action = "cart";
   		cartform.submit();
   	}
   </script>
-  -->
 </body>
 </html>

@@ -56,18 +56,6 @@ public class HomeController {
 		return "pilling/menu/introduction";
 	}
 
-	// 장바구니 페이지 이동
-	@RequestMapping("cart")
-	public String cart(Model model) {
-		return "pilling/menu/cart";
-	}
-
-	// 주문 페이지 이동
-	@RequestMapping("order")
-	public String order(Model model) {
-		return "pilling/product/order";
-	}
-
 	// 회원정보확인 이동
 	@RequestMapping("myinfo")
 	public String myinfo(Model model) {
@@ -103,17 +91,5 @@ public class HomeController {
 	@RequestMapping("mypurchasedetail")
 	public String mypurchasedetail(Model model) {
 		return "pilling/mypage/mypurchasedetail";
-	}
-
-	// 문의사항 조회 페이지 이동
-	@RequestMapping("questiondetail")
-	public String questiondetail(Model model) {
-		return "pilling/board/questiondetail";
-	}
-
-	// 문의사항 작성 페이지 이동
-	@RequestMapping("questionform")
-	public String questionform(Model model) {
-		return "pilling/board/questionform";
 	}
 }
