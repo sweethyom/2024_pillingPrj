@@ -68,8 +68,7 @@
 										</div>
 									</td>
 									<td>
-										<p class="mb-0 mt-4 prod-total-price">
-											${c.productPrice * c.cartProdcnt }원
+										<p class="mb-0 mt-4 prod-total-price">${c.productPrice * c.cartProdcnt }원
 										</p>
 									</td>
 									<td>
@@ -108,7 +107,7 @@
 							</h1>
 							<div class="d-flex justify-content-between mb-4">
 								<h5 class="mb-0 me-4">제품가격</h5>
-								<p class="mb-0 order-total-price" id="orderTotalprice" name="orderTotalprice"></p>
+								<p class="mb-0" id="totalprice" name="totalprice"></p>
 							</div>
 							<div class="d-flex justify-content-between">
 								<h5 class="mb-0 me-4">배송료</h5>
@@ -120,7 +119,7 @@
 						<div
 							class="py-4 mb-4 border-top border-bottom d-flex justify-content-between">
 							<h5 class="mb-0 ps-4 me-4">총 합계</h5>
-							<p class="mb-0 pe-4">111111원</p>
+							<p class="mb-0 pe-4" id="orderTotalprice" name="orderTotalprice"></p>
 						</div>
 						<button type="button"
 							class="px-5 py-3 btn btn-primary border-2 rounded-pill animated slideInDown mb-4 ms-4"
@@ -164,7 +163,18 @@
   		.then((text) => {
   			if(text === 'Yes'){
   				row.style.display = 'none';
+  				document.querySelector('.item-row[data-cart-id="' + id + '"] .prodprice').textContent = 0;
   				console.log('장바구니 삭제 완료');
+  				
+  				var total1 = prodTotalCal(id);
+  				var total2 = orderTotalCal();
+  				var total3 = total2 + 3000;
+  				var totalPriceElement1 = document.querySelector('.item-row[data-cart-id="' + id + '"] .prod-total-price');
+  				var totalPriceElement2 = document.getElementById('totalprice');
+  				var totalPriceElement3 = document.getElementById('orderTotalprice');
+  				totalPriceElement1.textContent = total1 + "원";
+  				totalPriceElement2.textContent = total2 + "원";
+  				totalPriceElement3.textContent = total3 + "원";
   			} else {
   				alert('장바구니 삭제에 실패하였습니다.');
   			}
@@ -215,13 +225,16 @@
 	  			if(text === 'Yes'){
 	  				console.log('수량 업데이트 완료');
 	  				
-	  				//총 가격 계산, total1은 각 제품 별 가격이고, total2는 총 주문 가격이다.
+	  				//총 가격 계산, total1은 테이블 한 줄 당 가격, total2는 총 주문 가격, total3은 배송비 포함 전체 가격.
 	  				var total1 = prodTotalCal(cartIdElement);
 	  				var total2 = orderTotalCal();
+	  				var total3 = total2 + 3000;
 	  				var totalPriceElement1 = document.querySelector('.item-row[data-cart-id="' + cartIdElement + '"] .prod-total-price');
-	  				var totalPriceElement2 = document.getElementById('orderTotalprice');
+	  				var totalPriceElement2 = document.getElementById('totalprice');
+	  				var totalPriceElement3 = document.getElementById('orderTotalprice');
 	  				totalPriceElement1.textContent = total1 + "원";
 	  				totalPriceElement2.textContent = total2 + "원";
+	  				totalPriceElement3.textContent = total3 + "원";
 	  			} else {
 	  				alert('수량 업데이트에 실패하였습니다.');
 	  			}
@@ -261,10 +274,13 @@
 	  				
 	  				var total1 = prodTotalCal(id);
 	  				var total2 = orderTotalCal();
+	  				var total3 = total2 + 3000;
 	  				var totalPriceElement1 = document.querySelector('.item-row[data-cart-id="' + id + '"] .prod-total-price');
-	  				var totalPriceElement2 = document.getElementById('orderTotalprice');
+	  				var totalPriceElement2 = document.getElementById('totalprice');
+	  				var totalPriceElement3 = document.getElementById('orderTotalprice');
 	  				totalPriceElement1.textContent = total1 + "원";
 	  				totalPriceElement2.textContent = total2 + "원";
+	  				totalPriceElement3.textContent = total3 + "원";
 	  			} else {
 	  				alert('수량 업데이트에 실패하였습니다.');
 	  			}
@@ -307,10 +323,13 @@
 	  				
 	  				var total1 = prodTotalCal(id);
 	  				var total2 = orderTotalCal();
+	  				var total3 = total2 + 3000;
 	  				var totalPriceElement1 = document.querySelector('.item-row[data-cart-id="' + id + '"] .prod-total-price');
-	  				var totalPriceElement2 = document.getElementById('orderTotalprice');
+	  				var totalPriceElement2 = document.getElementById('totalprice');
+	  				var totalPriceElement3 = document.getElementById('orderTotalprice');
 	  				totalPriceElement1.textContent = total1 + "원";
 	  				totalPriceElement2.textContent = total2 + "원";
+	  				totalPriceElement3.textContent = total3 + "원";
 	  			} else {
 	  				alert('수량 업데이트에 실패하였습니다.');
 	  			}
@@ -334,16 +353,26 @@
 	// 주문 총 합계를 계산한다.
 	function orderTotalCal(){
 		var totalPrice = 0;
-		console.log(totalPrice);
-		document.querySelectorAll('.order-total-price').forEach(function(element){
-			var priceArr = (element.textContent).split('원');
-			var price = priceArr[0];
-			price = parseInt(price);
-			totalPrice += price;
-			console.log(totalPrice);
+		
+		var rows = document.querySelectorAll('.item-row');
+		
+		rows.forEach(row => {
+			var productPrice = parseInt(row.querySelector('.prodprice').textContent);
+			var productCnt = parseInt(row.querySelector('.prodcnt').value);
+			
+			console.log(productPrice);
+			
+			totalPrice += productPrice * productCnt;
 		});
 		return totalPrice;
 	}
+	
+	window.onload = function(){
+		var totalPrice1 = orderTotalCal();
+		var totalPrice2 = totalPrice1 + 3000;
+		document.getElementById('totalprice').textContent = totalPrice1 + "원";
+		document.getElementById('orderTotalprice').textContent = totalPrice2 + "원";
+	};
 	</script>
 	<!-- Cart Page End -->
 </body>
