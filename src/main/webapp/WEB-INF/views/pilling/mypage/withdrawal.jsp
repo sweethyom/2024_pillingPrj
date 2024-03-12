@@ -11,14 +11,10 @@
 .width-myinfo {
 	margin-left: auto;
 	margin-right: auto;
-	width: 60%;
+	width: 50%;
 }
 .table-round{
 	border-radius:4px;
-}
-
-#userPswd{
-	display:flex;
 }
 </style>
 <body>
@@ -37,14 +33,14 @@
 						</c:if>
 				</div>
 			</div>
-			<form action="myinfochk" method="post">
+			<form action="memberwithdrawal" method="post">
 				<div class="card-body">
 					<div class="width-myinfo table-responsive">
 						<div class="myinfocheck-table">
 							<table class="table table-bordered card">
-								<thead>
+							<thead>
 									<tr style="display:flex; border-radius:10px;">
-									<th class="password-text" width="100" style="background-color: #f5f6f6; valign:middle;">비밀번호</th>
+									<th class="password-text" width="100" style="background-color: #f5f6f6; border-radius:10px;" valign="middle">비밀번호</th>
 									<td style="display:flex; width:100%; border-radius:10px;">
 										<input type="password" id="userPswd" name="userPswd" class="form-control" placeholder="비밀번호를 입력하세요." />
 									</td>
@@ -52,8 +48,9 @@
 								</thead>
 							</table>
 							<!-- Submit button -->
-							<button type="submit" class="btn btn-primary btn-block mb-4">확인</button>&nbsp;&nbsp;&nbsp;&nbsp; 
-							<a href="mypage" class="btn btn-primary btn-block mb-4">돌아가기</a>
+							<button type="submit" class="btn btn-primary btn-block mb-4" onclick="withdraw()">탈퇴</button>
+							&nbsp;&nbsp;&nbsp;&nbsp; <a href="myinfopage"
+								class="btn btn-primary btn-block mb-4">돌아가기</a>
 						</div>
 					</div>
 				</div>
@@ -63,6 +60,14 @@
 	<script>
 		let wrongColor = '#ff0000';
 		message.style.color = wrongColor;
+		
+		function withdraw(){
+				console.log("여기까지 왔네?");
+				  var result = confirm("탈퇴하시겠습니까?");
+				  if(result) {
+					  alert("탈퇴 처리되었습니다.");
+				  }
+			  }
 	</script>
 </body>
 </html>
