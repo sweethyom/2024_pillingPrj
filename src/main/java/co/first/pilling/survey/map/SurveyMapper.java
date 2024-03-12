@@ -7,7 +7,7 @@ import co.first.pilling.survey.service.SurveyVO;
 public interface SurveyMapper {
 	
 	// 설문조사 응답 결과로 매핑한 제품의 목록을 담을 때 사용
-	List<SurveyVO> responseProductList();
+	List<SurveyVO> responseProductList(int userNo);
 
 	// 설문조사 결과 입력(등록)
 	int surveyResultInput(SurveyVO vo);

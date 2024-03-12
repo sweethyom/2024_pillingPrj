@@ -5,6 +5,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Fi1ling</title>
+    <script type="text/javascript">
+      // contextPath 변수 초기화
+      var contextPath = '${pageContext.request.contextPath}';
+    </script>
+
     <meta content="" name="keywords" />
     <meta content="" name="description" />
 
@@ -319,6 +324,9 @@
           <button class="btn btn-secondary prev-btn" onclick="showPrevSet('set7')">이전</button>
         </div>
         <!-- 일곱번째 세트 END -->
+        <!-- 제품 추천 START -->
+        <div id="productsContainer" class="row g-4 justify-content-center"></div>
+        <!-- 제품 추천 END -->
       </div>
       <!-- 설문조사 취소하고 홈으로 돌아가는 버튼 START -->
       <div>
@@ -423,20 +431,74 @@
           },
           body: JSON.stringify(surveyResponses),
         })
-          .then((response) => {
-            if (!response.ok) {
-              throw new Error('Network response was not ok');
-            }
-            return response.text();
-          })
+          // response받은 정보를 JSON형태로 받는것
+          .then((response) => response.json())
+          // data는 추천제품 리스트의 값을 받아온것
           .then((data) => {
-            console.log(data);
-            alert('설문조사가 성공적으로 제출되었습니다.');
+            // 설문조사 섹션 숨기기
+            const lastSet = document.getElementById('set7');
+            lastSet.style.display = 'none';
+            // 추천제품을 화면에 표시하는 함수
+            viewResponseProductList(data);
           })
           .catch((error) => {
-            console.error('There has been a problem with your fetch operation:', error);
-            alert('설문 제출 중 오류가 발생했습니다.');
+            console.error('Error:', error);
           });
+      }
+
+      // 추천제품을 화면에 표시하는 함수
+      function viewResponseProductList(products) {
+        var productListHtml = '';
+        products.forEach(function (product) {
+          var keywordsHtml = product.keywordName
+            ? product.keywordName
+                .map(function (keyword) {
+                  return '<a class="keywordName">' + keyword + '</a>';
+                })
+                .join(', ')
+            : '';
+
+          console.log(product);
+
+          productListHtml +=
+            '<br>' +
+            '<br>' +
+            '<div class="col-md-6 col-lg-6 col-xl-4">' +
+            '<a href="' +
+            contextPath +
+            '/productdetailpage?productId=' +
+            product.productId +
+            '" style="text-decoration: none; color: inherit;">' +
+            '<div class="rounded position-relative" style="cursor: pointer">' +
+            '<div>' +
+            '<img src="' +
+            product.filepath1 +
+            '" class="img-fluid w-100 rounded-top" alt="' +
+            product.productName +
+            '" />' +
+            '</div>' +
+            '<div class="p-4 border border-secondary border-top-0 rounded-bottom">' +
+            '<h4>' +
+            product.productName +
+            '</h4>' +
+            '<p>' +
+            product.productDescription1 +
+            '</p>' +
+            '<div>' +
+            keywordsHtml +
+            '</div>' +
+            '<div class="d-flex justify-content-between flex-lg-wrap">' +
+            '<p class="text-dark fs-5 fw-bold mb-0">' +
+            product.productPrice.toLocaleString() +
+            '원' +
+            '</p>' +
+            '</div>' +
+            '</div>' +
+            '</div>' +
+            '</a>' +
+            '</div>';
+        });
+        document.getElementById('productsContainer').innerHTML = productListHtml;
       }
 
       // survey 페이지 자체에 event 추가하는 함수

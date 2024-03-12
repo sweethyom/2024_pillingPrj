@@ -25,8 +25,8 @@ public class SurveyServiceImpl implements SurveyService {
 
 	// 응답 받은 결과값을 제품과 매핑한 결과
 	@Override
-	public List<SurveyVO> responseProductList() {
-		return sm.responseProductList();
+	public List<SurveyVO> responseProductList(int userNo) {
+		return sm.responseProductList(userNo);
 	}
 
 	@Override

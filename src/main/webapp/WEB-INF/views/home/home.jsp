@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
   <head>
@@ -21,7 +22,10 @@
               <div class="container carousel-content">
                 <h4 class="text-white display-6 mb-4 animated slideInDown">당신의 첫번째 영양제, Pi1ling</h4>
                 <h1 class="text-white display-1 mb-4 animated slideInDown">지금 영양제 추천을 도와드리겠습니다.</h1>
-                <a href="surveypage" class="me-2"
+                
+                <!-- 아래의 href부분의 javascript:void(0)는 a 링크를 눌렀을 때 아무런 동작을 하지않기 위해 사용된다.  -->
+                <!-- 이후 onclick 이벤트로 클릭 이벤트는 대체된다.  -->
+                <a href="javascript:void(0)" class="me-2" onclick="checkLoginStatus()"
                   ><button type="button" class="px-5 py-3 btn btn-primary border-2 rounded-pill animated slideInDown">설문조사 시작</button></a
                 >
               </div>
@@ -317,5 +321,17 @@
       </div>
     </div>
     <!-- Testiminial End -->
+
+    <script type="text/javascript">
+      function checkLoginStatus() {
+        const isLoggedIn = ${isLoggedIn}; // 서버에서 값을 받는다 (Boolean 타입)
+        if (!isLoggedIn) {
+          alert("로그인을 하셔야 설문조사가 가능합니다.");
+          window.location.href = "login";
+        } else {
+          window.location.href = "surveypage";
+        }
+      }
+    </script>
   </body>
 </html>
