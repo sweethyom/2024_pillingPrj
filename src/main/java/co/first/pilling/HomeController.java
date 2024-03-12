@@ -56,12 +56,6 @@ public class HomeController {
 		return "pilling/menu/introduction";
 	}
 
-	// 주문 페이지 이동
-	@RequestMapping("order")
-	public String order(Model model) {
-		return "pilling/product/order";
-	}
-
 	// 회원정보확인 이동
 	@RequestMapping("myinfo")
 	public String myinfo(Model model) {

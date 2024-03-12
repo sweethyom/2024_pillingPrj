@@ -42,7 +42,7 @@
 										<p class="mb-0 mt-4">${c.productName}</p>
 									</td>
 									<td>
-										<p class="mb-0 mt-4 prodprice">${c.productPrice}</p>
+										<div style="display:flex;"><p class="mb-0 mt-4 prodprice">${c.productPrice}</p><p class="mb-0 mt-4">원</p></div>
 									</td>
 									<td>
 										<div class="input-group quantity mt-4" style="width: 100px;">
@@ -123,7 +123,7 @@
 						</div>
 						<button type="button"
 							class="px-5 py-3 btn btn-primary border-2 rounded-pill animated slideInDown mb-4 ms-4"
-							style="float: right;" onclick="location.href='order'">
+							style="float: right;" onclick="moveOrder()">
 							구매하기</button>
 					</div>
 				</div>
@@ -135,6 +135,10 @@
 		<form id="idform" name="idform">
 			<input type="hidden" id="cartId" name="cartId"> <input
 				type="hidden" id="cartProdcnt" name="cartProdcnt" value=0>
+		</form>
+		<!-- 구매 페이지로 userNo을 넘겨주는 히든폼 -->
+		<form id="orderform" name="orderform" action="order" method="post">
+			<input type="hidden" id="userNo" name="userNo" value="${userNo }">
 		</form>
 	</div>
 	<script>
@@ -360,19 +364,22 @@
 			var productPrice = parseInt(row.querySelector('.prodprice').textContent);
 			var productCnt = parseInt(row.querySelector('.prodcnt').value);
 			
-			console.log(productPrice);
-			
 			totalPrice += productPrice * productCnt;
 		});
 		return totalPrice;
 	}
 	
+	// Cart Total 초기값 설정
 	window.onload = function(){
 		var totalPrice1 = orderTotalCal();
 		var totalPrice2 = totalPrice1 + 3000;
 		document.getElementById('totalprice').textContent = totalPrice1 + "원";
 		document.getElementById('orderTotalprice').textContent = totalPrice2 + "원";
 	};
+	
+	function moveOrder(){
+  		orderform.submit();
+  	}
 	</script>
 	<!-- Cart Page End -->
 </body>

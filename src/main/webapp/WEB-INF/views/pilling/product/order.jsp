@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -29,7 +30,7 @@ td {
 	border-right: hidden;
 }
 
-.width-order{
+.width-order {
 	width: 72%;
 }
 </style>
@@ -50,31 +51,23 @@ td {
 							<thead>
 								<tr>
 									<th>제품</th>
-									<th>상품명</th>
+									<th>제품명</th>
 									<th>가격</th>
 									<th>개수</th>
 									<th>총가격</th>
 								</tr>
 							</thead>
 							<tbody>
-								<tr>
-									<td width="100"><img
-										src="resources/pilling/img/mypage/product.png" alt="제품 이미지"
-										width="100"></td>
-									<td width="500">System Architect</td>
-									<td width="200">1111111111원</td>
-									<td width="200">1</td>
-									<td>1111111111원</td>
-								</tr>
-								<tr>
-									<td width="100"><img
-										src="resources/pilling/img/mypage/product.png" alt="제품 이미지"
-										width="100"></td>
-									<td width="500">System Architect</td>
-									<td width="200">1111111111원</td>
-									<td width="200">1</td>
-									<td>1111111111원</td>
-								</tr>
+								<c:forEach items="${carts}" var="c">
+									<tr>
+										<td width="100"><img src="${c.filepath }" alt="제품 이미지"
+											width="80px" height="80px"></td>
+										<td width="500">${c.productName}</td>
+										<td width="200">${c.productPrice}</td>
+										<td width="200">${c.cartProdcnt }</td>
+										<td>${c.productPrice * c.cartProdcnt }원</td>
+									</tr>
+								</c:forEach>
 							</tbody>
 						</table>
 					</div>
@@ -221,7 +214,7 @@ td {
 			</div>
 			<!-- 결제버튼 END -->
 		</div>
-		
+
 	</div>
 	<script>
 		// 전화번호 자동 하이픈 넣어주기

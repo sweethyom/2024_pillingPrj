@@ -39,6 +39,20 @@ public class CartController {
 		return "pilling/menu/cart";
 	}
 	
+	@RequestMapping("order")
+	public String order(CartVO vo, Model model) {
+		List<CartVO> cartList = cs.cartSelectList(vo);
+		for(CartVO cart : cartList) {
+			String webPath = cart.getFilepath().replace("C:\\DEV\\eclipse_202103\\workspace\\PillingProject\\src\\main\\webapp\\", "");
+			webPath = webPath.replace("\\", "/");
+			cart.setFilepath(webPath);
+		}
+		
+		model.addAttribute("carts", cartList);
+		
+		return "pilling/product/order";
+	}
+	
 	@PostMapping("removecart")
 	@ResponseBody
 	public String removecart(CartVO vo) {
