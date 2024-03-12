@@ -9,6 +9,9 @@
 		AND USER_PSWD = #{userPswd}
 	</if> 
 </select>
+<select id="userRead">
+	SELECT * FROM `user` WHERE USER_ID = #{userId}
+</select>
 <insert id="userInsert">
 	INSERT INTO `user`(
 	user_id, user_pswd, user_lastname, user_firstname, user_birthdate, user_gender, user_email, user_tel, user_addr, user_addrdetail)
@@ -20,6 +23,35 @@
 	WHERE user_id = #{userId}
 	</update>
 <delete id="userDelete"></delete>
+<update id="userWithdraw">
+	UPDATE `user`u 
+	SET u.user_signout='Y',
+	WHERE user_id = #{userId}
+</update>
+<insert id="userWithdrawinsert">
+	INSERT INTO withdrawal(user_no)
+	VALUES (#{userNo})
+</insert>
+<update id="userTelUpdate">
+	UPDATE `user`
+	SET user_tel=#{userTel}
+	WHERE user_id = #{userId}
+</update>
+<update id="userEmailUpdate">
+	UPDATE `user`
+	SET user_email=#{userEmial}
+	WHERE user_id = #{userId}
+</update>
+<update id="userAddrUpdate">
+	UPDATE `user`
+	SET user_Addr=#{userAddr}, user_Addrdetail=#{userAddrdetail}
+	WHERE user_id = #{userId}
+</update>
+<update id="userMkUpdate">
+	UPDATE `user`
+	SET user_marketingYn=#{userMarketingYn}
+	WHERE user_id = #{userId}
+</update>
 <select id="userPassword" parameterType="String">
 	SELECT * FROM `user` WHERE USER_ID=#{userId} AND USER_PSWD=#{userPswd}
 </select>

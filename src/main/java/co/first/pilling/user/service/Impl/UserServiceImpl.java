@@ -29,6 +29,18 @@ public class UserServiceImpl implements UserService {
 	}
 	
 	@Override
+	public UserVO userRead(String id){
+		UserVO vo = null;
+		try {
+			vo = map.userRead(id);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return vo;
+	}
+	
+	@Override
 	public void userInsert(UserVO vo) throws DataAccessException{
 		map.userInsert(vo);
 	}
@@ -38,6 +50,35 @@ public class UserServiceImpl implements UserService {
 		return map.userDelete(vo);
 	}
 
+	@Override
+	public 	int userWithdraw(UserVO vo) {
+		return map.userWithdraw(vo);
+	}
+	
+	public int userWithdrawinsert(UserVO vo) {
+		return map.userWithdrawinsert(vo);
+	}
+	
+	@Override
+	public int userTelUpdate(UserVO vo){
+		return map.userTelUpdate(vo);
+	}
+	
+	@Override
+	public int userEmailUpdate(UserVO vo){
+		return map.userEmailUpdate(vo);
+	}
+	
+	@Override
+	public int userAddrUpdate(UserVO vo) {
+		return map.userAddrUpdate(vo);
+	}
+	
+	@Override
+	public int userMkUpdate(UserVO vo) {
+		return map.userMkUpdate(vo);
+	}
+	
 	@Override
 	public int userUpdate(UserVO vo) {
 		return map.userUpdate(vo);

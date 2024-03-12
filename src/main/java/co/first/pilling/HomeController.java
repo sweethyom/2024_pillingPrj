@@ -122,4 +122,9 @@ public class HomeController {
 		return "pilling/mypage/mypurchasedetail";
 	}
 	
+	// 탈퇴페이지 이동
+	@RequestMapping("withdrawal")
+	public String withdrawal(Model model) {
+		return "pilling/mypage/withdrawal";
+	}
 }

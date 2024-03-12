@@ -19,6 +19,7 @@
 .edit-btn {
 	border-radius: 6px;
 	border: 0px;
+	vertical-align: top;
 }
 
 button {
@@ -31,6 +32,10 @@ button {
 
 .editinput {
 	width: 200;
+}
+
+.teleditval {
+	display:block;
 }
 
 </style>
@@ -60,7 +65,7 @@ button {
 										<th width="200">아이디</th>
 										<td width="500">${userId }</td>
 									<tr>
-										<th align=middle>비밀번호</th>
+										<th valign="middle">비밀번호</th>
 										<td>
 										현재 비밀번호&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : <input class="editinput" type="password" name="pswdbox" id="currentpw" placeholder="현재 비밀번호를 입력하세요" width="60%" required/>
 										<br>
@@ -113,15 +118,13 @@ button {
 												onclick="mkinput()">마케팅동의수정</button></td>
 									<tr>
 										<th>탈퇴하시겠습니까?</th>
-										<td><button class="edit-btn" type="submit">탈퇴하기</button>
+										<td><button class="edit-btn" type="button" onclick="location.href='withdrawal'">탈퇴하기</button>
 								</thead>
 							</table>
 
 							<div align="center">
 								<!-- Submit button -->
 								<a href="outmyinfo" class="btn-margin btn btn-primary btn-block">돌아가기</a>
-								<a href="savemyinfo"
-									class="btn-margin btn btn-primary btn-block">저장하기</a>
 							</div>
 						</div>
 					</form>
@@ -130,7 +133,9 @@ button {
 		</div>
 	</section>
 	 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+	 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 	<script type="text/javascript">
+	
 	  function telinput() {
 	      var obj=document.getElementsByClassName("teleditval");
 	      if(obj.length>1){
@@ -138,7 +143,7 @@ button {
 	      }
 	      
 	    var inputval =
-	    $('<button style="float: right;" class="edit-btn" id="telbutton" type="button">연락처 수정취소</button><br><input type="text" id="telinput" value="" name="telinput"/><br><button style="float: right;" class="edit-btn" id="telEditbutton" type="button">수정</button>').addClass("teleditval");
+	    $('<button style="float: right;" class="edit-btn" id="telbutton" type="button" onclick="teleditcancel()">연락처 수정취소</button><br><input type="text" id="telinputbox" value="" name="telinput"/><br><button style="float: right;" class="edit-btn" id="telEditbutton" type="button">수정</button>').addClass("teleditval");
 	    $('#telbtn').before(inputval);	 
 	    
 	    $('#telinput').val('${user.userTel}'); // 여기 수정;
@@ -148,6 +153,26 @@ button {
 			telbtn.style.display = 'none';
 			}
 		}
+	  
+	  function teleditcancel() {
+		  var telinputbox= document.getElementById('telinputbox');
+		  var telbutton= document.getElementById('telbutton');
+		  var telEditbutton = document.getElementById('telEditbutton');
+		  var telbtn = document.getElementById('telbtn');
+		  
+		  	if (telinputbox.value !== null){
+			  if (window.getComputedStyle(telinputbox, null).getPropertyValue('display') === 'block') {
+				  	var result = confirm("수정을 취소하시겠습니까?");
+			  		if(result) {
+			  			alert("취소되었습니다.");
+					telinputbox.style.display='none';
+				 	telbutton.style.display='none';
+				 	telEditbutton.style.display='none';
+					telbtn.style.display = 'block';
+				}
+		  	}
+		 }
+	}
 	  
 	  function emailinput() {
 	      var obj=document.getElementsByClassName("emaileditval");
@@ -246,13 +271,6 @@ button {
 			}
 		}
       
-	  function signout() {
-		  var result = confirm("회원 탈퇴를 하시겠습니까?");
-		  if(result) {
-			  alert("탈퇴 처리되었습니다.");
-		  }
-	  }
-	  
 	    const hypenTel = (target) => {
 	           target.value = target.value.replace(/[^0-9]/g, '').replace(/^(\d{2,3})(\d{3,4})(\d{4})$/, `$1-$2-$3`);
 	         };
@@ -401,6 +419,5 @@ button {
 	           }).open();
 	         }
 	    </script>
-	<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 </body>
 </html>

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import co.first.pilling.user.service.UserService;
 import co.first.pilling.user.service.UserVO;
@@ -27,7 +28,7 @@ public class MyPageController {
 	public String postMyInfoChk(Model model, UserVO vo, HttpSession session) {
 		String viewPage = null;
 		vo.setUserId((String) session.getAttribute("userId"));
-		vo = udao.userPassword(vo);
+		vo = udao.userPassword(vo); 
 			if (vo != null) {
 				session.setAttribute("userId", vo.getUserId());
 				session.setAttribute("userLastname", vo.getUserLastname());
@@ -48,6 +49,11 @@ public class MyPageController {
 		return viewPage;
 	}
 	
+	@RequestMapping(value="myinfoedit", method=RequestMethod.GET)
+	public String getmyinfoedit(UserVO vo, Model model, HttpSession session) {
+		model.addAttribute("userVO", udao.userRead((String)session.getAttribute("userId")));
+		return "mypage/myinfopage";
+}
 	@RequestMapping("outmyinfo")
 		public String outmyinfo(HttpSession session, Model model, UserVO vo) {
 			session.removeAttribute("userLastname");
@@ -63,14 +69,25 @@ public class MyPageController {
 			return "redirect:mypage";
 	}
 	
-	@RequestMapping(value="myinfoedit", method=RequestMethod.GET)
-	public String getmyinfoedit(UserVO vo) {
-		return "mypage/myinfopage";
-}
-	
 	@RequestMapping(value="savemyinfo", method=RequestMethod.POST)
-	public String postmyinfoedit(UserVO vo) {
-		udao.userUpdate(vo);
+	public String postmyinfoedit(UserVO vo, HttpSession session, Model model) throws Exception {
+		
+		
 		return "mypage/myinfopage";
 	}
+	
+	@RequestMapping(value="memberwithdrawal", method=RequestMethod.GET)
+	public void WithdrawGet() {
+		
+	}
+	
+	@RequestMapping(value="memberwithdrawal", method=RequestMethod.POST)
+	public String WithdrawPost(HttpSession session, RedirectAttributes rttr, UserVO vo) throws Exception{
+		vo.setUserId((String) session.getAttribute("userId"));
+		udao.userWithdraw(vo);
+		session.invalidate();
+		
+		return "redirect:/";
+	}
+	
 }
