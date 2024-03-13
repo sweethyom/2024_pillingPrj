@@ -13,10 +13,7 @@ public interface UserService {
 	int userDelete(UserVO vo); 
 	int userWithdraw(UserVO vo);//회원탈퇴
 	int userWithdrawinsert(UserVO vo);
-	int userTelUpdate(UserVO vo);//회원연락처수정
-	int userEmailUpdate(UserVO vo);//회원이메일수정
-	int userAddrUpdate(UserVO vo);//회원주소수정
-	int userMkUpdate(UserVO vo);//회원마케팅동의여부수정
-	int userUpdate(UserVO vo); //회원수정
+	int userPswdUpdate(UserVO vo);//비밀번호변경
+	public int userUpdate(UserVO vo); //회원수정
 	UserVO userPassword(UserVO vo); //마이페이지비밀번호확인
 }

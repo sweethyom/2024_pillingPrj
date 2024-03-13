@@ -38,6 +38,10 @@ button {
 	display:block;
 }
 
+.emaileditval {
+	display:block;
+}
+
 </style>
 		<!-- Page Header Start -->
 		<div class="container-fluid myinfopage-header py-5">
@@ -67,9 +71,9 @@ button {
 									<tr>
 										<th valign="middle">비밀번호</th>
 										<td>
-										현재 비밀번호&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : <input class="editinput" type="password" name="pswdbox" id="currentpw" placeholder="현재 비밀번호를 입력하세요" width="60%" required/>
+										현재 비밀번호&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : <input class="editinput" type="password" name="pswdbox" id="currentpw" placeholder="현재 비밀번호를 입력하세요" width="60%"/>
 										<br>
-										새 비밀번호 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <input type="password" class="editinput" name="pswdbox" placeholder="영문,숫자,특수문자 포함 8자 이상 입력해주세요." width="60%"required/>
+										새 비밀번호 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <input type="password" class="editinput" id="userPswd" name="pswdbox" placeholder="영문,숫자,특수문자 포함 8자 이상 입력해주세요." width="60%"/>
 										<br>
 										<br>
 										영문/숫자/특수문자 2가지 이상 조합 (8자이상)
@@ -79,8 +83,8 @@ button {
 										아이디(이메일) 제외
 										<br>
 										<br>
-										새 비밀번호 재입력 : <input type="password" class="editinput" name="pswdbox" id="passwordConfirm" placeholder="위와 동일한 비밀번호를 입력해주세요." width="60%" required/>
-										<button name="pswdbox" type="submit" id="pswd" style="display:block;" onclick="editbutton1()">비밀번호 변경</button>
+										새 비밀번호 재입력 : <input type="password" class="editinput" name="pswdbox" id="passwordConfirm" placeholder="위와 동일한 비밀번호를 입력해주세요." width="60%" />
+										<button name="pswdbox" type="button" id="pswd" style="display:block;" onclick="editbutton1()">비밀번호 변경</button>
 										<span id="passwordConfirmMsg2"></span>&nbsp;&nbsp;&nbsp;
 												<span id="passwordConfirmMsg1"></span>
 									</td>
@@ -107,13 +111,16 @@ button {
 										<th>주소</th>
 										<td>${userAddr}${userAddrdetail }<button
 												style="float: right;" class="edit-btn" id="addrbtn"
-												type="button" onclick="addreditinput()">주소수정</button></td>
+												type="button" onclick="addrinput()">주소수정</button></td>
 									<tr>
 										<th>총 구매액</th>
 										<td>${userTotalamount }원</td>
 									<tr>
 										<th>마케팅동의여부</th>
-										<td>${userMarketingYn }<button style="float: right;"
+										<td><c:if test= "${userMarketingYn eq 'N'}">
+												동의
+											</c:if>
+										<button style="float: right;"
 												class="edit-btn" id="mkbtn" type="button"
 												onclick="mkinput()">마케팅동의수정</button></td>
 									<tr>
@@ -125,6 +132,7 @@ button {
 							<div align="center">
 								<!-- Submit button -->
 								<a href="outmyinfo" class="btn-margin btn btn-primary btn-block">돌아가기</a>
+								<button type="submit" class="btn btn-primary btn-block mb-4">저장하기</button>
 							</div>
 						</div>
 					</form>
@@ -135,39 +143,51 @@ button {
 	 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 	 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 	<script type="text/javascript">
-	
+	  function editbutton1(){
+		  document.getElementById("pswd").addEventListener("click", editbutton1);
+		  
+		  var form = document.getElementById("myInfoEdit");
+		  form.setAttribute("action", 'pswdedit');
+		  form.submit();
+	  }
 	  function telinput() {
+		  
+		  $(".teleditval").remove();
+		  
+		  
 	      var obj=document.getElementsByClassName("teleditval");
 	      if(obj.length>1){
 	         return false;
 	      }
 	      
 	    var inputval =
-	    $('<button style="float: right;" class="edit-btn" id="telbutton" type="button" onclick="teleditcancel()">연락처 수정취소</button><br><input type="text" id="telinputbox" value="" name="telinput"/><br><button style="float: right;" class="edit-btn" id="telEditbutton" type="button">수정</button>').addClass("teleditval");
+	    $('<button style="float: right;" class="edit-btn" id="telbutton" type="button" onclick="teleditcancel()">연락처 수정취소</button><br><input type="tel" id="userTel" class="form-control" name="telinput" oninput="hypenTel(this)" maxlength="13" placeholder="전화번호를 입력해주세요(-제외)" required/>').addClass("teleditval");
 	    $('#telbtn').before(inputval);	 
 	    
-	    $('#telinput').val('${user.userTel}'); // 여기 수정;
+	    $('#userTel').val('${user.userTel}'); // 여기 수정;
 	    
 		var telbtn = document.getElementById('telbtn');
 		if (window.getComputedStyle(telbtn, null).getPropertyValue('display') === 'block') {
 			telbtn.style.display = 'none';
 			}
 		}
+	 
+	  $('#telbtn').click(function(){
+		  telinput();
+	  });
 	  
 	  function teleditcancel() {
-		  var telinputbox= document.getElementById('telinputbox');
+		  var userTel= document.getElementById('userTel');
 		  var telbutton= document.getElementById('telbutton');
-		  var telEditbutton = document.getElementById('telEditbutton');
 		  var telbtn = document.getElementById('telbtn');
 		  
-		  	if (telinputbox.value !== null){
-			  if (window.getComputedStyle(telinputbox, null).getPropertyValue('display') === 'block') {
+		  	if (userTel.value !== null){
+			  if (window.getComputedStyle(userTel, null).getPropertyValue('display') === 'block') {
 				  	var result = confirm("수정을 취소하시겠습니까?");
 			  		if(result) {
 			  			alert("취소되었습니다.");
-					telinputbox.style.display='none';
+					userTel.style.display='none';
 				 	telbutton.style.display='none';
-				 	telEditbutton.style.display='none';
 					telbtn.style.display = 'block';
 				}
 		  	}
@@ -175,38 +195,96 @@ button {
 	}
 	  
 	  function emailinput() {
+		  
+		  $(".emaileditval").remove();
+		  
+		  
 	      var obj=document.getElementsByClassName("emaileditval");
 	      if(obj.length>1){
 	         return false;
 	      }
 	      
 	    var inputval =
-	      $('<button style="float: right;" class="edit-btn" id="emailbutton" type="button">이메일 수정취소</button><br><input type="email" id="telinput" value="" name="emailinput"/><br><button style="float: right;" class="edit-btn" id="emailEditbutton" type="button">수정</button>').addClass("emaileditval");
+	    $('<button style="float: right;" class="edit-btn" id="emailbutton" type="button" onclick="emaileditcancel()">이메일 수정취소</button><br><input type="email" id="userEmail" class="form-control" name="emailinput" required/>').addClass("emaileditval");
 	    $('#emailbtn').before(inputval);	 
 	    
-	    $('#emailinput').val('${user.userEmail}'); // 여기 수정;
+	    $('#userEmail').val('${user.userEmail}'); // 여기 수정;
 	    
 		var emailbtn = document.getElementById('emailbtn');
 		if (window.getComputedStyle(emailbtn, null).getPropertyValue('display') === 'block') {
 			emailbtn.style.display = 'none';
 			}
 		}
-
-	  function addreditinput() {
+	 
+	  $('#emailbtn').click(function(){
+		  emailinput();
+	  });
+	  
+	  function emaileditcancel() {
+		  var userEmail= document.getElementById('userEmail');
+		  var emailbutton= document.getElementById('emailbutton');
+		  var emailbtn = document.getElementById('emailbtn');
+		  
+		  	if (userEmail.value !== null){
+			  if (window.getComputedStyle(userEmail, null).getPropertyValue('display') === 'block') {
+				  	var result = confirm("수정을 취소하시겠습니까?");
+			  		if(result) {
+			  			alert("취소되었습니다.");
+					userEmail.style.display='none';
+				 	emailbutton.style.display='none';
+					emailbtn.style.display = 'block';
+				}
+		  	}
+		 }
+	}
+	  
+	  function addrinput() {
+		  
+		  $(".addreditval").remove();
+		  
+		  
 	      var obj=document.getElementsByClassName("addreditval");
 	      if(obj.length>1){
 	         return false;
 	      }
 	      
 	    var inputval =
-	      $('<button style="float: right;" class="edit-btn" id="addrbutton" type="button">주소 수정취소</button><br><br><input type="button" class="form-control mb-1" style="width: 20%" onclick="userAddressInput()" value="주소 찾기" />&nbsp;<input type="text" class="form-control" id="userAddr" name="userAddr" style="width: 70%" placeholder="도로명주소" required /><span id="guide" style="color: #999; display: none"></span><input type="text" class="form-control" id="userAddrdetail" name="userAddrdetail" placeholder="상세주소" required /><p id="addressConfirmMsg"></p><br><button style="float: right;" class="edit-btn" id="addrEditbutton" type="button">수정</button>');
-	    $('#addrbtn').after(inputval);	 
+	    $('<button style="float: right;" class="edit-btn" id="addrbutton" type="button" onclick="addreditcancel()">주소 수정취소</button><br> <input type="button" class="form-control" id="userAddrbtn" style="width: 30%" onclick="userAddressInput()" value="주소 찾기" /><input type="text" id="userAddr" name="userAddr" class="form-control" style="width:70%" placeholder="도로명주소" required/> <span id="guide" style="color: #999; display: none"></span><br><input type="text" class="form-control" id="userAddrdetail" name="userAddrdetail" placeholder="상세주소" required/>').addClass("addreditval");
+	    $('#addrbtn').before(inputval);	 
+	    
+	    $('#userAddr').val('${user.userAddr}'); // 여기 수정;
 	    
 		var addrbtn = document.getElementById('addrbtn');
 		if (window.getComputedStyle(addrbtn, null).getPropertyValue('display') === 'block') {
 			addrbtn.style.display = 'none';
 			}
 		}
+	 
+	  $('#addrbtn').click(function(){
+		  addrinput();
+	  });
+	  
+	  function addreditcancel() {
+		  var userAddr= document.getElementById('userAddr');
+		  var addrbutton= document.getElementById('addrbutton');
+		  var addrbtn = document.getElementById('addrbtn');
+		  
+		  	if (userAddr.value !== null){
+			  if (window.getComputedStyle(userAddr, null).getPropertyValue('display') === 'block') {
+				  	var result = confirm("수정을 취소하시겠습니까?");
+			  		if(result) {
+			  			alert("취소되었습니다.");
+			  		userAddrbtn.style.display='none'
+					userAddr.style.display='none';
+					userAddrdetail.style.display='none';
+				 	addrbutton.style.display='none';
+					addrbtn.style.display = 'block';
+				}
+		  	}
+		 }
+	}
+
+      
       // 다음 주소받기 API 새창으로 구현
       function userAddressInput() {
         new daum.Postcode({
@@ -253,23 +331,27 @@ button {
         }).open();
       }
       
-      function mkinput(){
-	      var obj=document.getElementsByClassName("mkeditval");
-	      if(obj.length>1){
-	         return false;
-	      }
-	      
-	    var inputval =
-	    $('<button style="float: right;" class="edit-btn" id="mkbutton" type="button">수정취소</button><br>마케팅수신에 동의하시겠습니까?<br><input type="radio" id="mkinputY" name="mkinput">네</input><br><input type="radio" id="mkinputN" name="mkinput">아니오</input><br><button style="float: right;" class="edit-btn" id="mkEditbutton" type="button">수정</button>').addClass("mkeditval");
-	    $('#mkbtn').before(inputval);	 
-	    
-	    $('#mkinput').val('${user.userMarketingYn}'); // 여기 수정;
-	    
-		var mkbtn = document.getElementById('mkbtn');
-		if (window.getComputedStyle(mkbtn, null).getPropertyValue('display') === 'block') {
-			mkbtn.style.display = 'none';
-			}
-		}
+      function mkinput() {
+    	    var obj = document.getElementsByClassName("mkeditval");
+    	    if (obj.length > 1) {
+    	        return false;
+    	    }
+
+    	    var inputval =
+    	        $('<button style="float: right;" class="edit-btn" id="mkbutton" type="button">수정취소</button><br>마케팅수신에 동의하시겠습니까?<br><input type="radio" id="mkinputY" name="mkinput">네</input><br><input type="radio" id="mkinputN" name="mkinput">아니오</input>').addClass("mkeditval");
+    	    $('#mkbtn').before(inputval);
+
+    	    if ('${user.userMarketingYn}' === 'Y') {
+    	        $('#mkinputY').prop('checked', true);
+    	    } else {
+    	        $('#mkinputN').prop('checked', true);
+    	    }
+
+    	    var mkbtn = document.getElementById('mkbtn');
+    	    if (window.getComputedStyle(mkbtn, null).getPropertyValue('display') === 'block') {
+    	        mkbtn.style.display = 'none';
+    	    }
+    	}
       
 	    const hypenTel = (target) => {
 	           target.value = target.value.replace(/[^0-9]/g, '').replace(/^(\d{2,3})(\d{3,4})(\d{4})$/, `$1-$2-$3`);
@@ -278,11 +360,11 @@ button {
 	         function registerFormCheck() {
 	           //입력값 변수 담아주기
 
-	           var userPswd = document.getElementById('pswd');
+	           var userPswd = document.getElementById('userPswd');
 	           var passwordConfirm = document.getElementById('passwordConfirm');
-	           var userTel = document.getElementById('telinput');
-	           var userEmail = document.getElementById('emailinput');
-	           var userAddr = document.getElementById('addrinput');
+	           var userTel = document.getElementById('userTel');
+	           var userEmail = document.getElementById('userEmail');
+	           var userAddr = document.getElementById('userAddr');
 
 	           //에러메시지 변수 담아주기
 	           let correctColor = '#00ff00'; //맞았을 때 출력되는 색깔.
@@ -296,7 +378,7 @@ button {
 	           if (pswd.value == '') {
 	             passwordConfirmMsg1.style.color = wrongColor;
 	             passwordConfirmMsg1.innerHTML = '비밀번호를 입력하세요.';
-	             userPswd.focus();
+	             pswd.focus();
 	             return false;
 	           } else {
 	             passwordConfirmMsg1.innerHTML = '';
@@ -305,10 +387,10 @@ button {
 	           //비밀번호 영문자+숫자+특수조합(8~25자리 입력) 정규식
 	           var pwdCheck = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,25}$/;
 
-	           if (!pwdCheck.test(pswd.value)) {
+	           if (!pwdCheck.test(Userpswd.value)) {
 	             passwordConfirmMsg1.style.color = wrongColor;
 	             passwordConfirmMsg1.innerHTML = '비밀번호는 영문자+숫자+특수문자 조합으로 8~25자리 사용해야 합니다.';
-	             userPswd.focus();
+	             passwordConfirm.focus();
 	             return false;
 	           } else {
 	             passwordConfirmMsg1.innerHTML = '';
@@ -323,16 +405,16 @@ button {
 	             passwordConfirmMsg2.innerHTML = '';
 	           }
 
-	           if (telinput.value == '') {
+	           if (userTel.value == '') {
 	             telConfirmMsg.style.color = wrongColor;
 	             telConfirmMsg.innerHTML = '전화번호를 입력해주세요.';
-	             telinput.focus();
+	             userTel.focus();
 	             return false;
 	           } else {
 	             telConfirmMsg.innerHTML = '';
 	           }
 
-	           if (emailinput.value == '') {
+	           if (userEmail.value == '') {
 	             emailConfirmMsg.style.color = wrongColor;
 	             emailConfirmMsg.innerHTML = '이메일을 입력해주세요.';
 	             emailinput.focus();
@@ -341,7 +423,7 @@ button {
 	             emailConfirmMsg.innerHTML = '';
 	           }
 
-	           if (addrinput.value == '') {
+	           if (userAddr.value == '') {
 	             addressConfirmMsg.style.color = wrongColor;
 	             addressConfirmMsg.innerHTML = '주소를 검색해서 입력해주세요.';
 	             addrinput.focus(); //focus(): 커서가 깜빡이는 현상, blur(): 커서가 사라지는 현상
