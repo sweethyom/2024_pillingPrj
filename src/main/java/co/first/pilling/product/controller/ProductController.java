@@ -34,16 +34,6 @@ public class ProductController {
 		List<ProductVO> keywordMappingList = ps.productKeywordMapping();
 		List<KeywordVO> checkboxKeywordName = ps.checkboxAllKeywordName();
 		
-		// =========================================== 1. START ===============================================================
-		// 1. 이 부분은 사진경로가 절대경로로 DB에 저장되었지만, 웹에서 사용 못하니 웹용 uri로 바꿔주는 작업의 알고리즘 코드
-		// 웹에서 이미지를 로드하지 못해서, resources/부터 할 수 있도록 만드는 알고리즘 코드이다.
-		for(ProductVO product : productList) {
-			String webPath = product.getFilepath1().replace("C:\\DEV\\eclipse_202103\\workspace\\PillingProject\\src\\main\\webapp\\", "");
-			webPath = webPath.replace("\\", "/"); // 웹에서는 \(백슬래쉬)나 \\(윈도우슬래쉬)를 인식하지 못하여 /(웹구분자)로 바꿔주는 작업이다.
-			product.setFilepath1(webPath); // 변환한 웹전용 webPath를 setFilepath1 여기로 담아준다.
-		}
-		// =========================================== 1. END ===============================================================
-		
 		// =========================================== 2. START ===============================================================
 		// 2. 이 부분은 키워드가 아이디에 제대로 mapping되지 못하고, 전부 다 가져와서 깔아버리니 ID에 맞게 keyword를 매핑 해주는 알고리즘 코드
 		// 아래는 키워드 매핑 정보를 저장하기 위해 map을 생성
@@ -83,13 +73,6 @@ public class ProductController {
 		List<ProductVO> filteredProducts = ps.filterByKeywords(keywordList);
 		List<ProductVO> keywordMappingList = ps.productKeywordMapping();
 		
-		// 웹에서 이미지를 로드하지 못해서, resources/부터 할 수 있도록 만드는 알고리즘 코드이다.
-		for(ProductVO product : filteredProducts) {
-			String webPath = product.getFilepath1().replace("C:\\DEV\\eclipse_202103\\workspace\\PillingProject\\src\\main\\webapp\\", "");
-			webPath = webPath.replace("\\", "/"); // 웹에서는 \(백슬래쉬)나 \\(윈도우슬래쉬)를 인식하지 못하여 /(웹구분자)로 바꿔주는 작업이다.
-			product.setFilepath1(webPath); // 변환한 웹전용 webPath를 setFilepath1 여기로 담아준다.
-		}
-		
 		// 아래는 키워드 매핑 정보를 저장하기 위해 map을 생성
 		Map<Integer, String> keywordMap = new HashMap<Integer, String>();
 		
@@ -119,13 +102,6 @@ public class ProductController {
 		
 		List<ProductVO> productList = ps.productAllList();
 		List<ProductVO> keywordMappingList = ps.productKeywordMapping();
-		
-		// 웹에서 이미지를 로드하지 못해서, resources/부터 할 수 있도록 만드는 알고리즘 코드이다.
-		for(ProductVO product : productList) {
-			String webPath = product.getFilepath1().replace("C:\\DEV\\eclipse_202103\\workspace\\PillingProject\\src\\main\\webapp\\", "");
-			webPath = webPath.replace("\\", "/"); // 웹에서는 \(백슬래쉬)나 \\(윈도우슬래쉬)를 인식하지 못하여 /(웹구분자)로 바꿔주는 작업이다.
-			product.setFilepath1(webPath); // 변환한 웹전용 webPath를 setFilepath1 여기로 담아준다.
-		}
 		
 		// 아래는 키워드 매핑 정보를 저장하기 위해 map을 생성
 		Map<Integer, String> keywordMap = new HashMap<Integer, String>();

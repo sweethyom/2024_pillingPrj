@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%> <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"
+%>
 <!DOCTYPE html>
 <html>
   <head>
@@ -32,23 +33,31 @@
   <body>
     <div class="container-fluid width-order">
       <div class="container py-5">
-        <!-- 상품등록 FORM START -->
+        <!-- 제품수정 FORM START -->
         <div class="card mb-4">
           <div class="card-header py-3">
             <div>
-              <h5 class="m-0">제품등록</h5>
+              <h5 class="m-0">제품수정</h5>
             </div>
           </div>
           <div class="card-body mb-3">
-            <form id="productAddForm" enctype="multipart/form-data">
+            <form id="productUpdateForm" enctype="multipart/form-data">
               <!-- 배송지 정보 -->
               <div class="mb-4">
-                <table class="table table-bordered" id="productAddTable">
+                <table class="table table-bordered" id="productUpdateTable">
                   <!-- 제품명 INPUT -->
                   <tr>
                     <td width="150" style="background-color: #f5f6f6">제품명</td>
                     <td>
-                      <input type="text" id="productName" name="productName" class="form-control" placeholder="제품명을 입력해주세요." required />
+                      <input
+                        type="text"
+                        id="productName"
+                        name="productName"
+                        class="form-control"
+                        placeholder="제품명을 입력해주세요."
+                        value="${product.productName }"
+                        required
+                      />
                     </td>
                   </tr>
                   <!-- 가격 INPUT -->
@@ -61,6 +70,7 @@
                         name="productPrice"
                         class="form-control"
                         placeholder="제품가격을 입력해주세요."
+                        value="${product.productPrice }"
                         required
                       />
                     </td>
@@ -75,6 +85,7 @@
                         name="stock"
                         class="form-control"
                         placeholder="재고량을 입력해주세요."
+                        value="${product.stock }"
                         required
                       />
                     </td>
@@ -89,6 +100,7 @@
                         name="productDescription1"
                         class="form-control"
                         placeholder="키포인트(설명)을 입력해주세요."
+                        value="${product.productDescription1 }"
                         required
                       />
                     </td>
@@ -103,6 +115,7 @@
                         name="productDescription2"
                         class="form-control"
                         placeholder="키포인트(설명)을 입력해주세요."
+                        value="${product.productDescription2 }"
                         required
                       />
                     </td>
@@ -117,6 +130,7 @@
                         name="productDescription3"
                         class="form-control"
                         placeholder="키포인트(설명)을 입력해주세요."
+                        value="${product.productDescription3 }"
                         required
                       />
                     </td>
@@ -131,6 +145,7 @@
                         name="productDescription4"
                         class="form-control"
                         placeholder="키포인트(설명)을 입력해주세요."
+                        value="${product.productDescription4 }"
                         required
                       />
                     </td>
@@ -145,6 +160,7 @@
                         name="productDescription5"
                         class="form-control"
                         placeholder="키포인트(설명)을 입력해주세요."
+                        value="${product.productDescription5 }"
                         required
                       />
                     </td>
@@ -159,6 +175,7 @@
                         name="takingMethod"
                         class="form-control"
                         placeholder="복용방법 (예시 : 하루 1회 1정씩 ) 입력"
+                        value="${product.takingMethod }"
                         required
                       />
                     </td>
@@ -172,7 +189,8 @@
                         id="doseTime"
                         name="doseTime"
                         class="form-control"
-                        placeholder="복용시간(예시 : 아침 1알, 저녁 1알)을 입력해주세요. "
+                        placeholder="복용시간(예시 : 아침 식후, 저녁 식후)을 입력해주세요. "
+                        value="${product.doseTime }"
                         required
                       />
                     </td>
@@ -226,6 +244,7 @@
                         id="productSubImage"
                         name="productSubImage"
                         accept="image/gif, image/jpeg, image/png"
+                        value="${product.filepath2 }"
                         required
                       />
                     </td>
@@ -235,22 +254,23 @@
               <!-- 제품 키워드선택 INPUT -->
               <!-- checkbox값의 배열을 String으로 정제 -->
               <input type="hidden" id="keywordArr" name="keywordArr" />
+              <input type="hidden" name="productId" value="${product.productId}" />
             </form>
-            <!-- 제품등록 END -->
+            <!-- 제품수정 END -->
           </div>
         </div>
-        <!-- 상품등록 FORM END -->
+        <!-- 제품수정 FORM END -->
 
-        <!-- 상품등록 Button START -->
+        <!-- 제품수정 Button START -->
         <div class="center">
           <button type="button" class="px-5 py-3 btn btn-primary border-2 rounded-pill animated slideInDown mb-4 ms-4" onclick="makeArr()">
-            상품등록
+            제품수정
           </button>
-          <a href="productpurchase" class="me-2">
-            <button type="button" class="px-5 py-3 btn btn-primary border-2 rounded-pill animated slideInDown mb-4 ms-4">등록취소</button>
+          <a href="adminproductlist" class="me-2">
+            <button type="button" class="px-5 py-3 btn btn-primary border-2 rounded-pill animated slideInDown mb-4 ms-4">수정취소</button>
           </a>
         </div>
-        <!-- 상품등록 Button END -->
+        <!-- 제품수정 Button END -->
       </div>
     </div>
 
@@ -270,9 +290,9 @@
 
       /* response 받은 값을 이용하여, AJAX 활용하기 */
       function AjaxCall() {
-        let form = document.getElementById('productAddForm');
+        let form = document.getElementById('productUpdateForm');
         let formData = new FormData(form);
-        let url = 'productadd';
+        let url = 'productupdate';
 
         fetch(url, {
           method: 'POST',
@@ -287,15 +307,15 @@
           })
           .then((text) => {
             if (text === 'Yes') {
-              alert('상품 등록이 완료되었습니다.');
-              location.href = 'productpurchase';
+              alert('제품 수정이 완료되었습니다.');
+              location.href = 'adminproductlist';
             } else {
-              alert('상품 등록이 실패하였습니다.');
+              alert('제품 수정이 실패하였습니다.');
             }
           })
           .catch((error) => {
             console.error('There was an error!', error);
-            alert('상품 등록 중 오류가 발생하였습니다.');
+            alert('제품 수정 중 오류가 발생하였습니다.');
           });
       }
     </script>

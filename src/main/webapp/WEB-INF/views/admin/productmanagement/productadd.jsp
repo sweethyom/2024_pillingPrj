@@ -32,7 +32,7 @@
   <body>
     <div class="container-fluid width-order">
       <div class="container py-5">
-        <!-- 상품등록 FORM START -->
+        <!-- 제품등록 FORM START -->
         <div class="card mb-4">
           <div class="card-header py-3">
             <div>
@@ -69,14 +69,7 @@
                   <tr>
                     <td width="150" style="background-color: #f5f6f6">재고량</td>
                     <td>
-                      <input
-                        type="number"
-                        id="stock"
-                        name="stock"
-                        class="form-control"
-                        placeholder="재고량을 입력해주세요."
-                        required
-                      />
+                      <input type="number" id="stock" name="stock" class="form-control" placeholder="재고량을 입력해주세요." required />
                     </td>
                   </tr>
                   <!-- 제품 설명포인트1 INPUT -->
@@ -172,7 +165,7 @@
                         id="doseTime"
                         name="doseTime"
                         class="form-control"
-                        placeholder="복용시간(예시 : 아침 1알, 저녁 1알)을 입력해주세요. "
+                        placeholder="복용시간(예시 : 아침 식후, 저녁 식후)을 입력해주세요. "
                         required
                       />
                     </td>
@@ -239,18 +232,18 @@
             <!-- 제품등록 END -->
           </div>
         </div>
-        <!-- 상품등록 FORM END -->
+        <!-- 제품등록 FORM END -->
 
-        <!-- 상품등록 Button START -->
+        <!-- 제품등록 Button START -->
         <div class="center">
           <button type="button" class="px-5 py-3 btn btn-primary border-2 rounded-pill animated slideInDown mb-4 ms-4" onclick="makeArr()">
-            상품등록
+            제품등록
           </button>
           <a href="productpurchase" class="me-2">
             <button type="button" class="px-5 py-3 btn btn-primary border-2 rounded-pill animated slideInDown mb-4 ms-4">등록취소</button>
           </a>
         </div>
-        <!-- 상품등록 Button END -->
+        <!-- 제품등록 Button END -->
       </div>
     </div>
 
@@ -287,15 +280,15 @@
           })
           .then((text) => {
             if (text === 'Yes') {
-              alert('상품 등록이 완료되었습니다.');
+              alert('제품 등록이 완료되었습니다.');
               location.href = 'productpurchase';
             } else {
-              alert('상품 등록이 실패하였습니다.');
+              alert('제품 등록이 실패하였습니다.');
             }
           })
           .catch((error) => {
             console.error('There was an error!', error);
-            alert('상품 등록 중 오류가 발생하였습니다.');
+            alert('제품 등록 중 오류가 발생하였습니다.');
           });
       }
     </script>

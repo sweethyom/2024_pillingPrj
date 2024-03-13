@@ -4,7 +4,9 @@
 	namespace="co.first.pilling.productdetail.map.ProductDetailMapper">
 
 	<select id="productDetail">
-		SELECT * FROM product WHERE product_id = #{productId};
+		SELECT * 
+		FROM product 
+		WHERE product_id = #{productId};
 	</select>
 	
 	<!-- 제품테이블의 제품ID와 mapping 테이블 및 키워드 테이블을 매핑해서 각 제품 ID에 키워드명 및 키워드ID 연결  -->

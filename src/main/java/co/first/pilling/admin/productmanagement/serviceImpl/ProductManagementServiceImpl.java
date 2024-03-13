@@ -60,7 +60,7 @@ public class ProductManagementServiceImpl implements ProductManagementService {
 		int cnt = 0;
 	    for(int i = 0; i < inputArr.length ; i++){
 	    	vo.setKeywordId(inputArr[i]);
-	    	map.keywordInsert(vo);
+	    	map.keywordUpdateInsert(vo);
 	    	cnt++;
 	    }
 		return cnt;
@@ -74,6 +74,16 @@ public class ProductManagementServiceImpl implements ProductManagementService {
 	@Override
 	public int keywordUpdateDelete(ProductManagementVO vo) {
 		return map.keywordUpdateDelete(vo);
+	}
+
+	@Override
+	public ProductManagementVO getProductById(int productId) {
+		return map.getProductById(productId);
+	}
+
+	@Override
+	public List<ProductManagementVO> productKeywordMapping(int productId) {
+		return map.productKeywordMapping(productId);
 	}
 
 

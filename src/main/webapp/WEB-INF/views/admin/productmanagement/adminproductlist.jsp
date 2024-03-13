@@ -69,11 +69,7 @@
                           <i class="bx bx-dots-vertical-rounded"></i>
                         </button>
                         <div class="dropdown-menu">
-                          <a
-                            class="dropdown-item update-product"
-                            href="javascript:void(0);"
-                            data-product-id="${product.productId}"
-                            onclick="productUpadte(this.getAttribute('data-product-id'))"
+                          <a class="dropdown-item update-product" href="productupdatepage?productId=${product.productId}"
                             ><i class="bx bx-edit-alt me-1"></i> 수정</a
                           >
                           <!-- data-product-id로 a태그에 productId값을 얻어 올 수 있다. 신기 방기 -->
