@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import co.first.pilling.order.service.OrderVO;
 import co.first.pilling.order.service.OrderdetailService;
+import co.first.pilling.order.service.OrderdetailVO;
 import co.first.pilling.order.service.map.OrderdetailMapper;
 
 @Service
@@ -15,35 +16,35 @@ import co.first.pilling.order.service.map.OrderdetailMapper;
 public class OrderdetailServiceImpl implements OrderdetailService {
 	@Autowired
 	private OrderdetailMapper map;
-	
+
 	@Override
-	public List<OrderVO> orderdetailSelectList(OrderVO vo) {
+	public List<OrderVO> orderdetailSelectList(OrderdetailVO vo) {
 		// TODO Auto-generated method stub
 		return map.orderdetailSelectList(vo);
 	}
 
 	@Override
-	public OrderVO orderdetailSelect(OrderVO vo) {
+	public OrderVO orderdetailSelect(OrderdetailVO vo) {
 		// TODO Auto-generated method stub
 		return map.orderdetailSelect(vo);
 	}
 
 	@Override
-	public int orderdetailInsert(OrderVO vo) {
+	public int orderdetailInsert(OrderdetailVO vo) {
 		// TODO Auto-generated method stub
 		return map.orderdetailInsert(vo);
 	}
 
 	@Override
-	public int orderdetailDelete(OrderVO vo) {
+	public int orderdetailDelete(OrderdetailVO vo) {
 		// TODO Auto-generated method stub
 		return map.orderdetailDelete(vo);
 	}
 
 	@Override
-	public int orderdetailUpdate(OrderVO vo) {
+	public int orderdetailUpdate(OrderdetailVO vo) {
 		// TODO Auto-generated method stub
 		return map.orderdetailUpdate(vo);
 	}
-
+	
 }
