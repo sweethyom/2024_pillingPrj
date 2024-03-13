@@ -46,4 +46,10 @@ public class OrderServiceImpl implements OrderService {
 		return map.orderUpdate(vo);
 	}
 
+	@Override
+	public int createOrderNo(OrderVO vo) {
+		// TODO Auto-generated method stub
+		return map.createOrderNo(vo);
+	}
+
 }
