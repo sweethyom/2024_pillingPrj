@@ -51,32 +51,17 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public 	int userWithdraw(UserVO vo) {
+	public int userWithdraw(UserVO vo) {
 		return map.userWithdraw(vo);
 	}
 	
 	public int userWithdrawinsert(UserVO vo) {
 		return map.userWithdrawinsert(vo);
 	}
-	
+
 	@Override
-	public int userTelUpdate(UserVO vo){
-		return map.userTelUpdate(vo);
-	}
-	
-	@Override
-	public int userEmailUpdate(UserVO vo){
-		return map.userEmailUpdate(vo);
-	}
-	
-	@Override
-	public int userAddrUpdate(UserVO vo) {
-		return map.userAddrUpdate(vo);
-	}
-	
-	@Override
-	public int userMkUpdate(UserVO vo) {
-		return map.userMkUpdate(vo);
+	public int userPswdUpdate(UserVO vo) {
+		return map.userPswdUpdate(vo);
 	}
 	
 	@Override

@@ -19,39 +19,24 @@
 </insert>
 <update id="userUpdate">
 	UPDATE `user`
-	SET user_pswd=#{userPswd}, user_tel=#{userTel}, user_eamil=#{userEmail}, user_addr=#{userAddr}, user_addrdetail=#{userAddrdetail}, user_marketingYn=#{userMarketingYn}, user_signout=#{userSignout}
+	SET user_tel=#{userTel}, user_email=#{userEmail}, user_addr=#{userAddr}, user_addrdetail=#{userAddrdetail}, user_marketingYn=#{userMarketingYn}, user_signout=#{userSignout}
 	WHERE user_id = #{userId}
 	</update>
+<update id="userPswdUpdate">
+	UPDATE `user`
+	SET user_pswd=#{userPswd}
+	WHERE user_id =#{userId}
+</update>
 <delete id="userDelete"></delete>
 <update id="userWithdraw">
-	UPDATE `user`u 
-	SET u.user_signout='Y',
+	UPDATE `user`
+	SET user_signout='Y'
 	WHERE user_id = #{userId}
 </update>
 <insert id="userWithdrawinsert">
-	INSERT INTO withdrawal(user_no)
-	VALUES (#{userNo})
+	INSERT INTO withdrawal(user_no, withdrawdate)
+	VALUES (#{userNo}, NOW())
 </insert>
-<update id="userTelUpdate">
-	UPDATE `user`
-	SET user_tel=#{userTel}
-	WHERE user_id = #{userId}
-</update>
-<update id="userEmailUpdate">
-	UPDATE `user`
-	SET user_email=#{userEmial}
-	WHERE user_id = #{userId}
-</update>
-<update id="userAddrUpdate">
-	UPDATE `user`
-	SET user_Addr=#{userAddr}, user_Addrdetail=#{userAddrdetail}
-	WHERE user_id = #{userId}
-</update>
-<update id="userMkUpdate">
-	UPDATE `user`
-	SET user_marketingYn=#{userMarketingYn}
-	WHERE user_id = #{userId}
-</update>
 <select id="userPassword" parameterType="String">
 	SELECT * FROM `user` WHERE USER_ID=#{userId} AND USER_PSWD=#{userPswd}
 </select>
