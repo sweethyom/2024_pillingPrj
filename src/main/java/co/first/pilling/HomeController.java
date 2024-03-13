@@ -106,4 +106,10 @@ public class HomeController {
 	public String withdrawal(Model model) {
 		return "pilling/mypage/withdrawal";
 	}
+	
+	//리뷰 이동
+	@RequestMapping("newreview")
+	public String newreview(Model model) {
+		return "pilling/mypage/newreview";
+	}
 }

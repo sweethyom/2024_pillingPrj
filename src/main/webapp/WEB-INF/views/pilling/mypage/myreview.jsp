@@ -39,7 +39,9 @@ td {
 </style>
 
 <body>
-	<div class="width-myreview py-5 div-center">
+	<div class="width-myreview py-4 div-center">
+	<br>
+	<button type="button" class="btn btn-primary btn-block mb-4" style="margin-left:90%; display:flex;" onclick="location.href='newreview'">리뷰쓰기</button>
 		<!-- 리뷰내역 카드 START -->
 		<div class="card mb-6">
 			<div class="card-header py-3">
@@ -147,6 +149,8 @@ td {
 			</ul>
 		</div>
 		<!-- 페이징 레이아웃 END -->
+		<button type="button" class="btn btn-primary btn-block mb-4" style="margin-left:90%; display:flex;" onclick="location.href='mypage'">돌아가기</button>
+		
 	</div>
 </body>
 </html>
