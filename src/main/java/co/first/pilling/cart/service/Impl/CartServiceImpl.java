@@ -52,4 +52,10 @@ public class CartServiceImpl implements CartService {
 		return map.cartUpdate(vo);
 	}
 
+	@Override
+	public int cartDeleteAll(CartVO vo) {
+		// TODO Auto-generated method stub
+		return map.cartDeleteAll(vo);
+	}
+
 }

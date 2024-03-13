@@ -14,4 +14,6 @@ public interface CartService {
 	int cartUpdatePlus(CartVO vo); // 장바구니 수정(개수+1)
 
 	int cartDelete(CartVO vo); // 장바구니 삭제
+	
+	int cartDeleteAll(CartVO vo); // 장바구니 전체 삭제(구매 후 실행)
 }

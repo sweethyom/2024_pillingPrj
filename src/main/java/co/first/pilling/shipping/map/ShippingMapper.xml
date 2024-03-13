@@ -5,12 +5,15 @@
 		SELECT * FROM shipping
 	</select>
 	<insert id="shippingInsert">
-		INSERT INTO shipping (shippingstatus_id,
-		shipping_recipientln, shipping_recipientfn, shipping_tel,
-		shipping_addr, shipping_addrdetail, shipping_postcode,
+		INSERT INTO shipping (order_id,
+		shipping_recipientln,
+		shipping_recipientfn, shipping_tel,
+		shipping_addr, shipping_addrdetail,
+		shipping_postcode,
 		shipping_request)
 		VALUES
-		(#{shippingstatusId}, #{shippingRecipientln},
+		(#{orderId},
+		#{shippingRecipientln},
 		#{shippingRecipientfn}, #{shippingTel},
 		#{shippingAddr},
 		#{shippingAddrdetail}, #{shippingPostcode},
