@@ -6,12 +6,14 @@
 		p.product_name AS
 		productName, p.product_price AS productPrice,
 		c.cart_prodcnt AS
-		cartProdcnt, p.product_id AS productId
+		cartProdcnt, p.product_id AS productId, c.user_no AS
+		userNo
 		FROM cart c
 		JOiN product p
 		ON c.product_id =
 		p.product_id
-		WHERE user_no = #{userNo};
+		WHERE
+		user_no = #{userNo};
 	</select>
 	<insert id="cartInsert">
 		INSERT INTO cart (user_no, product_id, cart_prodcnt)
@@ -37,5 +39,8 @@
 	</update>
 	<delete id="cartDelete">
 		DELETE FROM cart WHERE cart_id = #{cartId}
+	</delete>
+	<delete id="cartDeleteAll">
+		DELETE FROM cart WHERE user_no = #{userNo}
 	</delete>
 </mapper>
