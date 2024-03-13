@@ -29,4 +29,6 @@ public class ProductManagementVO {
 	private String filepath2;
 	private String keywordId;
 	private String keywordArr;
+	private int stock;
+	private int addStock;
 }

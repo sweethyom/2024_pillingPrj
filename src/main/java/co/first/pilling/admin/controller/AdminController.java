@@ -2,6 +2,7 @@ package co.first.pilling.admin.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,9 +10,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
 import co.first.pilling.admin.productmanagement.service.ProductManagementService;
 import co.first.pilling.admin.productmanagement.service.ProductManagementVO;
@@ -22,12 +26,28 @@ public class AdminController {
 	@Autowired
 	ProductManagementService pms;
 	
-
+	
+	// 관리자 페이지로 이동
+	@GetMapping("admin")
+	public String admin() {
+		return "admin/adminhome";
+	}
+	
+	@RequestMapping("adminproductlist")
+	public ModelAndView adminProductList(ModelAndView mav) {
+		List<ProductManagementVO> productList = pms.productAllList();
+		
+		// 모델과 뷰에 값 실어주기
+		mav.addObject("productlist", productList);
+		mav.setViewName("admin/productmanagement/adminproductlist");
+		// 정의된 값 return
+		return mav;
+	}
 	
 	// 상품등록 페이지로 이동
 	@GetMapping("productaddpage")
 	public String productAddPage() {
-		return "pilling/admin/productadd";
+		return "admin/productmanagement/productadd";
 	}
 
 	// 상품등록 알고리즘
@@ -68,5 +88,21 @@ public class AdminController {
 	        e.printStackTrace();
 	    }
 	    return directoryPath + "\\" + fileName; // 저장된 파일의 전체 경로 반환
+	}
+	@PostMapping("stockUpdate")
+	@ResponseBody
+	public String stockUpdate(ProductManagementVO vo) {
+		pms.stockUpdate(vo);
+
+		String str = "Yes";
+		return str;
+	}
+	
+	@PostMapping("productdelete")
+	@ResponseBody
+	public String productDelete(@RequestBody ProductManagementVO vo) {
+		pms.productDelete(vo);
+		
+		return "Yes";
 	}
 }

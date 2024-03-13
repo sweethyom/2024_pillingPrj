@@ -35,9 +35,9 @@ prefix="tiles"%> <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %
           <div class="collapse navbar-collapse me-n3 flex-grow-0" id="navbarCollapse">
             <div class="navbar-nav ms-auto">
               <a href="productpurchase" class="d-flex nav-item nav-link">제품구매</a>
-              <a href="" class="nav-item nav-link">방문예약</a>
               <a href="introduction" class="nav-item nav-link">회사정보</a>
               <a href="customerservice" class="nav-item nav-link">고객센터</a>
+              <a href="admin" class="nav-item nav-link">관리자 페이지</a>
             </div>
           </div>
           <div class="search-form align-items">

@@ -5,7 +5,7 @@ import java.util.List;
 
 public interface ProductManagementService {
 	// 등록한 제품 관리 게시판만들 때 사용 예정
-	List<ProductManagementVO> productAddAllList();
+	List<ProductManagementVO> productAllList();
 	
 	// 제품 등록
 	int productInsert(ProductManagementVO vo);
@@ -13,12 +13,18 @@ public interface ProductManagementService {
 	// 제품 수정
 	int productUpadte(ProductManagementVO vo);
 	
+	// 제품 수정 시 키워드 삭제
+	int keywordUpdateDelete(ProductManagementVO vo);
+	
+	// 제품 수정 시 키워드 삭제 후 재입력
+	int keywordUpdateInsert(ProductManagementVO vo);
+	
 	// 제품 삭제
 	int productDelete(ProductManagementVO vo);
 	
 	// 제품ID == 키워드ID 매핑테이블 등록
 	int keywordInsert(ProductManagementVO vo);
 
-
-	
+	// 입고량 추가
+	int stockUpdate(ProductManagementVO vo);
 }
