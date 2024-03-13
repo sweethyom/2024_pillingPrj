@@ -164,7 +164,7 @@ td {
 				<div class="mb-4">
 					<h5>배송 요청사항</h5>
 					<input type="text" id="shippingRequest" name="shippingRequest"
-						size="100%" placeholder="요청사항이 있으면 입력해주세요.">
+						size="100%" placeholder="요청사항이 있으면 입력해주세요. (60자 이내)">
 				</div>
 				<!-- 배송 요청사항 END -->
 
