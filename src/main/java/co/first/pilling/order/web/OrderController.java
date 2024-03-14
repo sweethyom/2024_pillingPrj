@@ -15,8 +15,12 @@ import co.first.pilling.order.service.OrderService;
 import co.first.pilling.order.service.OrderVO;
 import co.first.pilling.order.service.OrderdetailService;
 import co.first.pilling.order.service.OrderdetailVO;
+import co.first.pilling.productdetail.service.ProductDetailService;
+import co.first.pilling.productdetail.service.ProductDetailVO;
 import co.first.pilling.shipping.service.ShippingService;
 import co.first.pilling.shipping.service.ShippingVO;
+import co.first.pilling.user.service.UserService;
+import co.first.pilling.user.service.UserVO;
 
 @Controller
 public class OrderController {
@@ -31,6 +35,12 @@ public class OrderController {
 
 	@Autowired
 	private CartService cs;
+	
+	@Autowired
+	private ProductDetailService pds;
+	
+	@Autowired
+	private UserService us;
 
 	@RequestMapping("makepayment")
 	public String makepayment(OrderVO ov, ShippingVO sv, CartVO cv, HttpSession session) {
@@ -64,5 +74,26 @@ public class OrderController {
 		session.removeAttribute("cartList");
 
 		return "pilling/product/orderresult";
+	}
+	
+	@RequestMapping("orderdirect")
+	public String orderdirect(UserVO uv, CartVO cv, ProductDetailVO pv, Model model) {
+		ProductDetailVO product = new ProductDetailVO();
+		product = pds.productDetail(pv.getProductId());
+		
+		CartVO cart = new CartVO();
+		cart.setUserNo(uv.getUserNo());
+		cart.setProductId(product.getProductId());
+		cart.setProductName(product.getProductName());
+		cart.setProductPrice(product.getProductPrice());
+		cart.setCartProdcnt(cv.getCartProdcnt());
+		cart.setFilepath(product.getFilename1());
+		
+		int orderId = os.createOrderNo();
+		
+		model.addAttribute("cart", cart);
+		model.addAttribute("user", us.userSelect(uv));
+		model.addAttribute("newOrderId", orderId);
+		return "pilling/product/orderdirect";
 	}
 }

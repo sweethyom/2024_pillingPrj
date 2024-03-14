@@ -18,4 +18,5 @@ public interface UserMapper {
 	int userPswdUpdate(UserVO vo);//회원연락처수정
 	int userUpdate(UserVO vo); //회원수정
 	UserVO userPassword(UserVO vo);
+	String selectUserRank(UserVO vo); //유저랭크 가져오기
 }
