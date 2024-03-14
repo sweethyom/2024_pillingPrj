@@ -10,6 +10,15 @@
 <!-- 다음 주소 받기 API CDN주소 -->
 <script
 	src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<!-- 포트원 결제 -->
+<script src="https://cdn.iamport.kr/v1/iamport.js"></script>
+<!-- jQuery -->
+<script type="text/javascript"
+	src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<!-- iamport.payment.js -->
+<script type="text/javascript"
+	src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
+<!-- 포트원 결제 -->
 <style>
 td {
 	vertical-align: middle;
@@ -219,6 +228,35 @@ td {
 		</div>
 
 	</div>
+	<!-- 결제 스크립트 -->
+	<script type="text/javascript">
+	var IMP = window.IMP;	
+		// 결제요청
+		function requestPay(){
+			IMP.init('imp03000385');
+			IMP.request_pay({
+				pg: "kakaopay.TC0ONETIME",
+				pay_method: "card",
+				merchant_uid: "ORD20180131-0000021",   // 주문번호
+			    name: "노르웨이 회전 의자",
+			    amount: 64900,                         // 숫자 타입
+			    buyer_email: "gildong@gmail.com",
+			    buyer_name: "홍길동",
+			    buyer_tel: "010-4242-4242",
+			    buyer_addr: "서울특별시 강남구 신사동",
+			    buyer_postcode: "01181"
+			}), function (rsp){ //callback
+				console.log("1111");
+				if (rsp.success) {
+					console.log(rsp);
+					document.getElementById('shippingForm').submit();
+				    } else {
+				      alert(`결제에 실패하였습니다. 에러 내용: ${rsp.error_msg}`);
+				    }	
+			}
+		}
+		
+	</script>
 	<script>
 		// 총 상품가격 초기값 할당
 		window.onload = function(){
@@ -368,7 +406,9 @@ td {
 			document.getElementById('orderCard').value = selectPayment;
 			
 			//입력 값 전송
-			document.getElementById('shippingForm').submit(); //유효성 검사의 포인트
+			//document.getElementById('shippingForm').submit(); //유효성 검사의 포인트
+			
+			requestPay();
 		}
 		
 		//구매자 정보와 배송지 정보가 같냐고 물어보는 라디오버튼에 '네'를 클릭하면

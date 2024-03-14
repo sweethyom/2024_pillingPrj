@@ -68,5 +68,10 @@ public class OrderController {
 
 		return "pilling/product/orderresult";
 	}
+	
+	@RequestMapping("ordersuccess")
+	public String ordersuccess() {
+		return "pilling/product/ordersuccess";
+	}
 
 }
