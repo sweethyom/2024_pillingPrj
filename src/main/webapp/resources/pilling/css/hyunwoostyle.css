@@ -275,4 +275,8 @@ li {
   width: 30vh;
   font-size: 1.25rem;
 }
+
+.pagination-color {
+  color: black;
+}
 /* Hyunwoo Style END */

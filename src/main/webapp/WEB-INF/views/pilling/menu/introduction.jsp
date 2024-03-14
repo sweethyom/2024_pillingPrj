@@ -10,7 +10,7 @@
     <div class="container-fluid introduction-background py-5" data-wow-delay="0.1s">
       <div class="container py-5">
         <h1 class="display-2 text-dark mb-4 animated slideInDown">브랜드 소개</h1>
-        <nav aria-label="breadcrumb">단 하나의 영양제, Fi1ling</nav>
+        <nav aria-label="breadcrumb">단 하나의 영양제, Pi1ling</nav>
       </div>
     </div>
     <!-- Page Header End -->

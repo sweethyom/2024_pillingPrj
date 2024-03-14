@@ -11,6 +11,9 @@ public interface ProductMapper {
 	// 등록한 제품 제품 목록에 담을 때 사용
 	List<ProductVO> productAllList();
 	
+	// 검색한 제품 목록에 담아 오기
+	List<ProductVO> productSearch(String searchInput);
+	
 	// 제품과 키워드를 매핑하기 위한 인터페이스
 	List<ProductVO> productKeywordMapping();
 	

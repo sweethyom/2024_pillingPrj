@@ -20,19 +20,23 @@ import co.first.pilling.product.service.ProductVO;
 @Controller
 public class ProductController {
 	
-	
-	
 	@Autowired
 	private ProductService ps;
 	
 	//ModelAndView는 모델과 뷰를 둘다 정의 할 때 사용할 수 있다.
 	@RequestMapping("productpurchase")
-	public @ResponseBody ModelAndView productPurchaseList(ModelAndView mav) {
+	public @ResponseBody ModelAndView productPurchaseList(@RequestParam(value="searchInput", required=false) String searchInput,  ModelAndView mav) {
 		
 		// 기본 적으로 List<ProductVO>에 각 데이터베이스에서 가져 온 값을 넣어주는 작업을 하는 코드이다.
-		List<ProductVO> productList = ps.productAllList();
+		List<ProductVO> productList;
 		List<ProductVO> keywordMappingList = ps.productKeywordMapping();
 		List<KeywordVO> checkboxKeywordName = ps.checkboxAllKeywordName();
+		
+		if (searchInput != null && !searchInput.isEmpty()) {
+			productList = ps.productSearch(searchInput);
+		} else {
+			productList = ps.productAllList();
+		}
 		
 		// =========================================== 2. START ===============================================================
 		// 2. 이 부분은 키워드가 아이디에 제대로 mapping되지 못하고, 전부 다 가져와서 깔아버리니 ID에 맞게 keyword를 매핑 해주는 알고리즘 코드

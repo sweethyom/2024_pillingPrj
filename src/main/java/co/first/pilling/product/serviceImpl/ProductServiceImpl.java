@@ -38,4 +38,9 @@ public class ProductServiceImpl implements ProductService {
 		return pm.filterByKeywords(keywords);
 	}
 
+	@Override
+	public List<ProductVO> productSearch(String searchInput) {
+		return pm.productSearch(searchInput);
+	}
+
 }

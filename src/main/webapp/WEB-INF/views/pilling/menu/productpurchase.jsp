@@ -14,7 +14,7 @@
     <div class="container-fluid productpurchase-header py-5">
       <div class="container py-5">
         <h1 class="display-2 text-dark mb-4 animated slideInDown">제품구매</h1>
-        <nav aria-label="breadcrumb">검색바 필요하면 여기다 넣으면 됩니다.</nav>
+        <nav aria-label="breadcrumb">단 하나의 영양제, Pi1ling</nav>
       </div>
     </div>
     <!-- Page Header End -->
@@ -98,14 +98,14 @@
                   <!-- Pagination START -->
                   <div class="container productpurchase-pagination">
                     <ul class="pagination justify-content-center">
-                      <li class="page-item"><a class="page-link" href="#">이전</a></li>
+                      <li class="page-item"><a class="page-link" style="color: black" href="#">이전</a></li>
                       <!-- 첫페이지에선 없음/시작인덱스 -10 -->
-                      <li class="page-item"><a class="page-link" href="#"> 1</a></li>
-                      <li class="page-item"><a class="page-link" href="#"> 2</a></li>
-                      <li class="page-item"><a class="page-link" href="#"> 3</a></li>
-                      <li class="page-item"><a class="page-link" href="#"> 4</a></li>
-                      <li class="page-item"><a class="page-link" href="#"> 5</a></li>
-                      <li class="page-item"><a class="page-link" href="#">다음</a></li>
+                      <li class="page-item"><a class="page-link" style="color: black" href="#"> 1</a></li>
+                      <li class="page-item"><a class="page-link" style="color: black" href="#"> 2</a></li>
+                      <li class="page-item"><a class="page-link" style="color: black" href="#"> 3</a></li>
+                      <li class="page-item"><a class="page-link" style="color: black" href="#"> 4</a></li>
+                      <li class="page-item"><a class="page-link" style="color: black" href="#"> 5</a></li>
+                      <li class="page-item"><a class="page-link" style="color: black" href="#">다음</a></li>
                       <!-- 마지막인덱스 +10 /마지막 인덱스에서는 없음 -->
                     </ul>
                   </div>

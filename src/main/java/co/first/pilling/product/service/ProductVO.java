@@ -31,4 +31,5 @@ public class ProductVO {
 	private String keywordArr;
 	private String keywords;
 	private List<String> keywordName;
+	private String searchInput;
 }

@@ -35,4 +35,12 @@
 		</foreach>
 	</select>
 	
+	<!-- 입력값 받아서 검색된 품목 가져오기  -->
+
+	<select id="productSearch">
+	    SELECT *
+	    FROM product
+	    WHERE product_name LIKE CONCAT('%', #{searchInput}, '%');
+	</select>
+	
 </mapper>
