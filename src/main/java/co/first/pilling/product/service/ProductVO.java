@@ -32,4 +32,6 @@ public class ProductVO {
 	private String keywords;
 	private List<String> keywordName;
 	private String searchInput;
+	private int offset;
+	private int pageSize;
 }

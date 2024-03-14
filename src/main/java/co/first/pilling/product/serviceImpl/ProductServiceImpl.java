@@ -38,9 +38,21 @@ public class ProductServiceImpl implements ProductService {
 		return pm.filterByKeywords(keywords);
 	}
 
+	// Pagination을 하면서 받아올 제품 목록
 	@Override
-	public List<ProductVO> productSearch(String searchInput) {
-		return pm.productSearch(searchInput);
+	public List<ProductVO> productAllListPaged(int offset, int pageSize) {
+		return pm.productAllListPaged(offset, pageSize);
+	}
+	
+	// 제품 검색 + Pagination
+	@Override
+	public List<ProductVO> productSearchPaged(String searchInput, int offset, int pageSize) {
+		return pm.productSearchPaged(searchInput, offset, pageSize);
+	}
+
+	@Override
+	public int getTotalProductCount(String searchInput) {
+		return pm.getTotalProductCount(searchInput);
 	}
 
 }

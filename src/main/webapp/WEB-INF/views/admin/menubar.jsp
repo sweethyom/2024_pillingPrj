@@ -127,6 +127,16 @@ prefix="tiles"%>
               </a>
             </li>
           </ul>
+                      <li class="menu-item">
+              <a
+                href="https://github.com/themeselection/sneat-html-admin-template-free/issues"
+                target="_blank"
+                class="menu-link"
+              >
+                <i class="menu-icon tf-icons bx bx-support"></i>
+                <div data-i18n="Support">문의 사항</div>
+              </a>
+            </li>
         </li>
       </ul>
     </aside>

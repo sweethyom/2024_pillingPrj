@@ -23,49 +23,54 @@ public class ProductController {
 	@Autowired
 	private ProductService ps;
 	
-	//ModelAndView는 모델과 뷰를 둘다 정의 할 때 사용할 수 있다.
 	@RequestMapping("productpurchase")
-	public @ResponseBody ModelAndView productPurchaseList(@RequestParam(value="searchInput", required=false) String searchInput,  ModelAndView mav) {
-		
-		// 기본 적으로 List<ProductVO>에 각 데이터베이스에서 가져 온 값을 넣어주는 작업을 하는 코드이다.
-		List<ProductVO> productList;
-		List<ProductVO> keywordMappingList = ps.productKeywordMapping();
-		List<KeywordVO> checkboxKeywordName = ps.checkboxAllKeywordName();
-		
-		if (searchInput != null && !searchInput.isEmpty()) {
-			productList = ps.productSearch(searchInput);
-		} else {
-			productList = ps.productAllList();
-		}
-		
-		// =========================================== 2. START ===============================================================
-		// 2. 이 부분은 키워드가 아이디에 제대로 mapping되지 못하고, 전부 다 가져와서 깔아버리니 ID에 맞게 keyword를 매핑 해주는 알고리즘 코드
-		// 아래는 키워드 매핑 정보를 저장하기 위해 map을 생성
-		Map<Integer, String> keywordMap = new HashMap<Integer, String>();
-		
-		// ProductVO mapping 에다가 keywordMappingList 의 값을 넣고 존재하는 값만큼 for문을 실행
-		for (ProductVO mapping : keywordMappingList) {
-			// 아래는 만들어진 Map(keywordMap)에 순회해서 나온 값을 Map 형태로 넣어주는것 (제품 ID와 제품키워드들을)
-			keywordMap.put(mapping.getProductId(), mapping.getKeywords());
-		}
-		
-		// 아래는 productList를 반복순회하여, ProductVO에 담긴 키워드 목록을 담아준다.
-		for (ProductVO product : productList) {
-			String keywordsStr = keywordMap.get(product.getProductId());
-			if (keywordsStr != null) {
-				List<String> keywordsList = Arrays.asList(keywordsStr.split(",\\s*"));
-				product.setKeywordName(keywordsList);
-			}
-		}
-		// =========================================== 2. END ===============================================================
+	public @ResponseBody ModelAndView productPurchaseList(@RequestParam(value = "searchInput", required = false) String searchInput, @RequestParam(value = "pageNum", defaultValue = "1") int pageNum, @RequestParam(value = "pageSize", defaultValue = "9") int pageSize, ModelAndView mav) {
 
-		// 아래 부분은 productList(DB에서 넘어오고 위에서 수정한 value들)을 productlist에 담아 JSP(Fornt)단에서 활용 가능하다.
-		mav.addObject("productlist", productList);
-		mav.addObject("checkboxList", checkboxKeywordName);
-		// 아래 부분은 내가 원하는 viewResolve에 값을 날려주기위해 설정한다.
-		mav.setViewName("pilling/menu/productpurchase");
-		return mav;
+		// 검색이 적용될 경우를 위해 searchInput도 전달
+	    int totalProductCount = ps.getTotalProductCount(searchInput); 
+	    int totalPages = (int) Math.ceil((double) totalProductCount / pageSize);
+		
+	    // 페이지 번호와 페이지 크기를 기반으로 offset 계산
+	    int offset = (pageNum - 1) * pageSize;
+
+	    // 키워드 목록과 체크박스 키워드 목록을 조회
+	    List<ProductVO> keywordMappingList = ps.productKeywordMapping();
+	    List<KeywordVO> checkboxKeywordName = ps.checkboxAllKeywordName();
+
+	    List<ProductVO> productList;
+
+	    // 검색 입력이 있으면 검색 결과에 대한 페이징 처리, 없으면 전체 제품 목록에 대한 페이징 처리
+	    if (searchInput != null && !searchInput.isEmpty()) {
+	        productList = ps.productSearchPaged(searchInput, offset, pageSize);
+	    } else {
+	        productList = ps.productAllListPaged(offset, pageSize);
+	    }
+
+	    // 키워드 매핑 로직
+	    Map<Integer, String> keywordMap = new HashMap<>();
+	    for (ProductVO mapping : keywordMappingList) {
+	        keywordMap.put(mapping.getProductId(), mapping.getKeywords());
+	    }
+
+	    for (ProductVO product : productList) {
+	        String keywordsStr = keywordMap.get(product.getProductId());
+	        if (keywordsStr != null) {
+	            List<String> keywordsList = Arrays.asList(keywordsStr.split(",\\s*"));
+	            product.setKeywordName(keywordsList);
+	        }
+	    }
+
+	    // 페이징 처리된 제품 목록과 체크박스 키워드 목록을 뷰에 전달
+	    mav.addObject("productlist", productList);
+	    mav.addObject("checkboxList", checkboxKeywordName);
+	    mav.addObject("pageNum", pageNum);
+	    mav.addObject("totalPages", totalPages);
+	    mav.setViewName("pilling/menu/productpurchase");
+	    
+
+	    return mav;
 	}
+
 	
 	
 	// 제품구매 페이지에서 체크박스 비동기 갱신을 위한 컨트롤러 부분

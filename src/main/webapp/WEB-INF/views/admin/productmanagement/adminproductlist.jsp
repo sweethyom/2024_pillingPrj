@@ -94,17 +94,6 @@
         <hr class="my-5" />
 
         <div class="container productpurchase-pagination">
-          <ul class="pagination justify-content-center">
-            <li class="page-item"><a class="page-link" href="#">이전</a></li>
-            <!-- 첫페이지에선 없음/시작인덱스 -10 -->
-            <li class="page-item"><a class="page-link" href="#"> 1</a></li>
-            <li class="page-item"><a class="page-link" href="#"> 2</a></li>
-            <li class="page-item"><a class="page-link" href="#"> 3</a></li>
-            <li class="page-item"><a class="page-link" href="#"> 4</a></li>
-            <li class="page-item"><a class="page-link" href="#"> 5</a></li>
-            <li class="page-item"><a class="page-link" href="#">다음</a></li>
-            <!-- 마지막인덱스 +10 /마지막 인덱스에서는 없음 -->
-          </ul>
           <div class="productAddBtn">
             <a href="productaddpage">
               <button type="button" class="btn btn-primary border-0 rounded-pill px-4 py-3">제품추가</button>
