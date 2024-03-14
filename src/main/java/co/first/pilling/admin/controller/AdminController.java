@@ -186,17 +186,4 @@ public class AdminController {
 	    // DB 저장을 위한 경로 반환
 	    return "resources/pilling/img/" + directoryName + "/" + fileName;
 	}
-	
-	@GetMapping("questionpage")
-	public String questionPage(HttpServletRequest session) {
-		// 사용자 권한 확인 로직
-		String author = (String) session.getSession().getAttribute("author");
-		
-		// 접근권한 로직
-		if(!"ADMIN".equals(author)) {
-			return "redirect:/home";
-		} else {
-			return "admin/productmanagement/questionpage";
-		}
-	}
 }

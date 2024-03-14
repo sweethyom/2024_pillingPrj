@@ -128,13 +128,6 @@ prefix="tiles"%>
             </li>
           </ul>
         </li>
-        <li class="menu-header small text-uppercase"><span class="menu-header-text">고객센터</span></li>
-        <li class="menu-item">
-          <a href="questionpage" target="_blank" class="menu-link">
-            <i class="menu-icon tf-icons bx bx-support"></i>
-            <div data-i18n="Support">문의 사항</div>
-          </a>
-        </li>
       </ul>
     </aside>
     <!-- / Menu -->
