@@ -10,8 +10,7 @@
 	</select>
 	<select id="createOrderNo">
 		SELECT COALESCE(MAX(order_id), 0) + 1 AS orderId FROM
-		`order` WHERE user_no =
-		#{userNo} ORDER BY order_id DESC LIMIT 1;
+		`order` ORDER BY order_id DESC LIMIT 1;
 	</select>
 	<insert id="orderInsert">
 		INSERT INTO `order` (order_id, user_no, product_id,
