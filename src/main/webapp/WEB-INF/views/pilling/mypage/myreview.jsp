@@ -10,6 +10,7 @@
 td {
 	vertical-align: middle;
 }
+
 .width-myreview {
 	width: 60%;
 }
@@ -36,12 +37,23 @@ td {
 	padding-right: 0px;
 	padiing-bottom: 0px;
 }
+
+.rating__input {
+	display: none; /* 라디오버튼 hide */
+}
+
+.rating__label .star-icon {
+	width: 24px;
+	height: 24px;
+	display: block;
+	background-repeat: no-repeat;
+}
 </style>
 
 <body>
 	<div class="width-myreview py-4 div-center">
-	<br>
-	
+		<br>
+
 		<!-- 리뷰내역 카드 START -->
 		<div class="card mb-6">
 			<div class="card-header py-3">
@@ -58,7 +70,7 @@ td {
 						<thead>
 							<tr>
 								<td>주문번호</td>
-								<td colspan="2">23432123</td>
+								<td colspan="2">${orderId }</td>
 								<td>주문날짜</td>
 							</tr>
 						</thead>
@@ -67,8 +79,8 @@ td {
 								<td width="100"><img
 									src="resources/pilling/img/mypage/product.png" alt="제품 이미지"
 									width="100"></td>
-								<td colspan="2" width="500">prduct name</td>
-								<td>2011/04/25</td>
+								<td colspan="2" width="500">${productId }</td>
+								<td>${orderdate}</td>
 							</tr>
 						</tbody>
 					</table>
@@ -79,27 +91,40 @@ td {
 					<div class="row g-4">
 						<div class="col-12">
 							<div class="d-flex justify-content-between">
-								<h5><input type="text" size="89%" placeholder="제목을 입력하세요."
-							id="questionTitle" name="questionTitle" required="required"></h5>
-								<a>★★★★☆</a>
+								<h5>
+									<input type="text" size="89%" placeholder="제목을 입력하세요."
+										id="questionTitle" name="questionTitle" required="required">
+								</h5>
+								<label class="rating__label rating__label--half" for="starhalf">
+									<input type="radio" id="starhalf" class="rating__input"
+									name="rating" value=""> <span class="star-icon"></span>
+								</label> <label class="rating__label rating__label--full" for="star1">
+									<input type="radio" id="star1" class="rating__input"
+									name="rating" value=""> <span class="star-icon"></span>
+								</label>
 							</div>
 							<small class="text-body d-block mb-3"><i
-								class="fas fa-calendar-alt me-1"></i> Dec 9, 2024</small>
-							<p class="mb-0">Lorem Ipsum is simply dummy text of the
-								printing and typesetting industry.</p>
-								<button type="button" class="btn btn-primary btn-block mb-4" style="margin-left:90%; display:flex;" onclick="location.href='newreview'">리뷰쓰기</button>
+								class="fas fa-calendar-alt me-1"></i> ${reviewDate }</small>
+							<p class="mb-0">
+								<input type="text" size="89%"
+									placeholder="내용을 입력하세요. (최대 1000자)" id="questionTitle"
+									name="questionTitle" required="required">
+							</p>
+							<button type="button" class="btn btn-primary btn-block mb-4"
+								style="margin-left: 90%; display: flex;"
+								onclick="location.href='newreview'">리뷰쓰기</button>
 						</div>
 					</div>
 				</div>
 				<!-- 제품 리뷰 END -->
-				
+
 				<!-- 제품정보 + 리뷰 반복 -->
 				<div class="table-responsive">
 					<table class="table table-bordered mb-2" id="dataTable">
 						<thead>
 							<tr>
 								<td>주문번호</td>
-								<td colspan="2">23432123</td>
+								<td colspan="2">${orderId }</td>
 								<td>주문날짜</td>
 							</tr>
 						</thead>
@@ -109,7 +134,7 @@ td {
 									src="resources/pilling/img/mypage/product.png" alt="제품 이미지"
 									width="100"></td>
 								<td colspan="2" width="500">prduct name</td>
-								<td>2011/04/25</td>
+								<td>${orderDate}</td>
 							</tr>
 						</tbody>
 					</table>
@@ -136,7 +161,7 @@ td {
 			<!-- 제품 정보와 리뷰 END -->
 		</div>
 		<!-- 카드 END -->
-		
+
 		<!-- 페이징 레이아웃 START -->
 		<div class="container mt-3">
 			<ul class="pagination justify-content-center">
@@ -152,8 +177,10 @@ td {
 			</ul>
 		</div>
 		<!-- 페이징 레이아웃 END -->
-		<button type="button" class="btn btn-primary btn-block mb-4" style="margin-left:90%; display:flex;" onclick="location.href='mypage'">돌아가기</button>
-		
+		<button type="button" class="btn btn-primary btn-block mb-4"
+			style="margin-left: 90%; display: flex;"
+			onclick="location.href='mypage'">돌아가기</button>
+
 	</div>
 </body>
 </html>

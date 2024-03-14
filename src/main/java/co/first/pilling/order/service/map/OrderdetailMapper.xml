@@ -2,6 +2,12 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper
 	namespace="co.first.pilling.order.service.map.OrderdetailMapper">
+	<select id="orderdetailSelectList">
+		SELECT * FROM orderdetail
+	</select>
+	<select id="orderdetailSelect">
+		SELECT * FROM orderdetail WHERE ORDER_ID = #{orderId}
+	</select>
 	<insert id="orderdetailInsert">
 		INSERT INTO orderdetail (order_id, product_id,
 		orderdetail_price, orderdetail_count) VALUES (#{orderId}, #{productId},

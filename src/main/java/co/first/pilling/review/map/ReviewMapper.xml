@@ -7,9 +7,12 @@
 	</select>
 
 	<select id="reviewSelect">
-		SELECT * FROM review WHERE USER_ID=#{userId}
+		SELECT * FROM review WHERE USER_NO=#{userNo}
 	</select>
 	
+	<select id="reviewSearchId">
+		SELECT user_no FROM review WHERE USER_ID=#{userId}
+	</select>
 
 	<update id="reviewUpdate">
 		UPDATE review

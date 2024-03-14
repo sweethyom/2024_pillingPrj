@@ -26,6 +26,13 @@ public class ReviewServiceImpl implements ReviewService {
 	}
 
 	@Override
+	public int reviewSearchId(String userId) {
+		// TODO Auto-generated method stub
+		return map.reviewSearchId(userId);
+	}
+	
+	
+	@Override
 	public int reviewInsert(ReviewVO vo) {
 		// TODO Auto-generated method stub
 		return map.reviewInsert(vo);
