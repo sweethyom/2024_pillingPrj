@@ -11,9 +11,10 @@ public class ReviewVO {
 	private int reviewId;
 	private int productId;
 	private int userNo;
+	private int rating;
 	private String reviewTitle;
 	private String reviewContent;
 	private String reviewImg;
 	private LocalDate reviewDate;
-	private int reviewStar;
+	
 }

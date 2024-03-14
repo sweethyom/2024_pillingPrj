@@ -41,7 +41,7 @@ td {
 <body>
 	<div class="width-myreview py-4 div-center">
 	<br>
-	<button type="button" class="btn btn-primary btn-block mb-4" style="margin-left:90%; display:flex;" onclick="location.href='newreview'">리뷰쓰기</button>
+	
 		<!-- 리뷰내역 카드 START -->
 		<div class="card mb-6">
 			<div class="card-header py-3">
@@ -78,13 +78,15 @@ td {
 					<div class="row g-4">
 						<div class="col-12">
 							<div class="d-flex justify-content-between">
-								<h5>리뷰 제목</h5>
+								<h5><input type="text" size="89%" placeholder="제목을 입력하세요."
+							id="questionTitle" name="questionTitle" required="required"></h5>
 								<a>★★★★☆</a>
 							</div>
 							<small class="text-body d-block mb-3"><i
 								class="fas fa-calendar-alt me-1"></i> Dec 9, 2024</small>
 							<p class="mb-0">Lorem Ipsum is simply dummy text of the
 								printing and typesetting industry.</p>
+								<button type="button" class="btn btn-primary btn-block mb-4" style="margin-left:90%; display:flex;" onclick="location.href='newreview'">리뷰쓰기</button>
 						</div>
 					</div>
 				</div>
