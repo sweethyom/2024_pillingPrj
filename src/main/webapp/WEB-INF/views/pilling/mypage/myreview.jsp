@@ -52,6 +52,7 @@ td {
 			<!-- 제품 정보와 리뷰 START -->
 			<div class="card-body">
 				<!-- 테이블 START -->
+				<form action=orderlist></form>
 				<div class="table-responsive">
 					<table class="table table-bordered mb-2" id="dataTable">
 						<thead>

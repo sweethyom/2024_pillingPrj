@@ -102,6 +102,7 @@ td {
 									<th width="200">총 가격</th>
 									<th width="200">결제상태</th>
 									<th width="200">주문날짜</th>
+									<th width="200">구매여부</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -109,11 +110,11 @@ td {
 									<td width="100"><img
 										src="resources/pilling/img/mypage/product.png" alt="제품 이미지"
 										width="100"></td>
-									<td width="400" class="productname" onclick="show()">System
-										Architect 외 2건</td>
-									<td width="200">1111111111원</td>
-									<td width="200">결제완료</td>
-									<td>2011/04/25</td>
+									<td width="400" class="productname" onclick="show()">${productName } 외 </td>
+									<td width="200">${productPrice }</td>
+									<td width="200">${order }</td>
+									<td>${orderDate }</td>
+									<td><button type="button" id="reviewbtn" class="btn mb-4" onclick="location.href='newreview'" onmouseover="mouseover()" onmouseout="mouseout()">리뷰작성</button></td>
 								</tr>
 								<!-- 구매 상세내역 들어갈 것 -->
 								<tr class="hidehidehide" style="display: none;">
@@ -189,6 +190,13 @@ td {
 			} else {
 				obj.style.display = 'none';
 			}
+		}
+		function mouseover(){
+			document.getElementById("reviewbtn").style.color="black";
+		}
+		
+		function mouseout(){
+			document.getElementById("reviewbtn").style.color="#585858";
 		}
 	</script>
 </body>
