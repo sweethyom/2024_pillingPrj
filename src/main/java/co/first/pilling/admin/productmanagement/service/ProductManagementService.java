@@ -8,7 +8,7 @@ public interface ProductManagementService {
 	List<ProductManagementVO> productAllList();
 	
 	// 제품 ID와 맞는 keywordId 매핑
-	List<ProductManagementVO> productKeywordMapping(int productId);
+	List<Integer> productKeywordMapping(int productId);
 	
 	// 제품 등록
 	int productInsert(ProductManagementVO vo);

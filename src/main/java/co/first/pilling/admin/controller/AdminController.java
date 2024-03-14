@@ -2,6 +2,8 @@ package co.first.pilling.admin.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
 
@@ -21,7 +23,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import co.first.pilling.admin.productmanagement.service.ProductManagementService;
 import co.first.pilling.admin.productmanagement.service.ProductManagementVO;
-import co.first.pilling.product.service.ProductVO;
 
 @Controller
 public class AdminController {
@@ -97,16 +98,14 @@ public class AdminController {
 	// 제품 수정 폼으로 가기
 	@RequestMapping("productupdatepage")
 	public String productUpdatePage(Model model, @RequestParam("productId") int productId) {
-		ProductManagementVO product = pms.getProductById(productId);
-		List<ProductManagementVO> keywordIds = pms.productKeywordMapping(productId);
+		ProductManagementVO productlist = pms.getProductById(productId);
+		List<Integer> keywordIds = pms.productKeywordMapping(productId);
 		
-		// ProductVO mapping 에다가 keywordMappingList 의 값을 넣고 존재하는 값만큼 for문을 실행
-		for (ProductManagementVO mapping : keywordIds) {
-			product.setKeywordId(mapping.getKeywordId());
-		}
+		ProductManagementVO product = new ProductManagementVO();
+		product.setKeywordIds(keywordIds);
 		
-		System.out.println(product.getKeywordId());
-		model.addAttribute("product", product);
+		model.addAttribute("product", productlist);
+		model.addAttribute("selectedKeywordIds", keywordIds);
 		
 		
 		return "admin/productmanagement/productupdate";

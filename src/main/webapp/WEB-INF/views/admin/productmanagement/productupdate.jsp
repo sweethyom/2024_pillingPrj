@@ -275,49 +275,65 @@
     </div>
 
     <script type="text/javascript">
-      /* keyword mapping 하기 위한 함수 */
-      function makeArr() {
-        var values = document.getElementsByName('keywordId');
-        var valueArr = new Array();
-        for (var i = 0; i < values.length; i++) {
-          if (values[i].checked) {
-            valueArr.push(values[i].value);
+
+      // 체크박스를 미리 체크 해두기 위한 코드
+      var selectedKeywordIds = []
+      <c:forEach items="${selectedKeywordIds}" var="keywordId">
+      	selectedKeywordIds.push(${keywordId});
+      </c:forEach>
+
+      window.onload = function() {
+      	selectedKeywordIds.forEach(function(keywordId) {
+      		var checkbox = document.querySelector('input[type="checkbox"][value="' + keywordId +'"]');
+          if (checkbox) {
+            checkbox.checked = true;
           }
+      	})
+      }
+
+        /* keyword mapping 하기 위한 함수 */
+        function makeArr() {
+          var values = document.getElementsByName('keywordId');
+          var valueArr = new Array();
+          for (var i = 0; i < values.length; i++) {
+            if (values[i].checked) {
+              valueArr.push(values[i].value);
+            }
+          }
+          document.getElementById('keywordArr').value = valueArr.toString();
+          AjaxCall();
         }
-        document.getElementById('keywordArr').value = valueArr.toString();
-        AjaxCall();
-      }
 
-      /* response 받은 값을 이용하여, AJAX 활용하기 */
-      function AjaxCall() {
-        let form = document.getElementById('productUpdateForm');
-        let formData = new FormData(form);
-        let url = 'productupdate';
+        /* response 받은 값을 이용하여, AJAX 활용하기 */
+        function AjaxCall() {
+          let form = document.getElementById('productUpdateForm');
+          let formData = new FormData(form);
+          let url = 'productupdate';
 
-        fetch(url, {
-          method: 'POST',
-          body: formData,
-        })
-          .then((response) => {
-            if (response.ok) {
-              return response.text();
-            } else {
-              throw new Error('Network response was not ok.');
-            }
+          fetch(url, {
+            method: 'POST',
+            body: formData,
           })
-          .then((text) => {
-            if (text === 'Yes') {
-              alert('제품 수정이 완료되었습니다.');
-              location.href = 'adminproductlist';
-            } else {
-              alert('제품 수정이 실패하였습니다.');
-            }
-          })
-          .catch((error) => {
-            console.error('There was an error!', error);
-            alert('제품 수정 중 오류가 발생하였습니다.');
-          });
-      }
+            .then((response) => {
+              if (response.ok) {
+                return response.text();
+              } else {
+                throw new Error('Network response was not ok.');
+              }
+            })
+            .then((text) => {
+              if (text === 'Yes') {
+                alert('제품 수정이 완료되었습니다.');
+                location.href = 'adminproductlist';
+              } else {
+                alert('제품 수정이 실패하였습니다.');
+              }
+            })
+            .catch((error) => {
+              console.error('There was an error!', error);
+              alert('제품 수정 중 오류가 발생하였습니다.');
+            });
+        }
     </script>
   </body>
 </html>

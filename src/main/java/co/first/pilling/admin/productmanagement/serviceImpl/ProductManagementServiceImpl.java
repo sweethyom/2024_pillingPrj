@@ -82,9 +82,11 @@ public class ProductManagementServiceImpl implements ProductManagementService {
 	}
 
 	@Override
-	public List<ProductManagementVO> productKeywordMapping(int productId) {
+	public List<Integer> productKeywordMapping(int productId) {
 		return map.productKeywordMapping(productId);
 	}
+
+
 
 
 

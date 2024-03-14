@@ -29,6 +29,7 @@ public class ProductManagementVO {
 	private String filename2;
 	private String filepath2;
 	private String keywordId;
+	private List<Integer> keywordIds;
 	private String keywordArr;
 	private int stock;
 	private int addStock;
