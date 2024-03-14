@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import co.first.pilling.cart.service.CartService;
 import co.first.pilling.cart.service.CartVO;
+import co.first.pilling.order.service.OrderService;
 import co.first.pilling.user.service.UserService;
 import co.first.pilling.user.service.UserVO;
 
@@ -21,6 +22,9 @@ public class CartController {
 	
 	@Autowired
 	private UserService us;
+	
+	@Autowired
+	private OrderService os;
 	
 	@PostMapping("addcart")
 	@ResponseBody
@@ -53,8 +57,11 @@ public class CartController {
 			cart.setFilepath(webPath);
 		}
 		
+		int orderId = os.createOrderNo();
+		
 		model.addAttribute("carts", cartList);
 		model.addAttribute("user", us.userSelect(uv));
+		model.addAttribute("newOrderId", orderId);
 		
 		return "pilling/product/order";
 	}

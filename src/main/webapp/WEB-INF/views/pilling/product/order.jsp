@@ -214,6 +214,7 @@ td {
 					id="orderstatusId" name="orderstatusId" value=1> <input
 					type="hidden" id="orderTotalprice" name="orderTotalprice">
 				<input type="hidden" id="orderCard" name="orderCard">
+				<input type="hidden" id="orderId" name="orderId" value="${newOrderId }">
 			</form>
 			<!-- 배송지 정보 Form END -->
 			<!-- 결제정보 END -->
@@ -233,27 +234,31 @@ td {
 	var IMP = window.IMP;	
 		// 결제요청
 		function requestPay(){
+			var resultTotalPrice = document.getElementById('resultTotalprice').textContent;
+			var resultTotalPriceArr = resultTotalPrice.split('원');
+			resultTotalPrice = parseInt(resultTotalPriceArr[0]);
+			
 			IMP.init('imp03000385');
 			IMP.request_pay({
 				pg: "kakaopay.TC0ONETIME",
 				pay_method: "card",
-				merchant_uid: "ORD20180131-0000021",   // 주문번호
-			    name: "노르웨이 회전 의자",
-			    amount: 64900,                         // 숫자 타입
-			    buyer_email: "gildong@gmail.com",
-			    buyer_name: "홍길동",
-			    buyer_tel: "010-4242-4242",
-			    buyer_addr: "서울특별시 강남구 신사동",
+				merchant_uid: "${newOrderId }",   // 주문번호
+			    name: "${carts[0].productName } 외",
+			    amount: resultTotalPrice,
+			    buyer_email: "${userNo}",
+			    buyer_name: "${userLastname}${userFirstname}",
+			    buyer_tel: "${user.userTel}",
+			    buyer_addr: "${user.userAddr }",
 			    buyer_postcode: "01181"
-			}), function (rsp){ //callback
-				console.log("1111");
+			}, function (rsp){ //callback
+				console.log(rsp);
 				if (rsp.success) {
-					console.log(rsp);
+					console.log("payment success");
 					document.getElementById('shippingForm').submit();
 				    } else {
 				      alert(`결제에 실패하였습니다. 에러 내용: ${rsp.error_msg}`);
-				    }	
-			}
+				    }
+			});
 		}
 		
 	</script>
