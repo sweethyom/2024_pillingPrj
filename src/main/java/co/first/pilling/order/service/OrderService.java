@@ -13,5 +13,5 @@ public interface OrderService {
 
 	int orderUpdate(OrderVO vo); // 주문변경
 	
-	int createOrderNo(OrderVO vo); //주문번호 구하기
+	int createOrderNo(); //주문번호 구하기
 }

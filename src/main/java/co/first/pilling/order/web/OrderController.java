@@ -34,15 +34,12 @@ public class OrderController {
 
 	@RequestMapping("makepayment")
 	public String makepayment(OrderVO ov, ShippingVO sv, CartVO cv, HttpSession session) {
-		int orderId = os.createOrderNo(ov);
-		ov.setOrderId(orderId);
-		sv.setOrderId(orderId);
 		os.orderInsert(ov);
 		ss.shippingInsert(sv);
 		
 		List<CartVO> cartList = cs.cartSelectList(cv);
 		session.setAttribute("cartList", cartList);
-		session.setAttribute("orderId", orderId);
+		session.setAttribute("orderId", ov.getOrderId());
 		
 		return "redirect:/orderresult";
 	}
@@ -68,5 +65,4 @@ public class OrderController {
 
 		return "pilling/product/orderresult";
 	}
-
 }
