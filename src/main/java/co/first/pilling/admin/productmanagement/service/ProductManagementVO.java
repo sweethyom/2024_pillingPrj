@@ -1,6 +1,7 @@
 package co.first.pilling.admin.productmanagement.service;
 
 import java.sql.Date;
+import java.util.List;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -28,5 +29,8 @@ public class ProductManagementVO {
 	private String filename2;
 	private String filepath2;
 	private String keywordId;
+	private List<Integer> keywordIds;
 	private String keywordArr;
+	private int stock;
+	private int addStock;
 }

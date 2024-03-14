@@ -110,13 +110,6 @@
                     </ul>
                   </div>
                   <!-- Pagination END  -->
-                  <c:if test="${author == 'ADMIN'}">
-                    <div class="productAddBtn">
-                      <a href="productaddpage">
-                        <button type="button" class="btn btn-primary border-0 rounded-pill px-4 py-3">제품추가</button>
-                      </a>
-                    </div>
-                  </c:if>
                 </div>
               </div>
             </div>
