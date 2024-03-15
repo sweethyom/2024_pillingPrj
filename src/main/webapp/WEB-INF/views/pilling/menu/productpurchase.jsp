@@ -13,8 +13,8 @@
     <!-- Page Header Start -->
     <div class="container-fluid py-3">
       <div class="container py-3">
-        <h1 class="display-2 text-dark mb-4 animated slideInDown">제품구매</h1>
-        <nav aria-label="breadcrumb">단 하나의 영양제, Pilling</nav>
+        <h1 class="display-2 text-dark mb-4 animated slideInDown">제품 구매</h1>
+        <h1 class="display-6 text-dark mb-4 animated slideInDown">단 하나의 영양제, Pilling</h1>
       </div>
     </div>
     <!-- Page Header End -->

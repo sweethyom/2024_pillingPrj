@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> 
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
   <head>
     <meta charset="UTF-8" />
@@ -25,10 +25,10 @@
         }
       </style>
 
-      <div class="container-fluid page-header py-5">
-        <div class="container text-center py-5">
-          <h1 class="display-2 text-white mb-4 animated slideInDown">당신을 위한, 단 하나의 영양제</h1>
-          <h1 class="text-primary mb-0">Pi1l<span class="text-white">ing</span></h1>
+      <div class="container-fluid py-3">
+        <div class="container py-3">
+          <h1 class="display-2 text-dark mb-4 animated slideInDown">로그인</h1>
+          <h1 class="display-6 text-dark mb-4 animated slideInDown">단 하나의 영양제, Pilling</h1>
         </div>
       </div>
 
@@ -51,12 +51,12 @@
                     <label class="form-label" for="userPswd">비밀번호</label>
                     <input type="password" id="userPswd" name="userPswd" class="form-control" />
                   </div>
-                  
+
                   <!-- 아이디, 패스워드 불일치 시 붉은 문구 삽입 -->
                   <c:if test="${not empty message}">
-                  	<label id="message">${message }</label>
+                    <label id="message">${message }</label>
                   </c:if>
-                  
+
                   <br />
                   <br />
                   <!-- Submit button -->
@@ -76,8 +76,8 @@
     </section>
     <!-- Section: Design Block -->
     <script>
-	    let wrongColor = '#ff0000';
-    	message.style.color = wrongColor;
+      let wrongColor = '#ff0000';
+      message.style.color = wrongColor;
     </script>
   </body>
 </html>

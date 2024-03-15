@@ -7,10 +7,10 @@
   </head>
   <body>
     <!-- Page Header Start -->
-    <div class="container-fluid introduction-background py-5" data-wow-delay="0.1s">
-      <div class="container py-5">
+    <div class="container-fluid py-3">
+      <div class="container py-3">
         <h1 class="display-2 text-dark mb-4 animated slideInDown">브랜드 소개</h1>
-        <nav aria-label="breadcrumb">단 하나의 영양제, Pi1ling</nav>
+        <h1 class="display-6 text-dark mb-4 animated slideInDown">단 하나의 영양제, Pilling</h1>
       </div>
     </div>
     <!-- Page Header End -->
@@ -54,7 +54,7 @@
           <div class="col-lg-6 introduction-text wow fadeIn" data-wow-delay="0.5s">
             <div class="section-title">
               <p class="fs-5 fw-medium fst-italic text-primary">단 하나뿐인 당신의 첫번째 영양제</p>
-              <h1 class="display-6">국내 대표 브랜드 Pi1ling</h1>
+              <h1 class="display-6">국내 대표 브랜드 pilling</h1>
             </div>
             <div class="row g-3 mb-4">
               <div class="col-sm-4">
@@ -62,7 +62,7 @@
               </div>
               <div class="col-sm-8">
                 <p class="introduction-text introduction-textindent mb-0">
-                  Pi1ling은 2024년에 설립된 신진 국내 건강기능식품 전문 기업입니다. 뛰어난 국내 연구진들과의 까다로운 원료 선정, 엄격한 품질관리를
+                  pilling은 2024년에 설립된 신진 국내 건강기능식품 전문 기업입니다. 뛰어난 국내 연구진들과의 까다로운 원료 선정, 엄격한 품질관리를
                   통과한 건강기능식품을 전 세계에 유통하고 있습니다.
                 </p>
               </div>
@@ -85,9 +85,9 @@
                 <img class="img-fluid bg-white w-100" src="resources/pilling/img/introduction/introduction-8.jpg" alt="" />
               </div>
               <div class="col-sm-8">
-                <h4 class="mb-1">Feel yourself with pi1ling!</h4>
+                <h4 class="mb-1">Feel yourself with pilling!</h4>
                 <p class="introduction-textindent mb-0">
-                  pi1ling은 당신의 일상에 활력과 즐거움을 더해줍니다. 한 알에 가득 채운 영양성분으로 생기 있는 하루를 경험해 보세요.
+                  pilling은 당신의 일상에 활력과 즐거움을 더해줍니다. 한 알에 가득 채운 영양성분으로 생기 있는 하루를 경험해 보세요.
                 </p>
               </div>
             </div>

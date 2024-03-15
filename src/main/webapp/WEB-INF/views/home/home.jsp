@@ -9,29 +9,54 @@
       .main-page-image {
         background-size: cover;
       }
+      .bg-image {
+      background: url('resources/pilling/img/surveybannerimage.png') no-repeat center center;
+      background-size: cover;
+      height: 100vh;
+    }
+    .overlay {
+      background-color: rgba(255, 255, 255, 0.8);
+      height: 100vh;
+    }
+    .text-section {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding-right: 5%;
+      text-align: right;
+      background-color: #75EBA7;
+    }
+    .category-links a {
+      color: black;
+      text-decoration: none;
+      padding: 0 10px;
+    }
+    .category-links a:not(:last-child)::after {
+      content: '•';
+      padding-left: 10px;
+    }
     </style>
   </head>
   <body>
     <!-- 설문조사 안내 section Start -->
-    <div class="container-fluid carousel px-0 mb-5 pb-5">
-      <div id="carouselId" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-inner" role="listbox">
-          <div class="carousel-item active">
-            <img src="resources/pilling/img/productimage/productrbanner.jpg" class="main-page-image img-fluid w-100" alt="First slide" />
-            <div class="carousel-caption" style="margin-bottom: 15rem">
-              <div class="container carousel-content">
-                <h4 class="text-white display-6 mb-4 animated slideInDown">당신의 첫번째 영양제, Pi1ling</h4>
-                <h1 class="text-white display-1 mb-4 animated slideInDown">지금 영양제 추천을 도와드리겠습니다.</h1>
-                
-                <!-- 아래의 href부분의 javascript:void(0)는 a 링크를 눌렀을 때 아무런 동작을 하지않기 위해 사용된다.  -->
-                <!-- 이후 onclick 이벤트로 클릭 이벤트는 대체된다.  -->
-                <a href="javascript:void(0)" class="me-2" onclick="checkLoginStatus()"
-                  ><button type="button" class="px-5 py-3 btn btn-primary border-2 rounded-pill animated slideInDown">설문조사 시작</button></a
-                >
-              </div>
-            </div>
+    <div class="row no-gutters bg-image">
+      <div class="col-12 col-md-4 overlay">
+        <div class="text-section">
+          <h1 class="text-white" style="text-align: center;">당신의 단 하나의 영양제,<br>Pilling</h1>
+          <p class="text-white text-size01">뭘 원하시는지 모르는 당신께 추천드립니다.</p>
+          <div class="category-links">
+            <a class="text-white text-size01">당신의</a>
+            <a class="text-white text-size01">영양제를</a>
+            <a class="text-white text-size01">추천</a>
+            <a class="text-white text-size01">해드립니다</a>
           </div>
+          <a onclick="checkLoginStatus()" class="btn btn-outline-light mt-3 text-size03" style="margin-top: 3rem !important;">설문조사 시작하기</a>
         </div>
+      </div>
+      <div class="col-12 col-md-8">
+        <!-- Content on the left side (image) -->
       </div>
     </div>
     <!-- 설문조사 안내 section End -->
@@ -45,12 +70,12 @@
           </div>
           <div class="col-lg-6 col-md-12 wow fadeInUp" data-wow-delay=".6s">
             <div class="about-item overflow-hidden">
-              <h5 class="mb-2 px-3 py-1 text-dark rounded-pill d-inline-block border border-2 border-primary">Pi1ling</h5>
+              <h5 class="mb-2 px-3 py-1 text-dark rounded-pill d-inline-block border border-2 border-primary">pilling</h5>
               <h1 class="display-5 mb-2">영양제 추천 사이트 1위</h1>
               <p class="fs-5" style="text-align: justify">
                 영양제를 뭘 드셔야할 지 모르시겠다구요?<br />
                 나와 가족을 위한 영양제를 모르시겠다구요?<br />
-                그렇다면 pi1ling과 함께하세요!
+                그렇다면 pilling과 함께하세요!
               </p>
               <a href="productpurchase">
               <button type="button" class="btn btn-primary border-0 rounded-pill px-4 py-3 mt-5">제품 구매하기</button>
@@ -66,7 +91,7 @@
     <div class="container-fluid services py-5">
       <div class="container text-center py-5">
         <div class="text-center mb-5 wow fadeInUp" data-wow-delay=".3s">
-          <h1 class="display-5">Pi1ling Best 제품</h1>
+          <h1 class="display-5">pilling Best 제품</h1>
         </div>
         <div class="row g-5">
           <div class="col-xxl-3 col-lg-6 col-md-6 col-sm-12 wow fadeInUp" data-wow-delay=".3s">
@@ -129,7 +154,7 @@
     <div class="container-fluid testimonial py-5">
       <div class="container py-5">
         <section class="mid-line">
-          <h1 style="text-align: center;">Pi1ling 직원들이 체험한 후기</h1>
+          <h1 style="text-align: center;">pilling 직원들이 체험한 후기</h1>
           <br><br><br>
           <div class="owl-carousel testimonial-carousel wow fadeInUp" data-wow-delay=".5s">
             <div class="testimonial-item">
