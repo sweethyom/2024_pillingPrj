@@ -27,7 +27,7 @@ prefix="tiles"%> <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %
       <div class="container">
         <nav class="navbar navbar-dark navbar-expand-lg py-lg-0 justify-content-between">
           <a href="home" class="navbar-brand">
-            <h1 class="text-primary mb-0 display-5">Pi1l<span class="text-white">ing</span><i class="fa-solid fa-pills text-primary ms-2"></i></h1>
+            <h1 class="text-primary mb-0 display-5">Pill<span class="text-white">ing</span><i class="fa-solid fa-pills text-primary ms-2"></i></h1>
           </a>
           <button class="navbar-toggler bg-primary" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
             <span class="fa fa-bars text-dark"></span>

@@ -12,13 +12,13 @@
         <div class="row g-4 footer-inner">
           <div class="col-lg-4 col-md-6">
             <div class="footer-item">
-              <h4 class="text-white fw-bold mb-4">About Pi1ling</h4>
+              <h4 class="text-white fw-bold mb-4">About Pilling</h4>
               <p>
-                주식회사 : 필링 (Pi1ling Inc.)<br />
+                주식회사 : 필링 (Pilling Inc.)<br />
                 사업자 등록번호 : 000-00-00000 | 대표 : 박영양<br />
                 주소 : 대구 서구 내당동 230-6 영남인재교육원<br />
               </p>
-              <p class="mb-0"><a class="" href="#">Pi1ling </a> &copy; 2024 All Right Reserved.</p>
+              <p class="mb-0"><a class="" href="#">Pilling </a> &copy; 2024 All Right Reserved.</p>
             </div>
           </div>
           <div class="col-lg-2 col-md-6"></div>
@@ -31,7 +31,7 @@
               >
               <a href="" class="btn btn-link w-100 text-start ps-0 py-3 border-bottom rounded-0"><i class="fa fa-phone-alt me-3"></i>+053-555-1333</a>
               <a href="" class="btn btn-link w-100 text-start ps-0 py-3 border-bottom rounded-0"
-                ><i class="fa fa-envelope me-3"></i>yiorkr@naver.com</a
+                ><i class="fa fa-envelope me-3"></i>pilling@naver.com</a
               >
             </div>
           </div>
@@ -46,7 +46,7 @@
         <div class="row">
           <div class="col-md-4 text-center text-md-start mb-3 mb-md-0">
             <a href="home" class="navbar-brand">
-              <h1 class="text-primary mb-0 display-6">Pi1l<span class="text-white">ing</span><i class="fa-solid fa-pills text-primary ms-2"></i></h1>
+              <h1 class="text-primary mb-0 display-6">Pill<span class="text-white">ing</span><i class="fa-solid fa-pills text-primary ms-2"></i></h1>
             </a>
           </div>
           <div class="col-md-4"></div>
@@ -54,7 +54,7 @@
             <!--/*** This template is free as long as you keep the below author’s credit link/attribution link/backlink. ***/-->
             <!--/*** If you'd like to use the template without the below author’s credit link/attribution link/backlink, ***/-->
             <!--/*** you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". ***/-->
-            Designed By <a class="border-bottom">Pi1ling</a>
+            Designed By <a class="border-bottom">Pilling</a>
           </div>
         </div>
       </div>
