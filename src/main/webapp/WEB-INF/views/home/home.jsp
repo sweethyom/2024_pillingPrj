@@ -41,18 +41,7 @@
       <div class="container py-5">
         <div class="row gx-4 gx-lg-5 align-items-center">
           <div class="col-lg-6 col-md-12 wow fadeInUp" data-wow-delay=".3s">
-            <div class="about-img">
-              <div class="rotate-left bg-pillgreen"></div>
-              <div class="rotate-right bg-pillgreen"></div>
-              <img src="resources/pilling/img/main/mainpage1.jpg" class="img-fluid h-100" alt="img" />
-              <div class="bg-white experiences">
-                <h1 class="display-3">10</h1>
-                <h6 class="fw-bold">
-                  년 동안 <br />
-                  <h3>1위</h3>
-                </h6>
-              </div>
-            </div>
+              <img src="resources/pilling/img/main/mainpage1.jpg" class="img-fluid h-100" alt="img" style="width: auto; height: 80%;" />
           </div>
           <div class="col-lg-6 col-md-12 wow fadeInUp" data-wow-delay=".6s">
             <div class="about-item overflow-hidden">
@@ -129,83 +118,12 @@
             </div>
           </div>
         </div>
+        <a href="productpurchase">
         <button type="button" class="btn btn-primary border-0 rounded-pill px-4 py-3 mt-4 wow fadeInUp" data-wow-delay=".3s">제품 더 보기</button>
+        </a>
       </div>
     </div>
     <!-- Services End -->
-
-    <!-- Team Start -->
-    <div class="container-fluid py-5">
-      <div class="container py-5">
-        <div class="text-center mb-5 wow fadeInUp" data-wow-delay=".3s">
-          <h5 class="mb-2 px-3 py-1 text-dark rounded-pill d-inline-block border border-2 border-primary">Fi1ling Team</h5>
-          <h1 class="display-5 w-50 mx-auto">Fi1ling과 함께하는 동료</h1>
-        </div>
-        <div class="row g-5">
-          <div class="col-xxl-3 col-lg-6 col-md-6 col-sm-12 wow fadeInUp" data-wow-delay=".3s">
-            <div class="rounded team-item">
-              <img src="resources/pilling/img/team-1..jpg" class="img-fluid w-100 rounded-top border border-bottom-0" alt="" />
-              <div class="team-content bg-primary text-dark text-center py-3">
-                <span class="fs-4 fw-bold">Full Name</span>
-                <p class="text-muted mb-0">Designation</p>
-              </div>
-              <div class="team-icon d-flex flex-column">
-                <a href="#" class="btn btn-primary border-0 mb-2"><i class="fab fa-facebook-f"></i></a>
-                <a href="#" class="btn btn-primary border-0 mb-2"><i class="fab fa-twitter"></i></a>
-                <a href="#" class="btn btn-primary border-0 mb-2"><i class="fab fa-instagram"></i></a>
-                <a href="#" class="btn btn-primary border-0"><i class="fab fa-linkedin-in"></i></a>
-              </div>
-            </div>
-          </div>
-          <div class="col-xxl-3 col-lg-6 col-md-6 col-sm-12 wow fadeInUp" data-wow-delay=".5s">
-            <div class="rounded team-item">
-              <img src="resources/pilling/img/team-2.jpg" class="img-fluid w-100 rounded-top border border-bottom-0" alt="" />
-              <div class="team-content bg-primary text-dark text-center py-3">
-                <span class="fs-4 fw-bold">Full Name</span>
-                <p class="text-muted mb-0">Designation</p>
-              </div>
-              <div class="team-icon d-flex flex-column">
-                <a href="#" class="btn btn-primary border-0 mb-2"><i class="fab fa-facebook-f"></i></a>
-                <a href="#" class="btn btn-primary border-0 mb-2"><i class="fab fa-twitter"></i></a>
-                <a href="#" class="btn btn-primary border-0 mb-2"><i class="fab fa-instagram"></i></a>
-                <a href="#" class="btn btn-primary border-0"><i class="fab fa-linkedin-in"></i></a>
-              </div>
-            </div>
-          </div>
-          <div class="col-xxl-3 col-lg-6 col-md-6 col-sm-12 wow fadeInUp" data-wow-delay=".7s">
-            <div class="rounded team-item">
-              <img src="resources/pilling/img/team-3.jpg" class="img-fluid w-100 rounded-top border border-bottom-0" alt="" />
-              <div class="team-content bg-primary text-dark text-center py-3">
-                <span class="fs-4 fw-bold">Full Name</span>
-                <p class="text-muted mb-0">Designation</p>
-              </div>
-              <div class="team-icon d-flex flex-column">
-                <a href="#" class="btn btn-primary border-0 mb-2"><i class="fab fa-facebook-f"></i></a>
-                <a href="#" class="btn btn-primary border-0 mb-2"><i class="fab fa-twitter"></i></a>
-                <a href="#" class="btn btn-primary border-0 mb-2"><i class="fab fa-instagram"></i></a>
-                <a href="#" class="btn btn-primary border-0"><i class="fab fa-linkedin-in"></i></a>
-              </div>
-            </div>
-          </div>
-          <div class="col-xxl-3 col-lg-6 col-md-6 col-sm-12 wow fadeInUp" data-wow-delay=".9s">
-            <div class="rounded team-item">
-              <img src="resources/pilling/img/team-4.jpg" class="img-fluid w-100 rounded-top border border-bottom-0" alt="" />
-              <div class="team-content bg-primary text-dark text-center py-3">
-                <span class="fs-4 fw-bold">Full Name</span>
-                <p class="text-muted mb-0">Designation</p>
-              </div>
-              <div class="team-icon d-flex flex-column">
-                <a href="#" class="btn btn-primary border-0 mb-2"><i class="fab fa-facebook-f"></i></a>
-                <a href="#" class="btn btn-primary border-0 mb-2"><i class="fab fa-twitter"></i></a>
-                <a href="#" class="btn btn-primary border-0 mb-2"><i class="fab fa-instagram"></i></a>
-                <a href="#" class="btn btn-primary border-0"><i class="fab fa-linkedin-in"></i></a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- Team End -->
 
     <!-- Testiminial Start -->
     <div class="container-fluid testimonial py-5">

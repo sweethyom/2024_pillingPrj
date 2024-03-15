@@ -37,20 +37,22 @@ prefix="tiles"%> <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %
               <a href="productpurchase" class="d-flex nav-item nav-link">제품구매</a>
               <a href="introduction" class="nav-item nav-link">회사정보</a>
               <a href="customerservice" class="nav-item nav-link">고객센터</a>
-              <a href="admin" class="nav-item nav-link">관리자 페이지</a>
+              <c:if test="${author eq 'ADMIN' }">
+                <a href="admin" class="nav-item nav-link">관리자 페이지</a>
+              </c:if>
             </div>
           </div>
           <div class="search-form align-items">
-            <form method="post" action="index.html" style="margin-left: auto">
+            <form action="productpurchase" id="searchForm" style="margin-left: auto" method="post">
               <div class="form-group">
                 <div class="d-flex">
                   <input
                     type="search"
                     class="form-control border-0 rounded-pill"
-                    name="search-input"
+                    name="searchInput"
                     value=""
                     placeholder="찾을 제품을 기입해주세요."
-                    required=""
+                    required
                   />
                   <button type="submit" value="Search Now!" class="buttonHidden">
                     <i class="fa fa-search text-dark"></i>

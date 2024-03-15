@@ -10,12 +10,9 @@
 <body onload="restoreScrollPostion()">
 	<section>
 		<div class="container-fluid customerservice-header py-5">
-			<div class="container text-center py-4">
-				<h1
-					class="display-2 text-white register-form-margin animated slideInDown">고객센터</h1>
-				<h1 class="text-primary mb-0">
-					Pi1l<span class="text-white">ing</span>
-				</h1>
+			<div class="container py-4">
+				        <h1 class="display-2 text-dark mb-4 animated slideInDown">고객센터</h1>
+        <nav aria-label="breadcrumb">단 하나의 영양제, Pi1ling</nav>
 			</div>
 		</div>
 	</section>
@@ -75,29 +72,32 @@
 			<ul class="pagination justify-content-center">
 				<!-- c:if 로 이전 페이지가 없으면 이전 버튼이 비활성화되게 한다. -->
 				<c:if test="${p.firstPageNoOnPageList <= 1}">
-					<li class="page-item"><a class="page-link">Previous</a></li>
+					<li class="page-item"><a class="page-link" style="color: black">이전</a></li>
 				</c:if>
 				<c:if test="${p.firstPageNoOnPageList > 1}">
 					<li class="page-item"><a class="page-link"
+					style="color: black"
 						href="javascript:void(0);"
-						onclick="callPage(${p.firstPageNoOnPageList}-1);">Previous</a></li>
+						onclick="callPage(${p.firstPageNoOnPageList}-1);">이전</a></li>
 				</c:if>
 				
 				<!-- 페이지네이션 -->
 				<c:forEach var="index" begin="${p.firstPageNoOnPageList }"
 					end="${p.lastPageNoOnPageList }" step="1">
 					<li class="page-item"><a class="page-link"
+					style="color: black"
 						href="javascript:void(0);" onclick="callPage(${index});">${index }</a></li>
 				</c:forEach>
 				
 				<!-- c:if 로 다음 페이지가 없으면 다음 버튼이 비활성화되게 한다. -->
 				<c:if test="${p.firstPageNoOnPageList eq p.totalPageCount}">
-					<li class="page-item"><a class="page-link">Next</a></li>
+					<li class="page-item"><a class="page-link" style="color: black">다음</a></li>
 				</c:if>
 				<c:if test="${p.firstPageNoOnPageList ne p.totalPageCount}">
 					<li class="page-item"><a class="page-link"
+						style="color: black"
 						href="javascript:void(0);"
-						onclick="callPage(${p.lastPageNoOnPageList}+1);">Next</a></li>
+						onclick="callPage(${p.lastPageNoOnPageList}+1);">다음</a></li>
 				</c:if>
 			</ul>
 		</div>
@@ -147,11 +147,12 @@
 			<ul class="pagination justify-content-center">
 				<!-- c:if 로 이전 페이지가 없으면 이전 버튼이 비활성화되게 한다. -->
 				<c:if test="${qp.firstPageNoOnPageList <= 1}">
-					<li class="page-item"><a class="page-link">Previous</a></li>
+					<li class="page-item"><a class="page-link" style="color: black">Previous</a></li>
 				</c:if>
 				<c:if test="${qp.firstPageNoOnPageList > 1}">
 					<li class="page-item"><a class="page-link"
 						href="javascript:void(0);"
+						style="color: black"
 						onclick="callPageQuestion(${qp.firstPageNoOnPageList}-1);">Previous</a></li>
 				</c:if>
 				
@@ -159,16 +160,18 @@
 				<c:forEach var="index" begin="${qp.firstPageNoOnPageList }"
 					end="${qp.lastPageNoOnPageList }" step="1">
 					<li class="page-item"><a class="page-link"
+					style="color: black"
 						href="javascript:void(0);" onclick="callPageQuestion(${index});">${index }</a></li>
 				</c:forEach>
 				
 				<!-- c:if 로 다음 페이지가 없으면 다음 버튼이 비활성화되게 한다. -->
 				<c:if test="${qp.firstPageNoOnPageList eq qp.totalPageCount}">
-					<li class="page-item"><a class="page-link">Next</a></li>
+					<li class="page-item"><a class="page-link" style="color: black">Next</a></li>
 				</c:if>
 				<c:if test="${qp.firstPageNoOnPageList ne qp.totalPageCount}">
 					<li class="page-item"><a class="page-link"
 						href="javascript:void(0);"
+						style="color: black"
 						onclick="callPageQuestion(${qp.lastPageNoOnPageList}+1);">Next</a></li>
 				</c:if>
 			</ul>
@@ -225,6 +228,5 @@
 		}
 	}
 </script>
-
 </body>
 </html>
