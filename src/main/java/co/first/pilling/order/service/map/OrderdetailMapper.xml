@@ -8,6 +8,17 @@
 	<select id="orderdetailSelect">
 		SELECT * FROM orderdetail WHERE ORDER_ID = #{orderId}
 	</select>
+	<select id="getOrderdetailListByOrderId">
+		SELECT od.order_id AS orderId, product_name AS productName, 
+			   orderdetail_price AS orderdetailPrice, 
+			   orderdetail_count As orderdetailCount
+		FROM orderdetail od
+		JOIN order o
+		  ON o.order_id = od.order_id
+		JOIN product p
+		  ON od.product_id = p.product_id
+		WHERE od.order_id = #{orderId}
+	</select>
 	<insert id="orderdetailInsert">
 		INSERT INTO orderdetail (order_id, product_id,
 		orderdetail_price, orderdetail_count) VALUES (#{orderId}, #{productId},

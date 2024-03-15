@@ -7,6 +7,8 @@ public interface OrderdetailService {
 
 	OrderVO orderdetailSelect(OrderdetailVO vo); // 주문상세내역
 
+	List<OrderdetailVO> getOrderdetailListByOrderId(int orderId);
+	
 	int orderdetailInsert(OrderdetailVO vo); // 주문상세삽입
 
 	int orderdetailDelete(OrderdetailVO vo); // 주문취소

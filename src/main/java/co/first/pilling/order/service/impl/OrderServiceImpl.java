@@ -30,6 +30,11 @@ public class OrderServiceImpl implements OrderService {
 	}
 
 	@Override
+	public List<OrderVO> getOrderListByUserNo(int userNo){
+		return map.getOrderListByUserNo(userNo);
+	}
+	
+	@Override
 	public int orderInsert(OrderVO vo) {
 		// TODO Auto-generated method stub
 		return map.orderInsert(vo);

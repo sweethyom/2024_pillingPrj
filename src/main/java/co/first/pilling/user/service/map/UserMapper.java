@@ -10,6 +10,7 @@ public interface UserMapper {
 	List<UserVO> userSelectList();
 	UserVO userSelect(UserVO vo); //로그인, 마이페이지
 	UserVO userRead(String id);
+	int getUserNoByUserId(String userId);
 //	int userInsert(UserVO vo); //회원가입
 	public void userInsert(UserVO vo) throws DataAccessException;
 	int userDelete(UserVO vo); 

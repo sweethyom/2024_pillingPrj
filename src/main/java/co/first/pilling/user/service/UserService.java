@@ -9,6 +9,7 @@ public interface UserService {
 	List<UserVO> userSelectList();
 	UserVO userSelect(UserVO vo); //로그인, 마이페이지
 	UserVO userRead(String id);//회원수정(아이디검색 후 정보 띄우기)
+	int getUserNoByUserId(String userId);
 	public void userInsert(UserVO vo) throws DataAccessException;
 	int userDelete(UserVO vo); 
 	int userWithdraw(UserVO vo);//회원탈퇴

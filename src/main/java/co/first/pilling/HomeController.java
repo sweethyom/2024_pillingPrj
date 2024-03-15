@@ -95,11 +95,6 @@ public class HomeController {
 		return "pilling/mypage/myorderdetail";
 	}
 
-	// 나의 구매상세내역 이동
-	@RequestMapping("mypurchasedetail")
-	public String mypurchasedetail(Model model) {
-		return "pilling/mypage/mypurchasedetail";
-	}
 	
 	// 탈퇴페이지 이동
 	@RequestMapping("withdrawal")
