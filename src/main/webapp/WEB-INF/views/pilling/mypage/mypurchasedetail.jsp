@@ -172,7 +172,7 @@ td {
 		 
 		document.addEventListener("DOMContentLoaded", function() {
 		    var orderlistcount = document.getElementsByClassName('order-detail-list');
-		    for(var i = 1; i < orderlistcount.length; i++) {
+		    for(var i = 0; i < orderlistcount.length; i++) {
 	
 		        var orderdetail = orderlistcount[i-1];
 		        if (window.getComputedStyle(orderdetail, null).getPropertyValue('display') === 'none') {
