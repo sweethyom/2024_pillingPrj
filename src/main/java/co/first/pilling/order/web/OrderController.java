@@ -2,8 +2,6 @@ package co.first.pilling.order.web;
 
 import java.util.List;
 
-import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import co.first.pilling.cart.service.CartService;
 import co.first.pilling.cart.service.CartVO;
+import co.first.pilling.coupon.service.CouponService;
+import co.first.pilling.coupon.service.CouponVO;
 import co.first.pilling.order.service.OrderService;
 import co.first.pilling.order.service.OrderVO;
 import co.first.pilling.order.service.OrderdetailService;
@@ -41,6 +41,9 @@ public class OrderController {
 
 	@Autowired
 	private UserService us;
+	
+	@Autowired
+	private CouponService cps;
 
 	// 장바구니 물품 결제완료 후 order, shipping, orderdetail 테이블에 데이터 삽입
 	@RequestMapping("makepayment")
@@ -97,10 +100,14 @@ public class OrderController {
 		cart.setFilepath(product.getFilepath1());
 
 		int orderId = os.createOrderNo();
+		
+		//가지고 있는 쿠폰 정보를 보내준다.
+		List<CouponVO> couponList = cps.couponSelectList(uv.getUserNo());
 
 		model.addAttribute("cart", cart);
 		model.addAttribute("user", us.userSelect(uv));
 		model.addAttribute("newOrderId", orderId);
+		model.addAttribute("couponList", couponList);
 		return "pilling/product/orderdirect";
 	}
 }

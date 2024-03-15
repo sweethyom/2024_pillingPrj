@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import co.first.pilling.order.service.OrderService;
 import co.first.pilling.user.service.UserService;
 import co.first.pilling.user.service.UserVO;
 
@@ -45,18 +46,7 @@ public class HomeController {
 	public String userRegister(Model model) {
 		return "pilling/menu/register";
 	}
-
-	// 마이페이지 이동
-	@RequestMapping("mypage")
-	public String myPage(Model model, HttpSession session) {
-		UserVO vo = new UserVO();
-		String userId = (String) session.getAttribute("userId");
-		vo.setUserId(userId);
-		model.addAttribute("userRank", userService.selectUserRank(vo));
-		model.addAttribute("user", userService.userSelect(vo));
-		return "pilling/menu/mypage";
-	}
-
+	
 	// 설문조사 페이지로 이동
 	@RequestMapping("surveypage")
 	public String surveyPage(Model model) {

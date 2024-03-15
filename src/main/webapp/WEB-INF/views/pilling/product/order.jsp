@@ -186,8 +186,13 @@ td {
 							<td><a id="prodtotalprice"></a></td>
 						</tr>
 						<tr>
-							<td style="background-color: #f5f6f6;">멤버십 할인</td>
-							<td><a id="levelAccumrate">없음${levelAccumrate }</a></td>
+							<td style="background-color: #f5f6f6;">쿠폰 할인</td>
+							<td><select id="couponSelect">
+									<c:forEach items="${couponList }" var="c">
+										<option
+											value="${c.couponName }/${c.couponRate}/${c.couponPeriod}"></option>
+									</c:forEach>
+							</select></td>
 						</tr>
 						<tr>
 							<td style="background-color: #f5f6f6;">적립금</td>
@@ -213,8 +218,8 @@ td {
 					value="${carts[0].productId }"> <input type="hidden"
 					id="orderstatusId" name="orderstatusId" value=1> <input
 					type="hidden" id="orderTotalprice" name="orderTotalprice">
-				<input type="hidden" id="orderCard" name="orderCard">
-				<input type="hidden" id="orderId" name="orderId" value="${newOrderId }">
+				<input type="hidden" id="orderCard" name="orderCard"> <input
+					type="hidden" id="orderId" name="orderId" value="${newOrderId }">
 			</form>
 			<!-- 배송지 정보 Form END -->
 			<!-- 결제정보 END -->

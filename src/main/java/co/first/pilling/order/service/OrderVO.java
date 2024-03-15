@@ -16,4 +16,9 @@ public class OrderVO {
 	private LocalDate orderDate;
 	private String orderRefund;
 	private String orderCard;
+	
+	private String filepath;
+	private String productName;
+	private int count;
+	private String status;
 }

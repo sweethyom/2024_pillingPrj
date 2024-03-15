@@ -184,8 +184,8 @@ td {
 							<td><a id="prodtotalprice"></a></td>
 						</tr>
 						<tr>
-							<td style="background-color: #f5f6f6;">멤버십 할인</td>
-							<td><a id="levelAccumrate">없음${levelAccumrate }</a></td>
+							<td style="background-color: #f5f6f6;">쿠폰 할인</td>
+							<td><a id="levelAccumrate"><input></a></td>
 						</tr>
 						<tr>
 							<td style="background-color: #f5f6f6;">적립금</td>
