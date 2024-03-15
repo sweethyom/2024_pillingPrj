@@ -25,4 +25,5 @@ public class UserVO {
 	private String userAuthor;
 	private String userSignout;
 	private String userPoint;
+	private String userRank;
 }
