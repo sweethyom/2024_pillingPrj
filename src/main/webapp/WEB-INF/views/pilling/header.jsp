@@ -5,16 +5,25 @@ prefix="tiles"%> <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %
   <head>
     <meta charset="UTF-8" />
     <title>Insert title here</title>
+    <style>
+      .hyunwoo-border:focus {
+        border-color: #0ae4b0;
+        border-width: 0.2rem;
+        box-shadow: none;
+      }
+    </style>
   </head>
   <body>
     <!-- Topbar Start -->
     <c:if test="${empty userId}">
-      <div class="container-fluid topbar-top bg-primary">
+      <div class="container-fluid topbar-top bg-maincolor">
         <div class="container">
           <div class="topbar py-2">
             <div class="text-center align-items-center flex-shrink-0 topbar-info">
-              <span class="text-secondary align-items-center">가입하는 즉시, 할인쿠폰이 증정됩니다! </span> &nbsp;&nbsp;&nbsp;
-              <a href="registerpage" class="text-secondary"><i class="fas fa-sign-in-alt text-dark"></i>&nbsp;&nbsp;지금 회원가입 하기</a>
+              <span class="text-maincolor text-size01 align-items-center">가입하는 즉시, 할인쿠폰이 증정됩니다! </span> &nbsp;&nbsp;&nbsp;
+              <a href="registerpage" class="text-maincolor text-size01"
+                ><i class="fas fa-sign-in-alt text-maincolor text-size01"></i>&nbsp;&nbsp;지금 회원가입 하기</a
+              >
             </div>
           </div>
         </div>
@@ -23,22 +32,24 @@ prefix="tiles"%> <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %
     <!-- Topbar End -->
 
     <!-- Navbar Start -->
-    <div class="d-flex container-fluid bg-pillgreen flex-row-reverse">
+    <div class="d-flex container-fluid flex-row-reverse navbar-bottom-border">
       <div class="container">
         <nav class="navbar navbar-dark navbar-expand-lg py-lg-0 justify-content-between">
           <a href="home" class="navbar-brand">
-            <h1 class="text-primary mb-0 display-5">Pill<span class="text-white">ing</span><i class="fa-solid fa-pills text-primary ms-2"></i></h1>
+            <h1 class="text-mintcolor mb-0 display-5">
+              Pill<span class="text-mintcolor">ing</span><i class="fa-solid fa-pills text-mintcolor ms-2"></i>
+            </h1>
           </a>
           <button class="navbar-toggler bg-primary" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
             <span class="fa fa-bars text-dark"></span>
           </button>
           <div class="collapse navbar-collapse me-n3 flex-grow-0" id="navbarCollapse">
             <div class="navbar-nav ms-auto">
-              <a href="productpurchase" class="d-flex nav-item nav-link">제품구매</a>
-              <a href="introduction" class="nav-item nav-link">회사정보</a>
-              <a href="customerservice" class="nav-item nav-link">고객센터</a>
+              <a href="productpurchase" class="d-flex nav-item nav-link nav-text-color text-size02">제품구매</a>
+              <a href="introduction" class="nav-item nav-link nav-text-color text-size02">회사정보</a>
+              <a href="customerservice" class="nav-item nav-link nav-text-color text-size02">고객센터</a>
               <c:if test="${author eq 'ADMIN' }">
-                <a href="admin" class="nav-item nav-link">관리자 페이지</a>
+                <a href="admin" class="nav-item nav-link nav-text-color text-size02">관리자 페이지</a>
               </c:if>
             </div>
           </div>
@@ -48,7 +59,7 @@ prefix="tiles"%> <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %
                 <div class="d-flex">
                   <input
                     type="search"
-                    class="form-control border-0 rounded-pill"
+                    class="form-control rounded-pill hyunwoo-border"
                     name="searchInput"
                     value=""
                     placeholder="찾을 제품을 기입해주세요."
@@ -64,11 +75,18 @@ prefix="tiles"%> <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %
           <div class="d-flex align-items-center">
             <h2>
               <c:if test="${empty userId}">
-                <a href="login"><i class="fa-regular fa-user text-white"></i></a>
+                <a href="login" class="text-size01 nav-text-color">로그인</a>
               </c:if>
               <c:if test="${not empty userId}">
-                <a href="mypage">${userFirstname }</a>
-                <a href="logout">로그아웃</a>
+                <div class="d-flex align-items-center" style="justify-content: center">
+                  <div class="profile-name">
+                    <strong class="text-size01 text-mintcolor">${userLastname }${userFirstname }님 환영합니다.</strong>
+                  </div>
+                </div>
+                <div class="icons">
+                  <a href="mypage" class="text-size01 nav-text-color"><i class="fas fa-user-friends"></i>마이페이지</a>
+                  <a href="logout" class="text-size01 nav-text-color"><i class="fa-solid fa-right-from-bracket"></i>로그아웃</a>
+                </div>
               </c:if>
             </h2>
           </div>
