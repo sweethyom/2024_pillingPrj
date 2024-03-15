@@ -104,7 +104,7 @@ td {
 			</div>
 			<!-- 구매자 정보 END -->
 			<!-- 배송지 정보 Form START -->
-			<form id="shippingForm" action="makepayment" method="post">
+			<form id="shippingForm" action="makepaymentdirect" method="post">
 				<!-- 배송지 정보 -->
 				<div class="mb-4">
 					<h5>배송지 정보</h5>
@@ -208,11 +208,13 @@ td {
 				</div>
 				<input type="hidden" id="userNo" name="userNo" value="${userNo }">
 				<input type="hidden" id="productId" name="productId"
-					value="${carts[0].productId }"> <input type="hidden"
+					value="${cart.productId }"> <input type="hidden"
 					id="orderstatusId" name="orderstatusId" value=1> <input
 					type="hidden" id="orderTotalprice" name="orderTotalprice">
 				<input type="hidden" id="orderCard" name="orderCard">
 				<input type="hidden" id="orderId" name="orderId" value="${newOrderId }">
+				<input type="hidden" id="orderdetailPrice" name="orderdetailPrice" value="${cart.productPrice }">
+				<input type="hidden" id="orderdetailCount" name="orderdetailCount" value="${cart.cartProdcnt}">
 			</form>
 			<!-- 배송지 정보 Form END -->
 			<!-- 결제정보 END -->
@@ -241,7 +243,7 @@ td {
 				pg: "kakaopay.TC0ONETIME",
 				pay_method: "card",
 				merchant_uid: "${newOrderId }",   // 주문번호
-			    name: "${carts[0].productName } 외",
+			    name: "${cart.productName }",
 			    amount: resultTotalPrice,
 			    buyer_email: "${userNo}",
 			    buyer_name: "${userLastname}${userFirstname}",

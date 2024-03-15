@@ -283,6 +283,7 @@
     <form id="cartform" method="post">
     	<input type="hidden" id="productId" name="productId">
     	<input type="hidden" id="userNo" name="userNo" value="${userNo }">
+    	<input type="hidden" id="userId" name="userId" value="${userId }">
 		<input type="hidden" id="cartProdcnt" name="cartProdcnt">
     </form>
   </div>
