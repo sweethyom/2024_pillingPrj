@@ -319,6 +319,8 @@ li {
 
 .productpurchase-pagination {
   margin-top: 3rem;
+  font-size: 1.2rem !important;
+  font-weight: 500 !important;
 }
 
 .productAddBtn {

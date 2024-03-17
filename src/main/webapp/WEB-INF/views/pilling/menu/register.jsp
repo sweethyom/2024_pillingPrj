@@ -9,6 +9,16 @@
     <!-- Section: Design Block -->
     <section class="text-center text-lg-start" style="margin-top: 2rem">
       <style>
+        label {
+          font-size: 1.2rem !important;
+          font-weight: 500 !important;
+        }
+
+        p {
+          font-size: 1.2rem !important;
+          font-weight: 500 !important;
+        }
+
         .cascading-left {
           margin-left: -50px;
         }

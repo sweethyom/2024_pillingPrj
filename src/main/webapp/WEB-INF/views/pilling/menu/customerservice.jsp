@@ -8,8 +8,8 @@
   <body onload="restoreScrollPostion()">
     <div class="container-fluid py-3">
       <div class="container py-3">
-        <h1 class="display-2 text-dark mb-4 animated slideInDown">고객센터</h1>
-        <h1 class="display-6 text-dark mb-4 animated slideInDown">단 하나의 영양제, Pilling</h1>
+        <h1 class="display-2 text-dark mb-4">고객센터</h1>
+        <h1 class="display-6 text-dark mb-4">단 하나의 영양제, Pilling</h1>
       </div>
     </div>
     <!-- specific category -->
@@ -27,7 +27,7 @@
     </div>
     <div class="container-xxl py-5">
       <div class="container text-center">
-        <h4 class="display-6 text-dark mb-4 animated slideInDown">공 지 사 항</h4>
+        <h4 class="display-6 text-dark mb-4">공 지 사 항</h4>
         <div class="row g-5">
           <table class="table table-bordered table-hover">
             <thead>
@@ -97,7 +97,7 @@
     </div>
     <div class="container-xxl py-5">
       <div class="container text-center">
-        <h4 class="display-6 text-dark mb-4 animated slideInDown">문 의 사 항</h4>
+        <h4 class="display-6 text-dark mb-4">문 의 사 항</h4>
         <div class="row g-5">
           <table class="table table-bordered table-hover">
             <thead>
