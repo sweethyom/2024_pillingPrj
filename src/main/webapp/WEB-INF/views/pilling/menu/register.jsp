@@ -7,7 +7,7 @@
   </head>
   <body>
     <!-- Section: Design Block -->
-    <section class="text-center text-lg-start">
+    <section class="text-center text-lg-start" style="margin-top: 2rem">
       <style>
         .cascading-left {
           margin-left: -50px;
@@ -20,7 +20,9 @@
         }
 
         .login-site-padding {
-          padding: 10rem !important;
+          margin-left: 20rem !important;
+          margin-right: 20rem !important;
+          padding: 5rem !important;
         }
 
         .register-form-margin {
@@ -28,30 +30,20 @@
         }
       </style>
 
-      <div class="container-fluid page-header py-5">
-        <div class="container text-center py-5">
-          <h1 class="display-2 text-white register-form-margin animated slideInDown">당신을 위한, 단 하나의 영양제</h1>
-          <h1 class="text-primary mb-0">Pi1l<span class="text-white">ing</span></h1>
-        </div>
-      </div>
-
       <!-- Jumbotron -->
-      <div class="container py-4">
+      <div class="container py-4" style="width: 50vh">
         <div class="row g-0 align-items-center">
-          <div class="col-lg-6 mb-5 mb-lg-0">
-            <img src="resources/pilling/img/login/loginimage.jpg" class="w-100 rounded-4 shadow-4" alt="" />
-          </div>
-          <div class="col-lg-6 mb-5 mb-lg-0">
-            <div class="card cascading-left" style="background: hsla(0, 0%, 100%, 0.55); backdrop-filter: blur(30px)">
-              <div class="card-body login-site-padding shadow-5 text-center">
-                <h2 class="fw-bold mb-5">회원가입</h2>
+          <div class="mb-5 mb-lg-0">
+            <div class="card" style="background: hsla(0, 0%, 100%, 0.55); backdrop-filter: blur(30px)">
+              <div class="card-body shadow-5 text-center" style="padding-top: 2rem">
+                <h1 class="fw-bold mb-5">회원가입</h1>
 
                 <!-- 회원가입 form 시작 -->
                 <form name="registerForm" id="registerForm" action="registerForm" method="post">
                   <!-- 아이디 input -->
                   <div class="form-outline register-form-margin">
                     <label class="form-label" for="userId">아이디</label>
-                    <input type="text" id="userId" class="form-control" name="userId" placeholder="아이디를 입력해주세요." required />
+                    <input type="text" id="userId" class="form-control hyunwoo-border" name="userId" placeholder="아이디를 입력해주세요." required />
                     <span id="idConfirmMsg"></span>
                   </div>
 
@@ -61,7 +53,7 @@
                     <input
                       type="password"
                       id="userPswd"
-                      class="form-control"
+                      class="form-control hyunwoo-border"
                       name="userPswd"
                       placeholder="영문,숫자,특수문자 포함 8자 이상 입력해주세요."
                       required
@@ -71,7 +63,13 @@
                   <!-- 비밀번호 재 확인 input -->
                   <div class="form-outline register-form-margin">
                     <label class="form-label" for="passwordConfirm">비밀번호 확인</label>
-                    <input type="password" id="passwordConfirm" class="form-control" placeholder="위와 동일한 비밀번호를 입력해주세요." required />
+                    <input
+                      type="password"
+                      id="passwordConfirm"
+                      class="form-control hyunwoo-border"
+                      placeholder="위와 동일한 비밀번호를 입력해주세요."
+                      required
+                    />
                     <span id="passwordConfirmMsg2"></span>
                     <!-- 이 부분은 패스워드가 맞거나 틀릴 시 message 출력해줍니다. (함수에서 innertext 활용) -->
                   </div>
@@ -81,7 +79,7 @@
                     <input
                       type="tel"
                       id="userTel"
-                      class="form-control"
+                      class="form-control hyunwoo-border"
                       name="userTel"
                       oninput="hypenTel(this)"
                       maxlength="13"
@@ -93,18 +91,39 @@
                   <!-- 이메일 input -->
                   <div class="form-outline register-form-margin">
                     <label class="form-label" for="userEmail">이메일</label>
-                    <input type="email" id="userEmail" class="form-control" name="userEmail" placeholder="이메일을 입력해주세요." required />
+                    <input
+                      type="email"
+                      id="userEmail"
+                      class="form-control hyunwoo-border"
+                      name="userEmail"
+                      placeholder="이메일을 입력해주세요."
+                      required
+                    />
                   </div>
                   <span id="emailConfirmMsg"></span>
                   <!-- 이름 INPUT -->
                   <div class="d-flex form-outline register-form-margin justify-content-between">
                     <label class="form-label name-item" for="userLastname"
                       >성
-                      <input type="text" id="userLastname" name="userLastname" class="form-control" placeholder="성을 입력해주세요." required />
+                      <input
+                        type="text"
+                        id="userLastname"
+                        name="userLastname"
+                        class="form-control hyunwoo-border"
+                        placeholder="성을 입력해주세요."
+                        required
+                      />
                     </label>
                     <label class="form-label name-item" for="userFirstname"
                       >이름
-                      <input type="text" id="userFirstname" name="userFirstname" class="form-control" placeholder="이름을 입력해주세요." required />
+                      <input
+                        type="text"
+                        id="userFirstname"
+                        name="userFirstname"
+                        class="form-control hyunwoo-border"
+                        placeholder="이름을 입력해주세요."
+                        required
+                      />
                     </label>
                   </div>
                   <span id="nameConfirmMsg"></span>
@@ -136,16 +155,31 @@
                   <div style="margin-bottom: 20px">
                     <p class="ptag-margin">주소</p>
                     <div class="d-flex" style="margin-bottom: 5px">
-                      <input type="button" class="form-control" style="width: 30%" onclick="userAddressInput()" value="주소 찾기" />
+                      <input type="button" class="form-control hyunwoo-border" style="width: 30%" onclick="userAddressInput()" value="주소 찾기" />
                       &nbsp;&nbsp;&nbsp;
-                      <input type="text" class="form-control" id="userAddr" name="userAddr" style="width: 70%" placeholder="도로명주소" required />
+                      <input
+                        type="text"
+                        class="form-control hyunwoo-border"
+                        id="userAddr"
+                        name="userAddr"
+                        style="width: 70%"
+                        placeholder="도로명주소"
+                        required
+                      />
                     </div>
                     <span id="guide" style="color: #999; display: none"></span>
-                    <input type="text" class="form-control" id="userAddrdetail" name="userAddrdetail" placeholder="상세주소" required />
+                    <input
+                      type="text"
+                      class="form-control hyunwoo-border"
+                      id="userAddrdetail"
+                      name="userAddrdetail"
+                      placeholder="상세주소"
+                      required
+                    />
                   </div>
                   <p id="addressConfirmMsg"></p>
                   <!-- 회원가입 완료 버튼 -->
-                  <button type="button" class="btn btn-primary btn-block register-form-margin" onclick="registerFormCheck()">가입하기</button>
+                  <button type="button" class="btn btn-outline-dark-hyunwoo mt-3 text-size03" onclick="registerFormCheck()">가입하기</button>
                 </form>
                 <!-- 회원가입 form 끝 -->
               </div>

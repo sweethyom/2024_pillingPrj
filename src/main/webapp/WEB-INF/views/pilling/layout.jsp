@@ -16,7 +16,8 @@ prefix="tiles"%>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500&display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Jua&family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet" />
-    
+
+    <!-- 눈누 Font  -->
 
     <!-- Icon Font Stylesheet -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet" />
@@ -56,9 +57,6 @@ prefix="tiles"%>
       <!-- Footer Start -->
       <tiles:insertAttribute name="footer" />
       <!-- Footer End -->
-
-      <!-- Back to Top -->
-      <a href="#" class="btn btn-primary rounded-circle border-3 back-to-top"><i class="fa fa-arrow-up"></i></a>
     </div>
 
     <!-- JavaScript Libraries -->
