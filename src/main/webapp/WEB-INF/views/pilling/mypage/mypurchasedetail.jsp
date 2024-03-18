@@ -110,13 +110,13 @@ td {
 							<tbody>
 								<tr class="main" data-order-id="${order.orderId }">
 									<td width="100"><img
-										src="${order.filepath1 }" alt="제품 이미지"
+										src="${order.filepath }" alt="제품 이미지"
 										width="100"></td>
 									<td width="400" class="productname" data-order-id="${order.orderId }">${order.productName } 외 ${order.count }건</td>
 									<td width="200">${order.orderTotalprice }</td>
 									<td width="200">${order.orderstatusName }</td>
 									<td>${order.orderDate }</td>
-									<td><button type="button" id="reviewbtn" class="btn mb-4" onclick="location.href='newreview'" onmouseover="mouseover()" onmouseout="mouseout()">리뷰작성</button></td>
+									<td><button type="button" id="reviewbtn" class="btn mb-4" onclick="location.href='newreview?orderId=${order.orderId}'" onmouseover="mouseover()" onmouseout="mouseout()">리뷰작성</button></td>
 								</tr>
 								
 								<!-- 구매 상세내역 들어갈 것 -->
