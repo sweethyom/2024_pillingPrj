@@ -16,8 +16,6 @@ public interface OrderMapper {
 
 	List<OrderVO> purchasesSelectList(int userNo); // 구매내역(배송상태가 배송완료인 것)
 
-	OrderVO orderSelect(OrderVO vo); // 주문상세내역
-
 	int orderInsert(OrderVO vo); // 주문완료
 
 	int orderDelete(OrderVO vo); // 주문취소

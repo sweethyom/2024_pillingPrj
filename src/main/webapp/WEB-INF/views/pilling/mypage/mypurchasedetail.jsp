@@ -110,7 +110,7 @@ td {
 							<tbody>
 								<tr class="main" data-order-id="${order.orderId }">
 									<td width="100"><img
-										src="resources/pilling/img/mypage/product.png" alt="제품 이미지"
+										src="${order.filepath1 }" alt="제품 이미지"
 										width="100"></td>
 									<td width="400" class="productname" data-order-id="${order.orderId }">${order.productName } 외 ${order.count }건</td>
 									<td width="200">${order.orderTotalprice }</td>
@@ -130,16 +130,14 @@ td {
 										<td >구매수량</td>
 										<td >소계</td>
 									</tr>
-									<c:set var="total" value="0"/>
 						 			<c:forEach var="orderDetail" items="${orderDetailList }">
-						 			<c:stet var
 						 			<c:if test="${orderDetail.orderId eq order.orderId}">
 									<tr>
 										<td>${orderDetail.orderId }</td>
 										<td>${orderDetail.productName }</td>
 										<td>${orderDetail.orderdetailPrice }원</td>
 										<td>${orderDetail.orderdetailCount }개</td>
-										<td>'(${orderDetail.orderdetailPrice*orderDetail.orderdetailCount })원'</td>
+										<td>${orderDetail.detailTotalPrice }원</td>
 									</tr>
 						 			</c:if>
 									</c:forEach> 

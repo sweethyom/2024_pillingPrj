@@ -68,7 +68,8 @@
 	</select>
 	<select id="getOrderListByUserNo">
 		SELECT o.order_id AS orderId, p.product_name AS productName, o.order_date AS orderDate,
-			   count(p.product_name) AS count, o.order_totalprice AS orderTotalprice, os.orderstatus_name AS orderstatusName
+			   count(p.product_name) AS count, o.order_totalprice AS orderTotalprice, 
+			   os.orderstatus_name AS orderstatusName, filepath1
 		FROM `order` o
    LEFT JOIN orderdetail od 
 		  ON o.order_id = od.order_id
