@@ -21,7 +21,7 @@
         }
 
         .login-site-padding {
-          padding: 7rem !important;
+          padding: 3rem !important;
         }
       </style>
 
@@ -52,8 +52,8 @@
 
                   <br />
                   <!-- Submit button -->
-                  <button type="submit" class="btn btn-outline-dark-hyunwoo mt-3 text-size03">로그인</button>
-                  &nbsp;&nbsp;&nbsp;&nbsp; <a href="registerpage" class="btn btn-outline-dark-hyunwoo mt-3 text-size03">회원가입</a>
+                  <button type="submit" class="btn btn-outline-dark-hyunwoo mt-3 login-btn-size">로그인</button>
+                  &nbsp;&nbsp;&nbsp;&nbsp; <a href="registerpage" class="btn btn-outline-dark-hyunwoo mt-3 login-btn-size">회원가입</a>
                 </form>
               </div>
             </div>

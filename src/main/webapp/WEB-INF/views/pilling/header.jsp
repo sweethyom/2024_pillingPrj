@@ -22,7 +22,7 @@ prefix="tiles"%> <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %
             <div class="text-center align-items-center flex-shrink-0 topbar-info">
               <span class="text-maincolor text-size01 align-items-center">가입하는 즉시, 할인쿠폰이 증정됩니다! </span> &nbsp;&nbsp;&nbsp;
               <a href="registerpage" class="text-maincolor text-size01"
-                ><i class="fas fa-sign-in-alt text-maincolor text-size01"></i>&nbsp;&nbsp;지금 회원가입 하기</a
+                ><i class="fa-regular fa-address-card text-size01"></i>&nbsp;&nbsp;지금 회원가입 하기</a
               >
             </div>
           </div>

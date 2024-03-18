@@ -41,11 +41,11 @@
       </style>
 
       <!-- Jumbotron -->
-      <div class="container py-4" style="width: 50vh">
+      <div class="container py-4" style="width: 70vh">
         <div class="row g-0 align-items-center">
           <div class="mb-5 mb-lg-0">
             <div class="card" style="background: hsla(0, 0%, 100%, 0.55); backdrop-filter: blur(30px)">
-              <div class="card-body shadow-5 text-center" style="padding-top: 2rem">
+              <div class="card-body shadow-5 text-center" style="padding-top: 2rem; padding-left: 3rem; padding-right: 3rem">
                 <h1 class="fw-bold mb-5">회원가입</h1>
 
                 <!-- 회원가입 form 시작 -->
