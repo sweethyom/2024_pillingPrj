@@ -9,14 +9,13 @@
     <div class="container-fluid py-3">
       <div class="container py-3">
         <h1 class="display-2 text-dark mb-4">고객센터</h1>
-        <h1 class="display-6 text-dark mb-4">단 하나의 영양제, Pilling</h1>
       </div>
     </div>
     <!-- specific category -->
     <div align="center">
-      <button type="button" class="btn btn-primary border-0 rounded-pill px-4 py-3">공지사항</button>
+      <button type="button" class="btn btn-outline-dark-hyunwoo mt-3 login-btn-size">공지사항</button>
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      <button type="button" class="btn btn-primary border-0 rounded-pill px-4 py-3">문의사항</button>
+      <button type="button" class="btn btn-outline-dark-hyunwoo mt-3 login-btn-size">문의사항</button>
     </div>
     <br />
     <!--  board start -->
@@ -59,11 +58,11 @@
         </div>
       </div>
       <!-- 페이지네이션 START -->
-      <div class="container mt-3">
+      <div class="container productpurchase-pagination">
         <ul class="pagination justify-content-center">
           <!-- c:if 로 이전 페이지가 없으면 이전 버튼이 비활성화되게 한다. -->
           <c:if test="${p.firstPageNoOnPageList <= 1}">
-            <li class="page-item"><a class="page-link" style="color: black">이전</a></li>
+            <li class="page-item disabled"><a class="page-link" style="color: black">이전</a></li>
           </c:if>
           <c:if test="${p.firstPageNoOnPageList > 1}">
             <li class="page-item">
@@ -73,14 +72,14 @@
 
           <!-- 페이지네이션 -->
           <c:forEach var="index" begin="${p.firstPageNoOnPageList }" end="${p.lastPageNoOnPageList }" step="1">
-            <li class="page-item">
+            <li class="page-item ${p.currentPageNo == index ? 'active' : ''}">
               <a class="page-link" style="color: black" href="javascript:void(0);" onclick="callPage(${index});">${index }</a>
             </li>
           </c:forEach>
 
           <!-- c:if 로 다음 페이지가 없으면 다음 버튼이 비활성화되게 한다. -->
           <c:if test="${p.firstPageNoOnPageList eq p.totalPageCount}">
-            <li class="page-item"><a class="page-link" style="color: black">다음</a></li>
+            <li class="page-item disabled"><a class="page-link" style="color: black">다음</a></li>
           </c:if>
           <c:if test="${p.firstPageNoOnPageList ne p.totalPageCount}">
             <li class="page-item">
@@ -89,11 +88,12 @@
           </c:if>
         </ul>
       </div>
+
       <!-- 페이지네이션 END -->
     </div>
     <!--  board start -->
     <div class="customerservice-button">
-      <button type="button" class="btn btn-primary border-0 rounded-pill px-4 py-3" onclick="location.href='questionform'">문의하기</button>
+      <button type="button" class="btn btn-outline-dark-hyunwoo mt-3 login-btn-size" onclick="location.href='questionform'">문의하기</button>
     </div>
     <div class="container-xxl py-5">
       <div class="container text-center">
