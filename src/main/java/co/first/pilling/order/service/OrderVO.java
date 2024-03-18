@@ -16,6 +16,7 @@ public class OrderVO {
 	private LocalDate orderDate;
 	private String orderRefund;
 	private String orderCard;
+	private int orderActualPrice;
 	
 	private String filepath;
 	private String productName;

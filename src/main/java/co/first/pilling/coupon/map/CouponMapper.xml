@@ -9,7 +9,9 @@
 		INSERT INTO coupon (user_no, coupon_name,
 		coupon_rate) VALUES (#{userNo}, #{couponName}, #{couponRate})
 	</insert>
-	<delete id="couponDelete"></delete>
+	<delete id="couponDelete">
+		DELETE FROM coupon WHERE coupon_id = #{couponId}
+	</delete>
 	<select id="couponCount">
 		SELECT count(*) FROM coupon WHERE user_no = #{userNo}
 	</select>

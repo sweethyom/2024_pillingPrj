@@ -73,10 +73,10 @@
 	<insert id="orderInsert">
 		INSERT INTO `order` (order_id, user_no, product_id,
 		orderstatus_id, order_totalprice,
-		order_refund, order_card)
+		order_refund, order_card, order_actual_price)
 		VALUES
 		(#{orderId},
-		#{userNo},#{productId},#{orderstatusId},#{orderTotalprice},#{orderRefund},#{orderCard})
+		#{userNo},#{productId},#{orderstatusId},#{orderTotalprice},#{orderRefund},#{orderCard},#{orderActualPrice})
 	</insert>
 	<delete id="orderDelete">
 		DELETE FROM `order` WHERE ORDER_ID = #{orderId}

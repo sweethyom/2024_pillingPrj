@@ -1,11 +1,14 @@
 package co.first.pilling.order.web;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import co.first.pilling.cart.service.CartService;
 import co.first.pilling.cart.service.CartVO;
@@ -47,7 +50,7 @@ public class OrderController {
 
 	// 장바구니 물품 결제완료 후 order, shipping, orderdetail 테이블에 데이터 삽입
 	@RequestMapping("makepayment")
-	public String makepayment(OrderVO ov, ShippingVO sv, CartVO cv, OrderdetailVO odv) {
+	public String makepayment(@RequestParam("usePoint") int usePoint, OrderVO ov, ShippingVO sv, CartVO cv, OrderdetailVO odv, CouponVO cpv) {
 		os.orderInsert(ov);
 		ss.shippingInsert(sv);
 		
@@ -65,6 +68,20 @@ public class OrderController {
 		// 카트 전체 삭제
 		CartVO vo = cartList.get(0);
 		cs.cartDeleteAll(vo);
+		
+		// 사용한 쿠폰 삭제
+		System.out.println(cpv.getCouponId());
+		cps.couponDelete(cpv);
+		
+		// 사용한 적립금 차감
+		System.out.println(usePoint);
+		UserVO uv = new UserVO();
+		uv.setUserNo(vo.getUserNo());
+		
+		Map<Integer, UserVO> map = new HashMap<Integer, UserVO>();
+		map.put(usePoint, uv);
+		
+		us.updateUserPoint(map);
 
 		return "redirect:/orderresult";
 	}
