@@ -7,6 +7,34 @@
     <title>Insert title here</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.10/dist/sweetalert2.min.css" />
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <!-- 2024년 3월 18일 오후 9시 10분 수정 (수정내용 : 세션 받아오기 위한 userId 변수선언) -->
+    <script>
+      var userId = '${userId}';
+    </script>
+    <style>
+      .review-image {
+        width: 100px;
+        height: 100px;
+        object-fit: cover;
+        cursor: pointer;
+      }
+      .large-image {
+        width: 500px;
+        height: 500px;
+        object-fit: cover;
+        margin-top: 1rem;
+        display: none; /* Hidden by default */
+      }
+      .review-rating {
+        color: #ffc107; /* Bootstrap yellow star color */
+      }
+
+      p {
+        font-size: 1.1rem;
+        font-weight: 600;
+      }
+    </style>
   </head>
   <body>
     <!-- Product section-->
@@ -81,45 +109,133 @@
     <!-- 상세 콘텐츠 END -->
     <!-- 제품 후기 페이지 START -->
     <section class="bottom-padding">
-      <div class="container px-4 px-lg-5 my-5 bg-light rounded p-4">
-        <h4 class="mb-4">제품 후기</h4>
-        <div class="p-4 bg-white rounded mb-4">
-          <div class="row g-4">
-            <div class="col-3">
-              <H4>여기 사진</H4>
-            </div>
-            <div class="col-9">
-              <div class="d-flex justify-content-between">
-                <h5 id="writer">James Boreego</h5>
+      <div class="container py-5">
+        <!-- Reviews List -->
+        <div class="row row-cols-1 g-4">
+          <!-- Single Review Item -->
+          <div class="col">
+            <div class="card">
+              <div class="card-body">
+                <div class="d-flex align-items-start">
+                  <img
+                    src="https://placehold.co/100x100"
+                    alt="Red and white striped shirt"
+                    class="review-image rounded me-3"
+                    onclick="toggleImage(this, 'largeImg1')"
+                  />
+                  <div>
+                    <div class="review-rating">★★★★★</div>
+                    <div class="text-muted">유저ID - 24.03.11.</div>
+                    <p class="mt-2 mb-1">리뷰 제목</p>
+                    <p class="text-muted">리뷰 내용</p>
+                  </div>
+                </div>
+                <div id="largeImg1" style="display: none">
+                  <img
+                    src="https://placehold.co/500x500"
+                    alt="Enlarged red and white striped shirt"
+                    class="large-image rounded d-block mt-3 mx-auto"
+                  />
+                </div>
               </div>
-              <small class="text-body d-block mb-3"><i class="fas fa-calendar-alt me-1"></i> Dec 9, 2024</small>
-              <p class="mb-0">
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy Lorem
-                Ipsum has been the industry's standard dummy type and scrambled it to make a type specimen book. It has survived not only five
-                centuries, but also the leap into electronic
-              </p>
+              <div class="card-body">
+                <div class="d-flex align-items-start">
+                  <img
+                    src="https://placehold.co/100x100"
+                    alt="Red and white striped shirt"
+                    class="review-image rounded me-3"
+                    onclick="toggleImage(this, 'largeImg2')"
+                  />
+                  <div>
+                    <div class="review-rating">★★★★★</div>
+                    <div class="text-muted">유저ID - 24.03.11.</div>
+                    <p class="mt-2 mb-1">리뷰 제목</p>
+                    <p class="text-muted">리뷰 내용</p>
+                  </div>
+                </div>
+                <div id="largeImg2" style="display: none">
+                  <img
+                    src="https://placehold.co/500x500"
+                    alt="Enlarged red and white striped shirt"
+                    class="large-image rounded d-block mt-3 mx-auto"
+                  />
+                </div>
+              </div>
+              <div class="card-body">
+                <div class="d-flex align-items-start">
+                  <img
+                    src="https://placehold.co/100x100"
+                    alt="Red and white striped shirt"
+                    class="review-image rounded me-3"
+                    onclick="toggleImage(this, 'largeImg3')"
+                  />
+                  <div>
+                    <div class="review-rating">★★★★★</div>
+                    <div class="text-muted">유저ID - 24.03.11.</div>
+                    <p class="mt-2 mb-1">리뷰 제목</p>
+                    <p class="text-muted">리뷰 내용</p>
+                  </div>
+                </div>
+                <div id="largeImg3" style="display: none">
+                  <img
+                    src="https://placehold.co/500x500"
+                    alt="Enlarged red and white striped shirt"
+                    class="large-image rounded d-block mt-3 mx-auto"
+                  />
+                </div>
+              </div>
+              <div class="card-body">
+                <div class="d-flex align-items-start">
+                  <img
+                    src="https://placehold.co/100x100"
+                    alt="Red and white striped shirt"
+                    class="review-image rounded me-3"
+                    onclick="toggleImage(this, 'largeImg4')"
+                  />
+                  <div>
+                    <div class="review-rating">★★★★★</div>
+                    <div class="text-muted">유저ID - 24.03.11.</div>
+                    <p class="mt-2 mb-1">리뷰 제목</p>
+                    <p class="text-muted">리뷰 내용</p>
+                  </div>
+                </div>
+                <div id="largeImg4" style="display: none">
+                  <img
+                    src="https://placehold.co/500x500"
+                    alt="Enlarged red and white striped shirt"
+                    class="large-image rounded d-block mt-3 mx-auto"
+                  />
+                </div>
+              </div>
+              <div class="card-body">
+                <div class="d-flex align-items-start">
+                  <img
+                    src="https://placehold.co/100x100"
+                    alt="Red and white striped shirt"
+                    class="review-image rounded me-3"
+                    onclick="toggleImage(this, 'largeImg5')"
+                  />
+                  <div>
+                    <div class="review-rating">★★★★★</div>
+                    <div class="text-muted">유저ID - 24.03.11.</div>
+                    <p class="mt-2 mb-1">리뷰 제목</p>
+                    <p class="text-muted">리뷰 내용</p>
+                  </div>
+                </div>
+                <div id="largeImg5" style="display: none">
+                  <img
+                    src="https://placehold.co/500x500"
+                    alt="Enlarged red and white striped shirt"
+                    class="large-image rounded d-block mt-3 mx-auto"
+                  />
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="p-4 bg-white rounded mb-0">
-          <div class="row g-4">
-            <div class="col-3">
-              <H4>여기 사진</H4>
-            </div>
-            <div class="col-9">
-              <div class="d-flex justify-content-between">
-                <h5>James Boreego</h5>
-              </div>
-              <small class="text-body d-block mb-3"><i class="fas fa-calendar-alt me-1"></i> Dec 9, 2024</small>
-              <p class="mb-0">
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy Lorem
-                Ipsum has been the industry's standard dummy type and scrambled it to make a type specimen book. It has survived not only five
-                centuries, but also the leap into electronic
-              </p>
-            </div>
-          </div>
+          <!-- Additional review items would be similarly structured with unique IDs for large images -->
         </div>
       </div>
+
       <!-- Pagination START -->
       <div class="container productpurchase-pagination">
         <ul class="pagination justify-content-center">
@@ -138,6 +254,7 @@
     </section>
 
     <!-- 제품 후기 END  -->
+
     <!-- 장바구니에 제품 번호를 넘겨줄 히든폼 -->
     <div>
       <form id="cartform" method="post">
@@ -150,39 +267,67 @@
 
     <!-- 장바구니에 제품 번호를 넘겨줄 함수 -->
     <script>
+      // 리뷰게시판 사진 확대 축소 코드
+      document.addEventListener('DOMContentLoaded', function () {
+        window.toggleImage = function (img, largeImageId) {
+          var largeImg = document.getElementById(largeImageId);
+          largeImg.style.display = largeImg.style.display === 'none' ? 'block' : 'none';
+        };
+      });
       // AJAX를 통해서 제품을 장바구니에 넣는다.
+      // 2024년 3월 18일 오후 9시 19분 수정 (수정내용 : 로그인 안했을 시 장바구니에 못담도록 수정)
       function addCartCall(id) {
-        document.getElementById('productId').value = id;
-        document.getElementById('cartProdcnt').value = document.getElementById('inputQuantity').value;
-
-        let form = document.getElementById('cartform');
-        let formData = new FormData(form);
-        let url = 'addcart';
-
-        fetch(url, {
-          method: 'POST',
-          body: formData,
-        })
-          .then((response) => {
-            if (response.ok) {
-              return response.text();
-            } else {
-              throw new Error('Network response was not ok.');
+        // 유저가 로그인을 하지 않아서 userId 세션이 없다면(if)
+        if (!userId) {
+          Swal.fire({
+            title: '장바구니 추가 불가',
+            text: '로그인 후 장바구니에 상품을 담을 수 있습니다. 로그인으로 이동하시겠습니까?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: '예',
+            cancelButtonText: '아니오',
+          }).then((result) => {
+            if (result.isConfirmed) {
+              window.location.href = 'login'; // 로그인 페이지의 URL로 교체해야 합니다.
             }
-          })
-          .then((text) => {
-            if (text === 'Yes') {
-              cartAlert();
-            } else {
-              alert('장바구니 추가에 실패하였습니다.');
-            }
-          })
-          .catch((error) => {
-            console.error('There was an error!', error);
-            alert('장바구니 추가 중 오류가 발생하였습니다.');
           });
+        } else {
+          // 로그인한 경우, 장바구니에 상품을 추가하는 기존 코드 실행
+          document.getElementById('productId').value = id;
+          document.getElementById('cartProdcnt').value = document.getElementById('inputQuantity').value;
+
+          let form = document.getElementById('cartform');
+          let formData = new FormData(form);
+          let url = 'addcart';
+
+          fetch(url, {
+            method: 'POST',
+            body: formData,
+          })
+            .then((response) => {
+              if (response.ok) {
+                return response.text();
+              } else {
+                throw new Error('Network response was not ok.');
+              }
+            })
+            .then((text) => {
+              if (text === 'Yes') {
+                cartAlert();
+              } else {
+                alert('장바구니 추가에 실패하였습니다.');
+              }
+            })
+            .catch((error) => {
+              console.error('There was an error!', error);
+              alert('장바구니 추가 중 오류가 발생하였습니다.');
+            });
+        }
       }
 
+      // 장바구니 담고  SweetAlert 띄우기 (수정내용 : 주석 달음)
       function cartAlert() {
         Swal.fire({
           title: '장바구니에 제품 추가',
@@ -206,11 +351,31 @@
         cartform.submit();
       }
 
+      // 2024년 3월 18일 오후 9시 10분 수정 (수정 내용 : 로그인 안할 시 400 error 뜨는 현상 때문에, 로그인 안했을 시 세션 확인 후 로그인 페이지로 돌려보내기 위해 수정)
+      // 로그인을 했으면, 바로구매 가능하게(else), 로그인을 하지 않았으면 SweetAlert 띄워서 확인하기
       function moveOrder(id) {
-        document.getElementById('productId').value = id;
-        document.getElementById('cartProdcnt').value = document.getElementById('inputQuantity').value;
-        cartform.action = 'orderdirect';
-        cartform.submit();
+        // 유저가 로그인을 하지 않아서 userId 세션이 없다면(if)
+        if (!userId) {
+          Swal.fire({
+            title: '구매 불가!',
+            text: '로그인을 하지 않으면, 구매가 불가합니다. 로그인으로 이동하시겠습니까?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: '예',
+            cancelButtonText: '아니오',
+          }).then((result) => {
+            if (result.isConfirmed) {
+              window.location.href = 'login';
+            }
+          });
+        } else {
+          document.getElementById('productId').value = id;
+          document.getElementById('cartProdcnt').value = document.getElementById('inputQuantity').value;
+          cartform.action = 'orderdirect';
+          cartform.submit();
+        }
       }
     </script>
   </body>

@@ -136,52 +136,56 @@
 		</form>
 	</div>
 	<script>
+
+	// 2024년 3월 18일 오후 9시 52분 수정(기존의 display:none 방식에서 실제 값이 삭제 되도록 변경)
 	// AJAX를 통해서 제품을 장바구니에서 삭제한다.
 	// 삭제 버튼 클릭 이벤트 처리
-  	function removeCartCall(id){
-		// 삭제할 행을 row에 담아준다.
-  		var row = document.querySelector('.item-row[data-cart-id="' + id + '"]');
-  		document.getElementById("cartId").value=id;
-  		
-  		let form = document.getElementById('idform');
-  		let formData = new FormData(form);
-  		let url = 'removecart'
-  		
-  		fetch(url, {
-  			method: 'POST',
-  			body: formData,
-  		})
-  		.then((response) => {
-  			if (response.ok) {
-  				return response.text();
-  			} else {
-  				throw new Error('Network response was not ok.');
-  			}
-  		})
-  		.then((text) => {
-  			if(text === 'Yes'){
-  				row.style.display = 'none';
-  				document.querySelector('.item-row[data-cart-id="' + id + '"] .prodprice').textContent = 0;
-  				console.log('장바구니 삭제 완료');
-  				
-  				var total1 = prodTotalCal(id);
-  				var total2 = orderTotalCal();
-  				var total3 = total2 + 3000;
-  				var totalPriceElement1 = document.querySelector('.item-row[data-cart-id="' + id + '"] .prod-total-price');
-  				var totalPriceElement2 = document.getElementById('totalprice');
-  				var totalPriceElement3 = document.getElementById('orderTotalprice');
-  				totalPriceElement1.textContent = total1 + "원";
-  				totalPriceElement2.textContent = total2 + "원";
-  				totalPriceElement3.textContent = total3 + "원";
-  			} else {
-  				alert('장바구니 삭제에 실패하였습니다.');
-  			}
-  		})
-  		.catch((error) => {
-  			console.error('There was an error!', error);
-  			alert('장바구니 삭제 중 오류가 발생하였습니다.');
-  		});
-  	}
+	function removeCartCall(id) {
+    var row = document.querySelector('.item-row[data-cart-id="' + id + '"]');
+    document.getElementById("cartId").value = id;
+    
+    let form = document.getElementById('idform');
+    let formData = new FormData(form);
+    let url = 'removecart';
+
+    fetch(url, {
+        method: 'POST',
+        body: formData,
+    })
+    .then((response) => {
+        if (response.ok) {
+            return response.text();
+        } else {
+            throw new Error('Network response was not ok.');
+        }
+    })
+    .then((text) => {
+        if (text === 'Yes') {
+            row.remove();
+
+            var total = orderTotalCal();
+            document.getElementById('totalprice').textContent = total + "원";
+            document.getElementById('orderTotalprice').textContent = (total + 3000) + "원";
+
+            if (document.querySelectorAll('.item-row').length === 0) {
+                let tbody = document.querySelector('table tbody');
+                let row = tbody.insertRow();
+                let cell = row.insertCell();
+                cell.colSpan = 6;
+                cell.textContent = "장바구니에 추가된 제품이 없습니다.";
+                cell.style.textAlign = 'center';
+            }
+
+        } else {
+            alert('장바구니 삭제에 실패하였습니다.');
+        }
+    })
+    .catch((error) => {
+        console.error('There was an error!', error);
+        alert('장바구니 삭제 중 오류가 발생하였습니다.');
+    });
+}
+
 	
 	// 폼에 숫자를 입력하고나면 수량이 업데이트되도록 한다.
 	var cntInput = document.querySelectorAll('.prodcnt');

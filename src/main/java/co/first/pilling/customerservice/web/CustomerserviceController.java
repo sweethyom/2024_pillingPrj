@@ -184,15 +184,15 @@ public class CustomerserviceController {
 		return "redirect:/customerservice";
 	}
 
-	// 문의 업데이트
+	// 문의 업데이트 (2024년 3월 18일 오후 8시 50분 수정) // 수정한 부분 : return 값을 redirect로 변경 (리다이렉트 안하니까 값 제대로 나오지 않음)
 	@RequestMapping("questionupdate")
 	public String questionupdate(QuestionVO vo, Model model) {
 		model.addAttribute(qs.questionUpdate(vo));
 		model.addAttribute("question", qs.questionDetail(vo));
-		return "pilling/board/questiondetail";
+		return "redirect:/customerservice";
 	}
 
-	// 문의 딜리트
+	// 문의사항 삭제 (2024년 3월 18일 오후 8시 29분 수정) // 수정한 부분 : 주석 이름만 변경
 	@RequestMapping("questiondelete")
 	public String questiondelete(QuestionVO vo, Model model) {
 		model.addAttribute(qs.questionDelete(vo));
@@ -206,7 +206,7 @@ public class CustomerserviceController {
 		return "redirect:/questionreplyreload?questionId=" + vo.getQuestionId();
 	}
 	
-	// 문의사항 댓글 삭제
+	// 문의사항 답변 삭제 (2024년 3월 18일 오후 8시 21분 수정) // 수정한 부분 : 주석 이름만 변경
 	@RequestMapping("questionreplydelete")
 	public String questionreplydelete(QuestionreplyVO vo, Model model) {
 		model.addAttribute(qrs.questionreplyDelete(vo));
