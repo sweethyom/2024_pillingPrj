@@ -70,12 +70,12 @@ td {
 }
 </style>
 
-		<div class="container-fluid page-header py-5">
-			<div class="container text-center py-5">
-				<h1 class="display-2 text-white mb-4 animated slideInDown">my
-					page</h1>
-			</div>
-		</div>
+<div class="container-fluid py-3">
+	<div class="container py-3">
+	  <h1 class="display-2 text-dark mb-4 animated slideInDown">My Page</h1>
+	  <h1 class="display-6 text-dark mb-4 animated slideInDown">단 하나의 영양제, Pilling</h1>
+	</div>
+  </div>
 
 		<div class="container"></div>
 
