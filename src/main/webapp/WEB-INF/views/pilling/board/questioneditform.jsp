@@ -26,9 +26,9 @@
         <div class="card-body col-12 div-center pl-5 pr-5">
           <div class="row g-5">
             <h3 style="vertical-align: bottom" class="px-2">
-              <input type="text" size="89%" required="required" value="${question.questionTitle }" id="questionTitle" name="questionTitle" />
+              <input type="text" required="required" value="${question.questionTitle }" id="questionTitle" name="questionTitle" style="width: 100%" />
             </h3>
-            <div style="height: 0.3rem; background-color: #fdf001" class="mb-0 mt-0"></div>
+            <div style="height: 0.3rem; background-color: #0ae4b0" class="mb-0 mt-0"></div>
             <table class="table mb-0 mt-0">
               <tbody>
                 <tr>
@@ -54,9 +54,9 @@ ${question.questionContent }</textarea
 
         <!-- 버튼 START -->
         <div class="btn-center mt-2">
-          <button type="reset" class="btn btn-primary border-0 rounded-pill px-4 py-3" onclick="location.href='customerservice'">취소</button>
+          <button type="reset" class="btn btn-outline-dark-hyunwoo mt-3 login-btn-size" onclick="location.href='customerservice'">취소</button>
           &nbsp;&nbsp;
-          <button type="submit" class="btn btn-primary border-0 rounded-pill px-4 py-3">수정</button>
+          <button type="submit" class="btn btn-outline-dark-hyunwoo mt-3 login-btn-size">수정</button>
         </div>
         <!-- 버튼 END -->
       </form>

@@ -40,15 +40,8 @@
           display: block;
         }
       </style>
-      <!-- Page Header Start -->
-      <div class="container-fluid py-3">
-        <div class="container py-3">
-          <h1 class="display-2 text-dark mb-4">제품 구매</h1>
-        </div>
-      </div>
-      <!-- Page Header End -->
       <!-- 나의 정보 -->
-      <div class="container-fluid">
+      <div class="container-fluid" style="margin-top: 2rem">
         <!-- DataTales Example -->
         <div class="width-myinfo card mb-2">
           <div class="card-header py-3">
@@ -167,8 +160,8 @@
 
                 <div align="center">
                   <!-- Submit button -->
-                  <a href="outmyinfo" class="btn-margin btn btn-primary btn-block">돌아가기</a>
-                  <button type="submit" class="btn btn-primary btn-block mb-4">저장하기</button>
+                  <a href="outmyinfo" class="btn btn-outline-dark-hyunwoo mt-3 login-btn-size">돌아가기</a>
+                  <button type="submit" class="btn btn-outline-dark-hyunwoo mt-3 login-btn-size">저장하기</button>
                 </div>
               </div>
             </form>

@@ -90,13 +90,6 @@
 					</tbody>
 				</table>
 			</div>
-			<div class="mt-5">
-				<input type="text"
-					class="border-0 border-bottom rounded me-5 py-3 mb-4"
-					placeholder="Coupon Code">
-				<button type="button"
-					class="px-5 py-3 btn btn-primary border-2 rounded-pill animated slideInDown">쿠폰적용</button>
-			</div>
 			<div class="row g-4 justify-content-end">
 				<div class="col-8"></div>
 				<div class="col-sm-8 col-md-7 col-lg-6 col-xl-4">
@@ -122,7 +115,7 @@
 							<p class="mb-0 pe-4" id="orderTotalprice" name="orderTotalprice"></p>
 						</div>
 						<button type="button"
-							class="px-5 py-3 btn btn-primary border-2 rounded-pill animated slideInDown mb-4 ms-4"
+							class="btn btn-outline-dark-hyunwoo mt-3 login-btn-size"
 							style="float: right;" onclick="moveOrder()">
 							구매하기</button>
 					</div>
@@ -379,8 +372,18 @@
 	};
 	
 	function moveOrder(){
-  		orderform.submit();
-  	}
+    // 장바구니 항목의 총 수 계산
+    var cartItemsCount = document.querySelectorAll('.item-row').length;
+    
+    // 장바구니가 비어있는 경우
+    if(cartItemsCount === 0){
+        alert("장바구니에 담은 제품이 없습니다.");
+        return;
+    }
+    
+    // 장바구니에 항목이 있으면 폼 제출을 통해 주문 페이지로 이동합니다.
+    orderform.submit();
+	}
 	</script>
 	<!-- Cart Page End -->
 </body>

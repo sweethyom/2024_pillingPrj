@@ -43,13 +43,10 @@
 	SELECT orderdetail_count*orderdetail_price AS detailTotalPrice
 	  FROM orderdetail od
      WHERE order_id = #{orderId}
-  </select>
-    
+   </select>
 	<select id="selectOrderCount">
 		SELECT COUNT(*)
 		FROM orderdetail
-		WHERE order_id =
-		#{orderId};
-
-	</select>
+		WHERE order_id = #{orderId};
+  </select>
 </mapper>

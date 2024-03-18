@@ -3,80 +3,74 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="UTF-8" />
-<title>Insert title here</title>
-</head>
-<body onload="restoreScrollPostion()">
-	<div class="container-fluid py-3">
-		<div class="container py-3">
-			<h1 class="display-2 text-dark mb-4">고객센터</h1>
-			<h1 class="display-6 text-dark mb-4">단 하나의 영양제, Pilling</h1>
-		</div>
-	</div>
-	<!-- specific category -->
-	<div align="center">
-		<button type="button"
-			class="btn btn-primary border-0 rounded-pill px-4 py-3">공지사항</button>
-		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		<button type="button"
-			class="btn btn-primary border-0 rounded-pill px-4 py-3">문의사항</button>
-	</div>
-	<br />
-	<!--  board start -->
-	<div class="customerservice-button">
-		<c:if test="${author eq 'ADMIN'}">
-			<button type="button"
-				class="btn btn-primary border-0 rounded-pill px-4 py-3"
-				onclick="location.href='noticeform'">공지작성</button>
-		</c:if>
-	</div>
-	<div class="container-xxl py-5">
-		<div class="container text-center">
-			<h4 class="display-6 text-dark mb-4">공 지 사 항</h4>
-			<div class="row g-5">
-				<table class="table table-bordered table-hover">
-					<thead>
-						<tr>
-							<td width="100">순 번</td>
-							<td width="800">제 목</td>
-							<td width="300">작성자</td>
-							<td width="300">작성일</td>
-						</tr>
-					</thead>
-					<tbody id="boardContent">
-						<c:if test="${not empty notices}">
-							<c:forEach items="${notices}" var="n">
-								<tr onclick="noticeDetail(${n.noticeId})">
-									<td>${n.noticeId}</td>
-									<td>${n.noticeTitle}</td>
-									<td>pilling</td>
-									<td>${n.noticeDate}</td>
-								</tr>
-							</c:forEach>
-						</c:if>
-						<c:if test="${empty notices}">
-							<tr>
-								<td colspan="4">등록된 글이 없습니다.</td>
-							</tr>
-						</c:if>
-					</tbody>
-				</table>
-			</div>
-		</div>
-		<!-- 페이지네이션 START -->
-		<div class="container mt-3">
-			<ul class="pagination justify-content-center">
-				<!-- c:if 로 이전 페이지가 없으면 이전 버튼이 비활성화되게 한다. -->
-				<c:if test="${p.firstPageNoOnPageList <= 1}">
-					<li class="page-item"><a class="page-link"
-						style="color: black">이전</a></li>
-				</c:if>
-				<c:if test="${p.firstPageNoOnPageList > 1}">
-					<li class="page-item"><a class="page-link"
-						style="color: black" href="javascript:void(0);"
-						onclick="noticeCallPage(${p.firstPageNoOnPageList}-1)">이전</a></li>
-				</c:if>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Insert title here</title>
+  </head>
+  <body onload="restoreScrollPostion()">
+    <div class="container-fluid py-3">
+      <div class="container py-3">
+        <h1 class="display-2 text-dark mb-4">고객센터</h1>
+      </div>
+    </div>
+    <!-- specific category -->
+    <div align="center">
+      <button type="button" class="btn btn-outline-dark-hyunwoo mt-3 login-btn-size">공지사항</button>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <button type="button" class="btn btn-outline-dark-hyunwoo mt-3 login-btn-size">문의사항</button>
+    </div>
+    <br />
+    <!--  board start -->
+    <div class="customerservice-button">
+      <c:if test="${author eq 'ADMIN'}">
+        <button type="button" class="btn btn-outline-dark-hyunwoo mt-3 login-btn-size" onclick="location.href='noticeform'">공지작성</button>
+      </c:if>
+    </div>
+    <div class="container-xxl py-5">
+      <div class="container text-center">
+        <h4 class="display-6 text-dark mb-4">공 지 사 항</h4>
+        <div class="row g-5">
+          <table class="table table-bordered table-hover">
+            <thead>
+              <tr>
+                <td width="100">순 번</td>
+                <td width="800">제 목</td>
+                <td width="300">작성자</td>
+                <td width="300">작성일</td>
+              </tr>
+            </thead>
+            <tbody id="boardContent">
+              <c:if test="${not empty notices}">
+                <c:forEach items="${notices}" var="n">
+                  <tr onclick="noticeDetail(${n.noticeId})" style="cursor: pointer">
+                    <td>${n.noticeId}</td>
+                    <td>${n.noticeTitle}</td>
+                    <td>pilling</td>
+                    <td>${n.noticeDate}</td>
+                  </tr>
+                </c:forEach>
+              </c:if>
+              <c:if test="${empty notices}">
+                <tr>
+                  <td colspan="4">등록된 글이 없습니다.</td>
+                </tr>
+              </c:if>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <!-- 페이지네이션 START -->
+      <div class="container productpurchase-pagination">
+        <ul class="pagination justify-content-center">
+          <!-- c:if 로 이전 페이지가 없으면 이전 버튼이 비활성화되게 한다. -->
+          <c:if test="${p.firstPageNoOnPageList <= 1}">
+            <li class="page-item disabled"><a class="page-link" style="color: black">이전</a></li>
+          </c:if>
+          <c:if test="${p.firstPageNoOnPageList > 1}">
+            <li class="page-item">
+              <a class="page-link" style="color: black" href="javascript:void(0);" onclick="callPage(${p.firstPageNoOnPageList}-1);">이전</a>
+            </li>
+          </c:if>
 
 				<!-- 페이지네이션 -->
 				<c:forEach var="index" begin="${p.firstPageNoOnPageList }"
@@ -160,7 +154,68 @@
 						style="color: black" href="javascript:void(0);"
 						onclick="questionCallPage(${index});">${index }</a></li>
 				</c:forEach>
+      <!-- 페이지네이션 END -->
+    </div>
+    <!--  board start -->
+    <div class="customerservice-button">
+      <c:if test="${author eq 'USER'}">
+        <button type="button" class="btn btn-outline-dark-hyunwoo mt-3 login-btn-size" onclick="location.href='questionform'">문의하기</button>
+      </c:if>
+    </div>
+    <div class="container-xxl py-5">
+      <div class="container text-center">
+        <h4 class="display-6 text-dark mb-4">문 의 사 항</h4>
+        <div class="row g-5">
+          <table class="table table-bordered table-hover">
+            <thead>
+              <tr>
+                <td width="100">순 번</td>
+                <td width="800">제 목</td>
+                <td width="300">작성자</td>
+                <td width="300">작성일</td>
+              </tr>
+            </thead>
+            <tbody id="boardContent">
+              <c:if test="${not empty questions}">
+                <c:forEach items="${questions}" var="q">
+                  <tr onclick="questionDetail(${q.questionId})" style="cursor: pointer">
+                    <td>${q.questionId}</td>
+                    <td>${q.questionTitle}</td>
+                    <td>${q.userId}</td>
+                    <td>${q.questionDate}</td>
+                  </tr>
+                </c:forEach>
+              </c:if>
+              <c:if test="${empty questions}">
+                <tr>
+                  <td colspan="4">등록된 글이 없습니다.</td>
+                </tr>
+              </c:if>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <!-- 페이지네이션 START -->
+      <div class="container mt-3">
+        <ul class="pagination justify-content-center">
+          <!-- c:if 로 이전 페이지가 없으면 이전 버튼이 비활성화되게 한다. -->
+          <c:if test="${qp.firstPageNoOnPageList <= 1}">
+            <li class="page-item"><a class="page-link" style="color: black">Previous</a></li>
+          </c:if>
+          <c:if test="${qp.firstPageNoOnPageList > 1}">
+            <li class="page-item">
+              <a class="page-link" href="javascript:void(0);" style="color: black" onclick="callPageQuestion(${qp.firstPageNoOnPageList}-1);"
+                >Previous</a
+              >
+            </li>
+          </c:if>
 
+          <!-- 페이지네이션 -->
+          <c:forEach var="index" begin="${qp.firstPageNoOnPageList }" end="${qp.lastPageNoOnPageList }" step="1">
+            <li class="page-item">
+              <a class="page-link" style="color: black" href="javascript:void(0);" onclick="callPageQuestion(${index});">${index }</a>
+            </li>
+          </c:forEach>
 				<!-- c:if 로 다음 페이지가 없으면 다음 버튼이 비활성화되게 한다. -->
 				<c:if test="${qp.firstPageNoOnPageList + 5 > qp.totalPageCount}">
 					<li class="page-item"><a class="page-link"
@@ -189,6 +244,7 @@
 				name="currentPageNoQuestion" value="1" />
 		</form>
 	</div>
+      
 	<script type="text/javascript">
       function noticeDetail(id) {
         document.getElementById('noticeId').value = id;

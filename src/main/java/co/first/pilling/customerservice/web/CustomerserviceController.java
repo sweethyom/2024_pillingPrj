@@ -127,29 +127,7 @@ public class CustomerserviceController {
 
 	// 공지 삽입
 	@RequestMapping("noticeinsert")
-	public String noticeinsert(NoticeVO vo, Model model, @RequestParam("file") MultipartFile file) {
-		// 업로드된 파일을 저장할 경로
-		String insertPath = "C:\\DEV\\eclipse_202103\\workspace\\PillingProject\\src\\main\\webapp\\resources\\pilling\\img\\boardimg";
-		System.out.println(file.getOriginalFilename());
-		System.out.println(insertPath);
-
-		// 파일 업로드 구현
-		// UUID를 랜덤으로 만들어 주는 것
-		UUID uuid = UUID.randomUUID();
-		// 파일 이름을 안겹치도록 만들기 위한 알고리즘
-		String fileName = uuid + "_" + file.getOriginalFilename();
-
-		File saveFile = new File(insertPath, fileName);
-
-		System.out.println(saveFile + "==================================");
-
-		try {
-			file.transferTo(saveFile);
-			vo.setNoticeAttach(fileName);
-			vo.setNoticeAttachpath(insertPath);
-		} catch (IllegalStateException | IOException e) {
-			e.printStackTrace();
-		}
+	public String noticeinsert(NoticeVO vo, Model model) {
 
 		model.addAttribute(cs.noticeInsert(vo));
 		return "redirect:/customerservice";
