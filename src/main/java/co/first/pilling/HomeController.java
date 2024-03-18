@@ -97,9 +97,4 @@ public class HomeController {
 		return "pilling/mypage/withdrawal";
 	}
 	
-	//리뷰 이동
-	@RequestMapping("newreview")
-	public String newreview(Model model) {
-		return "pilling/mypage/newreview";
-	}
 }

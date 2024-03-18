@@ -3,22 +3,34 @@
 <mapper
 	namespace="co.first.pilling.order.service.map.OrderdetailMapper">
 	<select id="orderdetailList">
-		SELECT * FROM orderdetail
+			SELECT orderdetail_id AS orderdetailId, od.order_id AS orderId, 
+			   product_name AS productName, 
+			   orderdetail_price AS orderdetailPrice, 
+			   orderdetail_count As orderdetailCount,
+			   orderdetail_Price * orderdetail_Count AS detailTotalPrice
+		FROM orderdetail od
+		LEFT JOIN `order` o
+		  ON o.order_id = od.order_id
+		LEFT JOIN product p
+		  ON od.product_id = p.product_id
+		GROUP BY od.product_id
 	</select>
 	<select id="orderdetailSelect">
 		SELECT * FROM orderdetail WHERE ORDER_ID = #{orderId}
 	</select>
-	<select id="getOrderdetailListByOrderId">
-		SELECT orderdetail_id AS orderdetailId, od.order_id
-		AS orderId, product_name AS productName,
-		orderdetail_price AS orderdetailPrice,
-		orderdetail_count As orderdetailCount
+	<select id="getOrderdetailListByOrderId">	
+			SELECT orderdetail_id AS orderdetailId, od.order_id AS orderId, 
+			   product_name AS productName, 
+			   orderdetail_price AS orderdetailPrice, 
+			   orderdetail_count As orderdetailCount,
+			   orderdetail_Price * orderdetail_Count AS detailTotalPrice
 		FROM orderdetail od
 		LEFT JOIN `order` o
 		ON o.order_id = od.order_id
 		LEFT JOIN product p
-		ON od.product_id = p.product_id
-		WHERE od.order_id = #{orderId}
+		  ON od.product_id = p.product_id
+	   WHERE order_id = #{orderId}
+		GROUP BY od.product_id
 	</select>
 	<insert id="orderdetailInsert">
 		INSERT INTO orderdetail (order_id, product_id,
@@ -28,11 +40,11 @@
 	</insert>
 
 	<select id="detailTotalPrice">
-		SELECT orderdetail_count*orderdetail_price AS detailTotalPrice
-		FROM orderdetail od
-		WHERE order_id = #{orderId}
-	</select>
-
+	SELECT orderdetail_count*orderdetail_price AS detailTotalPrice
+	  FROM orderdetail od
+     WHERE order_id = #{orderId}
+  </select>
+    
 	<select id="selectOrderCount">
 		SELECT COUNT(*)
 		FROM orderdetail

@@ -57,26 +57,28 @@ td {
 				<!-- 테이블 START -->
 				<div class="table-responsive">
 					<table class="table table-bordered mb-2" id="dataTable">
-						<c:forEach var="order" items="${orderlist }"></c:forEach>
+							<c:forEach var="order" items="${orderList }">
 						<thead>
 							<tr>
 								<td>주문번호</td>
 								<td rowspan=2>${order.orderId}</td>
 								<td>주문날짜</td>
-								<td> ${order.orderdate }
+								<td> ${order.orderDate }
 							</tr>
 						</thead>
 						<tbody>
 							<tr>
+								<td width="100"><img
+									src="${order.filepath }" alt="제품 이미지"
+									width="100"></td>
+								<td colspan="2" width="500">${order.productName }</td>
+								<td>${order.orderDate}</td>
+								
 								<td><input type="text" size="89%" placeholder="제목을 입력하세요."
 							id="questionTitle" name="questionTitle" required="required"></td>
-								<td width="100"><img
-									src="${product.productImg }" alt="제품 이미지"
-									width="100"></td>
-								<td colspan="2" width="500">${product.productName }</td>
-								<td>${order.orderDate}</td>
 							</tr>
 						</tbody>
+						</c:forEach>
 					</table>
 				</div>
 				<!-- 테이블 END -->
