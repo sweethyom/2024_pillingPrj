@@ -69,7 +69,6 @@ td {
 <div class="container-fluid py-3">
 	<div class="container py-3">
 	  <h1 class="display-2 text-dark mb-4 animated slideInDown">My Page</h1>
-	  <h1 class="display-6 text-dark mb-4 animated slideInDown">단 하나의 영양제, Pilling</h1>
 	</div>
   </div>
 
