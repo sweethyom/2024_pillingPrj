@@ -116,7 +116,7 @@ td {
 									<div
 										class="text-xs font-weight-bold text-uppercase mb-1 div-center">
 										<hr>
-										<a href="#" style="color:#555555;" onclick="viewCoupons('${userNo}')">보유 쿠폰 확인</a>
+										<a style="color:#555555;">보유 쿠폰</a>
 									</div>
 								</div>
 							</div>
@@ -170,9 +170,6 @@ td {
 								<tr height="50">
 									<td class="td-center"><i class="fa-solid fa-cart-shopping"></i>
 										&nbsp; <label type="button" class="h5" onclick="moveCart()">장바구니</label></td>
-									<td class="td-center"><i
-										class="fa-regular fa-circle-question h5"></i> &nbsp; <label
-										type="button" class="h5" onclick="location.href='myinquiry'">문의내역</label></td>
 								</tr>
 							</table>
 						</div>

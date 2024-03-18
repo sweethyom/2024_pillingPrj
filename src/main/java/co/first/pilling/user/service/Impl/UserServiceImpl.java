@@ -87,7 +87,7 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public int updateUserPoint(Map<Integer, UserVO> pointMap) {
+	public int updateUserPoint(Map<String, Object> pointMap) {
 		// TODO Auto-generated method stub
 		return map.updateUserPoint(pointMap);
 	}
