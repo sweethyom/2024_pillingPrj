@@ -31,37 +31,37 @@ public class CustomerserviceController {
 	private QuestionreplyService qrs;
 
 	@RequestMapping("customerservice")
-	public String customerservice(Model model, Model qmodel, PageVO vo, PageVO qvo) {
+	public String customerservice(Model model, PageVO vo, PageVO qvo, @RequestParam(defaultValue="1") int currentPageNo, @RequestParam (defaultValue="1") int currentPageNoQuestion) {
 		int pageSize = 5; // 페이지 바에 보여줄 페이지 개수 (ex- pageSize가 5면 1,2,3,4,5가 표시되고, 다음을 누르면 6,7,8,9,10이 표시됨)
 		int boardSize = 5; // 한 페이지 당 나오는 게시글 개수, mapper.xml의 select문 limit와 맞춰줘야 한다.
-		int pageOffset = vo.getCurrentPageNo(); // 직전의 페이지 정보를 가져온다. 아래 if코드는 예외처리.
+		int pageOffset = currentPageNo; // 직전의 페이지 정보를 가져온다. 아래 if코드는 예외처리.
 		if (pageOffset != 0) {
 			pageOffset = (pageOffset - 1) * boardSize;
 		}
 		if (pageOffset < 0) {
 			pageOffset = 0;
 		}
-		System.out.println("페이지오프셋(현재페이지): " + pageOffset);
+		System.out.println("N 페이지오프셋(현재페이지): " + pageOffset);
 
 		vo = cs.selectCount(); // 전체 게시글 수를 가져온다.
 		// 전체 게시글 수 구하기
 		int totalRecordCount = vo.getTotalRecordCount();
-		System.out.println("토탈레코드카운트: " + totalRecordCount);
+		System.out.println("N 토탈레코드카운트: " + totalRecordCount);
 
 		// 총 페이지 수가 몇인지 구하기
 		int totalPageCount = ((totalRecordCount - 1) / boardSize) + 1;
-		System.out.println("토탈페이지카운트: " + totalPageCount);
+		System.out.println("N 토탈페이지카운트: " + totalPageCount);
 
 		// 페이지네이션 첫번째 인덱스(페이지넘버)
 		int firstPage = (pageOffset / (pageSize * boardSize)) * pageSize + 1;
-		System.out.println("퍼스트페이지: " + firstPage);
+		System.out.println("N 퍼스트페이지: " + firstPage);
 
 		// 페이지네이션 마지막 인덱스(페이지넘버), if는 예외처리.
 		int lastPage = firstPage + pageSize - 1;
 		if (lastPage > totalPageCount) {
 			lastPage = totalPageCount;
 		}
-		System.out.println("라스트페이지: " + lastPage);
+		System.out.println("N 라스트페이지: " + lastPage);
 
 		vo.setFirstPageNoOnPageList(firstPage);
 		vo.setLastPageNoOnPageList(lastPage);
@@ -74,7 +74,7 @@ public class CustomerserviceController {
 		// 문의 board STRAT
 		int pageSizeQ = 5;
 		int boardSizeQ = 5;
-		int pageOffsetQ = qvo.getCurrentPageNo();
+		int pageOffsetQ = currentPageNoQuestion;
 		if (pageOffsetQ != 0) {
 			pageOffsetQ = (pageOffsetQ - 1) * boardSizeQ;
 		}
@@ -82,18 +82,18 @@ public class CustomerserviceController {
 			pageOffsetQ = 0;
 		}
 
-		qvo = cs.selectCount();
+		qvo = qs.questionSelectCount();
 		// 전체 게시글 수 구하기
 		int totalRecordCountQ = qvo.getTotalRecordCount();
-		System.out.println("토탈레코드카운트: " + totalRecordCountQ);
+		System.out.println("Q 토탈레코드카운트: " + totalRecordCountQ);
 
 		// 총 페이지 수가 몇인지 구하기
 		int totalPageCountQ = ((totalRecordCountQ - 1) / boardSizeQ) + 1;
-		System.out.println("토탈페이지카운트: " + totalPageCountQ);
+		System.out.println("Q 토탈페이지카운트: " + totalPageCountQ);
 
 		// 페이지네이션 첫번째 인덱스(페이지넘버)
 		int firstPageQ = (pageOffsetQ / (pageSizeQ * boardSizeQ)) * pageSizeQ + 1;
-		System.out.println("퍼스트페이지: " + firstPageQ);
+		System.out.println("Q 퍼스트페이지: " + firstPageQ);
 
 		// 페이지네이션 마지막 인덱스(페이지넘버), if는 예외처리.
 		int lastPageQ = firstPageQ + pageSizeQ - 1;
@@ -105,8 +105,8 @@ public class CustomerserviceController {
 		qvo.setLastPageNoOnPageList(lastPageQ);
 		qvo.setTotalPageCount(totalPageCountQ);
 
-		qmodel.addAttribute("qp", qvo);
-		qmodel.addAttribute("questions", qs.questionSelectList(pageOffsetQ));
+		model.addAttribute("qp", qvo);
+		model.addAttribute("questions", qs.questionSelectList(pageOffsetQ));
 		// 문의 board END
 		return "pilling/menu/customerservice";
 	}
@@ -127,29 +127,7 @@ public class CustomerserviceController {
 
 	// 공지 삽입
 	@RequestMapping("noticeinsert")
-	public String noticeinsert(NoticeVO vo, Model model, @RequestParam("file") MultipartFile file) {
-		// 업로드된 파일을 저장할 경로
-		String insertPath = "C:\\DEV\\eclipse_202103\\workspace\\PillingProject\\src\\main\\webapp\\resources\\pilling\\img\\boardimg";
-		System.out.println(file.getOriginalFilename());
-		System.out.println(insertPath);
-
-		// 파일 업로드 구현
-		// UUID를 랜덤으로 만들어 주는 것
-		UUID uuid = UUID.randomUUID();
-		// 파일 이름을 안겹치도록 만들기 위한 알고리즘
-		String fileName = uuid + "_" + file.getOriginalFilename();
-
-		File saveFile = new File(insertPath, fileName);
-
-		System.out.println(saveFile + "==================================");
-
-		try {
-			file.transferTo(saveFile);
-			vo.setNoticeAttach(fileName);
-			vo.setNoticeAttachpath(insertPath);
-		} catch (IllegalStateException | IOException e) {
-			e.printStackTrace();
-		}
+	public String noticeinsert(NoticeVO vo, Model model) {
 
 		model.addAttribute(cs.noticeInsert(vo));
 		return "redirect:/customerservice";

@@ -4,7 +4,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Fi1ling</title>
+    <title>Pilling</title>
     <script type="text/javascript">
       // contextPath 변수 초기화
       var contextPath = '${pageContext.request.contextPath}';
@@ -38,44 +38,81 @@
 
     <style>
       body {
-        background-color: #fdf001;
+        background-color: #f8f9fa;
+        margin-bottom: 5rem !important;
       }
 
+      h3 {
+        line-height: 1.3 !important;
+      }
       .btn-check {
         display: none; /* Hide the default radio button */
       }
 
       .btn-outline-success,
-      .btn-outline-danger {
+      .btn-outline-danger,
+      .btn-outline-secondary {
         padding: 10px 20px; /* Increase padding to make buttons larger */
-        font-size: 20px; /* Increase font size for better readability */
         width: 300px; /* Set a specific width for the buttons */
         text-align: center; /* Ensure the text is centered */
+        font-size: 1.4rem !important;
+        font-weight: 700;
       }
       .left-align {
         text-align: left;
         align-items: baseline;
       }
+
+      .btn-outline-success {
+        color: #0ae4b0;
+        border-color: #0ae4b0;
+      }
+      .btn-outline-success:hover {
+        color: #fff;
+        background-color: #0ae4b0;
+        border-color: #0ae4b0;
+      }
+      .btn-check:focus + .btn-outline-success,
+      .btn-outline-success:focus {
+        box-shadow: 0 0 0 0.25rem #0ae4b0;
+      }
+      .btn-check:checked + .btn-outline-success,
+      .btn-check:active + .btn-outline-success,
+      .btn-outline-success:active,
+      .btn-outline-success.active,
+      .btn-outline-success.dropdown-toggle.show {
+        color: #fff;
+        background-color: #0ae4b0;
+        border-color: #0ae4b0;
+      }
+      .btn-check:checked + .btn-outline-success:focus,
+      .btn-check:active + .btn-outline-success:focus,
+      .btn-outline-success:active:focus,
+      .btn-outline-success.active:focus,
+      .btn-outline-success.dropdown-toggle.show:focus {
+        box-shadow: 0 0 0 0.25rem #0ae4b0;
+      }
+      .btn-outline-success:disabled,
+      .btn-outline-success.disabled {
+        color: #0ae4b0;
+        background-color: rgba(0, 0, 0, 0);
+      }
     </style>
   </head>
   <body>
     <!-- 설문조사 START -->
-    <div class="d-flex container carousel-content survey-container animated slideInDown">
+    <div class="d-flex container carousel-content survey-container">
       <!-- 설문조사 취소하고 홈으로 돌아가는 버튼 START -->
-      <div class="comeback-home">
-        <a href="home">
-          <button class="comeback-homeBtn btn btn-danger">메인으로 돌아가기</button>
-        </a>
-      </div>
+      <a href="home" style="margin-bottom: 2rem">
+        <h1 class="text-mintcolor display-5">Pilling<i class="fa-solid fa-pills text-mintcolor ms-2"></i></h1>
+      </a>
       <!-- 설문조사 취소하고 홈으로 돌아가는 버튼 END -->
-      <h1 class="text-dark display-6">Pi1ling 영양제 추천 설문조사</h1>
-      <h2 class="text-dark display-6">${userLastname }${userFirstname }님에게 맞는 영양제를 추천드리겠습니다.</h2>
+      <h2 class="text-dark display-6" style="margin-bottom: 2rem">${userLastname }${userFirstname }님에게 맞는 영양제를 추천드리겠습니다.</h2>
       <div class="d-flex survey-question-container">
         <!-- 설문조사 3개씩 보여주기 첫번째 세트 START -->
         <div class="question-set" id="set1">
           <div class="survey-question-card">
-            <h3>1. 최근(4주 이내) 피곤함을 느끼거나, 현기증을 느끼신적이 있으십니까?</h3>
-            <br />
+            <h3 class="survey-question-text">1. 최근(4주 이내) 피곤함을 느끼거나, 현기증을 느끼신적이 있으십니까?</h3>
             <div data-toggle="buttons" style="gap: 80px; display: flex; justify-content: center">
               <input type="radio" class="btn-check" name="question1" value="1" id="success-outlined1" autocomplete="off" />
               <label class="btn btn-outline-success" for="success-outlined1">예</label>
@@ -83,10 +120,8 @@
               <label class="btn btn-outline-danger" for="danger-outlined1">아니오</label>
             </div>
           </div>
-
           <div class="survey-question-card">
-            <h3>2. 최근(4주 이내) 피부가 까칠한 느낌이나, 푸석한 느낌을 받으셨습니까?</h3>
-            <br />
+            <h3 class="survey-question-text">2. 최근(4주 이내) 피부가 까칠한 느낌이나, 푸석한 느낌을 받으셨습니까?</h3>
             <div data-toggle="buttons" style="gap: 80px; display: flex; justify-content: center">
               <input type="radio" class="btn-check" name="question2" value="2" id="success-outlined2" autocomplete="off" />
               <label class="btn btn-outline-success" for="success-outlined2">예</label>
@@ -94,10 +129,8 @@
               <label class="btn btn-outline-danger" for="danger-outlined2">아니오</label>
             </div>
           </div>
-
           <div class="survey-question-card">
-            <h3>3. 최근(4주 이내) 팔과 다리가 저릿하거나, 뒷목이 당기는 느낌을 받으셨습니까?</h3>
-            <br />
+            <h3 class="survey-question-text">3. 최근(4주 이내) 팔과 다리가 저릿하거나, 뒷목이 당기는 느낌을 받으셨습니까?</h3>
             <div data-toggle="buttons" style="gap: 80px; display: flex; justify-content: center">
               <input type="radio" class="btn-check" name="question3" value="3" id="success-outlined3" autocomplete="off" />
               <label class="btn btn-outline-success" for="success-outlined3">예</label>
@@ -105,9 +138,10 @@
               <label class="btn btn-outline-danger" for="danger-outlined3">아니오</label>
             </div>
           </div>
+
           <!-- 다음버튼 -->
           <div class="d-flex nextprve-btn-container">
-            <button class="btn btn-success next-btn" onclick="showNextSet('set1')" disabled>다음</button>
+            <button class="btn btn-outline-success next-btn" onclick="showNextSet('set1')" disabled>다음</button>
           </div>
         </div>
         <!-- 첫번째 세트 END -->
@@ -147,8 +181,8 @@
             </div>
           </div>
           <div class="d-flex nextprve-btn-container">
-            <button class="btn btn-success next-btn" onclick="showNextSet('set2')" disabled>다음</button>
-            <button class="btn btn-secondary prev-btn" onclick="showPrevSet('set2')">이전</button>
+            <button class="btn btn-outline-success next-btn" onclick="showNextSet('set2')" disabled>다음</button>
+            <button class="btn btn-outline-secondary prev-btn" onclick="showPrevSet('set2')">이전</button>
           </div>
         </div>
         <!-- 두번째 세트 END -->
@@ -187,8 +221,8 @@
             </div>
           </div>
           <div class="d-flex nextprve-btn-container">
-            <button class="btn btn-success next-btn" onclick="showNextSet('set3')" disabled>다음</button>
-            <button class="btn btn-secondary prev-btn" onclick="showPrevSet('set3')">이전</button>
+            <button class="btn btn-outline-success next-btn" onclick="showNextSet('set3')" disabled>다음</button>
+            <button class="btn btn-outline-secondary prev-btn" onclick="showPrevSet('set3')">이전</button>
           </div>
         </div>
         <!-- 세번째 세트 END -->
@@ -227,8 +261,8 @@
             </div>
           </div>
           <div class="d-flex nextprve-btn-container">
-            <button class="btn btn-success next-btn" onclick="showNextSet('set4')" disabled>다음</button>
-            <button class="btn btn-secondary prev-btn" onclick="showPrevSet('set4')">이전</button>
+            <button class="btn btn-outline-success next-btn" onclick="showNextSet('set4')" disabled>다음</button>
+            <button class="btn btn-outline-secondary prev-btn" onclick="showPrevSet('set4')">이전</button>
           </div>
         </div>
         <!-- 네번째 세트 END -->
@@ -260,7 +294,7 @@
           </div>
 
           <div class="survey-question-card">
-            <h3>*설문답변자가 남성일시 답변*</h3>
+            <h3 class="survey-text-red">*설문답변자가 남성일시 답변*</h3>
             <h3>15. 최근들어, 성기능이 떨어진다거나, 근력 및 지구력이 감소했다고 느낀적이 있으십니까?</h3>
             <br />
             <div data-toggle="buttons" style="gap: 80px; display: flex; justify-content: center">
@@ -271,15 +305,15 @@
             </div>
           </div>
           <div class="d-flex nextprve-btn-container">
-            <button class="btn btn-success next-btn" onclick="showNextSet('set5')" disabled>다음</button>
-            <button class="btn btn-secondary prev-btn" onclick="showPrevSet('set5')">이전</button>
+            <button class="btn btn-outline-success next-btn" onclick="showNextSet('set5')" disabled>다음</button>
+            <button class="btn btn-outline-secondary prev-btn" onclick="showPrevSet('set5')">이전</button>
           </div>
         </div>
         <!-- 다섯번째 세트 END -->
         <!-- 설문조사 3개씩 보여주기 여섯번째 세트 START -->
         <div class="question-set" id="set6">
           <div class="survey-question-card">
-            <h3>*설문답변자가 여성일시 답변*</h3>
+            <h3 class="survey-text-red">*설문답변자가 여성일시 답변*</h3>
             <h3>16. 최근들어, 여성갱년기 증상(안면홍조, 갑작스런 발열 및 오한, 월경주기 불안정, 기타 등)을 느끼셨습니까?</h3>
             <br />
             <div data-toggle="buttons" style="gap: 80px; display: flex; justify-content: center">
@@ -312,8 +346,8 @@
             </div>
           </div>
           <div class="d-flex nextprve-btn-container">
-            <button class="btn btn-success next-btn" onclick="showNextSet('set6')" disabled>다음</button>
-            <button class="btn btn-secondary prev-btn" onclick="showPrevSet('set6')">이전</button>
+            <button class="btn btn-outline-success next-btn" onclick="showNextSet('set6')" disabled>다음</button>
+            <button class="btn btn-outline-secondary prev-btn" onclick="showPrevSet('set6')">이전</button>
           </div>
         </div>
         <!-- 여섯번째 세트 END -->
@@ -341,8 +375,8 @@
             </div>
           </div>
           <div class="d-flex nextprve-btn-container">
-            <button class="btn btn-success submit-btn" onclick="submitSurvey()" disabled>제출</button>
-            <button class="btn btn-secondary prev-btn" onclick="showPrevSet('set7')">이전</button>
+            <button class="btn btn-outline-success submit-btn" onclick="submitSurvey()" disabled>제출</button>
+            <button class="btn btn-outline-secondary prev-btn" onclick="showPrevSet('set7')">이전</button>
           </div>
         </div>
         <!-- 일곱번째 세트 END -->

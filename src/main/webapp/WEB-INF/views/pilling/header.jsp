@@ -36,18 +36,16 @@ prefix="tiles"%> <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %
       <div class="container">
         <nav class="navbar navbar-dark navbar-expand-lg py-lg-0 justify-content-between">
           <a href="home" class="navbar-brand">
-            <h1 class="text-mintcolor mb-0 display-5">
-              Pill<span class="text-mintcolor">ing</span><i class="fa-solid fa-pills text-mintcolor ms-2"></i>
-            </h1>
+            <h1 class="text-mintcolor mb-0 display-5">Pilling<i class="fa-solid fa-pills text-mintcolor ms-2"></i></h1>
           </a>
           <button class="navbar-toggler bg-primary" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
             <span class="fa fa-bars text-dark"></span>
           </button>
           <div class="collapse navbar-collapse me-n3 flex-grow-0" id="navbarCollapse">
             <div class="navbar-nav ms-auto">
-              <a href="productpurchase" class="d-flex nav-item nav-link nav-text-color text-size02">제품구매</a>
-              <a href="introduction" class="nav-item nav-link nav-text-color text-size02">회사정보</a>
-              <a href="customerservice" class="nav-item nav-link nav-text-color text-size02">고객센터</a>
+              <a href="productpurchase" id="productpurchase-link" class="d-flex nav-item nav-link nav-text-color text-size02">제품구매</a>
+              <a href="introduction" id="introduction-link" class="nav-item nav-link nav-text-color text-size02">회사정보</a>
+              <a href="customerservice" id="customerservice-link" class="nav-item nav-link nav-text-color text-size02">고객센터</a>
               <c:if test="${author eq 'ADMIN' }">
                 <a href="admin" class="nav-item nav-link nav-text-color text-size02">관리자 페이지</a>
               </c:if>
@@ -75,7 +73,7 @@ prefix="tiles"%> <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %
           <div class="d-flex align-items-center">
             <h2>
               <c:if test="${empty userId}">
-                <a href="login" class="text-size01 nav-text-color">로그인</a>
+                <a href="login" id="login-link" class="nav-item text-size01 nav-text-color">로그인</a>
               </c:if>
               <c:if test="${not empty userId}">
                 <div class="d-flex align-items-center" style="justify-content: center">
@@ -84,7 +82,7 @@ prefix="tiles"%> <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %
                   </div>
                 </div>
                 <div class="icons">
-                  <a href="mypage" class="text-size01 nav-text-color"><i class="fas fa-user-friends"></i>마이페이지</a>
+                  <a href="mypage" id="mypage-link" class="nav-item text-size01 nav-text-color"><i class="fas fa-user-friends"></i>마이페이지</a>
                   <a href="logout" class="text-size01 nav-text-color"><i class="fa-solid fa-right-from-bracket"></i>로그아웃</a>
                 </div>
               </c:if>
@@ -94,5 +92,24 @@ prefix="tiles"%> <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %
       </div>
     </div>
     <!-- Navbar End -->
+    <script type="text/javascript">
+      document.addEventListener('DOMContentLoaded', function () {
+        var path = window.location.pathname;
+
+        var links = {
+          productpurchase: 'productpurchase-link',
+          introduction: 'introduction-link',
+          customerservice: 'customerservice-link',
+          mypage: 'mypage-link',
+          login: 'login-link',
+        };
+
+        Object.keys(links).forEach(function (key) {
+          if (path.includes(key)) {
+            document.getElementById(links[key]).classList.add('active');
+          }
+        });
+      });
+    </script>
   </body>
 </html>

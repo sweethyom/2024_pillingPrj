@@ -201,8 +201,8 @@ td {
 								type="text" id="pointSelect" name="usePoint" value=0 width="100"
 								onblur="updateTotalPriceByPoint()"
 								oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');"
-								maxlength="7"> <a class="btn btn-primary"
-								onclick="pointSelectAll()">모두 사용하기</a></td>
+								maxlength="7"> <a class="btn btn-outline-dark-hyunwoo login-btn-size"
+								onclick="pointSelectAll()" style="margin-left: 1rem;">모두 사용하기</a></td>
 						</tr>
 						<tr>
 							<td style="background-color: #f5f6f6;">배송비</td>
@@ -237,7 +237,7 @@ td {
 			<!-- 결제버튼 -->
 			<div class="center">
 				<button type="button"
-					class="px-5 py-3 btn btn-primary border-2 rounded-pill animated slideInDown mb-4 ms-4"
+					class="btn btn-outline-dark-hyunwoo mt-3 login-btn-size"
 					onclick="shippingFormCheck()">결제하기</button>
 			</div>
 			<!-- 결제버튼 END -->
@@ -468,6 +468,9 @@ td {
 			resultTotalPrice = resultTotalPriceArr[0];
 			document.getElementById('orderTotalprice').value = resultTotalPrice;
 			document.getElementById('orderCard').value = selectPayment;
+			var couponInfo = document.getElementById("couponSelect").value.split('/');
+			var couponId = couponInfo[0];
+			document.getElementById('couponId').value = couponId;
 			
 			//입력 값 전송
 			//document.getElementById('shippingForm').submit(); //유효성 검사의 포인트
@@ -483,15 +486,12 @@ td {
 			var userAddr = document.getElementById('userAddr');
 			var userAddrdetail = document.getElementById('userAddrdetail');
 			var userTel = document.getElementById('userTel');
-			var couponInfo = document.getElementById("couponSelect").value.split('/');
-			var couponId = couponInfo[0];
 			
 			document.getElementById('shippingRecipientln').value = userLastname.text;
 			document.getElementById('shippingRecipientfn').value = userFirstname.text;
 			document.getElementById('shippingAddr').value = userAddr.text;
 			document.getElementById('shippingAddrdetail').value = userAddrdetail.text;
 			document.getElementById('shippingTel').value = userTel.text;
-			document.getElementById('couponId').value = couponId;
 		}
 	</script>
 </body>
