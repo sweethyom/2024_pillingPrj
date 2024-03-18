@@ -67,16 +67,14 @@ td {
 								</tr>
 							</thead>
 							<tbody>
-								<c:forEach items="${carts}" var="c">
-									<tr class="item-row">
-										<td width="100"><img src="${c.filepath }" alt="제품 이미지"
-											width="80px" height="80px"></td>
-										<td width="500">${c.productName}</td>
-										<td width="200">${c.productPrice}</td>
-										<td width="200">${c.cartProdcnt }</td>
-										<td><p class="prodprice">${c.productPrice * c.cartProdcnt }원</p></td>
-									</tr>
-								</c:forEach>
+								<tr class="item-row">
+									<td width="100"><img src="${cart.filepath }" alt="제품 이미지"
+										width="80px" height="80px"></td>
+									<td width="500">${cart.productName}</td>
+									<td width="200">${cart.productPrice}</td>
+									<td width="200">${cart.cartProdcnt }</td>
+									<td><p class="prodprice">${cart.productPrice * cart.cartProdcnt }원</p></td>
+								</tr>
 							</tbody>
 						</table>
 					</div>
@@ -106,7 +104,7 @@ td {
 			</div>
 			<!-- 구매자 정보 END -->
 			<!-- 배송지 정보 Form START -->
-			<form id="shippingForm" action="makepayment" method="post">
+			<form id="shippingForm" action="makepaymentdirect" method="post">
 				<!-- 배송지 정보 -->
 				<div class="mb-4">
 					<h5>배송지 정보</h5>
@@ -187,22 +185,19 @@ td {
 						</tr>
 						<tr>
 							<td style="background-color: #f5f6f6;">쿠폰 할인</td>
-							<td><select id="couponSelect"
-								onchange="updateTotalPriceByCoupon()">
-									<option value="0/0">쿠폰 선택 안함</option>
+							<td><select id="couponSelect">
+									<option values="0">쿠폰 선택 안함</option>
 									<c:forEach items="${couponList }" var="c">
-										<option value="${c.couponId }/${c.couponRate }">${c.couponName }(할인율:${c.couponRate}%/${c.couponPeriod}까지)</option>
+										<option value="${c.couponRate }">${c.couponName }(할인율:${c.couponRate}%/${c.couponPeriod}까지)</option>
 									</c:forEach>
 							</select></td>
 						</tr>
 						<tr>
 							<td style="background-color: #f5f6f6;">적립금</td>
-							<td><a id="userPoint">${user.userPoint }</a>원<input
-								type="text" id="pointSelect" name="usePoint" value=0 width="100"
-								onblur="updateTotalPriceByPoint()"
-								oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');"
-								maxlength="7"> <a class="btn btn-primary"
-								onclick="pointSelectAll()">모두 사용하기</a></td>
+							<td><a id="userPoint">${user.userPoint }원</a><input
+								type="text" id="pointSelect"
+								oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
+								maxlength="7"></td>
 						</tr>
 						<tr>
 							<td style="background-color: #f5f6f6;">배송비</td>
@@ -210,7 +205,7 @@ td {
 						</tr>
 						<tr>
 							<td style="background-color: #f5f6f6;">총 결제금액</td>
-							<td><a id="resultTotalprice" name="resultTotalprice"></a>원</td>
+							<td><a id="orderActualPrice" name="orderActualPrice"></a></td>
 						</tr>
 						<tr>
 							<td style="background-color: #f5f6f6;">결제방법</td>
@@ -218,18 +213,18 @@ td {
 								checked="checked">&nbsp;&nbsp;카카오페이</td>
 						</tr>
 					</table>
-					<div class="mb-1">
-						<a>* 배송비는 적립금으로 결제할 수 없습니다.</a>
-					</div>
 				</div>
 				<input type="hidden" id="userNo" name="userNo" value="${userNo }">
 				<input type="hidden" id="productId" name="productId"
-					value="${carts[0].productId }"> <input type="hidden"
+					value="${cart.productId }"> <input type="hidden"
 					id="orderstatusId" name="orderstatusId" value=1> <input
 					type="hidden" id="orderTotalprice" name="orderTotalprice">
 				<input type="hidden" id="orderCard" name="orderCard"> <input
 					type="hidden" id="orderId" name="orderId" value="${newOrderId }">
-				<input type="hidden" id="couponId" name="couponId">
+				<input type="hidden" id="orderdetailPrice" name="orderdetailPrice"
+					value="${cart.productPrice }"> <input type="hidden"
+					id="orderdetailCount" name="orderdetailCount"
+					value="${cart.cartProdcnt}">
 			</form>
 			<!-- 배송지 정보 Form END -->
 			<!-- 결제정보 END -->
@@ -249,17 +244,17 @@ td {
 	var IMP = window.IMP;	
 		// 결제요청
 		function requestPay(){
-			var resultTotalPrice = document.getElementById('resultTotalprice').textContent;
-			var resultTotalPriceArr = resultTotalPrice.split('원');
-			resultTotalPrice = parseInt(resultTotalPriceArr[0]);
+			var orderActualPrice = document.getElementById('orderActualPrice').textContent;
+			var orderActualPriceArr = orderActualPrice.split('원');
+			orderActualPrice = parseInt(orderActualPriceArr[0]);
 			
 			IMP.init('imp03000385');
 			IMP.request_pay({
 				pg: "kakaopay.TC0ONETIME",
 				pay_method: "card",
 				merchant_uid: "${newOrderId }",   // 주문번호
-			    name: "${carts[0].productName } 외",
-			    amount: resultTotalPrice,
+			    name: "${cart.productName }",
+			    amount: orderActualPrice,
 			    buyer_email: "${userNo}",
 			    buyer_name: "${userLastname}${userFirstname}",
 			    buyer_tel: "${user.userTel}",
@@ -283,8 +278,9 @@ td {
 			var totalPrice1 = orderTotalCal();
 			var totalPrice2 = totalPrice1 + 3000;
 			document.getElementById('prodtotalprice').textContent = totalPrice1 + "원";
-			document.getElementById('resultTotalprice').textContent = totalPrice2;
+			document.getElementById('orderActualPrice').textContent = totalPrice2 + "원";
 		};
+		
 		
 		// 주문 총 합계를 계산한다.
 		function orderTotalCal(){
@@ -298,51 +294,6 @@ td {
 			});
 			
 			return totalPrice;
-		}
-		
-		// 쿠폰에 따라 총 결제금액 변경하기
-		function updateTotalPriceByCoupon(){
-			var couponInfo = document.getElementById("couponSelect").value.split('/');
-			var couponRate = couponInfo[1];
-			var resultTotalprice = orderTotalCal();
-			var discountedPrice = (resultTotalprice - (resultTotalprice * couponRate / 100))+3000;
-			document.getElementById("resultTotalprice").textContent = discountedPrice + "원";
-			document.getElementById("pointSelect").value = 0;
-		}
-		
-		// 포인트를 입력하면 총 결제금액 변경하기
-		function updateTotalPriceByPoint(){
-			var couponInfo = document.getElementById("couponSelect").value.split('/');
-			var couponRate = couponInfo[1];
-			var resultTotalprice = orderTotalCal();
-			var discountedPrice = resultTotalprice - ((resultTotalprice * couponRate / 100));
-			
-			var inputPoint = document.getElementById("pointSelect").value;
-			var totalPrice = discountedPrice;
-			var userPoint = document.getElementById("userPoint").textContent;
-			
-			inputPoint = parseInt(inputPoint);
-			userPoint = parseInt(userPoint);
-
-			if(inputPoint > userPoint){
-				inputPoint = userPoint;
-			}
-			
-			if(totalPrice > inputPoint){
-				totalPrice -= inputPoint;
-			} else{
-				inputPoint = totalPrice;
-				totalPrice = 0;
-			}
-			
-			totalPrice += 3000;
-			document.getElementById("pointSelect").value = inputPoint;
-			document.getElementById("resultTotalprice").textContent = totalPrice;
-		}
-		
-		function pointSelectAll(){
-			document.getElementById("pointSelect").value = 999999999;
-			updateTotalPriceByPoint();
 		}
 	
 		// 전화번호 자동 하이픈 넣어주기
@@ -463,10 +414,10 @@ td {
 			
 			//폼으로 보내기 전에 폼의 값을 채워준다.
 			var selectPayment = document.querySelector('input[name="payment"]:checked').value;
-			var resultTotalPrice = document.getElementById('resultTotalprice').textContent;
-			var resultTotalPriceArr = resultTotalPrice.split('원');
-			resultTotalPrice = resultTotalPriceArr[0];
-			document.getElementById('orderTotalprice').value = resultTotalPrice;
+			var orderActualPrice = document.getElementById('orderActualPrice').textContent;
+			var orderActualPriceArr = orderActualPrice.split('원');
+			orderActualPrice = orderActualPriceArr[0];
+			document.getElementById('orderTotalprice').value = orderActualPrice;
 			document.getElementById('orderCard').value = selectPayment;
 			
 			//입력 값 전송
@@ -483,15 +434,11 @@ td {
 			var userAddr = document.getElementById('userAddr');
 			var userAddrdetail = document.getElementById('userAddrdetail');
 			var userTel = document.getElementById('userTel');
-			var couponInfo = document.getElementById("couponSelect").value.split('/');
-			var couponId = couponInfo[0];
-			
 			document.getElementById('shippingRecipientln').value = userLastname.text;
 			document.getElementById('shippingRecipientfn').value = userFirstname.text;
 			document.getElementById('shippingAddr').value = userAddr.text;
 			document.getElementById('shippingAddrdetail').value = userAddrdetail.text;
 			document.getElementById('shippingTel').value = userTel.text;
-			document.getElementById('couponId').value = couponId;
 		}
 	</script>
 </body>

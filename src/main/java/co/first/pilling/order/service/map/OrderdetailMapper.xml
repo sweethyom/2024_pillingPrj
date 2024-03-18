@@ -21,12 +21,20 @@
 	</select>
 	<insert id="orderdetailInsert">
 		INSERT INTO orderdetail (order_id, product_id,
-		orderdetail_price, orderdetail_count) VALUES (#{orderId}, #{productId},
+		orderdetail_price, orderdetail_count) VALUES (#{orderId},
+		#{productId},
 		#{orderdetailPrice}, #{orderdetailCount})
 	</insert>
+
 	<select id="detailTotalPrice">
 	SELECT orderdetail_count*orderdetail_price AS detailTotalPrice
 	  FROM orderdetail od
      WHERE order_id = #{orderId}
+
+	<select id="selectOrderCount">
+		SELECT COUNT(*)
+		FROM orderdetail
+		WHERE order_id = #{orderId};
+
 	</select>
 </mapper>

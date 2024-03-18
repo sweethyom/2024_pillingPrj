@@ -18,5 +18,9 @@ public interface OrderdetailService {
 
 	int orderdetailUpdate(OrderdetailVO vo); // 주문변경
 	
+
 	int detailTotalPrice(OrderdetailVO vo);//주문소계
+
+	int selectOrderCount(int orderId); // 주문개수 (한번에 몇 종류의 제품을 구매했는지)
+
 }

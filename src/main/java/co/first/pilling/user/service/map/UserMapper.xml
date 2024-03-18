@@ -43,4 +43,16 @@
 <select id="userPassword" parameterType="String">
 	SELECT * FROM `user` WHERE USER_ID=#{userId} AND USER_PSWD=#{userPswd}
 </select>
+<select id="selectUserRank">
+	SELECT l.level_name AS userLevel
+	FROM `user` u 
+	JOIN `level` l 
+	ON u.level_id = l.level_id 
+	WHERE u.user_id = #{userId};
+</select>
+<update id="updateUserPoint">
+	UPDATE `user`
+	SET user_point = user_point - #{usePoint}
+	WHERE user_No = #{userNo}
+</update>
 </mapper>

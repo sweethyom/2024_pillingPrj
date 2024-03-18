@@ -54,7 +54,7 @@
 												</button>
 											</div>
 											<input type="text"
-												oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
+												oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');"
 												maxlength="2"
 												class="form-control form-control-sm text-center border-0 prodcnt"
 												value="${c.cartProdcnt }">

@@ -56,6 +56,12 @@ public class OrderdetailServiceImpl implements OrderdetailService {
 		// TODO Auto-generated method stub
 		return map.orderdetailUpdate(vo);
 	}
+
+	@Override
+	public int selectOrderCount(int orderId) {
+		// TODO Auto-generated method stub
+		return map.selectOrderCount(orderId);
+	}
 	
 	@Override
 	public int detailTotalPrice(OrderdetailVO vo) {
