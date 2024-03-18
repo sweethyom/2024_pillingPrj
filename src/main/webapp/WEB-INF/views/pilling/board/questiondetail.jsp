@@ -76,7 +76,7 @@ td {
 			</c:if>
 		</div>
 		<!-- 버튼 END -->
-		<!-- 문의사항 댓글 START -->
+		<!-- 문의사항 답변 START (2024년 3월 18일 오후 8시 15분 수정) -->
 		<c:if test="${not empty questionreply}">
 			<c:forEach items="${questionreply}" var="qr">
 				<div>
@@ -105,9 +105,9 @@ td {
 				</div>
 			</c:forEach>
 		</c:if>
-		<!-- 문의사항 댓글 END -->
+		<!-- 문의사항 답변 END (2024년 3월 18일 오후 8시 15분 수정) -->
 
-		<!-- 문의사항 댓글 작성 STRAT -->
+		<!-- 문의사항 답변 작성 STRAT (2024년 3월 18일 오후 8시 15분 수정) -->
 		<!-- AMDIN 권한을 가진 사람에게만 보인다. -->
 		<c:if test="${author eq 'ADMIN'}">
 			<div class="bg-light rounded p-4 my-4">
@@ -127,7 +127,7 @@ td {
 				</form>
 			</div>
 		</c:if>
-		<!-- 댓글 작성 END -->
+		<!-- 문의사항 답변 작성 END (2024년 3월 18일 오후 8시 15분 수정) -->
 
 		<!-- 문의사항id를 수정, 삭제로 보내줄 히든폼 -->
 		<div>

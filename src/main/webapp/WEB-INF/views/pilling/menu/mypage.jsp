@@ -8,13 +8,8 @@
 <title>Insert title here</title>
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.10/dist/sweetalert2.min.css">
-</head>
-<body>
 	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-	<script src="https://kit.fontawesome.com/69f92e09cc.js"
-		crossorigin="anonymous"></script>
-	<!-- Section: Design Block -->
-	<section class="text-center text-lg-start">
+	<script src="https://kit.fontawesome.com/69f92e09cc.js" crossorigin="anonymous"></script>
 		<style>
 .cascading-right {
 	margin-right: -50px;
@@ -32,7 +27,6 @@
 
 .row-mypage {
 	margin: 0 auto;
-	width: 60%;
 }
 
 .div-left {
@@ -69,14 +63,17 @@ td {
 	box-shadow: 2px 5px 5px rgb(0, 0, 0, 0.1);
 }
 </style>
+</head>
+<body>
+    <!-- Page Header Start -->
+    <div class="container-fluid py-3">
+		<div class="container py-3">
+		  <h1 class="display-2 text-dark mb-4">마이 페이지</h1>
+		</div>
+	  </div>
+	  <!-- Page Header End -->
 
-<div class="container-fluid py-3">
-	<div class="container py-3">
-	  <h1 class="display-2 text-dark mb-4 animated slideInDown">My Page</h1>
-	</div>
-  </div>
-
-		<div class="container"></div>
+		<div class="container">
 
 		<!-- Content Row -->
 		<div class="row-mypage">
@@ -151,7 +148,7 @@ td {
 				</div>
 			</div>
 
-			<br> <br> <br>
+			<br/> <br/> <br/>
 
 			<div class="row">
 				<div class="col-xl-12 col-md-6 mb-4 div-center">
@@ -166,10 +163,8 @@ td {
 									<td width="450" class="td-center"><i
 										class="fa-regular fa-newspaper h5"></i> &nbsp; <label
 										type="button" class="h5" onclick="location.href='myreview'">리뷰내역</label></td>
-								</tr>
-								<tr height="50">
-									<td class="td-center"><i class="fa-solid fa-cart-shopping"></i>
-										&nbsp; <label type="button" class="h5" onclick="moveCart()">장바구니</label></td>
+										<td width="450" class="td-center"><i class="fa-solid fa-cart-shopping"></i>
+											&nbsp; <label type="button" class="h5" onclick="moveCart()">장바구니</label></td>
 								</tr>
 							</table>
 						</div>
@@ -289,6 +284,7 @@ td {
 			</form>
 
 		</div>
+	</div>
 		<script>
 			// 유저 넘버를 담고 장바구니로 이동시킨다.
 			function moveCart() {
