@@ -87,7 +87,7 @@ td {
 										<div
 											class="text-xs font-weight-bold text-success mb-1 div-center">RANK</div>
 										<div
-											class="h1 mb-0 font-weight-bold text-gray-800 div-center div-center-l mb-3">VIP</div>
+											class="h1 mb-0 font-weight-bold text-gray-800 div-center div-center-l mb-3">${userRank }</div>
 										<div
 											class="text-xs font-weight-bold text-uppercase mb-1 div-center">
 											<hr>
@@ -132,7 +132,7 @@ td {
 									<div class="row no-gutters align-items-center">
 										<div>
 											<div
-												class="h1 mb-0 mr-3 font-weight-bold text-gray-800 div-center">0원</div>
+												class="h1 mb-0 mr-3 font-weight-bold text-gray-800 div-center">${user.userPoint }원</div>
 										</div>
 									</div>
 								</div>

@@ -48,7 +48,12 @@ public class HomeController {
 
 	// 마이페이지 이동
 	@RequestMapping("mypage")
-	public String myPage(Model model) {
+	public String myPage(Model model, HttpSession session) {
+		UserVO vo = new UserVO();
+		String userId = (String) session.getAttribute("userId");
+		vo.setUserId(userId);
+		model.addAttribute("userRank", userService.selectUserRank(vo));
+		model.addAttribute("user", userService.userSelect(vo));
 		return "pilling/menu/mypage";
 	}
 

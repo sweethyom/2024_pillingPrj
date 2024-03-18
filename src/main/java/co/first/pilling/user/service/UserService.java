@@ -16,4 +16,5 @@ public interface UserService {
 	int userPswdUpdate(UserVO vo);//비밀번호변경
 	public int userUpdate(UserVO vo); //회원수정
 	UserVO userPassword(UserVO vo); //마이페이지비밀번호확인
+	String selectUserRank(UserVO vo); //유저랭크 가져오기
 }
