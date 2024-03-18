@@ -468,6 +468,9 @@ td {
 			resultTotalPrice = resultTotalPriceArr[0];
 			document.getElementById('orderTotalprice').value = resultTotalPrice;
 			document.getElementById('orderCard').value = selectPayment;
+			var couponInfo = document.getElementById("couponSelect").value.split('/');
+			var couponId = couponInfo[0];
+			document.getElementById('couponId').value = couponId;
 			
 			//입력 값 전송
 			//document.getElementById('shippingForm').submit(); //유효성 검사의 포인트
@@ -483,15 +486,12 @@ td {
 			var userAddr = document.getElementById('userAddr');
 			var userAddrdetail = document.getElementById('userAddrdetail');
 			var userTel = document.getElementById('userTel');
-			var couponInfo = document.getElementById("couponSelect").value.split('/');
-			var couponId = couponInfo[0];
 			
 			document.getElementById('shippingRecipientln').value = userLastname.text;
 			document.getElementById('shippingRecipientfn').value = userFirstname.text;
 			document.getElementById('shippingAddr').value = userAddr.text;
 			document.getElementById('shippingAddrdetail').value = userAddrdetail.text;
 			document.getElementById('shippingTel').value = userTel.text;
-			document.getElementById('couponId').value = couponId;
 		}
 	</script>
 </body>

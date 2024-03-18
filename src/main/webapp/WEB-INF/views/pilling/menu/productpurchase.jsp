@@ -14,7 +14,6 @@
     <div class="container-fluid py-3">
       <div class="container py-3">
         <h1 class="display-2 text-dark mb-4">제품 구매</h1>
-        <h1 class="display-6 text-dark mb-4">단 하나의 영양제, Pilling</h1>
       </div>
     </div>
     <!-- Page Header End -->
@@ -38,7 +37,7 @@
                             <li class="filterItem">
                               <div class="filterName">
                                 <input type="checkbox" name="effectId" id="keyword${keyword.keywordId}" value="${keyword.keywordId}" />
-                                <label for="keyword${keyword.keywordId}" class="keywordName">&nbsp;${keyword.keywordName}</label>
+                                <label for="keyword${keyword.keywordId}" class="text-size01">&nbsp; &#035;${keyword.keywordName}</label>
                               </div>
                             </li>
                           </c:if>
@@ -52,7 +51,7 @@
                             <li class="filterItem">
                               <div class="filterName">
                                 <input type="checkbox" name="effectId" id="keyword${keyword.keywordId}" value="${keyword.keywordId}" />
-                                <label for="keyword${keyword.keywordId}" class="keywordName">&nbsp;${keyword.keywordName}</label>
+                                <label for="keyword${keyword.keywordId}" class="text-size01">&nbsp; &#035;${keyword.keywordName}</label>
                               </div>
                             </li>
                           </c:if>
@@ -77,11 +76,6 @@
                           <div class="p-4 border border-secondary border-top-0 rounded-bottom">
                             <h4>${product.productName }</h4>
                             <p class="text-dark">${product.productDescription1 }</p>
-                            <div>
-                              <c:forEach var="keyword" items="${product.keywordName}">
-                                <a class="keywordName">${keyword}</a>
-                              </c:forEach>
-                            </div>
                             <br />
                             <div class="d-flex justify-content-between flex-lg-wrap">
                               <p class="text-dark fs-5 fw-bold mb-0">
@@ -204,9 +198,6 @@
             '<p>' +
             product.productDescription1 +
             '</p>' +
-            '<div>' +
-            keywordsHtml +
-            '</div>' +
             '<div class="d-flex justify-content-between flex-lg-wrap">' +
             '<p class="text-dark fs-5 fw-bold mb-0">' +
             formatNumber(product.productPrice) +

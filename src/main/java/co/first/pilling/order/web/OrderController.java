@@ -74,9 +74,12 @@ public class OrderController {
 		cps.couponDelete(cpv);
 		
 		// 사용한 적립금 차감
-		System.out.println(usePoint);
+		
 		UserVO uv = new UserVO();
 		uv.setUserNo(vo.getUserNo());
+	
+		System.out.println(usePoint);
+		System.out.println(uv.getUserNo());
 		
 		Map<Integer, UserVO> map = new HashMap<Integer, UserVO>();
 		map.put(usePoint, uv);
