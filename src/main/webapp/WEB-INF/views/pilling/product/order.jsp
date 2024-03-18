@@ -230,6 +230,7 @@ td {
 				<input type="hidden" id="orderCard" name="orderCard"> <input
 					type="hidden" id="orderId" name="orderId" value="${newOrderId }">
 				<input type="hidden" id="couponId" name="couponId">
+				<input type="hidden" id="orderActualPrice" name="orderActualPrice">
 			</form>
 			<!-- 배송지 정보 Form END -->
 			<!-- 결제정보 END -->
@@ -306,7 +307,7 @@ td {
 			var couponRate = couponInfo[1];
 			var resultTotalprice = orderTotalCal();
 			var discountedPrice = (resultTotalprice - (resultTotalprice * couponRate / 100))+3000;
-			document.getElementById("resultTotalprice").textContent = discountedPrice + "원";
+			document.getElementById("resultTotalprice").textContent = discountedPrice;
 			document.getElementById("pointSelect").value = 0;
 		}
 		
@@ -466,11 +467,16 @@ td {
 			var resultTotalPrice = document.getElementById('resultTotalprice').textContent;
 			var resultTotalPriceArr = resultTotalPrice.split('원');
 			resultTotalPrice = resultTotalPriceArr[0];
-			document.getElementById('orderTotalprice').value = resultTotalPrice;
+			var prodtotalprice = document.getElementById('prodtotalprice').textContent;
+			var prodtotalpriceArr = prodtotalprice.split('원');
+			prodtotalprice = prodtotalpriceArr[0];
+			document.getElementById('orderTotalprice').value = prodtotalprice;
 			document.getElementById('orderCard').value = selectPayment;
 			var couponInfo = document.getElementById("couponSelect").value.split('/');
 			var couponId = couponInfo[0];
 			document.getElementById('couponId').value = couponId;
+			document.getElementById('orderActualPrice').value = resultTotalPrice;
+			
 			
 			//입력 값 전송
 			//document.getElementById('shippingForm').submit(); //유효성 검사의 포인트
