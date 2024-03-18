@@ -1,6 +1,7 @@
 package co.first.pilling.user.service.Impl;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
@@ -78,5 +79,11 @@ public class UserServiceImpl implements UserService {
 	public String selectUserRank(UserVO vo) {
 		// TODO Auto-generated method stub
 		return map.selectUserRank(vo);
+	}
+
+	@Override
+	public int updateUserPoint(Map<Integer, UserVO> pointMap) {
+		// TODO Auto-generated method stub
+		return map.updateUserPoint(pointMap);
 	}
 }

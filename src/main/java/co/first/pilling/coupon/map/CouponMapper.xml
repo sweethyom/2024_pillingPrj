@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="co.first.pilling.coupon.map.CouponMapper">
+	<select id="couponSelectList">
+		SELECT * FROM coupon WHERE user_no = #{userNo}
+	</select>
+	<select id="couponSelect"></select>
+	<insert id="couponInsert">
+		INSERT INTO coupon (user_no, coupon_name,
+		coupon_rate) VALUES (#{userNo}, #{couponName}, #{couponRate})
+	</insert>
+	<delete id="couponDelete">
+		DELETE FROM coupon WHERE coupon_id = #{couponId}
+	</delete>
+	<select id="couponCount">
+		SELECT count(*) FROM coupon WHERE user_no = #{userNo}
+	</select>
+</mapper>

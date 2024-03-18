@@ -12,4 +12,6 @@ public interface OrderdetailService {
 	int orderdetailDelete(OrderdetailVO vo); // 주문취소
 
 	int orderdetailUpdate(OrderdetailVO vo); // 주문변경
+	
+	int selectOrderCount(int orderId); // 주문개수 (한번에 몇 종류의 제품을 구매했는지)
 }

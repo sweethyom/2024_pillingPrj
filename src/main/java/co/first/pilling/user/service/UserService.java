@@ -1,6 +1,7 @@
 package co.first.pilling.user.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.dao.DataAccessException;
 
@@ -17,4 +18,5 @@ public interface UserService {
 	public int userUpdate(UserVO vo); //회원수정
 	UserVO userPassword(UserVO vo); //마이페이지비밀번호확인
 	String selectUserRank(UserVO vo); //유저랭크 가져오기
+	int updateUserPoint(Map<Integer, UserVO> pointMap); //유저 적립금 차감
 }

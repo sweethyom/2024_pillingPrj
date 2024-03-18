@@ -67,14 +67,14 @@ td {
 								</tr>
 							</thead>
 							<tbody>
-									<tr class="item-row">
-										<td width="100"><img src="${cart.filepath }" alt="제품 이미지"
-											width="80px" height="80px"></td>
-										<td width="500">${cart.productName}</td>
-										<td width="200">${cart.productPrice}</td>
-										<td width="200">${cart.cartProdcnt }</td>
-										<td><p class="prodprice">${cart.productPrice * cart.cartProdcnt }원</p></td>
-									</tr>
+								<tr class="item-row">
+									<td width="100"><img src="${cart.filepath }" alt="제품 이미지"
+										width="80px" height="80px"></td>
+									<td width="500">${cart.productName}</td>
+									<td width="200">${cart.productPrice}</td>
+									<td width="200">${cart.cartProdcnt }</td>
+									<td><p class="prodprice">${cart.productPrice * cart.cartProdcnt }원</p></td>
+								</tr>
 							</tbody>
 						</table>
 					</div>
@@ -180,16 +180,24 @@ td {
 					<h5>결제 정보</h5>
 					<table class="table table-bordered" id="dataTable">
 						<tr>
-							<td width="150" style="background-color: #f5f6f6;">총 상품가격</td>
+							<td width="150" style="background-color: #f5f6f6;">총 제품가격</td>
 							<td><a id="prodtotalprice"></a></td>
 						</tr>
 						<tr>
-							<td style="background-color: #f5f6f6;">멤버십 할인</td>
-							<td><a id="levelAccumrate">없음${levelAccumrate }</a></td>
+							<td style="background-color: #f5f6f6;">쿠폰 할인</td>
+							<td><select id="couponSelect">
+									<option values="0">쿠폰 선택 안함</option>
+									<c:forEach items="${couponList }" var="c">
+										<option value="${c.couponRate }">${c.couponName }(할인율:${c.couponRate}%/${c.couponPeriod}까지)</option>
+									</c:forEach>
+							</select></td>
 						</tr>
 						<tr>
 							<td style="background-color: #f5f6f6;">적립금</td>
-							<td><a id="userPoint">${user.userPoint }원</a></td>
+							<td><a id="userPoint">${user.userPoint }원</a><input
+								type="text" id="pointSelect"
+								oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
+								maxlength="7"></td>
 						</tr>
 						<tr>
 							<td style="background-color: #f5f6f6;">배송비</td>
@@ -197,7 +205,7 @@ td {
 						</tr>
 						<tr>
 							<td style="background-color: #f5f6f6;">총 결제금액</td>
-							<td><a id="resultTotalprice" name="resultTotalprice"></a></td>
+							<td><a id="orderActualPrice" name="orderActualPrice"></a></td>
 						</tr>
 						<tr>
 							<td style="background-color: #f5f6f6;">결제방법</td>
@@ -211,10 +219,12 @@ td {
 					value="${cart.productId }"> <input type="hidden"
 					id="orderstatusId" name="orderstatusId" value=1> <input
 					type="hidden" id="orderTotalprice" name="orderTotalprice">
-				<input type="hidden" id="orderCard" name="orderCard">
-				<input type="hidden" id="orderId" name="orderId" value="${newOrderId }">
-				<input type="hidden" id="orderdetailPrice" name="orderdetailPrice" value="${cart.productPrice }">
-				<input type="hidden" id="orderdetailCount" name="orderdetailCount" value="${cart.cartProdcnt}">
+				<input type="hidden" id="orderCard" name="orderCard"> <input
+					type="hidden" id="orderId" name="orderId" value="${newOrderId }">
+				<input type="hidden" id="orderdetailPrice" name="orderdetailPrice"
+					value="${cart.productPrice }"> <input type="hidden"
+					id="orderdetailCount" name="orderdetailCount"
+					value="${cart.cartProdcnt}">
 			</form>
 			<!-- 배송지 정보 Form END -->
 			<!-- 결제정보 END -->
@@ -234,9 +244,9 @@ td {
 	var IMP = window.IMP;	
 		// 결제요청
 		function requestPay(){
-			var resultTotalPrice = document.getElementById('resultTotalprice').textContent;
-			var resultTotalPriceArr = resultTotalPrice.split('원');
-			resultTotalPrice = parseInt(resultTotalPriceArr[0]);
+			var orderActualPrice = document.getElementById('orderActualPrice').textContent;
+			var orderActualPriceArr = orderActualPrice.split('원');
+			orderActualPrice = parseInt(orderActualPriceArr[0]);
 			
 			IMP.init('imp03000385');
 			IMP.request_pay({
@@ -244,7 +254,7 @@ td {
 				pay_method: "card",
 				merchant_uid: "${newOrderId }",   // 주문번호
 			    name: "${cart.productName }",
-			    amount: resultTotalPrice,
+			    amount: orderActualPrice,
 			    buyer_email: "${userNo}",
 			    buyer_name: "${userLastname}${userFirstname}",
 			    buyer_tel: "${user.userTel}",
@@ -263,12 +273,12 @@ td {
 		
 	</script>
 	<script>
-		// 총 상품가격 초기값 할당
+		// 총 제품가격 초기값 할당
 		window.onload = function(){
 			var totalPrice1 = orderTotalCal();
 			var totalPrice2 = totalPrice1 + 3000;
 			document.getElementById('prodtotalprice').textContent = totalPrice1 + "원";
-			document.getElementById('resultTotalprice').textContent = totalPrice2 + "원";
+			document.getElementById('orderActualPrice').textContent = totalPrice2 + "원";
 		};
 		
 		
@@ -404,10 +414,10 @@ td {
 			
 			//폼으로 보내기 전에 폼의 값을 채워준다.
 			var selectPayment = document.querySelector('input[name="payment"]:checked').value;
-			var resultTotalPrice = document.getElementById('resultTotalprice').textContent;
-			var resultTotalPriceArr = resultTotalPrice.split('원');
-			resultTotalPrice = resultTotalPriceArr[0];
-			document.getElementById('orderTotalprice').value = resultTotalPrice;
+			var orderActualPrice = document.getElementById('orderActualPrice').textContent;
+			var orderActualPriceArr = orderActualPrice.split('원');
+			orderActualPrice = orderActualPriceArr[0];
+			document.getElementById('orderTotalprice').value = orderActualPrice;
 			document.getElementById('orderCard').value = selectPayment;
 			
 			//입력 값 전송

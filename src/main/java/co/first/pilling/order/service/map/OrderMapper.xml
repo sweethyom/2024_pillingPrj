@@ -3,7 +3,65 @@
 <mapper
 	namespace="co.first.pilling.order.service.map.OrderMapper">
 	<select id="orderSelectList">
-		SELECT * FROM `order`
+		SELECT
+			o.order_id AS orderID,
+			o.user_no AS userNo,
+				o.product_id AS productId,
+			o.orderstatus_id AS orderstatusId,
+				o.order_totalprice AS orderTotalprice,
+			o.order_date AS orderDate,
+				p.filepath1 AS filepath,
+			p.product_name AS productName,
+			s2.shippingstatus_name AS status
+		FROM
+			`order` o
+		JOIN shipping s
+				ON
+			o.order_id = s.order_id
+		JOIN product p
+				ON
+			o.product_id
+				= p.product_id
+		JOIN shippingstatus s2 
+		ON
+			s.shippingstatus_id = s2.shippingstatus_id
+		WHERE
+			o.user_no = #{userNo}
+			AND s.shippingstatus_id IN
+				(1, 2)
+		ORDER BY
+				o.order_id DESC
+		LIMIT 3
+	</select>
+	<select id="purchasesSelectList">
+		SELECT
+			o.order_id AS orderID,
+			o.user_no AS userNo,
+				o.product_id AS productId,
+			o.orderstatus_id AS orderstatusId,
+				o.order_totalprice AS orderTotalprice,
+			o.order_date AS orderDate,
+				p.filepath1 AS filepath,
+			p.product_name AS productName,
+			s2.shippingstatus_name AS status
+		FROM
+			`order` o
+		JOIN shipping s
+				ON
+			o.order_id = s.order_id
+		JOIN product p
+				ON
+			o.product_id
+				= p.product_id
+		JOIN shippingstatus s2 
+		ON
+			s.shippingstatus_id = s2.shippingstatus_id
+		WHERE
+			o.user_no = #{userNo}
+			AND s.shippingstatus_id = 3
+		ORDER BY
+				o.order_id DESC
+		LIMIT 3
 	</select>
 	<select id="orderSelect">
 		SELECT * FROM `order` WHERE ORDER_ID = #{orderId}
@@ -15,10 +73,10 @@
 	<insert id="orderInsert">
 		INSERT INTO `order` (order_id, user_no, product_id,
 		orderstatus_id, order_totalprice,
-		order_refund, order_card)
+		order_refund, order_card, order_actual_price)
 		VALUES
 		(#{orderId},
-		#{userNo},#{productId},#{orderstatusId},#{orderTotalprice},#{orderRefund},#{orderCard})
+		#{userNo},#{productId},#{orderstatusId},#{orderTotalprice},#{orderRefund},#{orderCard},#{orderActualPrice})
 	</insert>
 	<delete id="orderDelete">
 		DELETE FROM `order` WHERE ORDER_ID = #{orderId}

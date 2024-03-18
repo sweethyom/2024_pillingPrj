@@ -4,7 +4,13 @@
 	namespace="co.first.pilling.order.service.map.OrderdetailMapper">
 	<insert id="orderdetailInsert">
 		INSERT INTO orderdetail (order_id, product_id,
-		orderdetail_price, orderdetail_count) VALUES (#{orderId}, #{productId},
+		orderdetail_price, orderdetail_count) VALUES (#{orderId},
+		#{productId},
 		#{orderdetailPrice}, #{orderdetailCount})
 	</insert>
+	<select id="selectOrderCount">
+		SELECT COUNT(*)
+		FROM orderdetail
+		WHERE order_id = #{orderId};
+	</select>
 </mapper>

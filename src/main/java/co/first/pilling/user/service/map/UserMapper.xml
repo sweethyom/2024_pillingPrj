@@ -47,4 +47,9 @@
 	ON u.level_id = l.level_id 
 	WHERE u.user_id = #{userId};
 </select>
+<update id="updateUserPoint">
+	UPDATE `user`
+	SET user_point = user_point - #{usePoint}
+	WHERE user_No = #{userNo}
+</update>
 </mapper>
