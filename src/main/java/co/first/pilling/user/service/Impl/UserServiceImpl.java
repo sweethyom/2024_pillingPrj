@@ -73,4 +73,10 @@ public class UserServiceImpl implements UserService {
 	public UserVO userPassword(UserVO vo) {
 		return map.userPassword(vo);
 	}
+
+	@Override
+	public String selectUserRank(UserVO vo) {
+		// TODO Auto-generated method stub
+		return map.selectUserRank(vo);
+	}
 }
