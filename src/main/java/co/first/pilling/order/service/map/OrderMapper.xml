@@ -19,8 +19,8 @@
    LEFT JOIN orderstatus os
 		  ON o.orderstatus_id = os.orderstatus_id
 	   WHERE o.user_no = #{userNo}
-	     AND o.order_id =#{orderId}
-	GROUP BY p.product_name
+	     AND NOT product_name IS NULL
+	GROUP BY o.order_id
 	</select>
 	<select id="createOrderNo">
 		SELECT COALESCE(MAX(order_id), 0) + 1 AS orderId FROM

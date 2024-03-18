@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -56,10 +57,11 @@ td {
 				<!-- 테이블 START -->
 				<div class="table-responsive">
 					<table class="table table-bordered mb-2" id="dataTable">
+						<c:forEach var="order" items="${orderlist }"></c:forEach>
 						<thead>
 							<tr>
 								<td>주문번호</td>
-								<td colspan="2">${order.orderId}</td>
+								<td rowspan=2>${order.orderId}</td>
 								<td>주문날짜</td>
 								<td> ${order.orderdate }
 							</tr>

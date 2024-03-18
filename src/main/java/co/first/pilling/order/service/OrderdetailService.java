@@ -3,8 +3,11 @@ package co.first.pilling.order.service;
 import java.util.List;
 
 public interface OrderdetailService {
-	List<OrderVO> orderdetailSelectList(OrderdetailVO vo); // 주문상세리스트
+	List<OrderVO> orderdetailSelectList();// 주문상세리스트
+	
+	List<OrderdetailVO> orderdetailList(); 
 
+	
 	OrderVO orderdetailSelect(OrderdetailVO vo); // 주문상세내역
 
 	List<OrderdetailVO> getOrderdetailListByOrderId(int orderId);
@@ -14,4 +17,6 @@ public interface OrderdetailService {
 	int orderdetailDelete(OrderdetailVO vo); // 주문취소
 
 	int orderdetailUpdate(OrderdetailVO vo); // 주문변경
+	
+	int detailTotalPrice(OrderdetailVO vo);//주문소계
 }

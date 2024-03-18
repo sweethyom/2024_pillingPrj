@@ -6,7 +6,9 @@ import co.first.pilling.order.service.OrderVO;
 import co.first.pilling.order.service.OrderdetailVO;
 
 public interface OrderdetailMapper {
-	List<OrderVO> orderdetailSelectList(OrderdetailVO vo); // 주문상세리스트
+	List<OrderVO> orderdetailSelectList();// 주문상세리스트
+	
+	List<OrderdetailVO> orderdetailList(); 
 
 	OrderVO orderdetailSelect(OrderdetailVO vo); // 주문상세내역
 	
@@ -17,4 +19,6 @@ public interface OrderdetailMapper {
 	int orderdetailDelete(OrderdetailVO vo); // 주문취소
 
 	int orderdetailUpdate(OrderdetailVO vo); // 주문변경
+	
+	int detailTotalPrice(OrderdetailVO vo); //주문소계
 }

@@ -7,9 +7,13 @@ import java.util.List;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import co.first.pilling.order.service.OrderService;
 import co.first.pilling.order.service.OrderVO;
@@ -42,17 +46,28 @@ public class ReviewController {
 		
 		//주문 목록 모델에 추가
 		model.addAttribute("orderList", orderList);
+
+		
+		//주문상세목록
+		List<OrderdetailVO> orderDetailList = ods.orderdetailList();
+		model.addAttribute("orderDetailList", orderDetailList);
 		
 		return "pilling/mypage/mypurchasedetail";
 	}
 	
+	
+	
 	@RequestMapping("orderdetail")
-	public String purchaseDetailList(int orderId, Model model) {
-		System.out.println("Received orderId: " + orderId); // 주문 ID 출력
+    @ResponseBody
+	public ResponseEntity<?> purchaseDetailList(OrderVO vo, Model model) {
+		int orderId = (int)vo.getOrderId();
 		List<OrderdetailVO> orderDetailList = ods.getOrderdetailListByOrderId(orderId);
 		
-		model.addAttribute("orderDetailList", orderDetailList);
+//		model.addAttribute("orderDetailList", orderDetailList);
 		
-		return "mypurchasedetail";
+//		return "mypurchasedetail";
+        return new ResponseEntity<>(orderDetailList, HttpStatus.OK);
 	}
+	
+	
 }
