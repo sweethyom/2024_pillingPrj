@@ -225,7 +225,7 @@
 					</div>
 					<div class="col-9">
 						<div class="d-flex justify-content-between">
-							<h5>James Boreego</h5>
+							<h5 id="writer">James Boreego</h5>
 						</div>
 						<small class="text-body d-block mb-3"><i
 							class="fas fa-calendar-alt me-1"></i> Dec 9, 2024</small>

@@ -16,10 +16,10 @@ public class OrderVO {
 	private LocalDate orderDate;
 	private String orderRefund;
 	private String orderCard;
-	private int orderActualPrice;
-	
-	private String filepath;
-	private String productName;
 	private int count;
+	private String productName;
+	private String orderstatusName;
+	private int orderActualPrice;	
+	private String filepath;
 	private String status;
 }

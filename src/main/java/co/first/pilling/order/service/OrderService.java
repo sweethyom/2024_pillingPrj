@@ -9,6 +9,8 @@ public interface OrderService {
 
 	OrderVO orderSelect(OrderVO vo); // 주문상세내역
 
+	List<OrderVO> getOrderListByUserNo(int userNo);//유저넘버로 주문내역 조회
+	
 	int orderInsert(OrderVO vo); // 주문완료
 
 	int orderDelete(OrderVO vo); // 주문취소

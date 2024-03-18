@@ -5,6 +5,13 @@ import java.util.List;
 import co.first.pilling.order.service.OrderVO;
 
 public interface OrderMapper {
+  
+	List<OrderVO> orderSelectList(); //주문내역
+  
+	OrderVO orderSelect(OrderVO vo); //주문상세내역
+  
+	List<OrderVO> getOrderListByUserNo(int userNo);
+  
 	List<OrderVO> orderSelectList(int userNo); // 주문내역(배송상태가 배송완료가 아닌 것)
 
 	List<OrderVO> purchasesSelectList(int userNo); // 구매내역(배송상태가 배송완료인 것)

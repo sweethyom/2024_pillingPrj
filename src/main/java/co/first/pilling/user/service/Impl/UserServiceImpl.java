@@ -42,6 +42,11 @@ public class UserServiceImpl implements UserService {
 	}
 	
 	@Override
+	public int getUserNoByUserId(String userId) {
+		return map.getUserNoByUserId(userId);
+	}
+	
+	@Override
 	public void userInsert(UserVO vo) throws DataAccessException{
 		map.userInsert(vo);
 	}
