@@ -60,6 +60,11 @@ td {
 							<c:forEach var="order" items="${orderList }">
 						<thead>
 							<tr>
+							<td width="100"><img
+									src="${order.filepath }" alt="제품 이미지"
+									width="100"></td>
+								<td colspan="2" width="500">제품명</td>
+								<td colspan="2" width="500">${order.productName }</td>
 								<td>주문번호</td>
 								<td rowspan=2>${order.orderId}</td>
 								<td>주문날짜</td>
@@ -68,13 +73,7 @@ td {
 						</thead>
 						<tbody>
 							<tr>
-								<td width="100"><img
-									src="${order.filepath }" alt="제품 이미지"
-									width="100"></td>
-								<td colspan="2" width="500">${order.productName }</td>
-								<td>${order.orderDate}</td>
-								
-								<td><input type="text" size="89%" placeholder="제목을 입력하세요."
+								<td><input type="text" size="89%" placeholder="리뷰를 입력하세요."
 							id="questionTitle" name="questionTitle" required="required"></td>
 							</tr>
 						</tbody>
