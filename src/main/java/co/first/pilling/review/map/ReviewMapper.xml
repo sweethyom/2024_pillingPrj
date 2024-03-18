@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="co.first.pilling.review.map.ReviewMapper">
+
+	<select id="reviewSelectList">
+		SELECT * FROM review
+	</select>
+
+	<select id="reviewSelect">
+		SELECT * FROM review WHERE USER_NO=#{userNo}
+	</select>
+	
+	<select id="reviewSearchId">
+		SELECT user_no FROM review WHERE USER_ID=#{userId}
+	</select>
+
+	<update id="reviewUpdate">
+		UPDATE review
+		SET RATING=#{rating},
+		REVIEW_TITLE=#{reviewTitle},
+		REVIEW_CONTENT=#{reviewContent},
+		REVIEW_DATE=now(),
+		REVIEW_IMAGE=#{reviewImg}
+		WHERE PRODUCT_ID = #{productId}
+	</update>
+
+	<insert id="reviewInsert">
+		INSERT INTO review(
+		REVIEW_ID,
+		PRODUCT_ID,
+		USER_NO,
+		RATING,
+		REVIEW_TITLE,
+		REVIEW_CONTENT,
+		REVIEW_DATE,
+		REVIEW_IMAGE)
+		VALUES(
+		(SELECT MAX(REVIEW_ID) FROM review GROUB BY REVIEW_ID),
+		#{product_id},
+		#{user_no},
+		#{rating},
+		#{review_title},
+		#{review_content},
+		now(),
+		#{review_image})
+		
+	</insert>
+	<delete id="reviewDelete">
+		DELETE
+		FROM review
+		WHERE REVIEW_ID =#{reviewId}
+	</delete>
+
+</mapper>
