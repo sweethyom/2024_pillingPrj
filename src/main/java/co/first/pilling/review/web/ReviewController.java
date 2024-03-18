@@ -13,8 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 
 import org.springframework.web.bind.annotation.RequestMapping;
-
-
+import org.springframework.web.bind.annotation.RequestParam;
 
 import co.first.pilling.order.service.OrderService;
 import co.first.pilling.order.service.OrderVO;
@@ -59,8 +58,8 @@ public class ReviewController {
 	}
 	
 	@RequestMapping("newreview")
-	public String reviewList(ReviewVO vo, OrderVO ov, Model model, HttpSession session, HttpServletRequest hsrequest) {
-		int orderId = Integer.parseInt(hsrequest.getParameter("orderId"));
+	public String reviewList(@RequestParam("orderId") int orderId, @RequestParam("productName") String productName, ReviewVO vo, OrderVO ov, Model model, HttpSession session, HttpServletRequest hsrequest) {
+		//int orderId = Integer.parseInt(hsrequest.getParameter("orderId"));
 		
 		//주문 목록 가져오기
 		OrderVO newVo= new OrderVO() ;
@@ -69,6 +68,7 @@ public class ReviewController {
 		
 		//주문 목록 모델에 추가
 		model.addAttribute("order", order);
+		model.addAttribute("productName", productName);
 		
 		//주문상세목록
 		List<OrderdetailVO> orderDetailList = ods.getOrderdetailListByOrderId(orderId);
