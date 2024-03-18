@@ -132,7 +132,6 @@ td {
 									</tr>
 									<c:set var="total" value="0"/>
 						 			<c:forEach var="orderDetail" items="${orderDetailList }">
-						 			<c:stet var
 						 			<c:if test="${orderDetail.orderId eq order.orderId}">
 									<tr>
 										<td>${orderDetail.orderId }</td>
