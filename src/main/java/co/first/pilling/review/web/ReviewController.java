@@ -60,15 +60,15 @@ public class ReviewController {
 	
 	@RequestMapping("newreview")
 	public String reviewList(ReviewVO vo, OrderVO ov, Model model, HttpSession session, HttpServletRequest hsrequest) {
-		int orderId = (int)session.getAttribute("orderId");
-		String userId=(String)session.getAttribute("userId");
-		int userNo = us.getUserNoByUserId(userId);
+		int orderId = Integer.parseInt(hsrequest.getParameter("orderId"));
 		
 		//주문 목록 가져오기
-		List<OrderVO> orderList = os.getOrderListByUserNo(userNo);
+		OrderVO newVo= new OrderVO() ;
+		newVo.setOrderId(orderId);
+		OrderVO order = os.orderSelect(newVo);
 		
 		//주문 목록 모델에 추가
-		model.addAttribute("orderList", orderList);
+		model.addAttribute("order", order);
 		
 		//주문상세목록
 		List<OrderdetailVO> orderDetailList = ods.getOrderdetailListByOrderId(orderId);

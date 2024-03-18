@@ -56,18 +56,18 @@ td {
 				<!-- 테이블 START -->
 				<div class="table-responsive">
 					<table class="table table-bordered mb-2" id="dataTable">
-							<c:forEach var="order" items="${orderList }">
+							<c:forEach var="detail" items="${orderDetailList }">
 						<thead>
 							<tr>
 							<td width="100"><img
-									src="${order.filepath }" alt="제품 이미지"
+									src="" alt="제품 이미지"
 									width="100"></td>
 								<td width="250">제품명</td>
-								<td width="250">${order.productName }</td>
+								<td width="250">${detail.productName}</td>
 								<td>주문번호</td>
 								<td rowspan=2>${order.orderId}</td>
 								<td>주문날짜</td>
-								<td> ${order.orderDate }
+								<td> ${order.orderDate}
 							</tr>
 						</thead>
 						<tbody>
