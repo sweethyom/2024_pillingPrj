@@ -57,7 +57,7 @@ prefix="tiles"%>
               </g>
             </svg>
           </span>
-          <span class="app-brand-text demo menu-text fw-bolder ms-2">Pi1ling</span>
+          <span class="app-brand-text demo menu-text fw-bolder ms-2">Pilling</span>
         </a>
 
         <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
