@@ -2,12 +2,11 @@ package co.first.pilling.admin.controller;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
 
 import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -36,12 +35,21 @@ public class AdminController {
 	
 	// 관리자 페이지로 이동
 	@GetMapping("admin")
-	public String admin() {
-		return "admin/adminhome";
+	public String admin(HttpServletRequest session) {
+		// 사용자 권한 확인 로직
+		String author = (String) session.getSession().getAttribute("author");
+		
+		// 접근권한 로직
+		if(!"ADMIN".equals(author)) {
+			return "redirect:/home";
+		} else {
+			return "admin/adminhome";
+		}
 	}
 	
 	@RequestMapping("adminproductlist")
 	public ModelAndView adminProductList(ModelAndView mav) {
+		
 		List<ProductManagementVO> productList = pms.productAllList();
 		
 		// 모델과 뷰에 값 실어주기
@@ -53,8 +61,17 @@ public class AdminController {
 	
 	// 상품등록 페이지로 이동
 	@GetMapping("productaddpage")
-	public String productAddPage() {
-		return "admin/productmanagement/productadd";
+	public String productAddPage(HttpServletRequest session) {
+		// 사용자 권한 확인 로직
+		String author = (String) session.getSession().getAttribute("author");
+		
+		// 접근권한 로직
+		if(!"ADMIN".equals(author)) {
+			return "redirect:/home";
+		} else {
+			return "admin/productmanagement/productadd";
+		}
+		
 	}
 
 	// 상품등록 알고리즘
@@ -98,6 +115,8 @@ public class AdminController {
 	// 제품 수정 폼으로 가기
 	@RequestMapping("productupdatepage")
 	public String productUpdatePage(Model model, @RequestParam("productId") int productId) {
+		
+		
 		ProductManagementVO productlist = pms.getProductById(productId);
 		List<Integer> keywordIds = pms.productKeywordMapping(productId);
 		

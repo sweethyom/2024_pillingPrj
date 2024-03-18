@@ -2,16 +2,19 @@
 /* !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!주의!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!  */
 /* 복사해서 본인거에 쓰세용!!  */
 
+@font-face {
+  font-family: 'Pretendard-Regular';
+  src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+}
+
 li {
   list-style: none;
 }
 
 .filterItem {
   padding-left: 0px;
-}
-
-.bg-pillgreen {
-  background-color: #3faf08 !important;
 }
 
 .name-item {
@@ -21,12 +24,188 @@ li {
 .keywordName {
   display: inline-block;
   padding: 0px 10px;
-  border-radius: 21px;
-  background: yellow;
+  border-radius: 15px;
   color: black;
-  font-weight: 400;
+  border: 1px solid #d6d9e0;
+  font-weight: 500;
   margin: 2px;
 }
+
+/* main으로 사용 할 것들 START */
+.bg-maincolor {
+  background-color: #0ae4b0 !important;
+}
+
+.bg-subcolor {
+  background-color: #75eba7 !important;
+}
+
+.text-maincolor {
+  color: #ffffff !important;
+}
+
+.text-mintcolor {
+  color: #0ae4b0 !important;
+}
+
+.text-subcolor {
+  color: #75eba7 !important;
+}
+
+.nav-text-color {
+  color: #9e9e9e !important;
+}
+
+.nav-text-color:hover {
+  color: #0ae4b0 !important;
+}
+
+.navbar-bottom-border {
+  border-bottom: solid;
+  border-color: #e5e7eb;
+  border-width: 0.1rem;
+}
+
+.footer-top-border {
+  border-top: solid;
+  border-color: #e5e7eb;
+  border-width: 0.1rem;
+  margin-bottom: 3rem;
+}
+
+.footer-row {
+  --bs-gutter-x: 1.5rem;
+  --bs-gutter-y: 0;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.bg-pillgreen {
+  background-color: #3faf08 !important;
+}
+
+.text-size01 {
+  font-size: 1.05rem !important;
+  font-weight: 500 !important;
+}
+
+.text-size02 {
+  font-size: 1.1rem !important;
+  font-weight: 600;
+}
+
+.login-btn-size {
+  font-size: 1.2rem !important;
+  font-weight: 600;
+}
+
+.text-size03 {
+  font-size: 1.3rem !important;
+  font-weight: 600;
+}
+
+.survey-question-text {
+  font-size: 1.6rem !important;
+  font-weight: 700;
+  margin-bottom: 2rem;
+}
+
+.font-custom {
+  font-family: 'Pretendard-Regular', sans-serif !important ;
+  font-size: 3rem;
+}
+
+.font-family-pretendard {
+  font-family: 'Pretendard-Regular', sans-serif !important ;
+}
+
+.banner-background {
+  background-image: url('resources/pilling/img/bannerpoint.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 20px;
+  margin-bottom: 20px;
+  color: #ffffff;
+}
+
+.feature-bg {
+  background-color: #75eba7 !important; /* Adjust the color to match your design */
+}
+.feature-card {
+  background-color: #fff;
+  color: #333;
+  border: none;
+}
+.feature-icon {
+  height: 100px;
+  width: auto; /* Placeholder for actual image height */
+}
+.feature-card h5 {
+  font-weight: bold;
+}
+.feature-card p {
+  font-size: 0.9rem;
+}
+
+.footer-card {
+  border-radius: 1rem; /* Rounded corners for the cards */
+  padding: 2rem; /* Padding inside the cards */
+  height: 250px; /* Fixed height for the cards */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.feedback-card {
+  background-color: #f8f9fa; /* Bright yellow color */
+}
+
+.service-card {
+  background-color: #f8f9fa; /* Light grey background */
+}
+
+.recruitment-card {
+  background-color: #f8f9fa; /* Light grey background */
+}
+
+.card-title {
+  font-size: 1.5rem; /* Large font size for the titles */
+}
+
+.card-text {
+  font-size: 1rem; /* Standard font size for the content */
+  margin-bottom: 1rem; /* Space below the text */
+}
+
+.card-button {
+  border: none; /* No border for the buttons */
+  background-color: #ffffff; /* White background for the buttons */
+  color: #000000; /* Black text for the buttons */
+  padding: 0.5rem 1rem; /* Padding inside the buttons */
+  text-align: center; /* Center the text inside the buttons */
+  border-radius: 0.5rem; /* Slightly rounded corners for the buttons */
+  text-decoration: none; /* No underline on the buttons */
+}
+
+/* Ensure the layout doesn't break on small screens */
+@media (max-width: 576px) {
+  .footer-card {
+    height: auto; /* Let the cards adjust in height on small screens */
+  }
+}
+
+.btn-outline-dark-hyunwoo {
+  color: #111;
+  border-color: #111;
+}
+.btn-outline-dark-hyunwoo:hover {
+  color: #fff;
+  background-color: #0ae4b0;
+  border-color: #0ae4b0;
+}
+
+/* main으로 사용 할 것들 END */
 
 /* p 태그 상하좌우 마진을 없애는 클래스 CSS  */
 .ptag-margin {
@@ -36,9 +215,10 @@ li {
 /* productdetailpage에서 사용하는 것들 START */
 
 .sub-product-name {
-  color: #7f848b !important;
+  color: #000 !important;
   margin: 0.5rem 0px 1.625rem;
-  font-size: 2.25rem;
+  font-size: 3rem;
+  font-weight: 700;
 }
 
 .bottom-padding {
@@ -155,6 +335,8 @@ li {
 
 .productpurchase-pagination {
   margin-top: 3rem;
+  font-size: 1.2rem !important;
+  font-weight: 500 !important;
 }
 
 .productAddBtn {
@@ -170,6 +352,13 @@ li {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 100vh;
+}
+
+.survey-text-red {
+  font-size: 1.2rem !important;
+  font-weight: 600;
+  color: red;
 }
 
 .survey-question-container {
@@ -183,7 +372,6 @@ li {
   display: flex;
   flex-direction: column;
   -webkit-box-align: center;
-  align-items: center;
   margin: 1rem 0px;
   transition: border-color 0.8s ease 0s;
   padding: 2rem;
@@ -259,6 +447,7 @@ li {
 
 .nextprve-btn-container {
   justify-content: space-evenly;
+  margin-top: 2rem !important;
 }
 
 .next-btn {
@@ -274,5 +463,9 @@ li {
 .submit-btn {
   width: 30vh;
   font-size: 1.25rem;
+}
+
+.pagination-color {
+  color: black;
 }
 /* Hyunwoo Style END */

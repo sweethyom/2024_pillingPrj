@@ -19,4 +19,7 @@ public class OrderVO {
 	private int count;
 	private String productName;
 	private String orderstatusName;
+	private int orderActualPrice;	
+	private String filepath;
+	private String status;
 }

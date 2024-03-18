@@ -1,22 +1,29 @@
 package co.first.pilling.order.web;
 
+import java.util.HashMap;
 import java.util.List;
-
-import javax.servlet.http.HttpSession;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import co.first.pilling.cart.service.CartService;
 import co.first.pilling.cart.service.CartVO;
+import co.first.pilling.coupon.service.CouponService;
+import co.first.pilling.coupon.service.CouponVO;
 import co.first.pilling.order.service.OrderService;
 import co.first.pilling.order.service.OrderVO;
 import co.first.pilling.order.service.OrderdetailService;
 import co.first.pilling.order.service.OrderdetailVO;
+import co.first.pilling.productdetail.service.ProductDetailService;
+import co.first.pilling.productdetail.service.ProductDetailVO;
 import co.first.pilling.shipping.service.ShippingService;
 import co.first.pilling.shipping.service.ShippingVO;
+import co.first.pilling.user.service.UserService;
+import co.first.pilling.user.service.UserVO;
 
 @Controller
 public class OrderController {
@@ -32,26 +39,23 @@ public class OrderController {
 	@Autowired
 	private CartService cs;
 
+	@Autowired
+	private ProductDetailService pds;
+
+	@Autowired
+	private UserService us;
+	
+	@Autowired
+	private CouponService cps;
+
+	// 장바구니 물품 결제완료 후 order, shipping, orderdetail 테이블에 데이터 삽입
 	@RequestMapping("makepayment")
-	public String makepayment(OrderVO ov, ShippingVO sv, CartVO cv, HttpSession session) {
-		int orderId = os.createOrderNo(ov);
-		ov.setOrderId(orderId);
-		sv.setOrderId(orderId);
+	public String makepayment(@RequestParam("usePoint") int usePoint, OrderVO ov, ShippingVO sv, CartVO cv, OrderdetailVO odv, CouponVO cpv) {
 		os.orderInsert(ov);
 		ss.shippingInsert(sv);
 		
+		int orderId = ov.getOrderId();
 		List<CartVO> cartList = cs.cartSelectList(cv);
-		session.setAttribute("cartList", cartList);
-		session.setAttribute("orderId", orderId);
-		
-		return "redirect:/orderresult";
-	}
-
-	@RequestMapping("orderresult")
-	public String orderresult(OrderdetailVO odv, HttpSession session) {
-		List<CartVO> cartList = (List<CartVO>)session.getAttribute("cartList");
-		int orderId = (int)session.getAttribute("orderId");
-		
 		// 각 상품에 대한 주문 상세 정보를 orderdetail 테이블에 삽입
 		for (CartVO cart : cartList) {
 			odv.setOrderId(orderId);
@@ -64,9 +68,66 @@ public class OrderController {
 		// 카트 전체 삭제
 		CartVO vo = cartList.get(0);
 		cs.cartDeleteAll(vo);
-		session.removeAttribute("cartList");
+		
+		// 사용한 쿠폰 삭제
+		System.out.println(cpv.getCouponId());
+		cps.couponDelete(cpv);
+		
+		// 사용한 적립금 차감
+		
+		UserVO uv = new UserVO();
+		uv.setUserNo(vo.getUserNo());
+	
+		System.out.println(usePoint);
+		System.out.println(uv.getUserNo());
+		
+		Map<Integer, UserVO> map = new HashMap<Integer, UserVO>();
+		map.put(usePoint, uv);
+		
+		us.updateUserPoint(map);
 
+		return "redirect:/orderresult";
+	}
+
+	// 제품 바로구매->결제완료 후 order, shipping, orderdetail 테이블에 데이터 삽입
+	@RequestMapping("makepaymentdirect")
+	public String makepaymentdirect(OrderVO ov, OrderdetailVO odv, ShippingVO sv) {
+		os.orderInsert(ov);
+		ods.orderdetailInsert(odv);
+		ss.shippingInsert(sv);
+
+		return "redirect:/orderresult";
+	}
+
+	// 결제 완료 페이지로 이동
+	@RequestMapping("orderresult")
+	public String orderresult() {
 		return "pilling/product/orderresult";
 	}
 
+	// 제품 페이지에서 바로주문
+	@RequestMapping("orderdirect")
+	public String orderdirect(UserVO uv, CartVO cv, ProductDetailVO pv, Model model) {
+		ProductDetailVO product = new ProductDetailVO();
+		product = pds.productDetail(pv.getProductId());
+
+		CartVO cart = new CartVO();
+		cart.setUserNo(uv.getUserNo());
+		cart.setProductId(product.getProductId());
+		cart.setProductName(product.getProductName());
+		cart.setProductPrice(product.getProductPrice());
+		cart.setCartProdcnt(cv.getCartProdcnt());
+		cart.setFilepath(product.getFilepath1());
+
+		int orderId = os.createOrderNo();
+		
+		//가지고 있는 쿠폰 정보를 보내준다.
+		List<CouponVO> couponList = cps.couponSelectList(uv.getUserNo());
+
+		model.addAttribute("cart", cart);
+		model.addAttribute("user", us.userSelect(uv));
+		model.addAttribute("newOrderId", orderId);
+		model.addAttribute("couponList", couponList);
+		return "pilling/product/orderdirect";
+	}
 }

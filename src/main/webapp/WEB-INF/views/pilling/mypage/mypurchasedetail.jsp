@@ -74,13 +74,13 @@ td {
 }
 </style>
 
-	<div class="container-fluid myinfopage-header py-5">
-		<div class="container py-5">
-			<h1 class="display-2 text-black mb-4 animated slideInDown">my
-				page</h1>
-			<nav aria-label="breadcrumb"></nav>
+    <!-- Page Header Start -->
+    <div class="container-fluid py-3">
+		<div class="container py-3">
+		  <h1 class="display-2 text-dark mb-4">구매내역</h1>
 		</div>
-	</div>
+	  </div>
+	  <!-- Page Header End -->
 
 	<div class="container"></div>
 	<div class="row">
@@ -108,34 +108,43 @@ td {
 								</tr>
 							</thead>
 							<tbody>
-								<tr class="main">
+								<tr class="main" data-order-id="${order.orderId }">
 									<td width="100"><img
-										src="resources/pilling/img/mypage/product.png" alt="제품 이미지"
+										src="${order.filepath }" alt="제품 이미지"
 										width="100"></td>
-									<td width="400" class="productname" onclick="show()">${order.productName } 외 ${order.count }건</td>
+									<td width="400" class="productname" data-order-id="${order.orderId }">${order.productName } 외 ${order.count }건</td>
 									<td width="200">${order.orderTotalprice }</td>
 									<td width="200">${order.orderstatusName }</td>
 									<td>${order.orderDate }</td>
-									<td><button type="button" id="reviewbtn" class="btn mb-4" onclick="location.href='newreview'" onmouseover="mouseover()" onmouseout="mouseout()">리뷰작성</button></td>
+									<td><button type="button" id="reviewbtn" class="btn mb-4" onclick="location.href='newreview?orderId=${order.orderId}'" onmouseover="mouseover()" onmouseout="mouseout()">리뷰작성</button></td>
 								</tr>
 								
 								<!-- 구매 상세내역 들어갈 것 -->
-								<c:forEach var="orderDetail" items="${orderDetailList }">
-								<tbody>
-								<tr class="order-detail-list" style="display: none;">
-									<th width="100">번호</th>
-									<th width="400">제품명</th>
-									<th width="200">가격</th>
-									<th width="200">구매수량</th>
-									<th width="200">소계</th>
-									<td></td>
-									<td>${orderDetail.orderId }</td>
-									<td>${orderDetail.productName }</td>
-									<td>${orderDetail.orderdetailPrice }</td>
-									<td>${orderDetail.orderdetailCount }</td>
+								<tr class="order-detail-list" id="detail${order.orderId}" style="display: none;">
+								<td colspan="6">
+						 			<table class="table table-bordered">
+									<tr>
+										<td >번호</td>
+										<td >제품명</td>
+										<td >가격</td>
+										<td >구매수량</td>
+										<td >소계</td>
 									</tr>
-								</tbody>
-								</c:forEach>
+						 			<c:forEach var="orderDetail" items="${orderDetailList }">
+						 			<c:if test="${orderDetail.orderId eq order.orderId}">
+									<tr>
+										<td>${orderDetail.orderId }</td>
+										<td>${orderDetail.productName }</td>
+										<td>${orderDetail.orderdetailPrice }원</td>
+										<td>${orderDetail.orderdetailCount }개</td>
+										<td>${orderDetail.detailTotalPrice }원</td>
+									</tr>
+						 			</c:if>
+									</c:forEach> 
+									</table>
+								</td>
+								</tr>
+								
 							</tbody>
 							</c:forEach>
 						</table>
@@ -171,39 +180,26 @@ td {
 		
 		 
 		document.addEventListener("DOMContentLoaded", function() {
-		    var orderlistcount = document.getElementsByClassName('order-detail-list');
-		    for(var i = 0; i < orderlistcount.length; i++) {
-	
-		        var orderdetail = orderlistcount[i-1];
-		        if (window.getComputedStyle(orderdetail, null).getPropertyValue('display') === 'none') {
-		            orderdetail.style.display = 'block';
-		        } else {
-		            orderdetail.style.display = 'none';
-		        }
-		    }
-		    
 		    // show 함수를 호출하는 이벤트 핸들러 추가
 		    var productNames = document.getElementsByClassName('productname');
 		    for(var j = 0; j < productNames.length; j++) {
-		        productNames[j].addEventListener('click', show);
-		    }
+		        productNames[j].addEventListener('click', function(event){
+		        		show(this)
+		      		})
+		    
+			}
 		});
 		
-		function show() {
-		    // 클릭된 요소의 부모 요소에서 order-detail-list 클래스를 가진 요소를 찾습니다.
-		    var orderDetail = event.target.parentElement.querySelector('.order-detail-list');
-		    
-		    // orderDetail 요소가 존재하고 표시 상태를 확인합니다.
-		    if (orderDetail) {
-		        var displayStyle = window.getComputedStyle(orderDetail, null).getPropertyValue('display');
-		        // 표시 상태에 따라 토글 기능을 수행합니다.
-		        if (displayStyle === 'none') {
-		            orderDetail.style.display = 'block';
-		        } else {
-		            orderDetail.style.display = 'none';
-		        }
-		    }
-		}
+	            
+		function show(element) {
+			var orderId = element.getAttribute('data-order-id');			
+			var ordertoggle = document.getElementById("detail"+orderId);	
+			if (ordertoggle.style.display === 'none'){
+				ordertoggle.style.display = 'contents'
+			}
+
+		} 
+		
 
 		
 		

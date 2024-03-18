@@ -18,9 +18,9 @@ public class OrderServiceImpl implements OrderService {
 	private OrderMapper map;
 	
 	@Override
-	public List<OrderVO> orderSelectList() {
+	public List<OrderVO> orderSelectList(int userNo) {
 		// TODO Auto-generated method stub
-		return map.orderSelectList();
+		return map.orderSelectList(userNo);
 	}
 
 	@Override
@@ -52,9 +52,15 @@ public class OrderServiceImpl implements OrderService {
 	}
 
 	@Override
-	public int createOrderNo(OrderVO vo) {
+	public int createOrderNo() {
 		// TODO Auto-generated method stub
-		return map.createOrderNo(vo);
+		return map.createOrderNo();
+	}
+
+	@Override
+	public List<OrderVO> purchasesSelectList(int userNo) {
+		// TODO Auto-generated method stub
+		return map.purchasesSelectList(userNo);
 	}
 
 }

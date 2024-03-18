@@ -18,11 +18,17 @@ public class OrderdetailServiceImpl implements OrderdetailService {
 	private OrderdetailMapper map;
 
 	@Override
-	public List<OrderVO> orderdetailSelectList(OrderdetailVO vo) {
+	public List<OrderVO> orderdetailSelectList() {
 		// TODO Auto-generated method stub
-		return map.orderdetailSelectList(vo);
+		return map.orderdetailSelectList();
 	}
 
+	@Override
+	public List<OrderdetailVO> orderdetailList() {
+		// TODO Auto-generated method stub
+		return map.orderdetailList();
+	}
+	
 	@Override
 	public OrderVO orderdetailSelect(OrderdetailVO vo) {
 		// TODO Auto-generated method stub
@@ -50,5 +56,15 @@ public class OrderdetailServiceImpl implements OrderdetailService {
 		// TODO Auto-generated method stub
 		return map.orderdetailUpdate(vo);
 	}
+
+	@Override
+	public int selectOrderCount(int orderId) {
+		// TODO Auto-generated method stub
+		return map.selectOrderCount(orderId);
+	}
 	
+	@Override
+	public int detailTotalPrice(OrderdetailVO vo) {
+		return map.detailTotalPrice(vo);
+	}
 }

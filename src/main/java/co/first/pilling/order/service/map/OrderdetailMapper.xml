@@ -2,26 +2,51 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper
 	namespace="co.first.pilling.order.service.map.OrderdetailMapper">
-	<select id="orderdetailSelectList">
-		SELECT * FROM orderdetail
+	<select id="orderdetailList">
+			SELECT orderdetail_id AS orderdetailId, od.order_id AS orderId, 
+			   product_name AS productName, 
+			   orderdetail_price AS orderdetailPrice, 
+			   orderdetail_count As orderdetailCount,
+			   orderdetail_Price * orderdetail_Count AS detailTotalPrice
+		FROM orderdetail od
+		LEFT JOIN `order` o
+		  ON o.order_id = od.order_id
+		LEFT JOIN product p
+		  ON od.product_id = p.product_id
+		GROUP BY od.product_id
 	</select>
 	<select id="orderdetailSelect">
 		SELECT * FROM orderdetail WHERE ORDER_ID = #{orderId}
 	</select>
-	<select id="getOrderdetailListByOrderId">
-		SELECT od.order_id AS orderId, product_name AS productName, 
+	<select id="getOrderdetailListByOrderId">	
+			SELECT orderdetail_id AS orderdetailId, od.order_id AS orderId, 
+			   product_name AS productName, 
 			   orderdetail_price AS orderdetailPrice, 
-			   orderdetail_count As orderdetailCount
+			   orderdetail_count As orderdetailCount,
+			   orderdetail_Price * orderdetail_Count AS detailTotalPrice
 		FROM orderdetail od
-		JOIN order o
-		  ON o.order_id = od.order_id
-		JOIN product p
+		LEFT JOIN `order` o
+		ON o.order_id = od.order_id
+		LEFT JOIN product p
 		  ON od.product_id = p.product_id
-		WHERE od.order_id = #{orderId}
+	   WHERE od.order_id = #{orderId}
+		GROUP BY od.product_id
 	</select>
 	<insert id="orderdetailInsert">
 		INSERT INTO orderdetail (order_id, product_id,
-		orderdetail_price, orderdetail_count) VALUES (#{orderId}, #{productId},
+		orderdetail_price, orderdetail_count) VALUES (#{orderId},
+		#{productId},
 		#{orderdetailPrice}, #{orderdetailCount})
 	</insert>
+
+	<select id="detailTotalPrice">
+	SELECT orderdetail_count*orderdetail_price AS detailTotalPrice
+	  FROM orderdetail od
+     WHERE order_id = #{orderId}
+   </select>
+	<select id="selectOrderCount">
+		SELECT COUNT(*)
+		FROM orderdetail
+		WHERE order_id = #{orderId};
+  </select>
 </mapper>

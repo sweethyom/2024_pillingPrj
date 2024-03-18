@@ -11,10 +11,9 @@
   </head>
   <body>
     <!-- Page Header Start -->
-    <div class="container-fluid productpurchase-header py-5">
-      <div class="container py-5">
-        <h1 class="display-2 text-dark mb-4 animated slideInDown">제품구매</h1>
-        <nav aria-label="breadcrumb">검색바 필요하면 여기다 넣으면 됩니다.</nav>
+    <div class="container-fluid py-3">
+      <div class="container py-3">
+        <h1 class="display-2 text-dark mb-4">제품 구매</h1>
       </div>
     </div>
     <!-- Page Header End -->
@@ -38,7 +37,7 @@
                             <li class="filterItem">
                               <div class="filterName">
                                 <input type="checkbox" name="effectId" id="keyword${keyword.keywordId}" value="${keyword.keywordId}" />
-                                <label for="keyword${keyword.keywordId}" class="keywordName">&nbsp;${keyword.keywordName}</label>
+                                <label for="keyword${keyword.keywordId}" class="text-size01">&nbsp; &#035;${keyword.keywordName}</label>
                               </div>
                             </li>
                           </c:if>
@@ -52,7 +51,7 @@
                             <li class="filterItem">
                               <div class="filterName">
                                 <input type="checkbox" name="effectId" id="keyword${keyword.keywordId}" value="${keyword.keywordId}" />
-                                <label for="keyword${keyword.keywordId}" class="keywordName">&nbsp;${keyword.keywordName}</label>
+                                <label for="keyword${keyword.keywordId}" class="text-size01">&nbsp; &#035;${keyword.keywordName}</label>
                               </div>
                             </li>
                           </c:if>
@@ -65,7 +64,7 @@
               <!-- 키워드로 검색 END -->
               <!-- 제품 나열 -->
               <div class="col-lg-9">
-                <div id="productsContainer" class="row g-4 justify-content-center">
+                <div id="productsContainer" class="row g-4">
                   <!-- 제품 1개 카드 -->
                   <c:forEach var="product" items="${productlist }">
                     <div class="col-md-6 col-lg-6 col-xl-4">
@@ -77,11 +76,6 @@
                           <div class="p-4 border border-secondary border-top-0 rounded-bottom">
                             <h4>${product.productName }</h4>
                             <p class="text-dark">${product.productDescription1 }</p>
-                            <div>
-                              <c:forEach var="keyword" items="${product.keywordName}">
-                                <a class="keywordName">${keyword}</a>
-                              </c:forEach>
-                            </div>
                             <br />
                             <div class="d-flex justify-content-between flex-lg-wrap">
                               <p class="text-dark fs-5 fw-bold mb-0">
@@ -98,17 +92,36 @@
                   <!-- Pagination START -->
                   <div class="container productpurchase-pagination">
                     <ul class="pagination justify-content-center">
-                      <li class="page-item"><a class="page-link" href="#">이전</a></li>
-                      <!-- 첫페이지에선 없음/시작인덱스 -10 -->
-                      <li class="page-item"><a class="page-link" href="#"> 1</a></li>
-                      <li class="page-item"><a class="page-link" href="#"> 2</a></li>
-                      <li class="page-item"><a class="page-link" href="#"> 3</a></li>
-                      <li class="page-item"><a class="page-link" href="#"> 4</a></li>
-                      <li class="page-item"><a class="page-link" href="#"> 5</a></li>
-                      <li class="page-item"><a class="page-link" href="#">다음</a></li>
-                      <!-- 마지막인덱스 +10 /마지막 인덱스에서는 없음 -->
+                      <c:if test="${pageNum > 1}">
+                        <li class="page-item">
+                          <a
+                            class="page-link"
+                            href="?pageNum=${pageNum - 1}${searchInput != null ? '&searchInput=' + searchInput : ''}"
+                            style="color: black"
+                            >이전</a
+                          >
+                        </li>
+                      </c:if>
+                      <c:forEach begin="1" end="${totalPages}" var="i">
+                        <li class="page-item ${pageNum == i ? 'active' : ''}">
+                          <a class="page-link" href="?pageNum=${i}${searchInput != null ? '&searchInput=' + searchInput : ''}" style="color: black"
+                            >${i}</a
+                          >
+                        </li>
+                      </c:forEach>
+                      <c:if test="${pageNum < totalPages}">
+                        <li class="page-item">
+                          <a
+                            class="page-link"
+                            href="?pageNum=${pageNum + 1}${searchInput != null ? '&searchInput=' + searchInput : ''}"
+                            style="color: black"
+                            >다음</a
+                          >
+                        </li>
+                      </c:if>
                     </ul>
                   </div>
+
                   <!-- Pagination END  -->
                 </div>
               </div>
@@ -185,9 +198,6 @@
             '<p>' +
             product.productDescription1 +
             '</p>' +
-            '<div>' +
-            keywordsHtml +
-            '</div>' +
             '<div class="d-flex justify-content-between flex-lg-wrap">' +
             '<p class="text-dark fs-5 fw-bold mb-0">' +
             formatNumber(product.productPrice) +

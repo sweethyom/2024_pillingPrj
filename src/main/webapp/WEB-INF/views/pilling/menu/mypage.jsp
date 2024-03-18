@@ -1,12 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.10/dist/sweetalert2.min.css">
 </head>
 <body>
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 	<script src="https://kit.fontawesome.com/69f92e09cc.js"
 		crossorigin="anonymous"></script>
 	<!-- Section: Design Block -->
@@ -66,12 +70,11 @@ td {
 }
 </style>
 
-		<div class="container-fluid page-header py-5">
-			<div class="container text-center py-5">
-				<h1 class="display-2 text-white mb-4 animated slideInDown">my
-					page</h1>
-			</div>
-		</div>
+<div class="container-fluid py-3">
+	<div class="container py-3">
+	  <h1 class="display-2 text-dark mb-4 animated slideInDown">My Page</h1>
+	</div>
+  </div>
 
 		<div class="container"></div>
 
@@ -86,13 +89,13 @@ td {
 								<div class="div-left">
 									<div>
 										<div
-											class="text-xs font-weight-bold text-success mb-1 div-center">RANK</div>
+											class="text-xs font-weight-bold text-mintcolor mb-1 div-center">RANK</div>
 										<div
-											class="h1 mb-0 font-weight-bold text-gray-800 div-center div-center-l mb-3">VIP</div>
+											class="h1 mb-0 font-weight-bold text-gray-800 div-center div-center-l mb-3">${userRank }</div>
 										<div
 											class="text-xs font-weight-bold text-uppercase mb-1 div-center">
 											<hr>
-											${userFirstname }님의 등급
+											<a href="#" style="color:#555555;" onclick="addCoupon('${userNo}', '${userRank }')">${userRank } 등급 쿠폰 받기</a>
 										</div>
 									</div>
 								</div>
@@ -108,12 +111,12 @@ td {
 							<div class="row no-gutters align-items-center">
 								<div class="col mr-2">
 									<div
-										class="text-xs font-weight-bold text-success text-uppercase mb-1 div-center">COUPON</div>
-									<div class="h1 mb-0 font-weight-bold text-gray-800 div-center">0장</div>
+										class="text-xs font-weight-bold text-mintcolor text-uppercase mb-1 div-center">COUPON</div>
+									<div class="h1 mb-0 font-weight-bold text-gray-800 div-center" id="coupon-count">${couponCount }장</div>
 									<div
 										class="text-xs font-weight-bold text-uppercase mb-1 div-center">
 										<hr>
-										보유 쿠폰
+										<a href="#" style="color:#555555;" onclick="viewCoupons('${userNo}')">보유 쿠폰 확인</a>
 									</div>
 								</div>
 							</div>
@@ -128,12 +131,12 @@ td {
 							<div class="row no-gutters align-items-center">
 								<div class="col mr-2">
 									<div
-										class="text-xs font-weight-bold text-success text-uppercase mb-1 div-center">POINT
+										class="text-xs font-weight-bold text-mintcolor text-uppercase mb-1 div-center">POINT
 									</div>
 									<div class="row no-gutters align-items-center">
 										<div>
 											<div
-												class="h1 mb-0 mr-3 font-weight-bold text-gray-800 div-center">0원</div>
+												class="h1 mb-0 mr-3 font-weight-bold text-gray-800 div-center">${user.userPoint }원</div>
 										</div>
 									</div>
 								</div>
@@ -166,8 +169,7 @@ td {
 								</tr>
 								<tr height="50">
 									<td class="td-center"><i class="fa-solid fa-cart-shopping"></i>
-										&nbsp; <label type="button" class="h5"
-										onclick="moveCart()">장바구니</label></td>
+										&nbsp; <label type="button" class="h5" onclick="moveCart()">장바구니</label></td>
 									<td class="td-center"><i
 										class="fa-regular fa-circle-question h5"></i> &nbsp; <label
 										type="button" class="h5" onclick="location.href='myinquiry'">문의내역</label></td>
@@ -183,7 +185,7 @@ td {
 				<h2>나의 활동</h2>
 				<!-- 주문 내역 -->
 				<div class="container-fluid">
-					<!-- DataTales Example -->
+					<!-- 배송상태가 출고중, 배송중인 제품들을 최대 3개까지 보여준다. -->
 					<div class="card mb-4">
 						<div class="card-header py-3">
 							<div class="div-left">
@@ -191,7 +193,7 @@ td {
 							</div>
 							<div class="div-right">
 								<h6 class="text-muted m-0">
-									<a type="button" onclick="location.href='myorderdetail'">>>상세보기</a>
+									<a type="button" onclick="location.href='myorderdetail'">>>더보기</a>
 								</h6>
 							</div>
 						</div>
@@ -208,15 +210,25 @@ td {
 										</tr>
 									</thead>
 									<tbody>
-										<tr>
-											<td width="100"><img
-												src="resources/pilling/img/mypage/product.png" alt="제품 이미지"
-												width="100"></td>
-											<td width="400">System Architect 외 2건</td>
-											<td width="200">1111111111원</td>
-											<td width="200">배송준비</td>
-											<td>2011/04/25</td>
-										</tr>
+										<c:if test="${not empty orders}">
+											<c:forEach items="${orders}" var="o">
+												<tr>
+													<td width="100"><img src="${o.filepath }" alt="제품 이미지"
+														width="100"></td>
+													<td width="400">${o.productName }<c:if
+															test="${o.count>1 }">외 ${o.count-1}건</c:if></td>
+													<td width="150">${o.orderTotalprice }원</td>
+													<td width="150">${o.status }</td>
+													<td>${o.orderDate }</td>
+												</tr>
+											</c:forEach>
+										</c:if>
+										<c:if test="${empty orders}">
+											<tr>
+												<td colspan="5" style="text-align: center;">주문한 제품이
+													없습니다.</td>
+											</tr>
+										</c:if>
 									</tbody>
 								</table>
 							</div>
@@ -231,7 +243,7 @@ td {
 							</div>
 							<div class="div-right">
 								<h6 class="text-muted m-0">
-									<a type="button" onclick="location.href='mypurchasedetail'">>>상세보기</a>
+									<a type="button" onclick="location.href='mypurchasedetail'">>>더보기</a>
 								</h6>
 							</div>
 						</div>
@@ -248,15 +260,19 @@ td {
 										</tr>
 									</thead>
 									<tbody>
-										<tr>
-											<td width="100"><img
-												src="resources/pilling/img/mypage/product.png" alt="제품 이미지"
-												width="100"></td>
-											<td width="400">prduct name 외 4건</td>
-											<td width="200">19,800원</td>
-											<td width="200">배송완료</td>
-											<td>2011/04/25</td>
-										</tr>
+										<c:if test="${not empty purchases}">
+											<c:forEach items="${purchases}" var="p">
+												<tr>
+													<td width="100"><img src="${p.filepath }" alt="제품 이미지"
+														width="100"></td>
+													<td width="400">${p.productName }<c:if
+															test="${p.count>1 }">외 ${p.count-1}건</c:if></td>
+													<td width="150">${p.orderTotalprice }원</td>
+													<td width="150">${p.status }</td>
+													<td>${p.orderDate}</td>
+												</tr>
+											</c:forEach>
+										</c:if>
 									</tbody>
 								</table>
 							</div>
@@ -264,21 +280,76 @@ td {
 					</div>
 				</div>
 			</div>
-			<div class="row div-center">
-				<img src="resources/pilling/img/mypage/banner.png" alt="적립금 안내 배너">
-			</div>
 		</div>
-		<!-- 각 상세페이지에 유저 넘버를 넘겨줄 히든폼 -->
+		<!-- 히든폼 -->
+		<!-- 1. 각 상세페이지에 유저넘버를 넘겨줄 용도 -->
+		<!-- 2. 쿠폰 발급 용도 -->
 		<div>
-			<form id="cartform" method="post">
+			<form id="dataform" method="post">
 				<input type="hidden" id="userNo" name="userNo" value="${userNo }">
+				<input type="hidden" id="couponName" name="couponName"> <input
+					type="hidden" id="couponRate" name="couponRate">
 			</form>
+
 		</div>
 		<script>
 			// 유저 넘버를 담고 장바구니로 이동시킨다.
 			function moveCart() {
-				cartform.action = "cart";
-				cartform.submit();
+				dataform.action = "cart";
+				dataform.submit();
+			}
+		</script>
+
+		<!-- 쿠폰 관련 스크립트들 -->
+		<script>
+			function addCoupon(userNo, userRank) {
+				var rate = 0;
+				if(userRank == "브론즈"){
+					rate = 1;
+				}else if(userRank == "실버"){
+					rate = 2;
+				}else if(userRank == "골드"){
+					rate = 3;
+				}else{
+					rate = 5;
+				}
+				
+				document.getElementById("couponName").value=userRank + "쿠폰";
+		  		document.getElementById("couponRate").value=rate;
+		  		
+		  		let form = document.getElementById('dataform');
+		  		let formData = new FormData(form);
+		  		let url = 'addcoupon'
+		  		
+		  		fetch(url, {
+		  			method: 'POST',
+		  			body: formData,
+		  		})
+		  		.then((response) => {
+		  			if (response.ok) {
+		  				return response.text();
+		  			} else {
+		  				throw new Error('Network response was not ok.');
+		  			}
+		  		})
+		  		.then((text) => {
+		  			if(text === 'Yes'){
+		  				couponElement = document.getElementById("coupon-count");
+		  				var newCount = parseInt(couponElement.textContent.replace(/\D/g, ''),10);
+		  				newCount++;
+		  				couponElement.textContent = newCount + "장";
+		  				swal("쿠폰이 발급되었습니다.", "쿠폰은 한 달에 한 번 발급 가능하며,\n해당 달 마지막날까지 사용할 수 있습니다.", "success");
+		  			} else {
+		  				swal("이미 쿠폰을 발급받으셨습니다.\n쿠폰은 한 달에 한 번만 발급 가능합니다.");
+		  			}
+		  		})
+		  		.catch((error) => {
+		  			console.error('There was an error!', error);
+		  			alert('장바구니 추가 중 오류가 발생하였습니다.');
+		  		});
+			}
+			function viewCoupons(userNo){
+				window.open("/PillingProject/src/main/webapp/WEB-INF/views/pilling/mypage/viewcoupons.jsp", '_blank', 'width=800, height=600');
 			}
 		</script>
 </body>
