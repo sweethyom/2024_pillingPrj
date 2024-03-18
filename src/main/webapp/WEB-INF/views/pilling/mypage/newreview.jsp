@@ -42,8 +42,7 @@ td {
 <body>
 	<div class="width-myreview py-4 div-center">
 	<br>
-	<form action="reviewwrite" method=POST>
-	<button type="button" class="btn btn-primary btn-block mb-4" style="margin-left:90%; display:flex;" onclick="location.href='newreview'">리뷰쓰기</button>
+	<form action="reviewwrite" method=GET>
 		<!-- 리뷰내역 카드 START -->
 		<div class="card mb-6">
 			<div class="card-header py-3">
@@ -63,8 +62,8 @@ td {
 							<td width="100"><img
 									src="${order.filepath }" alt="제품 이미지"
 									width="100"></td>
-								<td colspan="2" width="500">제품명</td>
-								<td colspan="2" width="500">${order.productName }</td>
+								<td width="250">제품명</td>
+								<td width="250">${order.productName }</td>
 								<td>주문번호</td>
 								<td rowspan=2>${order.orderId}</td>
 								<td>주문날짜</td>
@@ -72,12 +71,17 @@ td {
 							</tr>
 						</thead>
 						<tbody>
-							<tr>
+								
+								<tr>
+								<td colspan="9">
+								<table>
 								<td><input type="text" size="89%" placeholder="리뷰를 입력하세요."
-							id="questionTitle" name="questionTitle" required="required"></td>
-							</tr>
-						</tbody>
-						</c:forEach>
+							id="questionTitle" name="questionTitle" required="required"><button type="submit"  class="btn btn-primary btn-block mb-4" >저장</button></td>
+								</table>
+								</td>
+								</tr>
+					</tbody>
+					</c:forEach>
 					</table>
 				</div>
 				<!-- 테이블 END -->
