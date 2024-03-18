@@ -182,16 +182,27 @@ td {
 					<h5>결제 정보</h5>
 					<table class="table table-bordered" id="dataTable">
 						<tr>
-							<td width="150" style="background-color: #f5f6f6;">총 상품가격</td>
+							<td width="150" style="background-color: #f5f6f6;">총 제품가격</td>
 							<td><a id="prodtotalprice"></a></td>
 						</tr>
 						<tr>
-							<td style="background-color: #f5f6f6;">멤버십 할인</td>
-							<td><a id="levelAccumrate">없음${levelAccumrate }</a></td>
+							<td style="background-color: #f5f6f6;">쿠폰 할인</td>
+							<td><select id="couponSelect"
+								onchange="updateTotalPriceByCoupon()">
+									<option value="0/0">쿠폰 선택 안함</option>
+									<c:forEach items="${couponList }" var="c">
+										<option value="${c.couponId }/${c.couponRate }">${c.couponName }(할인율:${c.couponRate}%/${c.couponPeriod}까지)</option>
+									</c:forEach>
+							</select></td>
 						</tr>
 						<tr>
 							<td style="background-color: #f5f6f6;">적립금</td>
-							<td><a id="userPoint">${user.userPoint }원</a></td>
+							<td><a id="userPoint">${user.userPoint }</a>원<input
+								type="text" id="pointSelect" name="usePoint" value=0 width="100"
+								onblur="updateTotalPriceByPoint()"
+								oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');"
+								maxlength="7"> <a class="btn btn-primary"
+								onclick="pointSelectAll()">모두 사용하기</a></td>
 						</tr>
 						<tr>
 							<td style="background-color: #f5f6f6;">배송비</td>
@@ -199,7 +210,7 @@ td {
 						</tr>
 						<tr>
 							<td style="background-color: #f5f6f6;">총 결제금액</td>
-							<td><a id="resultTotalprice" name="resultTotalprice"></a></td>
+							<td><a id="resultTotalprice" name="resultTotalprice"></a>원</td>
 						</tr>
 						<tr>
 							<td style="background-color: #f5f6f6;">결제방법</td>
@@ -207,14 +218,18 @@ td {
 								checked="checked">&nbsp;&nbsp;카카오페이</td>
 						</tr>
 					</table>
+					<div class="mb-1">
+						<a>* 배송비는 적립금으로 결제할 수 없습니다.</a>
+					</div>
 				</div>
 				<input type="hidden" id="userNo" name="userNo" value="${userNo }">
 				<input type="hidden" id="productId" name="productId"
 					value="${carts[0].productId }"> <input type="hidden"
 					id="orderstatusId" name="orderstatusId" value=1> <input
 					type="hidden" id="orderTotalprice" name="orderTotalprice">
-				<input type="hidden" id="orderCard" name="orderCard">
-				<input type="hidden" id="orderId" name="orderId" value="${newOrderId }">
+				<input type="hidden" id="orderCard" name="orderCard"> <input
+					type="hidden" id="orderId" name="orderId" value="${newOrderId }">
+				<input type="hidden" id="couponId" name="couponId">
 			</form>
 			<!-- 배송지 정보 Form END -->
 			<!-- 결제정보 END -->
@@ -263,14 +278,13 @@ td {
 		
 	</script>
 	<script>
-		// 총 상품가격 초기값 할당
+		// 총 제품가격 초기값 할당
 		window.onload = function(){
 			var totalPrice1 = orderTotalCal();
 			var totalPrice2 = totalPrice1 + 3000;
 			document.getElementById('prodtotalprice').textContent = totalPrice1 + "원";
-			document.getElementById('resultTotalprice').textContent = totalPrice2 + "원";
+			document.getElementById('resultTotalprice').textContent = totalPrice2;
 		};
-		
 		
 		// 주문 총 합계를 계산한다.
 		function orderTotalCal(){
@@ -284,6 +298,51 @@ td {
 			});
 			
 			return totalPrice;
+		}
+		
+		// 쿠폰에 따라 총 결제금액 변경하기
+		function updateTotalPriceByCoupon(){
+			var couponInfo = document.getElementById("couponSelect").value.split('/');
+			var couponRate = couponInfo[1];
+			var resultTotalprice = orderTotalCal();
+			var discountedPrice = (resultTotalprice - (resultTotalprice * couponRate / 100))+3000;
+			document.getElementById("resultTotalprice").textContent = discountedPrice + "원";
+			document.getElementById("pointSelect").value = 0;
+		}
+		
+		// 포인트를 입력하면 총 결제금액 변경하기
+		function updateTotalPriceByPoint(){
+			var couponInfo = document.getElementById("couponSelect").value.split('/');
+			var couponRate = couponInfo[1];
+			var resultTotalprice = orderTotalCal();
+			var discountedPrice = resultTotalprice - ((resultTotalprice * couponRate / 100));
+			
+			var inputPoint = document.getElementById("pointSelect").value;
+			var totalPrice = discountedPrice;
+			var userPoint = document.getElementById("userPoint").textContent;
+			
+			inputPoint = parseInt(inputPoint);
+			userPoint = parseInt(userPoint);
+
+			if(inputPoint > userPoint){
+				inputPoint = userPoint;
+			}
+			
+			if(totalPrice > inputPoint){
+				totalPrice -= inputPoint;
+			} else{
+				inputPoint = totalPrice;
+				totalPrice = 0;
+			}
+			
+			totalPrice += 3000;
+			document.getElementById("pointSelect").value = inputPoint;
+			document.getElementById("resultTotalprice").textContent = totalPrice;
+		}
+		
+		function pointSelectAll(){
+			document.getElementById("pointSelect").value = 999999999;
+			updateTotalPriceByPoint();
 		}
 	
 		// 전화번호 자동 하이픈 넣어주기
@@ -424,11 +483,15 @@ td {
 			var userAddr = document.getElementById('userAddr');
 			var userAddrdetail = document.getElementById('userAddrdetail');
 			var userTel = document.getElementById('userTel');
+			var couponInfo = document.getElementById("couponSelect").value.split('/');
+			var couponId = couponInfo[0];
+			
 			document.getElementById('shippingRecipientln').value = userLastname.text;
 			document.getElementById('shippingRecipientfn').value = userFirstname.text;
 			document.getElementById('shippingAddr').value = userAddr.text;
 			document.getElementById('shippingAddrdetail').value = userAddrdetail.text;
 			document.getElementById('shippingTel').value = userTel.text;
+			document.getElementById('couponId').value = couponId;
 		}
 	</script>
 </body>

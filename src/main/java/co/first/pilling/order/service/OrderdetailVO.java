@@ -11,4 +11,7 @@ public class OrderdetailVO {
 	private int productId;
 	private int orderdetailPrice;
 	private int orderdetailCount;
+	private String productName;
+	private int detailTotalPrice;
+	
 }

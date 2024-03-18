@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -68,7 +69,7 @@ td {
 	width: 60%;
 }
 
-.hiding {
+.order-detail-list {
 	display: none;
 }
 </style>
@@ -95,6 +96,7 @@ td {
 				<div class="card-body">
 					<div class="table-responsive">
 						<table class="table table-bordered" id="dataTable">
+							<c:forEach var="order" items="${orderList }">
 							<thead>
 								<tr>
 									<th width="100">제품</th>
@@ -102,70 +104,56 @@ td {
 									<th width="200">총 가격</th>
 									<th width="200">결제상태</th>
 									<th width="200">주문날짜</th>
+									<th width="200">구매여부</th>
 								</tr>
 							</thead>
 							<tbody>
-								<tr class="main">
+								<tr class="main" data-order-id="${order.orderId }">
 									<td width="100"><img
 										src="resources/pilling/img/mypage/product.png" alt="제품 이미지"
 										width="100"></td>
-									<td width="400" class="productname" onclick="show()">System
-										Architect 외 2건</td>
-									<td width="200">1111111111원</td>
-									<td width="200">결제완료</td>
-									<td>2011/04/25</td>
+									<td width="400" class="productname" data-order-id="${order.orderId }">${order.productName } 외 ${order.count }건</td>
+									<td width="200">${order.orderTotalprice }</td>
+									<td width="200">${order.orderstatusName }</td>
+									<td>${order.orderDate }</td>
+									<td><button type="button" id="reviewbtn" class="btn mb-4" onclick="location.href='newreview'" onmouseover="mouseover()" onmouseout="mouseout()">리뷰작성</button></td>
 								</tr>
+								
 								<!-- 구매 상세내역 들어갈 것 -->
-								<tr class="hidehidehide" style="display: none;">
-									<td width="100">번호</td>
-									<td width="400">제품명</td>
-									<td width="200">가격</td>
-									<td width="200">구매수량</td>
-									<td width="200">소계</td>
+								<tr class="order-detail-list" id="detail${order.orderId}" style="display: none;">
+								<td colspan="6">
+						 			<table class="table table-bordered">
+									<tr>
+										<td >번호</td>
+										<td >제품명</td>
+										<td >가격</td>
+										<td >구매수량</td>
+										<td >소계</td>
+									</tr>
+									<c:set var="total" value="0"/>
+						 			<c:forEach var="orderDetail" items="${orderDetailList }">
+						 			<c:stet var
+						 			<c:if test="${orderDetail.orderId eq order.orderId}">
+									<tr>
+										<td>${orderDetail.orderId }</td>
+										<td>${orderDetail.productName }</td>
+										<td>${orderDetail.orderdetailPrice }원</td>
+										<td>${orderDetail.orderdetailCount }개</td>
+										<td>'(${orderDetail.orderdetailPrice*orderDetail.orderdetailCount })원'</td>
+									</tr>
+						 			</c:if>
+									</c:forEach> 
+									</table>
+								</td>
 								</tr>
-								<tr class="main">
-									<td width="100"><img
-										src="resources/pilling/img/mypage/product.png" alt="제품 이미지"
-										width="100"></td>
-									<td width="400" class="productname" onclick="show()">vitaminC
-										외 1건</td>
-									<td width="200">2222222원</td>
-									<td width="200">구매결정</td>
-									<td>2024/02/25</td>
-								</tr>
-
-								<tr class="main">
-									<td width="100"><img
-										src="resources/pilling/img/mypage/product.png" alt="제품 이미지"
-										width="100"></td>
-									<td width="400" onclick="show()">Omega-3 외 2건</td>
-									<td width="200">11111원</td>
-									<td width="200">구매결정</td>
-									<td>2024/01/25</td>
-								</tr>
-								<tr class="main">
-									<td width="100"><img
-										src="resources/pilling/img/mypage/product.png" alt="제품 이미지"
-										width="100"></td>
-									<td width="400" onclick="show()">VitaminA 외 2건</td>
-									<td width="200">11111원</td>
-									<td width="200">결제취소</td>
-									<td>2023/11/23</td>
-								</tr>
-								<tr class="main">
-									<td width="100"><img
-										src="resources/pilling/img/mypage/product.png" alt="제품 이미지"
-										width="100"></td>
-									<td width="400" onclick="show()">Calcium 외 2건</td>
-									<td width="200">111111원</td>
-									<td width="200">구매결정</td>
-									<td>2023/10/13</td>
-								</tr>
+								
 							</tbody>
+							</c:forEach>
 						</table>
 					</div>
 				</div>
 			</div>
+			
 			<div class="container mt-3">
 				<ul class="pagination justify-content-center">
 					<li class="page-item"><a class="page-link" href="#">Previous</a></li>
@@ -182,13 +170,48 @@ td {
 		</div>
 	</div>
 	<script>
-		function show() {
-			var obj = document.getElementsByClassName("hidehidehide")[0];
+/*		function show() {
+			for (var i=0, i++)
+			var obj = document.getElementsByClassName("hidehidehide")[i];
 			if (obj.style.display == 'none') {
 				obj.style.display = '';
 			} else {
 				obj.style.display = 'none';
 			}
+		} */
+		
+		 
+		document.addEventListener("DOMContentLoaded", function() {
+		    // show 함수를 호출하는 이벤트 핸들러 추가
+		    var productNames = document.getElementsByClassName('productname');
+		    for(var j = 0; j < productNames.length; j++) {
+		        productNames[j].addEventListener('click', function(event){
+		        		show(this)
+		      		})
+		    
+			}
+		});
+		
+	            
+		function show(element) {
+			var orderId = element.getAttribute('data-order-id');			
+			var ordertoggle = document.getElementById("detail"+orderId);	
+			if (ordertoggle.style.display === 'none'){
+				ordertoggle.style.display = 'contents'
+			}
+
+		} 
+		
+
+		
+		
+		
+		function mouseover(){
+			document.getElementById("reviewbtn").style.color="black";
+		}
+		
+		function mouseout(){
+			document.getElementById("reviewbtn").style.color="#585858";
 		}
 	</script>
 </body>

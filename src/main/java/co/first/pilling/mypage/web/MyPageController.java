@@ -1,15 +1,24 @@
 package co.first.pilling.mypage.web;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
+
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import co.first.pilling.coupon.service.CouponService;
+import co.first.pilling.coupon.service.CouponVO;
+import co.first.pilling.order.service.OrderService;
+import co.first.pilling.order.service.OrderVO;
+import co.first.pilling.order.service.OrderdetailService;
 import co.first.pilling.user.service.UserService;
 import co.first.pilling.user.service.UserVO;
 
@@ -19,6 +28,61 @@ public class MyPageController {
 
 	@Autowired
 	UserService udao;
+
+	@Autowired
+	private UserService userService;
+
+	@Autowired
+	private OrderService orderService;
+
+	@Autowired
+	private OrderdetailService orderdetailService;
+	
+	@Autowired
+	private CouponService couponService;
+
+	// 마이페이지 이동
+	@RequestMapping("mypage")
+	public String myPage(Model model, HttpSession session) {
+		UserVO vo = new UserVO();
+		CouponVO cvo = new CouponVO();
+		String userId = (String) session.getAttribute("userId");
+		int userNo = (int) session.getAttribute("userNo");
+		vo.setUserId(userId);
+		
+		cvo.setUserNo(userNo);
+		int couponCount = couponService.couponCount(cvo);		
+
+		List<OrderVO> orderList = orderService.orderSelectList(userNo);
+		List<OrderVO> purchaseList = orderService.purchasesSelectList(userNo);
+
+		for (OrderVO order : orderList) {
+			order.setCount(orderdetailService.selectOrderCount(order.getOrderId()));
+		}
+		for (OrderVO purchase : purchaseList) {
+			purchase.setCount(orderdetailService.selectOrderCount(purchase.getOrderId()));
+		}
+
+		model.addAttribute("userRank", userService.selectUserRank(vo));
+		model.addAttribute("couponCount", couponCount);
+		model.addAttribute("user", userService.userSelect(vo));
+		model.addAttribute("orders", orderList);
+		model.addAttribute("purchases", purchaseList);
+		return "pilling/menu/mypage";
+	}
+	
+	@PostMapping("addcoupon")
+	@ResponseBody
+	public String addcoupon(CouponVO vo) {
+		String str = "Yes";
+		if(couponService.couponCount(vo) > 0) {
+			str = "No";
+		}
+		else {
+			couponService.couponInsert(vo);
+		}
+		return str;
+	}
 
 	@RequestMapping(value = "myinfochk", method = RequestMethod.GET)
 	public void getMyInfoChk() {
@@ -70,7 +134,7 @@ public class MyPageController {
 		session.setAttribute("author", vo.getUserAuthor());
 		return "redirect:mypage";
 	}
-	
+
 	@RequestMapping(value = "myinfoedit", method = RequestMethod.POST)
 	public String postmyinfoedit(UserVO vo, HttpSession session, Model model) throws Exception {
 		vo.setUserId((String) session.getAttribute("userId"));
@@ -78,21 +142,21 @@ public class MyPageController {
 		return "mypage/myinfopage";
 	}
 
-	@RequestMapping(value="pswdedit", method = RequestMethod.POST)
+	@RequestMapping(value = "pswdedit", method = RequestMethod.POST)
 	public String postpswdedit(UserVO vo, HttpSession session, Model model) {
 		vo.setUserId((String) session.getAttribute("userId"));
 		udao.userPswdUpdate(vo);
-		String viewPage="pilling/mypage/myinfopage";
-				return viewPage;
+		String viewPage = "pilling/mypage/myinfopage";
+		return viewPage;
 	}
-	
+
 	@RequestMapping(value = "memberwithdrawal", method = RequestMethod.GET)
 	public void WithdrawGet() {
 	}
 
 	@RequestMapping(value = "memberwithdrawal", method = RequestMethod.POST)
 	public String WithdrawPost(HttpSession session, UserVO vo, Model model, RedirectAttributes attr) throws Exception {
-		String viewPage=null;
+		String viewPage = null;
 		vo.setUserId((String) session.getAttribute("userId"));
 		vo = udao.userPassword(vo);
 		if (vo != null) {
@@ -100,11 +164,19 @@ public class MyPageController {
 			udao.userWithdrawinsert(vo);
 			session.invalidate();
 
-			viewPage="redirect:/";
+			viewPage = "redirect:/";
 		} else {
 			model.addAttribute("message", "잘못된 비밀번호 입니다.");
 			viewPage = "pilling/mypage/myinfo";
 		}
 		return viewPage;
 	}
+	
+	@RequestMapping(value = "reviewwrite", method = RequestMethod.POST)
+	public String ReviewPost(HttpSession session, UserVO vo, Model model, RedirectAttributes attr) {
+		String viewPage =null;
+		
+	return viewPage;}
+	
+	
 }
