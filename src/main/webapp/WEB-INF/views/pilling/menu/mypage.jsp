@@ -89,7 +89,7 @@ td {
 								<div class="div-left">
 									<div>
 										<div
-											class="text-xs font-weight-bold text-success mb-1 div-center">RANK</div>
+											class="text-xs font-weight-bold text-mintcolor mb-1 div-center">RANK</div>
 										<div
 											class="h1 mb-0 font-weight-bold text-gray-800 div-center div-center-l mb-3">${userRank }</div>
 										<div
@@ -111,7 +111,7 @@ td {
 							<div class="row no-gutters align-items-center">
 								<div class="col mr-2">
 									<div
-										class="text-xs font-weight-bold text-success text-uppercase mb-1 div-center">COUPON</div>
+										class="text-xs font-weight-bold text-mintcolor text-uppercase mb-1 div-center">COUPON</div>
 									<div class="h1 mb-0 font-weight-bold text-gray-800 div-center" id="coupon-count">${couponCount }장</div>
 									<div
 										class="text-xs font-weight-bold text-uppercase mb-1 div-center">
@@ -131,7 +131,7 @@ td {
 							<div class="row no-gutters align-items-center">
 								<div class="col mr-2">
 									<div
-										class="text-xs font-weight-bold text-success text-uppercase mb-1 div-center">POINT
+										class="text-xs font-weight-bold text-mintcolor text-uppercase mb-1 div-center">POINT
 									</div>
 									<div class="row no-gutters align-items-center">
 										<div>
@@ -279,9 +279,6 @@ td {
 						</div>
 					</div>
 				</div>
-			</div>
-			<div class="row div-center">
-				<img src="resources/pilling/img/mypage/banner.png" alt="적립금 안내 배너">
 			</div>
 		</div>
 		<!-- 히든폼 -->

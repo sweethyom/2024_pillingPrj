@@ -21,7 +21,7 @@
     <!--  board start -->
     <div class="customerservice-button">
       <c:if test="${author eq 'ADMIN'}">
-        <button type="button" class="btn btn-primary border-0 rounded-pill px-4 py-3" onclick="location.href='noticeform'">공지작성</button>
+        <button type="button" class="btn btn-outline-dark-hyunwoo mt-3 login-btn-size" onclick="location.href='noticeform'">공지작성</button>
       </c:if>
     </div>
     <div class="container-xxl py-5">
@@ -40,7 +40,7 @@
             <tbody id="boardContent">
               <c:if test="${not empty notices}">
                 <c:forEach items="${notices}" var="n">
-                  <tr onclick="noticeDetail(${n.noticeId})">
+                  <tr onclick="noticeDetail(${n.noticeId})" style="cursor: pointer">
                     <td>${n.noticeId}</td>
                     <td>${n.noticeTitle}</td>
                     <td>pilling</td>
@@ -93,7 +93,9 @@
     </div>
     <!--  board start -->
     <div class="customerservice-button">
-      <button type="button" class="btn btn-outline-dark-hyunwoo mt-3 login-btn-size" onclick="location.href='questionform'">문의하기</button>
+      <c:if test="${author eq 'USER'}">
+        <button type="button" class="btn btn-outline-dark-hyunwoo mt-3 login-btn-size" onclick="location.href='questionform'">문의하기</button>
+      </c:if>
     </div>
     <div class="container-xxl py-5">
       <div class="container text-center">
@@ -111,7 +113,7 @@
             <tbody id="boardContent">
               <c:if test="${not empty questions}">
                 <c:forEach items="${questions}" var="q">
-                  <tr onclick="questionDetail(${q.questionId})">
+                  <tr onclick="questionDetail(${q.questionId})" style="cursor: pointer">
                     <td>${q.questionId}</td>
                     <td>${q.questionTitle}</td>
                     <td>${q.userId}</td>

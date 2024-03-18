@@ -32,7 +32,7 @@ td {
 		<div class="card-body col-12 div-center pl-5 pr-5">
 			<div class="row g-5">
 				<h3 style="vertical-align: bottom;" class="px-2">${question.questionTitle }</h3>
-				<div style="height: 0.3rem; background-color: #fdf001;"
+				<div style="height: 0.3rem; background-color: #0ae4b0;"
 					class="mb-0 mt-0"></div>
 				<table class="table mb-0 mt-0">
 					<tbody>
@@ -58,20 +58,20 @@ td {
 		<!-- 삭제: 글 작성자, ADMIN에게만 보인다. -->
 		<div class="btn-center mt-2 mb-4">
 			<button type="button"
-				class="btn btn-primary border-0 rounded-pill px-4 py-3"
+				class="btn btn-outline-dark-hyunwoo mt-3 login-btn-size"
 				onclick="location.href='customerservice'">목록</button>
 			<!-- 글 작성자와 로그인한 작성자가 일치할 경우 -->
 			<c:if test="${question.userId eq userId}"> 
 	            	&nbsp;&nbsp;
 			<button type="button"
-					class="btn btn-primary border-0 rounded-pill px-4 py-3"
+					class="btn btn-outline-dark-hyunwoo mt-3 login-btn-size"
 					onclick="questionEditForm()">수정</button>
 			</c:if>
 			<!-- 글 작성자와 로그인한 작성자가 일치할 경우 or ADMIN 권한을 가질 경우 -->
 			<c:if test="${(author eq 'ADMIN') or (question.userId eq userId)}"> 
 	            	&nbsp;&nbsp;
 			<button type="button"
-					class="btn btn-primary border-0 rounded-pill px-4 py-3"
+					class="btn btn-outline-dark-hyunwoo mt-3 login-btn-size"
 					onclick="questionDelete()">삭제</button>
 			</c:if>
 		</div>
@@ -86,7 +86,7 @@ td {
 						<tr>
 							<td style="vertical-align: top; width: 7%;" class="pt-1">
 								<div class="rounded py-2 px-3"
-									style="background-color: #3faf08; color: white;">Pi1ling</div>
+									style="background-color: #0ae4b0; color: white;">Pilling</div>
 							</td>
 							<td class="px-2"><div style="width: 100%;" class="mb-1">${qr.questionreplyContent }</div>
 								<div align="right">
@@ -111,7 +111,7 @@ td {
 		<!-- AMDIN 권한을 가진 사람에게만 보인다. -->
 		<c:if test="${author eq 'ADMIN'}">
 			<div class="bg-light rounded p-4 my-4">
-				<h4 class="mb-4">Leave A Reply</h4>
+				<h4 class="mb-4">답변 작성하기</h4>
 				<form>
 					<div class="row g-4">
 						<div class="col-12">

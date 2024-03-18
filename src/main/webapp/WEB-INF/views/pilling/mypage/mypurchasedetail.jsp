@@ -74,13 +74,13 @@ td {
 }
 </style>
 
-	<div class="container-fluid myinfopage-header py-5">
-		<div class="container py-5">
-			<h1 class="display-2 text-black mb-4 animated slideInDown">my
-				page</h1>
-			<nav aria-label="breadcrumb"></nav>
+    <!-- Page Header Start -->
+    <div class="container-fluid py-3">
+		<div class="container py-3">
+		  <h1 class="display-2 text-dark mb-4">구매내역</h1>
 		</div>
-	</div>
+	  </div>
+	  <!-- Page Header End -->
 
 	<div class="container"></div>
 	<div class="row">
@@ -132,7 +132,6 @@ td {
 									</tr>
 									<c:set var="total" value="0"/>
 						 			<c:forEach var="orderDetail" items="${orderDetailList }">
-						 			<c:stet var
 						 			<c:if test="${orderDetail.orderId eq order.orderId}">
 									<tr>
 										<td>${orderDetail.orderId }</td>
