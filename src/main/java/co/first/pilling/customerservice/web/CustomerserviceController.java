@@ -31,10 +31,10 @@ public class CustomerserviceController {
 	private QuestionreplyService qrs;
 
 	@RequestMapping("customerservice")
-	public String customerservice(Model model, PageVO vo, PageVO qvo) {
+	public String customerservice(Model model, PageVO vo, PageVO qvo, @RequestParam(defaultValue="1") int currentPageNo, @RequestParam (defaultValue="1") int currentPageNoQuestion) {
 		int pageSize = 5; // 페이지 바에 보여줄 페이지 개수 (ex- pageSize가 5면 1,2,3,4,5가 표시되고, 다음을 누르면 6,7,8,9,10이 표시됨)
 		int boardSize = 5; // 한 페이지 당 나오는 게시글 개수, mapper.xml의 select문 limit와 맞춰줘야 한다.
-		int pageOffset = vo.getCurrentPageNo(); // 직전의 페이지 정보를 가져온다. 아래 if코드는 예외처리.
+		int pageOffset = currentPageNo; // 직전의 페이지 정보를 가져온다. 아래 if코드는 예외처리.
 		if (pageOffset != 0) {
 			pageOffset = (pageOffset - 1) * boardSize;
 		}
@@ -74,7 +74,7 @@ public class CustomerserviceController {
 		// 문의 board STRAT
 		int pageSizeQ = 5;
 		int boardSizeQ = 5;
-		int pageOffsetQ = qvo.getCurrentPageNo();
+		int pageOffsetQ = currentPageNoQuestion;
 		if (pageOffsetQ != 0) {
 			pageOffsetQ = (pageOffsetQ - 1) * boardSizeQ;
 		}
