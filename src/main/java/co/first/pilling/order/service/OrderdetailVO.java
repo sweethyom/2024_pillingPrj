@@ -16,5 +16,6 @@ public class OrderdetailVO {
 	private String productName;
 	private int detailTotalPrice;
 	private String reviewYn;
+	private String filepath;
 	
 }

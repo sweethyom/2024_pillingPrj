@@ -83,7 +83,7 @@ public class ReviewController {
 		
 		//주문 목록 모델에 추가
 		model.addAttribute("order", order);
-		
+		System.out.println(order);
 		//주문상세목록
 		List<OrderdetailVO> orderDetailList = ods.getOrderdetailListByOrderIdProductId(odv);
 		model.addAttribute("orderDetailList", orderDetailList);

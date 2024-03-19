@@ -60,7 +60,7 @@ td {
 						<thead>
 							<tr>
 							<td width="100"><img
-									src="${order.filepath }" alt="제품 이미지"
+									src="${detail.filepath}" alt="제품 이미지"
 									width="100"></td>
 								<td width="250">제품명</td>
 								<td width="250">${detail.productName}</td>

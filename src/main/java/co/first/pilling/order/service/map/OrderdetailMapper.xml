@@ -38,7 +38,8 @@
 			   orderdetail_price AS orderdetailPrice, 
 			   orderdetail_count As orderdetailCount,
 			   orderdetail_Price * orderdetail_Count AS detailTotalPrice,
-			   od.product_id AS productId
+			   od.product_id AS productId,
+			   p.filepath1 AS filepath
 		FROM orderdetail od
 		LEFT JOIN `order` o
 		ON o.order_id = od.order_id
