@@ -15,5 +15,6 @@ public class OrderdetailVO {
 	private int orderdetailCount;
 	private String productName;
 	private int detailTotalPrice;
+	private String reviewYn;
 	
 }

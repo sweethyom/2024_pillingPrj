@@ -39,6 +39,12 @@ public class OrderdetailServiceImpl implements OrderdetailService {
 	public List<OrderdetailVO> getOrderdetailListByOrderId(int orderId){
 		return map.getOrderdetailListByOrderId(orderId);
 	}
+	
+	@Override
+	public List<OrderdetailVO> getOrderdetailListByOrderIdProductId(OrderdetailVO vo){
+		return map.getOrderdetailListByOrderIdProductId(vo);
+	}
+	
 	@Override
 	public int orderdetailInsert(OrderdetailVO vo) {
 		// TODO Auto-generated method stub

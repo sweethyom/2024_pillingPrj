@@ -10,8 +10,19 @@
 		SELECT * FROM review WHERE USER_NO=#{userNo}
 	</select>
 	
-	<select id="reviewSearchId">
-		SELECT user_no FROM review WHERE USER_ID=#{userId}
+	<select id="reviewSelectByuserNo" parameterType="int">
+		SELECT 
+		review_id AS reviewId,
+		product_name AS productName,
+		rating,
+		review_title AS reviewTitle,
+		review_content AS reviewContent,
+		review_date AS reviewDate,
+		review_image As reviewImg
+		FROM review r
+		LEFT JOIN product p
+		ON r.product_id = p.product_id
+		WHERE USER_NO=#{userNo}
 	</select>
 
 	<update id="reviewUpdate">
@@ -33,20 +44,18 @@
 		REVIEW_TITLE,
 		REVIEW_CONTENT,
 		REVIEW_DATE,
-		REVIEW_IMAGE)
+		REVIEW_IMAGE,
+		REVIEWYN)
 		VALUES(
-		(SELECT MAX(REVIEW_ID) FROM review GROUB BY REVIEW_ID),
-		#{product_id},
-		#{user_no},
+		(SELECT MAX(a.REVIEW_ID)+1 FROM review a),
+		#{productId},
+		#{userNo},
 		#{rating},
-		#{review_title},
-		#{review_content},
+		#{reviewTitle},
+		#{reviewContent},
 		now(),
-		#{review_image},
-		#{review_attach},
-		#{review_attachpath})
-		
-		
+		#{reviewImg},
+		#{reviewYn})	
 	</insert>
 	<delete id="reviewDelete">
 		DELETE

@@ -13,6 +13,8 @@ public interface OrderdetailMapper {
 	OrderVO orderdetailSelect(OrderdetailVO vo); // 주문상세내역
 	
 	List<OrderdetailVO> getOrderdetailListByOrderId(int orderId);
+	
+	List<OrderdetailVO> getOrderdetailListByOrderIdProductId(OrderdetailVO vo);
 
 	int orderdetailInsert(OrderdetailVO vo); // 주문상세삽입
 
