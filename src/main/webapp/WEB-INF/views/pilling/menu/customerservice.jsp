@@ -66,7 +66,7 @@
           </c:if>
           <c:if test="${p.firstPageNoOnPageList > 1}">
             <li class="page-item">
-              <a class="page-link" style="color: black" href="javascript:void(0);" onclick="callPage(${p.firstPageNoOnPageList}-1);">이전</a>
+              <a class="page-link" style="color: black" href="javascript:void(0);" onclick="noticeCallPage(${p.firstPageNoOnPageList}-1);">이전</a>
             </li>
           </c:if>
 
@@ -141,7 +141,7 @@
           <c:if test="${qp.firstPageNoOnPageList > 1}">
             <li class="page-item">
               <a class="page-link" href="javascript:void(0);" style="color: black" onclick="questionCallPage(${qp.firstPageNoOnPageList}-1)"
-                >Previous</a
+                >이전</a
               >
             </li>
           </c:if>
@@ -151,9 +151,12 @@
               <a class="page-link" style="color: black" href="javascript:void(0);" onclick="questionCallPage(${index});">${index }</a>
             </li>
           </c:forEach>
+          <c:if test="${qp.firstPageNoOnPageList + 5 > qp.totalPageCount}">
+            <li class="page-item"><a class="page-link" style="color: black">다음</a></li>
+          </c:if>
           <c:if test="${qp.firstPageNoOnPageList + 5 <= qp.totalPageCount}">
             <li class="page-item">
-              <a class="page-link" style="color: black" href="javascript:void(0);" onclick="noticeCallPage(${qp.lastPageNoOnPageList}+1);">다음</a>
+              <a class="page-link" style="color: black" href="javascript:void(0);" onclick="questionCallPage(${p.lastPageNoOnPageList}+1);">다음</a>
             </li>
           </c:if>
         </ul>

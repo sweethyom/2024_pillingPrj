@@ -70,9 +70,8 @@ public class OrderController {
 		CartVO vo = cartList.get(0);
 		cs.cartDeleteAll(vo);
 
-		// 사용한 쿠폰 삭제
-		System.out.println(cpv.getCouponId());
-		cps.couponDelete(cpv);
+		// 사용한 쿠폰 사용여부 변경
+		cps.couponUse(cpv);
 
 		// 사용한 적립금 차감
 
@@ -98,9 +97,8 @@ public class OrderController {
 		ods.orderdetailInsert(odv);
 		ss.shippingInsert(sv);
 
-		// 사용한 쿠폰 삭제
-		System.out.println(cpv.getCouponId());
-		cps.couponDelete(cpv);
+		// 사용한 쿠폰 사용여부 변경
+		cps.couponUse(cpv);
 
 		// 사용한 적립금 차감
 
