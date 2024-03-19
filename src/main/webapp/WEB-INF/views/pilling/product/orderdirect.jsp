@@ -230,6 +230,10 @@ td {
 					type="hidden" id="orderId" name="orderId" value="${newOrderId }">
 				<input type="hidden" id="couponId" name="couponId"> <input
 					type="hidden" id="orderActualPrice" name="orderActualPrice">
+				<input type="hidden" id="orderdetailPrice" name="orderdetailPrice"
+					value="${cart.productPrice }"> <input type="hidden"
+					id="orderdetailCount" name="orderdetailCount"
+					value="${cart.cartProdcnt }">
 			</form>
 			<!-- 배송지 정보 Form END -->
 			<!-- 결제정보 END -->
@@ -237,7 +241,7 @@ td {
 			<!-- 결제버튼 -->
 			<div class="center">
 				<button type="button"
-					class="px-5 py-3 btn btn-primary border-2 rounded-pill animated slideInDown mb-4 ms-4"
+					class="btn btn-outline-dark-hyunwoo mt-3 login-btn-size"
 					onclick="shippingFormCheck()">결제하기</button>
 			</div>
 			<!-- 결제버튼 END -->
@@ -248,9 +252,9 @@ td {
       var IMP = window.IMP;
       // 결제요청
       function requestPay() {
-        var orderActualPrice = document.getElementById('orderActualPrice').textContent;
-        var orderActualPriceArr = orderActualPrice.split('원');
-        orderActualPrice = parseInt(orderActualPriceArr[0]);
+    	var resultTotalPrice = document.getElementById('resultTotalprice').textContent;
+		var resultTotalPriceArr = resultTotalPrice.split('원');
+		resultTotalPrice = parseInt(resultTotalPriceArr[0]);
 
         IMP.init('imp03000385');
         IMP.request_pay(

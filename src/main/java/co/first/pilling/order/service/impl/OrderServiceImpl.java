@@ -63,4 +63,10 @@ public class OrderServiceImpl implements OrderService {
 		return map.purchasesSelectList(userNo);
 	}
 
+	@Override
+	public List<OrderVO> getOrderListBeforeDelivery(int userNo) {
+		// TODO Auto-generated method stub
+		return map.getOrderListBeforeDelivery(userNo);
+	}
+
 }
