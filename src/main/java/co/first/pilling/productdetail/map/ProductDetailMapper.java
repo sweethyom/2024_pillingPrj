@@ -10,4 +10,5 @@ public interface ProductDetailMapper {
 	
 	// 제품과 키워드 mapping 하기
 	String productKeywordMapping(int productId);
+	
 }

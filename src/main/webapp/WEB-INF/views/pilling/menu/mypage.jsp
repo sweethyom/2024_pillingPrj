@@ -279,8 +279,6 @@ td {
 		<div>
 			<form id="dataform" method="post">
 				<input type="hidden" id="userNo" name="userNo" value="${userNo }">
-				<input type="hidden" id="couponName" name="couponName"> <input
-					type="hidden" id="couponRate" name="couponRate">
 			</form>
 
 		</div>
@@ -296,20 +294,6 @@ td {
 		<!-- 쿠폰 관련 스크립트들 -->
 		<script>
 			function addCoupon(userNo, userRank) {
-				var rate = 0;
-				if(userRank == "브론즈"){
-					rate = 1;
-				}else if(userRank == "실버"){
-					rate = 2;
-				}else if(userRank == "골드"){
-					rate = 3;
-				}else{
-					rate = 5;
-				}
-				
-				document.getElementById("couponName").value=userRank + "쿠폰";
-		  		document.getElementById("couponRate").value=rate;
-		  		
 		  		let form = document.getElementById('dataform');
 		  		let formData = new FormData(form);
 		  		let url = 'addcoupon'
@@ -338,7 +322,7 @@ td {
 		  		})
 		  		.catch((error) => {
 		  			console.error('There was an error!', error);
-		  			alert('장바구니 추가 중 오류가 발생하였습니다.');
+		  			alert('쿠폰 발급 중 오류가 발생하였습니다.');
 		  		});
 			}
 			function viewCoupons(userNo){

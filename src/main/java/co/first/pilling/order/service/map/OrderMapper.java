@@ -23,4 +23,6 @@ public interface OrderMapper {
 	int orderUpdate(OrderVO vo); // 주문변경
 
 	int createOrderNo(); // 주문번호 구하기
+	
+	List<OrderVO> getOrderListBeforeDelivery(int userNo); //주문내역(배송상태가 배송완료인 것)
 }
