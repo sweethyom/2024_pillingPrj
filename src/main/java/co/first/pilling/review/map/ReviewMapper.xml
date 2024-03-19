@@ -42,7 +42,10 @@
 		#{review_title},
 		#{review_content},
 		now(),
-		#{review_image})
+		#{review_image},
+		#{review_attach},
+		#{review_attachpath})
+		
 		
 	</insert>
 	<delete id="reviewDelete">

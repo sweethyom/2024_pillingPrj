@@ -8,13 +8,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
+
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import co.first.pilling.order.service.OrderService;
 import co.first.pilling.order.service.OrderVO;
@@ -42,7 +41,7 @@ public class ReviewController {
 	public String purchaseList(OrderdetailVO odv, OrderVO ov, Model model, HttpSession session) {
 		String userId=(String)session.getAttribute("userId");
 		int userNo = us.getUserNoByUserId(userId);
-		
+		session.setAttribute("orderId", ov.getOrderId());
 		//주문 목록 가져오기
 		List<OrderVO> orderList = os.getOrderListByUserNo(userNo);
 		
@@ -53,30 +52,28 @@ public class ReviewController {
 		//주문상세목록
 		List<OrderdetailVO> orderDetailList = ods.orderdetailList();
 		model.addAttribute("orderDetailList", orderDetailList);
-		for(int i =0; i<orderDetailList.size(); i++) {
-			System.out.println(orderDetailList.get(i));
+		for(int i =0; i<orderDetailList.size(); i++) {			
 	}
 		return "pilling/mypage/mypurchasedetail";
 	}
 	
 	@RequestMapping("newreview")
-	public String reviewList(ReviewVO vo, Model model, HttpSession session, HttpServletRequest hsrequest) {
-		String orderId = hsrequest.getParameter("orderId");
-		System.out.println("출력"+orderId);
-		String userId=(String)session.getAttribute("userId");
-		int userNo = us.getUserNoByUserId(userId);
+	public String reviewList(@RequestParam("orderId") int orderId, @RequestParam("productName") String productName, ReviewVO vo, OrderVO ov, Model model, HttpSession session, HttpServletRequest hsrequest) {
+		//int orderId = Integer.parseInt(hsrequest.getParameter("orderId"));
 		
 		//주문 목록 가져오기
-		List<OrderVO> orderList = os.getOrderListByUserNo(userNo);
+		OrderVO newVo= new OrderVO() ;
+		newVo.setOrderId(orderId);
+		OrderVO order = os.orderSelect(newVo);
 		
 		//주문 목록 모델에 추가
-		model.addAttribute("orderList", orderList);
+		model.addAttribute("order", order);
+		model.addAttribute("productName", productName);
 		
 		//주문상세목록
-		List<OrderdetailVO> orderDetailList = ods.orderdetailList();
+		List<OrderdetailVO> orderDetailList = ods.getOrderdetailListByOrderId(orderId);
 		model.addAttribute("orderDetailList", orderDetailList);
-		for(int i =0; i<orderDetailList.size(); i++) {
-	}
+
 		return "pilling/mypage/newreview";
 	
 	}
