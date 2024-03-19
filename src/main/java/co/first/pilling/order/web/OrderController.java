@@ -44,16 +44,17 @@ public class OrderController {
 
 	@Autowired
 	private UserService us;
-	
+
 	@Autowired
 	private CouponService cps;
 
 	// 장바구니 물품 결제완료 후 order, shipping, orderdetail 테이블에 데이터 삽입
 	@RequestMapping("makepayment")
-	public String makepayment(@RequestParam("usePoint") int usePoint, OrderVO ov, ShippingVO sv, CartVO cv, OrderdetailVO odv, CouponVO cpv) {
+	public String makepayment(@RequestParam("usePoint") int usePoint, OrderVO ov, ShippingVO sv, CartVO cv,
+			OrderdetailVO odv, CouponVO cpv) {
 		os.orderInsert(ov);
 		ss.shippingInsert(sv);
-		
+
 		int orderId = ov.getOrderId();
 		List<CartVO> cartList = cs.cartSelectList(cv);
 		// 각 상품에 대한 주문 상세 정보를 orderdetail 테이블에 삽입
@@ -68,22 +69,22 @@ public class OrderController {
 		// 카트 전체 삭제
 		CartVO vo = cartList.get(0);
 		cs.cartDeleteAll(vo);
-		
-		// 사용한 쿠폰 삭제
-		System.out.println(cpv.getCouponId());
-		cps.couponDelete(cpv);
-		
+
+		// 사용한 쿠폰 사용여부 변경
+		cps.couponUse(cpv);
+
 		// 사용한 적립금 차감
-		
+
 		UserVO uv = new UserVO();
 		uv.setUserNo(vo.getUserNo());
-	
+
 		System.out.println(usePoint);
 		System.out.println(uv.getUserNo());
-		
-		Map<Integer, UserVO> map = new HashMap<Integer, UserVO>();
-		map.put(usePoint, uv);
-		
+
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("usePoint", usePoint);
+		map.put("userNo", uv.getUserNo());
+
 		us.updateUserPoint(map);
 
 		return "redirect:/orderresult";
@@ -91,10 +92,27 @@ public class OrderController {
 
 	// 제품 바로구매->결제완료 후 order, shipping, orderdetail 테이블에 데이터 삽입
 	@RequestMapping("makepaymentdirect")
-	public String makepaymentdirect(OrderVO ov, OrderdetailVO odv, ShippingVO sv) {
+	public String makepaymentdirect(@RequestParam("usePoint") int usePoint, OrderVO ov, OrderdetailVO odv, ShippingVO sv, CouponVO cpv) {
 		os.orderInsert(ov);
 		ods.orderdetailInsert(odv);
 		ss.shippingInsert(sv);
+
+		// 사용한 쿠폰 사용여부 변경
+		cps.couponUse(cpv);
+
+		// 사용한 적립금 차감
+
+		UserVO uv = new UserVO();
+		uv.setUserNo(ov.getUserNo());
+
+		System.out.println(usePoint);
+		System.out.println(uv.getUserNo());
+
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("usePoint", usePoint);
+		map.put("userNo", uv.getUserNo());
+
+		us.updateUserPoint(map);
 
 		return "redirect:/orderresult";
 	}
@@ -120,8 +138,8 @@ public class OrderController {
 		cart.setFilepath(product.getFilepath1());
 
 		int orderId = os.createOrderNo();
-		
-		//가지고 있는 쿠폰 정보를 보내준다.
+
+		// 가지고 있는 쿠폰 정보를 보내준다.
 		List<CouponVO> couponList = cps.couponSelectList(uv.getUserNo());
 
 		model.addAttribute("cart", cart);

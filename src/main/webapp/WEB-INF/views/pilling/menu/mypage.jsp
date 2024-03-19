@@ -8,13 +8,8 @@
 <title>Insert title here</title>
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.10/dist/sweetalert2.min.css">
-</head>
-<body>
 	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-	<script src="https://kit.fontawesome.com/69f92e09cc.js"
-		crossorigin="anonymous"></script>
-	<!-- Section: Design Block -->
-	<section class="text-center text-lg-start">
+	<script src="https://kit.fontawesome.com/69f92e09cc.js" crossorigin="anonymous"></script>
 		<style>
 .cascading-right {
 	margin-right: -50px;
@@ -32,7 +27,6 @@
 
 .row-mypage {
 	margin: 0 auto;
-	width: 60%;
 }
 
 .div-left {
@@ -69,14 +63,17 @@ td {
 	box-shadow: 2px 5px 5px rgb(0, 0, 0, 0.1);
 }
 </style>
+</head>
+<body>
+    <!-- Page Header Start -->
+    <div class="container-fluid py-3">
+		<div class="container py-3">
+		  <h1 class="display-2 text-dark mb-4">마이 페이지</h1>
+		</div>
+	  </div>
+	  <!-- Page Header End -->
 
-<div class="container-fluid py-3">
-	<div class="container py-3">
-	  <h1 class="display-2 text-dark mb-4 animated slideInDown">My Page</h1>
-	</div>
-  </div>
-
-		<div class="container"></div>
+		<div class="container">
 
 		<!-- Content Row -->
 		<div class="row-mypage">
@@ -116,7 +113,7 @@ td {
 									<div
 										class="text-xs font-weight-bold text-uppercase mb-1 div-center">
 										<hr>
-										<a href="#" style="color:#555555;" onclick="viewCoupons('${userNo}')">보유 쿠폰 확인</a>
+										<a style="color:#555555;">보유 쿠폰</a>
 									</div>
 								</div>
 							</div>
@@ -151,7 +148,7 @@ td {
 				</div>
 			</div>
 
-			<br> <br> <br>
+			<br/> <br/> <br/>
 
 			<div class="row">
 				<div class="col-xl-12 col-md-6 mb-4 div-center">
@@ -166,13 +163,8 @@ td {
 									<td width="450" class="td-center"><i
 										class="fa-regular fa-newspaper h5"></i> &nbsp; <label
 										type="button" class="h5" onclick="location.href='myreview'">리뷰내역</label></td>
-								</tr>
-								<tr height="50">
-									<td class="td-center"><i class="fa-solid fa-cart-shopping"></i>
-										&nbsp; <label type="button" class="h5" onclick="moveCart()">장바구니</label></td>
-									<td class="td-center"><i
-										class="fa-regular fa-circle-question h5"></i> &nbsp; <label
-										type="button" class="h5" onclick="location.href='myinquiry'">문의내역</label></td>
+										<td width="450" class="td-center"><i class="fa-solid fa-cart-shopping"></i>
+											&nbsp; <label type="button" class="h5" onclick="moveCart()">장바구니</label></td>
 								</tr>
 							</table>
 						</div>
@@ -287,11 +279,10 @@ td {
 		<div>
 			<form id="dataform" method="post">
 				<input type="hidden" id="userNo" name="userNo" value="${userNo }">
-				<input type="hidden" id="couponName" name="couponName"> <input
-					type="hidden" id="couponRate" name="couponRate">
 			</form>
 
 		</div>
+	</div>
 		<script>
 			// 유저 넘버를 담고 장바구니로 이동시킨다.
 			function moveCart() {
@@ -303,20 +294,6 @@ td {
 		<!-- 쿠폰 관련 스크립트들 -->
 		<script>
 			function addCoupon(userNo, userRank) {
-				var rate = 0;
-				if(userRank == "브론즈"){
-					rate = 1;
-				}else if(userRank == "실버"){
-					rate = 2;
-				}else if(userRank == "골드"){
-					rate = 3;
-				}else{
-					rate = 5;
-				}
-				
-				document.getElementById("couponName").value=userRank + "쿠폰";
-		  		document.getElementById("couponRate").value=rate;
-		  		
 		  		let form = document.getElementById('dataform');
 		  		let formData = new FormData(form);
 		  		let url = 'addcoupon'
@@ -345,7 +322,7 @@ td {
 		  		})
 		  		.catch((error) => {
 		  			console.error('There was an error!', error);
-		  			alert('장바구니 추가 중 오류가 발생하였습니다.');
+		  			alert('쿠폰 발급 중 오류가 발생하였습니다.');
 		  		});
 			}
 			function viewCoupons(userNo){

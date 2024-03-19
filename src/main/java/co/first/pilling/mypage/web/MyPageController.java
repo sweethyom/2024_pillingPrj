@@ -19,6 +19,7 @@ import co.first.pilling.coupon.service.CouponVO;
 import co.first.pilling.order.service.OrderService;
 import co.first.pilling.order.service.OrderVO;
 import co.first.pilling.order.service.OrderdetailService;
+import co.first.pilling.order.service.OrderdetailVO;
 import co.first.pilling.user.service.UserService;
 import co.first.pilling.user.service.UserVO;
 
@@ -75,11 +76,8 @@ public class MyPageController {
 	@ResponseBody
 	public String addcoupon(CouponVO vo) {
 		String str = "Yes";
-		if(couponService.couponCount(vo) > 0) {
+		if(couponService.couponInsert(vo) == 0) {
 			str = "No";
-		}
-		else {
-			couponService.couponInsert(vo);
 		}
 		return str;
 	}
@@ -172,6 +170,27 @@ public class MyPageController {
 		return viewPage;
 	}
 	
+	
+	// 나의활동-주문내역 더보기 
+	@RequestMapping("myorderdetail")
+	public String myorderdetail(OrderdetailVO odv, OrderVO ov, Model model, HttpSession session) {
+		String userId=(String)session.getAttribute("userId");
+		int userNo = userService.getUserNoByUserId(userId);
+		
+		//주문 목록 가져오기
+		List<OrderVO> orderList = orderService.getOrderListBeforeDelivery(userNo);
+		
+		//주문 목록 모델에 추가
+		model.addAttribute("orderList", orderList);
+
+		//주문상세목록
+		List<OrderdetailVO> orderDetailList = orderdetailService.orderdetailList();
+		model.addAttribute("orderDetailList", orderDetailList);
+		for(int i =0; i<orderDetailList.size(); i++) {
+			System.out.println(orderDetailList.get(i));
+	}
+		return "pilling/mypage/myorderdetail";
+	}
 	
 	
 }

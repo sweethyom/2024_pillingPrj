@@ -46,4 +46,10 @@ public class CouponServiceImpl implements CouponService {
 		return map.couponCount(vo);
 	}
 
+	@Override
+	public int couponUse(CouponVO vo) {
+		// TODO Auto-generated method stub
+		return map.couponUse(vo);
+	}
+
 }

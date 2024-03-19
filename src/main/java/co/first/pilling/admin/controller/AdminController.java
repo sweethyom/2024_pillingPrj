@@ -35,17 +35,27 @@ public class AdminController {
 	
 	// 관리자 페이지로 이동
 	@GetMapping("admin")
-	public String admin(HttpServletRequest session) {
-		// 사용자 권한 확인 로직
-		String author = (String) session.getSession().getAttribute("author");
-		
-		// 접근권한 로직
-		if(!"ADMIN".equals(author)) {
-			return "redirect:/home";
-		} else {
-			return "admin/adminhome";
-		}
+	public ModelAndView admin(HttpServletRequest request) {
+	    ModelAndView mav = new ModelAndView();
+	    // 사용자 권한 확인 로직
+	    String author = (String) request.getSession().getAttribute("author");
+	    
+	    // 접근권한 로직
+	    if(!"ADMIN".equals(author)) {
+	        mav.setViewName("redirect:/home");
+	        return mav;
+	    }
+
+	    List<ProductManagementVO> productList = pms.productAllList();
+	    
+	    // 모델과 뷰에 값 실어주기
+	    mav.addObject("productlist", productList);
+	    mav.setViewName("admin/adminhome");
+
+	    // 정의된 값 return
+	    return mav;
 	}
+
 	
 	@RequestMapping("adminproductlist")
 	public ModelAndView adminProductList(ModelAndView mav) {

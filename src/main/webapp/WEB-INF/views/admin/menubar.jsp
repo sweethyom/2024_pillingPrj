@@ -57,7 +57,7 @@ prefix="tiles"%>
               </g>
             </svg>
           </span>
-          <span class="app-brand-text demo menu-text fw-bolder ms-2">Pilling</span>
+          <span class="app-brand-text demo menu-text fw-bolder ms-2" style="text-transform: none !important">Pilling</span>
         </a>
 
         <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
@@ -79,65 +79,10 @@ prefix="tiles"%>
         <li class="menu-header small text-uppercase">
           <span class="menu-header-text">관리</span>
         </li>
-        <li class="menu-item">
-          <a href="javascript:void(0);" class="menu-link menu-toggle">
-            <i class="menu-icon tf-icons bx bx-dock-top"></i>
-            <div data-i18n="Account Settings">상품 관리</div>
-          </a>
-          <ul class="menu-sub">
-            <li class="menu-item">
-              <a href="adminproductlist" class="menu-link">
-                <div data-i18n="Account">상품 목록</div>
-              </a>
-            </li>
-            <li class="menu-item">
-              <a href="pages-account-settings-notifications.html" class="menu-link">
-                <div data-i18n="Notifications">재고 관리</div>
-              </a>
-            </li>
-          </ul>
-        </li>
-        <li class="menu-item">
-          <a href="javascript:void(0);" class="menu-link menu-toggle">
-            <i class="menu-icon tf-icons bx bx-lock-open-alt"></i>
-            <div data-i18n="Authentications">회원 관리</div>
-          </a>
-          <ul class="menu-sub">
-            <li class="menu-item">
-              <a href="auth-login-basic.html" class="menu-link" target="_blank">
-                <div data-i18n="Basic">회원 목록</div>
-              </a>
-            </li>
-          </ul>
-        </li>
-        <li class="menu-item">
-          <a href="javascript:void(0);" class="menu-link menu-toggle">
-            <i class="menu-icon tf-icons bx bx-cube-alt"></i>
-            <div data-i18n="Misc">주문 내역</div>
-          </a>
-          <ul class="menu-sub">
-            <li class="menu-item">
-              <a href="pages-misc-error.html" class="menu-link">
-                <div data-i18n="Error">주문 관리</div>
-              </a>
-            </li>
-            <li class="menu-item">
-              <a href="pages-misc-under-maintenance.html" class="menu-link">
-                <div data-i18n="Under Maintenance">Under Maintenance</div>
-              </a>
-            </li>
-          </ul>
-                      <li class="menu-item">
-              <a
-                href="https://github.com/themeselection/sneat-html-admin-template-free/issues"
-                target="_blank"
-                class="menu-link"
-              >
-                <i class="menu-icon tf-icons bx bx-support"></i>
-                <div data-i18n="Support">문의 사항</div>
-              </a>
-            </li>
-        </li>
+        <a href="adminproductlist" class="menu-link" style="margin-left: 2rem">
+          <i class="menu-icon tf-icons bx bx-dock-top"></i>
+          <div data-i18n="Account">상품 및 재고 관리</div>
+        </a>
       </ul>
     </aside>
     <!-- / Menu -->

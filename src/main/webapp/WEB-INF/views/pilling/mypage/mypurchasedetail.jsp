@@ -112,7 +112,8 @@ td {
 									<td width="100"><img
 										src="${order.filepath }" alt="제품 이미지"
 										width="100"></td>
-									<td width="400" class="productname" data-order-id="${order.orderId }">${order.productName } 외 ${order.count }건</td>
+									<td width="400" class="productname" data-order-id="${order.orderId }">${order.productName }
+										<c:if test="${order.count>1 }"> 외 ${order.count-1 }건</c:if></td>
 									<td width="200">${order.orderTotalprice }</td>
 									<td width="200">${order.orderstatusName }</td>
 									<td>${order.orderDate }</td>
