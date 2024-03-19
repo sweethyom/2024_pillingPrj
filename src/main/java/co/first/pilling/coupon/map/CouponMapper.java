@@ -14,4 +14,6 @@ public interface CouponMapper {
 	int couponDelete(CouponVO vo); // 쿠폰 삭제
 	
 	int couponCount(CouponVO vo); // 쿠폰 개수 구하기
+	
+	int couponUse(CouponVO vo); // 쿠폰 사용여부 변경
 }
