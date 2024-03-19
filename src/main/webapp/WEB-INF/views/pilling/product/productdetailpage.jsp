@@ -109,145 +109,61 @@
     <!-- 상세 콘텐츠 END -->
     <!-- 제품 후기 페이지 START -->
     <section class="bottom-padding">
-      <div class="container py-5">
+      <div class="container py-5" style="padding-top: 1rem !important">
+        <h1 style="margin-bottom: 1rem">제품 후기</h1>
         <!-- Reviews List -->
         <div class="row row-cols-1 g-4">
-          <!-- Single Review Item -->
-          <div class="col">
-            <div class="card">
-              <div class="card-body">
-                <div class="d-flex align-items-start">
-                  <img
-                    src="https://placehold.co/100x100"
-                    alt="Red and white striped shirt"
-                    class="review-image rounded me-3"
-                    onclick="toggleImage(this, 'largeImg1')"
-                  />
-                  <div>
-                    <div class="review-rating">★★★★★</div>
-                    <div class="text-muted">유저ID - 24.03.11.</div>
-                    <p class="mt-2 mb-1">리뷰 제목</p>
-                    <p class="text-muted">리뷰 내용</p>
+          <c:forEach var="review" items="${review}" varStatus="status">
+            <div class="col">
+              <div class="card">
+                <div class="card-body">
+                  <div class="d-flex align-items-start">
+                    <img src="${review.reviewImage}" class="review-image rounded me-3" onclick="toggleImage(this, 'largeImg${status.index}')" />
+                    <div>
+                      <div class="review-rating">
+                        <c:forEach begin="1" end="${review.rating}" var="star"> ★ </c:forEach>
+                        <c:forEach begin="1" end="${5 - review.rating}" var="emptyStar"> ☆ </c:forEach>
+                      </div>
+                      <div class="text-muted">${review.userId} - ${review.reviewDate}</div>
+                      <p class="mt-2 mb-1">${review.reviewTitle}</p>
+                      <p class="text-muted">${review.reviewContent}</p>
+                    </div>
                   </div>
-                </div>
-                <div id="largeImg1" style="display: none">
-                  <img
-                    src="https://placehold.co/500x500"
-                    alt="Enlarged red and white striped shirt"
-                    class="large-image rounded d-block mt-3 mx-auto"
-                  />
-                </div>
-              </div>
-              <div class="card-body">
-                <div class="d-flex align-items-start">
-                  <img
-                    src="https://placehold.co/100x100"
-                    alt="Red and white striped shirt"
-                    class="review-image rounded me-3"
-                    onclick="toggleImage(this, 'largeImg2')"
-                  />
-                  <div>
-                    <div class="review-rating">★★★★★</div>
-                    <div class="text-muted">유저ID - 24.03.11.</div>
-                    <p class="mt-2 mb-1">리뷰 제목</p>
-                    <p class="text-muted">리뷰 내용</p>
+                  <div id="largeImg${status.index}" style="display: none">
+                    <img src="${review.reviewImage}" class="large-image rounded d-block mt-3 mx-auto" />
                   </div>
-                </div>
-                <div id="largeImg2" style="display: none">
-                  <img
-                    src="https://placehold.co/500x500"
-                    alt="Enlarged red and white striped shirt"
-                    class="large-image rounded d-block mt-3 mx-auto"
-                  />
-                </div>
-              </div>
-              <div class="card-body">
-                <div class="d-flex align-items-start">
-                  <img
-                    src="https://placehold.co/100x100"
-                    alt="Red and white striped shirt"
-                    class="review-image rounded me-3"
-                    onclick="toggleImage(this, 'largeImg3')"
-                  />
-                  <div>
-                    <div class="review-rating">★★★★★</div>
-                    <div class="text-muted">유저ID - 24.03.11.</div>
-                    <p class="mt-2 mb-1">리뷰 제목</p>
-                    <p class="text-muted">리뷰 내용</p>
-                  </div>
-                </div>
-                <div id="largeImg3" style="display: none">
-                  <img
-                    src="https://placehold.co/500x500"
-                    alt="Enlarged red and white striped shirt"
-                    class="large-image rounded d-block mt-3 mx-auto"
-                  />
-                </div>
-              </div>
-              <div class="card-body">
-                <div class="d-flex align-items-start">
-                  <img
-                    src="https://placehold.co/100x100"
-                    alt="Red and white striped shirt"
-                    class="review-image rounded me-3"
-                    onclick="toggleImage(this, 'largeImg4')"
-                  />
-                  <div>
-                    <div class="review-rating">★★★★★</div>
-                    <div class="text-muted">유저ID - 24.03.11.</div>
-                    <p class="mt-2 mb-1">리뷰 제목</p>
-                    <p class="text-muted">리뷰 내용</p>
-                  </div>
-                </div>
-                <div id="largeImg4" style="display: none">
-                  <img
-                    src="https://placehold.co/500x500"
-                    alt="Enlarged red and white striped shirt"
-                    class="large-image rounded d-block mt-3 mx-auto"
-                  />
-                </div>
-              </div>
-              <div class="card-body">
-                <div class="d-flex align-items-start">
-                  <img
-                    src="https://placehold.co/100x100"
-                    alt="Red and white striped shirt"
-                    class="review-image rounded me-3"
-                    onclick="toggleImage(this, 'largeImg5')"
-                  />
-                  <div>
-                    <div class="review-rating">★★★★★</div>
-                    <div class="text-muted">유저ID - 24.03.11.</div>
-                    <p class="mt-2 mb-1">리뷰 제목</p>
-                    <p class="text-muted">리뷰 내용</p>
-                  </div>
-                </div>
-                <div id="largeImg5" style="display: none">
-                  <img
-                    src="https://placehold.co/500x500"
-                    alt="Enlarged red and white striped shirt"
-                    class="large-image rounded d-block mt-3 mx-auto"
-                  />
                 </div>
               </div>
             </div>
-          </div>
-          <!-- Additional review items would be similarly structured with unique IDs for large images -->
+          </c:forEach>
+
+          <!-- 메시지 표시: 등록된 후기가 없습니다 -->
+          <c:if test="${review == null or review.isEmpty()}">
+            <div class="col">
+              <p class="text-center">등록된 후기가 없습니다.</p>
+            </div>
+          </c:if>
         </div>
       </div>
 
       <!-- Pagination START -->
       <div class="container productpurchase-pagination">
         <ul class="pagination justify-content-center">
-          <li class="page-item"><a class="page-link" href="#">이전</a></li>
-          <!-- 첫페이지에선 없음/시작인덱스 -10 -->
-          <li class="page-item"><a class="page-link" href="#"> 1</a></li>
-          <li class="page-item"><a class="page-link" href="#"> 2</a></li>
-          <li class="page-item"><a class="page-link" href="#"> 3</a></li>
-          <li class="page-item"><a class="page-link" href="#"> 4</a></li>
-          <li class="page-item"><a class="page-link" href="#"> 5</a></li>
-          <li class="page-item"><a class="page-link" href="#">다음</a></li>
-          <!-- 마지막인덱스 +10 /마지막 인덱스에서는 없음 -->
+          <c:if test="${pageNum > 1}">
+            <li class="page-item">
+              <a class="page-link" href="?productId=${detail.productId }&pageNum=${pageNum - 1}" style="color: black">이전</a>
+            </li>
+          </c:if>
+          <c:forEach begin="1" end="${totalPages}" var="i">
+            <li class="page-item ${pageNum == i ? 'active' : ''}">
+              <a class="page-link" href="?productId=${detail.productId }&pageNum=${i}" style="color: black">${i}</a>
+            </li>
+          </c:forEach>
+          <c:if test="${pageNum < totalPages}">
+            <li class="page-item">
+              <a class="page-link" href="?productId=${detail.productId }&pageNum=${pageNum + 1}" style="color: black">다음</a>
+            </li>
+          </c:if>
         </ul>
       </div>
       <!-- Pagination END  -->
