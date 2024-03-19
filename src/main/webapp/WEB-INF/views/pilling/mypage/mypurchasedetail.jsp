@@ -132,7 +132,7 @@ td {
 										<td >리뷰</td> 
 										
 									</tr>
-						 			<c:forEach var="orderDetail" items="${orderDetailList }">
+						 			<c:forEach var="orderDetail" items="${orderDetailList}">
 						 			<c:if test="${orderDetail.orderId eq order.orderId}">
 									<tr>
 										<td>${orderDetail.orderId }</td>
@@ -140,7 +140,14 @@ td {
 										<td>${orderDetail.orderdetailPrice }원</td>
 										<td>${orderDetail.orderdetailCount }개</td>
 										<td>${orderDetail.detailTotalPrice }원</td>
-										<td><button type="button" id="reviewbtn" class="btn mb-4" onclick="location.href='newreview?orderId=${order.orderId}&productName=${order.productName}'" onmouseover="mouseover()" onmouseout="mouseout()">리뷰작성</button></td>
+										<c:choose>
+										<c:when test="${orderDetail.reviewYn eq 'Y'}">
+											<td><button type="button" id="reviewhiddenbtn" class="btn mb-4">리뷰작성완료</button></td>
+										</c:when>
+										<c:when test="${orderDetail.reviewYn eq 'N'}">
+											<td><button type="button" id="reviewbtn" class="btn mb-4" onclick="javascript:location.href='newreview?orderId=${order.orderId}&productId=${orderDetail.productId}';" onmouseover="mouseover()" onmouseout="mouseout()">리뷰작성</button></td>
+										</c:when>
+									</c:choose>
 									</tr>
 						 			</c:if>
 									</c:forEach> 

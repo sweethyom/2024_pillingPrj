@@ -7,7 +7,9 @@
 			   product_name AS productName, 
 			   orderdetail_price AS orderdetailPrice, 
 			   orderdetail_count As orderdetailCount,
-			   orderdetail_Price * orderdetail_Count AS detailTotalPrice
+			   orderdetail_Price * orderdetail_Count AS detailTotalPrice,
+			   od.product_id AS productId,
+			   od.reviewYn AS reviewYn
 		FROM orderdetail od
 		LEFT JOIN `order` o
 		  ON o.order_id = od.order_id
@@ -30,7 +32,21 @@
 		LEFT JOIN product p
 		  ON od.product_id = p.product_id
 	   WHERE od.order_id = #{orderId}
-		GROUP BY od.product_id
+	</select>
+	<select id="getOrderdetailListByOrderIdProductId">
+				SELECT orderdetail_id AS orderdetailId, od.order_id AS orderId, 
+			   product_name AS productName, 
+			   orderdetail_price AS orderdetailPrice, 
+			   orderdetail_count As orderdetailCount,
+			   orderdetail_Price * orderdetail_Count AS detailTotalPrice,
+			   od.product_id AS productId
+		FROM orderdetail od
+		LEFT JOIN `order` o
+		ON o.order_id = od.order_id
+		LEFT JOIN product p
+		  ON od.product_id = p.product_id
+	   WHERE od.order_id = #{orderId}
+	     AND p.product_id =#{productId}
 	</select>
 	<insert id="orderdetailInsert">
 		INSERT INTO orderdetail (order_id, product_id,

@@ -172,11 +172,6 @@ public class MyPageController {
 		return viewPage;
 	}
 	
-	@RequestMapping(value = "reviewwrite", method = RequestMethod.POST)
-	public String ReviewPost(HttpSession session, UserVO vo, Model model, RedirectAttributes attr) {
-		String viewPage =null;
-		
-	return viewPage;}
 	
 	
 }

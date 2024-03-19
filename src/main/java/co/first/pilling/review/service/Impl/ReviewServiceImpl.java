@@ -3,11 +3,15 @@ package co.first.pilling.review.service.Impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Primary;
+import org.springframework.stereotype.Service;
 
 import co.first.pilling.review.map.ReviewMapper;
 import co.first.pilling.review.service.ReviewService;
 import co.first.pilling.review.service.ReviewVO;
 
+@Service
+@Primary
 public class ReviewServiceImpl implements ReviewService {
 
 	@Autowired
@@ -26,9 +30,9 @@ public class ReviewServiceImpl implements ReviewService {
 	}
 
 	@Override
-	public int reviewSearchId(String userId) {
+	public List<ReviewVO> reviewSelectByuserNo(int userNo) {
 		// TODO Auto-generated method stub
-		return map.reviewSearchId(userId);
+		return map.reviewSelectByuserNo(userNo);
 	}
 	
 	
