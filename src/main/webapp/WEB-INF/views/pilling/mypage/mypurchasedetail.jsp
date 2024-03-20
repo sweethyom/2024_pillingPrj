@@ -90,7 +90,7 @@ td {
 			<div class="width-myinfo card mb-4">
 				<div class="card-header py-3">
 					<div class="div-left">
-						<h3 class="m-0">구매내역</h3>
+						<h3 class="m-0">구매내역</h3><span>(리뷰작성을 원하시면 구매하신 제품명을 눌러주세요)</span>
 					</div>
 				</div>
 				<div class="card-body">
@@ -112,7 +112,7 @@ td {
 									<td width="100"><img
 										src="${order.filepath }" alt="제품 이미지"
 										width="100"></td>
-									<td width="400"><button type="button"class="btn mb-4 productname" id="click${order.orderId}" data-order-id="${order.orderId}" onmouseover="detailmouseover()" onmouseout="detailmouseout()">${order.productName }
+									<td width="400"><button type="button"class="btn productname" id="click${order.orderId}" data-order-id="${order.orderId}" onmouseover="detailmouseover()" onmouseout="detailmouseout()" style="text-transform: none;">${order.productName }
 										<c:if test="${order.count>1 }"> 외 ${order.count-1 }건</c:if></button></td>
 									<td width="200">${order.orderTotalprice }원</td>
 									<td>${order.orderDate }</td>
@@ -143,10 +143,10 @@ td {
 										<td>${orderDetail.detailTotalPrice }원</td>
 										<c:choose>
 										<c:when test="${orderDetail.reviewYn eq 'Y'}">
-											<td><button type="button" id="reviewhiddenbtn" class="btn mb-4">리뷰작성완료</button></td>
+											<td><button type="button" id="reviewhiddenbtn" class="btn">리뷰작성완료</button></td>
 										</c:when>
 										<c:when test="${orderDetail.reviewYn eq 'N'}">
-											<td><button type="button" id="reviewbtn" class="btn mb-4" onclick="javascript:location.href='newreview?orderId=${order.orderId}&productId=${orderDetail.productId}';" onmouseover="btnmouseover()" onmouseout="btnmouseout()">리뷰작성</button></td>
+											<td><button type="button" id="reviewbtn" class="btn" onclick="javascript:location.href='newreview?orderId=${order.orderId}&productId=${orderDetail.productId}';" onmouseover="btnmouseover()" onmouseout="btnmouseout()">리뷰작성</button></td>
 										</c:when>
 									</c:choose>
 									</tr>
@@ -161,20 +161,6 @@ td {
 						</table>
 					</div>
 				</div>
-			</div>
-			
-			<div class="container mt-3">
-				<ul class="pagination justify-content-center">
-					<li class="page-item"><a class="page-link" href="#">Previous</a></li>
-					<!-- 첫페이지에선 없음/시작인덱스 -10 -->
-					<li class="page-item"><a class="page-link" href="#"> 1</a>
-					<li class="page-item"><a class="page-link" href="#"> 2</a>
-					<li class="page-item"><a class="page-link" href="#"> 3</a>
-					<li class="page-item"><a class="page-link" href="#"> 4</a>
-					<li class="page-item"><a class="page-link" href="#"> 5</a></li>
-					<li class="page-item"><a class="page-link" href="#">Next</a></li>
-					<!-- 마지막인덱스 +10 /마지막 인덱스에서는 없음 -->
-				</ul>
 			</div>
 		</div>
 	</div>

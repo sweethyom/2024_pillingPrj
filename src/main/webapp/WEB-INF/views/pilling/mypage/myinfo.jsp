@@ -53,8 +53,8 @@
                   </thead>
                 </table>
                 <!-- Submit button -->
-                <button type="submit" class="btn btn-outline-dark-hyunwoo mt-3 login-btn-size">확인</button>&nbsp;&nbsp;&nbsp;&nbsp;
-                <a href="mypage" class="btn btn-outline-dark-hyunwoo mt-3 login-btn-size">돌아가기</a>
+                <a href="mypage" class="btn btn-outline-dark-hyunwoo mt-3 login-btn-size">돌아가기</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                <button type="submit" class="btn btn-outline-dark-hyunwoo mt-3 login-btn-size">확인</button>
               </div>
             </div>
           </div>
