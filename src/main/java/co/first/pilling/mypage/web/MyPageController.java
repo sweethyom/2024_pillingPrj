@@ -192,5 +192,13 @@ public class MyPageController {
 		return "pilling/mypage/myorderdetail";
 	}
 	
+	@RequestMapping("viewcoupons")
+	public String viewcoupons(HttpSession session, Model model) {
+		int userNo = (int)session.getAttribute("userNo");
+		List<CouponVO> couponList = couponService.couponSelectList(userNo);
+		model.addAttribute("couponList", couponList);
+		return "pilling/notiles/coupon/viewcoupons";
+	}
+	
 	
 }
