@@ -170,11 +170,6 @@ public class MyPageController {
 		return viewPage;
 	}
 	
-	@RequestMapping(value = "reviewwrite", method = RequestMethod.POST)
-	public String ReviewPost(HttpSession session, UserVO vo, Model model, RedirectAttributes attr) {
-		String viewPage =null;
-		
-	return viewPage;}
 	
 	// 나의활동-주문내역 더보기 
 	@RequestMapping("myorderdetail")

@@ -42,7 +42,7 @@ td {
 <body>
 	<div class="width-myreview py-4 div-center">
 	<br>
-	<form action="reviewwrite" method=GET>
+	<form action="reviewwrite" method="POST"  enctype="multipart/form-data">
 		<!-- 리뷰내역 카드 START -->
 		<div class="card mb-6">
 			<div class="card-header py-3">
@@ -55,12 +55,12 @@ td {
 				
 				<!-- 테이블 START -->
 				<div class="table-responsive">
-					<table class="table table-bordered mb-2" id="dataTable">
+					<table class="table table-bordered mb-2" id="reviewTable">
 							<c:forEach var="detail" items="${orderDetailList }">
 						<thead>
 							<tr>
 							<td width="100"><img
-									src="${order.filepath }" alt="제품 이미지"
+									src="${detail.filepath}" alt="제품 이미지"
 									width="100"></td>
 								<td width="250">제품명</td>
 								<td width="250">${detail.productName}</td>
@@ -72,34 +72,30 @@ td {
 						</thead>
 						<tbody>
 								
-								<tr>
-								<td colspan="9">
-								<table>
-								<td><input type="text" size="89%" placeholder="리뷰를 입력하세요."
-							id="questionTitle" name="questionTitle" required="required"><button type="submit"  class="btn btn-primary btn-block mb-4" >저장</button></td>
-								</table>
+						<tr>
+						<td colspan="9">
+							<table>	
+								<td>
+								<input type="hidden" name="productId" value="${detail.productId}">
+								<input type="radio" placeholder="별점을 입력하세요." value="1" name="rating">1
+								<input type="radio" placeholder="별점을 입력하세요." value="2" name="rating">2
+								<input type="radio" placeholder="별점을 입력하세요." value="3" name="rating">3
+								<input type="radio" placeholder="별점을 입력하세요." value="4" name="rating">4
+								<input type="radio" placeholder="별점을 입력하세요." value="5" name="rating">5
+								<input type="text" size="89%" placeholder="제목 입력하세요." class="form-control" id="reviewTitle" name="reviewTitle" required>
+								<input type="text" size="89%" placeholder="리뷰를 입력하세요." class="form-control" id="reviewContent" name="reviewContent" required>
+								<input type="file" class="form-control mb-2" id="reviewImgFile" name="reviewImgFile" accept="image/gif, image/jpeg, image/png">
+								<button type="submit" class="btn btn-primary btn-block mb-2">저장</button>
 								</td>
-								</tr>
+							</table>
+						</td>
+						</tr>
 					</tbody>
 					</c:forEach>
 					</table>
 				</div>
 				<!-- 테이블 END -->
-				<!-- 제품 리뷰 START -->
-				<div class="p-4 bg-myreview rounded mb-3">
-					<div class="row g-4">
-						<div class="col-12">
-							<div class="d-flex justify-content-between">
-								<h5>리뷰 제목</h5>
-								<a>★★★★☆</a>
-							</div>
-							<small class="text-body d-block mb-3"><i
-								class="fas fa-calendar-alt me-1"></i> Dec 9, 2024</small>
-							<p class="mb-0">Lorem Ipsum is simply dummy text of the
-								printing and typesetting industry.</p>
-						</div>
-					</div>
-				</div>
+
 			</div>
 				<!-- 제품 리뷰 END -->
 				
@@ -108,5 +104,8 @@ td {
 		<button type="button" class="btn btn-primary btn-block mb-4" style="margin-left:90%; display:flex;" onclick="location.href='mypage'">돌아가기</button>
 		</form>
 	</div>
+	<script>
+
+      </script>
 </body>
 </html>

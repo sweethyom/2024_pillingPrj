@@ -102,9 +102,9 @@ td {
 									<th width="100">제품</th>
 									<th width="400">제품명</th>
 									<th width="200">총 가격</th>
-									<th width="200">결제상태</th>
 									<th width="200">주문날짜</th>
-									<th width="200">결제여부</th>
+									<th width="200">결제상태</th>
+									
 								</tr>
 							</thead>
 							<tbody>
@@ -112,12 +112,12 @@ td {
 									<td width="100"><img
 										src="${order.filepath }" alt="제품 이미지"
 										width="100"></td>
-									<td width="400" class="productname" data-order-id="${order.orderId }">${order.productName }
-										<c:if test="${order.count>1 }"> 외 ${order.count-1 }건</c:if></td>
-									<td width="200">${order.orderTotalprice }</td>
-									<td width="200">${order.orderstatusName }</td>
+									<td width="400"><button type="button"class="btn mb-4 productname" id="click${order.orderId}" data-order-id="${order.orderId}" onmouseover="detailmouseover()" onmouseout="detailmouseout()">${order.productName }
+										<c:if test="${order.count>1 }"> 외 ${order.count-1 }건</c:if></button></td>
+									<td width="200">${order.orderTotalprice }원</td>
 									<td>${order.orderDate }</td>
-									<td>${order.orderstatusName }
+									<td width="200">${order.orderstatusName }</td>
+									
 								</tr>
 								
 								<!-- 구매 상세내역 들어갈 것 -->
@@ -133,7 +133,7 @@ td {
 										<td >리뷰</td> 
 										
 									</tr>
-						 			<c:forEach var="orderDetail" items="${orderDetailList }">
+						 			<c:forEach var="orderDetail" items="${orderDetailList}">
 						 			<c:if test="${orderDetail.orderId eq order.orderId}">
 									<tr>
 										<td>${orderDetail.orderId }</td>
@@ -141,7 +141,14 @@ td {
 										<td>${orderDetail.orderdetailPrice }원</td>
 										<td>${orderDetail.orderdetailCount }개</td>
 										<td>${orderDetail.detailTotalPrice }원</td>
-										<td><button type="button" id="reviewbtn" class="btn mb-4" onclick="location.href='newreview?orderId=${order.orderId}&productName=${order.productName}'" onmouseover="mouseover()" onmouseout="mouseout()">리뷰작성</button></td>
+										<c:choose>
+										<c:when test="${orderDetail.reviewYn eq 'Y'}">
+											<td><button type="button" id="reviewhiddenbtn" class="btn mb-4">리뷰작성완료</button></td>
+										</c:when>
+										<c:when test="${orderDetail.reviewYn eq 'N'}">
+											<td><button type="button" id="reviewbtn" class="btn mb-4" onclick="javascript:location.href='newreview?orderId=${order.orderId}&productId=${orderDetail.productId}';" onmouseover="btnmouseover()" onmouseout="btnmouseout()">리뷰작성</button></td>
+										</c:when>
+									</c:choose>
 									</tr>
 						 			</c:if>
 									</c:forEach> 
@@ -189,32 +196,45 @@ td {
 		    for(var j = 0; j < productNames.length; j++) {
 		        productNames[j].addEventListener('click', function(event){
 		        		show(this)
-		      		})
-		    
+		      		});
+		        productNames[j].addEventListener('click', function(event){
+		        	detailmouseover(this)
+	      		});	
+		        productNames[j].addEventListener('click', function(event){
+		        	detailmouseout(this)
+	      		});		    
 			}
 		});
-		
-	            
+		        
 		function show(element) {
 			var orderId = element.getAttribute('data-order-id');			
 			var ordertoggle = document.getElementById("detail"+orderId);	
 			if (ordertoggle.style.display === 'none'){
 				ordertoggle.style.display = 'contents'
+			}else{
+				ordertoggle.style.display = 'none';
 			}
-
 		} 
 		
-
-		
-		
-		
-		function mouseover(){
+		function btnmouseover(){
 			document.getElementById("reviewbtn").style.color="black";
 		}
 		
-		function mouseout(){
+		function btnmouseout(){
 			document.getElementById("reviewbtn").style.color="#585858";
 		}
+		
+	    function detailmouseover(element) {
+	        var orderId = element.getAttribute('id').substring(6); 
+	        var mouseover = document.getElementById("click" + orderId);
+	        mouseover.style.color = "black";
+	    }
+	            
+	    function detailmouseout(element) {
+	        var orderId = element.getAttribute('id').substring(6); 
+	        var mouseout = document.getElementById("click" + orderId);
+	        mouseout.style.color = "#585858";
+	    }
 	</script>
 </body>
 </html>

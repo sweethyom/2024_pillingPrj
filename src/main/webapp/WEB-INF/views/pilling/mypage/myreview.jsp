@@ -59,6 +59,9 @@ td {
 			<div class="card-header py-3">
 				<div class="div-left">
 					<h6 class="m-0 font-weight-bold">리뷰내역</h6>
+					<button type="button" class="btn btn-primary btn-block mb-4"
+			style="display: flex; float:right;"
+			onclick="location.href='newreview'" >리뷰쓰기</button>
 				</div>
 			</div>
 			<!-- 제품 정보와 리뷰 START -->
@@ -66,58 +69,30 @@ td {
 				<!-- 테이블 START -->
 				<div class="table-responsive">
 					<table class="table table-bordered mb-2" id="dataTable">
-					<c:forEach var="order" items="${orderList }">
+					<c:forEach var="reviewList" items="${reviewList }">
 						<thead>
 							<tr>
-								<th>주문번호</th>
-								<th colspan="2">${order.orderId }</th>
-								<th>주문날짜</th>
+								<th width="100">제품명</th>
+								<th colspan="2">${reviewList.productName }</th>
+								<th width="100">작성날짜</th>
+								<th colspan="2">${reviewList.reviewDate }</th>
 							</tr>
 						</thead>
 						<tbody>
 							<tr>
-								<td width="100"><img
-									src="resources/pilling/img/mypage/product.png" alt="제품 이미지"
-									width="100"></td>
-								<td colspan="2" width="500">${order.productName }</td>
-								<td>${order.orderDate}</td>
+								<td colspan="2" width="600"><img
+									src="${reviewList.reviewImg}" onerror="this.remove();" alt="제품 이미지"
+									width="100">
+								[${reviewList.reviewTitle}]<br>${reviewList.reviewContent }</td>
+								<td>평점</td>
+								<td colspan="2" width="500">${reviewList.rating }</td>
 							</tr>
 						</tbody>
 						</c:forEach>
 					</table>
 				</div>
 				<!-- 테이블 END -->
-				<!-- 제품 리뷰 START -->
-				<div class="p-4 bg-myreview rounded mb-3">
-					<div class="row g-4">
-						<div class="col-12">
-							<div class="d-flex justify-content-between">
-								<h5>
-									<input type="text" size="80%" placeholder="제목을 입력하세요."
-										id="questionTitle" name="questionTitle" required="required">
-								</h5>
-								<label class="rating__label rating__label--half" for="starhalf">
-									<input type="radio" id="starhalf" class="rating__input"
-									name="rating" value=""> <span class="star-icon"></span>
-								</label> <label class="rating__label rating__label--full" for="star1">
-									<input type="radio" id="star1" class="rating__input"
-									name="rating" value=""> <span class="star-icon"></span>
-								</label>
-							</div>
-							<small class="text-body d-block mb-3"><i
-								class="fas fa-calendar-alt me-1"></i> ${reviewDate }</small>
-							<p class="mb-0">
-								<input type="text" size="80%"
-									placeholder="내용을 입력하세요. (최대 1000자)" id="answer"
-									name="answer" required="required">
-							</p>
-							<button type="button" class="btn btn-primary btn-block mb-4"
-								style="margin-left: 90%; display: flex;"
-								onclick="location.href='mypurchasedetail'">리뷰쓰기</button>
-						</div>
-					</div>
-				</div>
-				<!-- 제품 리뷰 END -->
+
 			</div>
 			<!-- 제품 정보와 리뷰 END -->
 		</div>
