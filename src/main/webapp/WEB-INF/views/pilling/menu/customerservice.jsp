@@ -79,7 +79,7 @@
 
           <!-- c:if 로 다음 페이지가 없으면 다음 버튼이 비활성화되게 한다. -->
           <c:if test="${p.firstPageNoOnPageList + 5 > p.totalPageCount}">
-            <li class="page-item"><a class="page-link" style="color: black">다음</a></li>
+            <li class="page-item disabled"><a class="page-link" style="color: black">다음</a></li>
           </c:if>
           <c:if test="${p.firstPageNoOnPageList + 5 <= p.totalPageCount}">
             <li class="page-item">
@@ -136,7 +136,7 @@
         <ul class="pagination justify-content-center">
           <!-- c:if 로 이전 페이지가 없으면 이전 버튼이 비활성화되게 한다. -->
           <c:if test="${qp.firstPageNoOnPageList <= 1}">
-            <li class="page-item"><a class="page-link" style="color: black">이전</a></li>
+            <li class="page-item disabled"><a class="page-link" style="color: black">이전</a></li>
           </c:if>
           <c:if test="${qp.firstPageNoOnPageList > 1}">
             <li class="page-item">
@@ -152,7 +152,7 @@
             </li>
           </c:forEach>
           <c:if test="${qp.firstPageNoOnPageList + 5 > qp.totalPageCount}">
-            <li class="page-item"><a class="page-link" style="color: black">다음</a></li>
+            <li class="page-item disabled"><a class="page-link" style="color: black">다음</a></li>
           </c:if>
           <c:if test="${qp.firstPageNoOnPageList + 5 <= qp.totalPageCount}">
             <li class="page-item">
