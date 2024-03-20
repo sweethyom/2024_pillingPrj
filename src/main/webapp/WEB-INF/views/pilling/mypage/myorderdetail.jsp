@@ -109,7 +109,8 @@ td {
 												class="btn productname" id="click${order.orderId}"
 												data-order-id="${order.orderId}"
 												onmouseover="detailmouseover()"
-												onmouseout="detailmouseout()">${order.productName }
+												onmouseout="detailmouseout()"
+												style="text-transform: none;">${order.productName }
 												<c:if test="${order.count>1 }"> 외 ${order.count-1 }건</c:if>
 											</button></td>
 										<td width="200">${order.orderTotalprice }</td>
