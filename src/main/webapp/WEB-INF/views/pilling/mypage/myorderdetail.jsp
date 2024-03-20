@@ -109,7 +109,7 @@ td {
 												class="btn productname" id="click${order.orderId}"
 												data-order-id="${order.orderId}"
 												onmouseover="detailmouseover()"
-												onmouseout="detailmouseout()">${order.productName }
+												onmouseout="detailmouseout()" style="text-transform: none;">${order.productName }
 												<c:if test="${order.count>1 }"> 외 ${order.count-1 }건</c:if>
 											</button></td>
 										<td width="200">${order.orderTotalprice }</td>
@@ -149,19 +149,6 @@ td {
 						</table>
 					</div>
 				</div>
-			</div>
-			<div class="container mt-3">
-				<ul class="pagination justify-content-center">
-					<li class="page-item"><a class="page-link" href="#">Previous</a></li>
-					<!-- 첫페이지에선 없음/시작인덱스 -10 -->
-					<li class="page-item"><a class="page-link" href="#"> 1</a></li>
-					<li class="page-item"><a class="page-link" href="#"> 2</a></li>
-					<li class="page-item"><a class="page-link" href="#"> 3</a></li>
-					<li class="page-item"><a class="page-link" href="#"> 4</a></li>
-					<li class="page-item"><a class="page-link" href="#"> 5</a></li>
-					<li class="page-item"><a class="page-link" href="#">Next</a></li>
-					<!-- 마지막인덱스 +10 /마지막 인덱스에서는 없음 -->
-				</ul>
 			</div>
 		</div>
 	</div>
