@@ -12,7 +12,7 @@ import co.first.pilling.productdetail.service.ProductDetailReviewlistVO;
 
 @Service
 @Primary
-public class ProductDetailReviewlisServiceImpl implements ProductDetailReviewlistService {
+public class ProductDetailReviewlistServiceImpl implements ProductDetailReviewlistService {
 	
 	@Autowired
 	ProductDetailReviewlistMapper reviewListMapper;
