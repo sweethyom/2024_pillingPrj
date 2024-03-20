@@ -105,9 +105,13 @@ td {
 									<tr class="main" data-order-id="${order.orderId }">
 										<td width="100"><img src="${order.filepath }"
 											alt="제품 이미지" width="100"></td>
-										<td width="400" class="productname"
-											data-order-id="${order.orderId }">${order.productName }
-											<c:if test="${order.count>1 }"> 외 ${order.count-1 }건</c:if></td>
+										<td width="400"><button type="button"
+												class="btn productname" id="click${order.orderId}"
+												data-order-id="${order.orderId}"
+												onmouseover="detailmouseover()"
+												onmouseout="detailmouseout()">${order.productName }
+												<c:if test="${order.count>1 }"> 외 ${order.count-1 }건</c:if>
+											</button></td>
 										<td width="200">${order.orderTotalprice }</td>
 										<td width="200">${order.orderstatusName }</td>
 										<td>${order.orderDate }</td>
@@ -162,25 +166,30 @@ td {
 		</div>
 	</div>
 	<script>
-	document.addEventListener("DOMContentLoaded", function() {
-		    // show 함수를 호출하는 이벤트 핸들러 추가
-		    var productNames = document.getElementsByClassName('productname');
-		    for(var j = 0; j < productNames.length; j++) {
-		        productNames[j].addEventListener('click', function(event){
-		        		show(this)
-		      		})
-		    
+		document.addEventListener("DOMContentLoaded", function() {
+			// show 함수를 호출하는 이벤트 핸들러 추가
+			var productNames = document.getElementsByClassName('productname');
+			for (var j = 0; j < productNames.length; j++) {
+				productNames[j].addEventListener('click', function(event) {
+					show(this)
+				});
+				productNames[j].addEventListener('click', function(event) {
+					detailmouseover(this)
+				});
+				productNames[j].addEventListener('click', function(event) {
+					detailmouseout(this)
+				});
 			}
 		});
-		
-	            
-		function show(element) {
-			var orderId = element.getAttribute('data-order-id');			
-			var ordertoggle = document.getElementById("detail"+orderId);	
-			if (ordertoggle.style.display === 'none'){
-				ordertoggle.style.display = 'contents'
-			}
 
+		function show(element) {
+			var orderId = element.getAttribute('data-order-id');
+			var ordertoggle = document.getElementById("detail" + orderId);
+			if (ordertoggle.style.display === 'none') {
+				ordertoggle.style.display = 'contents'
+			} else {
+				ordertoggle.style.display = 'none';
+			}
 		}
 	</script>
 </body>
