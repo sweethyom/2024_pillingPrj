@@ -1,5 +1,7 @@
 package co.first.pilling.user.web;
 
+import java.io.PrintWriter;
+
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
@@ -52,11 +54,21 @@ public class UserController {
 
 	// 로그인으로 이동
 	@RequestMapping(value = "registerForm", method = RequestMethod.POST)
-	public String postRegister(UserVO vo) throws Exception {
-
+	public void postRegister(HttpServletResponse response, UserVO vo) throws Exception {
 		udao.userInsert(vo);
-
-		return "redirect:login";
+		alertAndGo(response, "회원가입이 완료되었습니다.", "login");
+	}
+	
+	public static void alertAndGo(HttpServletResponse response, String msg, String url) {
+	    try {
+	        response.setContentType("text/html; charset=utf-8");
+	        PrintWriter w = response.getWriter();
+	        w.write("<script>alert('"+msg+"');location.href='"+url+"';</script>");
+	        w.flush();
+	        w.close();
+	    } catch(Exception e) {
+	        e.printStackTrace();
+	    }
 	}
 
 }
