@@ -23,6 +23,7 @@
 		LEFT JOIN product p
 		ON r.product_id = p.product_id
 		WHERE USER_NO=#{userNo}
+		ORDER BY review_id DESC;
 	</select>
 
 	<update id="reviewUpdate">

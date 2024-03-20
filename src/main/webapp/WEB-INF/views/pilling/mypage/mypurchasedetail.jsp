@@ -102,8 +102,8 @@ td {
 									<th width="100">제품</th>
 									<th width="400">제품명</th>
 									<th width="200">총 가격</th>
+									<th width="200">배송상태</th>
 									<th width="200">주문날짜</th>
-									<th width="200">결제상태</th>
 									
 								</tr>
 							</thead>
@@ -115,8 +115,8 @@ td {
 									<td width="400"><button type="button"class="btn productname" id="click${order.orderId}" data-order-id="${order.orderId}" onmouseover="detailmouseover()" onmouseout="detailmouseout()" style="text-transform: none;">${order.productName }
 										<c:if test="${order.count>1 }"> 외 ${order.count-1 }건</c:if></button></td>
 									<td width="200">${order.orderTotalprice }원</td>
-									<td>${order.orderDate }</td>
-									<td width="200">${order.orderstatusName }</td>
+									<td>${order.status }</td>
+									<td width="200">${order.orderDate }</td>
 									
 								</tr>
 								

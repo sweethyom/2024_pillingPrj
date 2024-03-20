@@ -181,8 +181,8 @@
             </div>
           </div>
           <div class="d-flex nextprve-btn-container">
-            <button class="btn btn-outline-success next-btn" onclick="showNextSet('set2')" disabled>다음</button>
             <button class="btn btn-outline-secondary prev-btn" onclick="showPrevSet('set2')">이전</button>
+            <button class="btn btn-outline-success next-btn" onclick="showNextSet('set2')" disabled>다음</button>
           </div>
         </div>
         <!-- 두번째 세트 END -->
@@ -221,8 +221,8 @@
             </div>
           </div>
           <div class="d-flex nextprve-btn-container">
-            <button class="btn btn-outline-success next-btn" onclick="showNextSet('set3')" disabled>다음</button>
             <button class="btn btn-outline-secondary prev-btn" onclick="showPrevSet('set3')">이전</button>
+            <button class="btn btn-outline-success next-btn" onclick="showNextSet('set3')" disabled>다음</button>
           </div>
         </div>
         <!-- 세번째 세트 END -->
@@ -261,8 +261,8 @@
             </div>
           </div>
           <div class="d-flex nextprve-btn-container">
-            <button class="btn btn-outline-success next-btn" onclick="showNextSet('set4')" disabled>다음</button>
             <button class="btn btn-outline-secondary prev-btn" onclick="showPrevSet('set4')">이전</button>
+            <button class="btn btn-outline-success next-btn" onclick="showNextSet('set4')" disabled>다음</button>
           </div>
         </div>
         <!-- 네번째 세트 END -->
@@ -305,8 +305,8 @@
             </div>
           </div>
           <div class="d-flex nextprve-btn-container">
-            <button class="btn btn-outline-success next-btn" onclick="showNextSet('set5')" disabled>다음</button>
             <button class="btn btn-outline-secondary prev-btn" onclick="showPrevSet('set5')">이전</button>
+            <button class="btn btn-outline-success next-btn" onclick="showNextSet('set5')" disabled>다음</button>
           </div>
         </div>
         <!-- 다섯번째 세트 END -->
@@ -346,8 +346,8 @@
             </div>
           </div>
           <div class="d-flex nextprve-btn-container">
-            <button class="btn btn-outline-success next-btn" onclick="showNextSet('set6')" disabled>다음</button>
             <button class="btn btn-outline-secondary prev-btn" onclick="showPrevSet('set6')">이전</button>
+            <button class="btn btn-outline-success next-btn" onclick="showNextSet('set6')" disabled>다음</button>
           </div>
         </div>
         <!-- 여섯번째 세트 END -->
@@ -375,8 +375,8 @@
             </div>
           </div>
           <div class="d-flex nextprve-btn-container">
-            <button class="btn btn-outline-success submit-btn" onclick="submitSurvey()" disabled>제출</button>
             <button class="btn btn-outline-secondary prev-btn" onclick="showPrevSet('set7')">이전</button>
+            <button class="btn btn-outline-success submit-btn" onclick="submitSurvey()" disabled>제출</button>
           </div>
         </div>
         <!-- 일곱번째 세트 END -->
