@@ -185,7 +185,9 @@ td {
 							</div>
 							<div class="div-right">
 								<h6 class="text-muted m-0">
+								<c:if test="${not empty orders}">
 									<a type="button" onclick="location.href='myorderdetail'">>>더보기</a>
+								</c:if>
 								</h6>
 							</div>
 						</div>
@@ -235,7 +237,9 @@ td {
 							</div>
 							<div class="div-right">
 								<h6 class="text-muted m-0">
+								<c:if test="${not empty purchases}">
 									<a type="button" onclick="location.href='mypurchasedetail'">>>더보기</a>
+								</c:if>
 								</h6>
 							</div>
 						</div>
@@ -264,6 +268,12 @@ td {
 													<td>${p.orderDate}</td>
 												</tr>
 											</c:forEach>
+										</c:if>
+										<c:if test="${empty orders}">
+											<tr>
+												<td colspan="5" style="text-align: center;">구매한 제품이
+													없습니다.</td>
+											</tr>
 										</c:if>
 									</tbody>
 								</table>

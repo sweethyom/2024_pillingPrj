@@ -69,7 +69,7 @@
 	<select id="getOrderListByUserNo">
 		SELECT o.order_id AS orderId, p.product_name AS productName, o.order_date AS orderDate,
 			   count(p.product_name) AS count, o.order_totalprice AS orderTotalprice, 
-			   os.orderstatus_name AS orderstatusName, filepath1 AS filepath
+			   ss.shippingstatus_name AS status, filepath1 AS filepath
 		FROM `order` o
    LEFT JOIN orderdetail od 
 		  ON o.order_id = od.order_id
@@ -79,6 +79,8 @@
 		  ON o.orderstatus_id = os.orderstatus_id
    LEFT JOIN shipping s
 		  ON o.order_id = s.order_id 
+   LEFT JOIN shippingstatus ss
+   		  ON s.shippingstatus_id = ss.shippingstatus_id
 	   WHERE o.user_no = #{userNo}
 	     AND NOT product_name IS NULL
 	     AND s.shippingstatus_id = 3
