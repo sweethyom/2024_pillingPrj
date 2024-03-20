@@ -59,6 +59,9 @@ td {
 			<div class="card-header py-3">
 				<div class="div-left">
 					<h6 class="m-0 font-weight-bold">리뷰내역</h6>
+					<button type="button" class="btn btn-primary btn-block mb-4"
+			style="display: flex; float:right;"
+			onclick="location.href='newreview'" >리뷰쓰기</button>
 				</div>
 			</div>
 			<!-- 제품 정보와 리뷰 START -->
