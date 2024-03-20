@@ -90,7 +90,7 @@ td {
 			<div class="width-myinfo card mb-4">
 				<div class="card-header py-3">
 					<div class="div-left">
-						<h3 class="m-0">구매내역</h3>
+						<h3 class="m-0">구매내역</h3><span>(리뷰작성을 원하시면 구매하신 제품명을 눌러주세요)</span>
 					</div>
 				</div>
 				<div class="card-body">
@@ -102,9 +102,9 @@ td {
 									<th width="100">제품</th>
 									<th width="400">제품명</th>
 									<th width="200">총 가격</th>
-									<th width="200">결제상태</th>
+									<th width="200">배송상태</th>
 									<th width="200">주문날짜</th>
-									<th width="200">결제여부</th>
+									
 								</tr>
 							</thead>
 							<tbody>
@@ -112,12 +112,12 @@ td {
 									<td width="100"><img
 										src="${order.filepath }" alt="제품 이미지"
 										width="100"></td>
-									<td width="400" class="productname" data-order-id="${order.orderId }">${order.productName }
-										<c:if test="${order.count>1 }"> 외 ${order.count-1 }건</c:if></td>
-									<td width="200">${order.orderTotalprice }</td>
-									<td width="200">${order.orderstatusName }</td>
-									<td>${order.orderDate }</td>
-									<td>${order.orderstatusName }
+									<td width="400"><button type="button"class="btn productname" id="click${order.orderId}" data-order-id="${order.orderId}" onmouseover="detailmouseover()" onmouseout="detailmouseout()" style="text-transform: none;">${order.productName }
+										<c:if test="${order.count>1 }"> 외 ${order.count-1 }건</c:if></button></td>
+									<td width="200">${order.orderTotalprice }원</td>
+									<td>${order.status }</td>
+									<td width="200">${order.orderDate }</td>
+									
 								</tr>
 								
 								<!-- 구매 상세내역 들어갈 것 -->
@@ -143,10 +143,10 @@ td {
 										<td>${orderDetail.detailTotalPrice }원</td>
 										<c:choose>
 										<c:when test="${orderDetail.reviewYn eq 'Y'}">
-											<td><button type="button" id="reviewhiddenbtn" class="btn mb-4">리뷰작성완료</button></td>
+											<td><button type="button" id="reviewhiddenbtn" class="btn">리뷰작성완료</button></td>
 										</c:when>
 										<c:when test="${orderDetail.reviewYn eq 'N'}">
-											<td><button type="button" id="reviewbtn" class="btn mb-4" onclick="javascript:location.href='newreview?orderId=${order.orderId}&productId=${orderDetail.productId}';" onmouseover="mouseover()" onmouseout="mouseout()">리뷰작성</button></td>
+											<td><button type="button" id="reviewbtn" class="btn" onclick="javascript:location.href='newreview?orderId=${order.orderId}&productId=${orderDetail.productId}';" onmouseover="btnmouseover()" onmouseout="btnmouseout()">리뷰작성</button></td>
 										</c:when>
 									</c:choose>
 									</tr>
@@ -161,20 +161,6 @@ td {
 						</table>
 					</div>
 				</div>
-			</div>
-			
-			<div class="container mt-3">
-				<ul class="pagination justify-content-center">
-					<li class="page-item"><a class="page-link" href="#">Previous</a></li>
-					<!-- 첫페이지에선 없음/시작인덱스 -10 -->
-					<li class="page-item"><a class="page-link" href="#"> 1</a>
-					<li class="page-item"><a class="page-link" href="#"> 2</a>
-					<li class="page-item"><a class="page-link" href="#"> 3</a>
-					<li class="page-item"><a class="page-link" href="#"> 4</a>
-					<li class="page-item"><a class="page-link" href="#"> 5</a></li>
-					<li class="page-item"><a class="page-link" href="#">Next</a></li>
-					<!-- 마지막인덱스 +10 /마지막 인덱스에서는 없음 -->
-				</ul>
 			</div>
 		</div>
 	</div>
@@ -196,32 +182,45 @@ td {
 		    for(var j = 0; j < productNames.length; j++) {
 		        productNames[j].addEventListener('click', function(event){
 		        		show(this)
-		      		})
-		    
+		      		});
+		        productNames[j].addEventListener('click', function(event){
+		        	detailmouseover(this)
+	      		});	
+		        productNames[j].addEventListener('click', function(event){
+		        	detailmouseout(this)
+	      		});		    
 			}
 		});
-		
-	            
+		        
 		function show(element) {
 			var orderId = element.getAttribute('data-order-id');			
 			var ordertoggle = document.getElementById("detail"+orderId);	
 			if (ordertoggle.style.display === 'none'){
 				ordertoggle.style.display = 'contents'
+			}else{
+				ordertoggle.style.display = 'none';
 			}
-
 		} 
 		
-
-		
-		
-		
-		function mouseover(){
+		function btnmouseover(){
 			document.getElementById("reviewbtn").style.color="black";
 		}
 		
-		function mouseout(){
+		function btnmouseout(){
 			document.getElementById("reviewbtn").style.color="#585858";
 		}
+		
+	    function detailmouseover(element) {
+	        var orderId = element.getAttribute('id').substring(6); 
+	        var mouseover = document.getElementById("click" + orderId);
+	        mouseover.style.color = "black";
+	    }
+	            
+	    function detailmouseout(element) {
+	        var orderId = element.getAttribute('id').substring(6); 
+	        var mouseout = document.getElementById("click" + orderId);
+	        mouseout.style.color = "#585858";
+	    }
 	</script>
 </body>
 </html>

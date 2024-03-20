@@ -60,7 +60,7 @@ td {
 						<thead>
 							<tr>
 							<td width="100"><img
-									src="${order.filepath }" alt="제품 이미지"
+									src="${detail.filepath}" alt="제품 이미지"
 									width="100"></td>
 								<td width="250">제품명</td>
 								<td width="250">${detail.productName}</td>
@@ -77,20 +77,31 @@ td {
 							<table>	
 								<td>
 								<input type="hidden" name="productId" value="${detail.productId}">
-								<input type="radio" placeholder="별점을 입력하세요." value="1" name="rating">1
-								<input type="radio" placeholder="별점을 입력하세요." value="2" name="rating">2
-								<input type="radio" placeholder="별점을 입력하세요." value="3" name="rating">3
-								<input type="radio" placeholder="별점을 입력하세요." value="4" name="rating">4
-								<input type="radio" placeholder="별점을 입력하세요." value="5" name="rating">5
-								<input type="text" size="89%" placeholder="제목 입력하세요." class="form-control" id="reviewTitle" name="reviewTitle" required>
-								<input type="text" size="89%" placeholder="리뷰를 입력하세요." class="form-control" id="reviewContent" name="reviewContent" required>
+								<div style="margin-bottom: 1rem;">
+								<span>제품 점수</span>
+								<br>
+								<input type="radio" placeholder="별점을 입력하세요." value="1" name="rating">1점
+								<input type="radio" placeholder="별점을 입력하세요." value="2" name="rating">2점
+								<input type="radio" placeholder="별점을 입력하세요." value="3" name="rating">3점
+								<input type="radio" placeholder="별점을 입력하세요." value="4" name="rating">4점
+								<input type="radio" placeholder="별점을 입력하세요." value="5" name="rating">5점
+							</div>
+								<input type="text" size="89%" placeholder="제목 입력하세요." class="form-control" id="reviewTitle" name="reviewTitle" required style="margin-bottom: 1rem;">
+								<textarea
+								rows="10"
+								cols="160"
+								class="form-control"
+								placeholder="리뷰를 입력해주세요."
+								id="reviewContent" name="reviewContent"
+								required="required"
+								style="margin-bottom: 1rem;"></textarea>
 								<input type="file" class="form-control mb-2" id="reviewImgFile" name="reviewImgFile" accept="image/gif, image/jpeg, image/png">
-								<button type="submit" class="btn btn-primary btn-block mb-2">저장</button>
 								</td>
 							</table>
 						</td>
 						</tr>
 					</tbody>
+					<input type="hidden" name="orderDetailId" value="${detail.orderdetailId}">
 					</c:forEach>
 					</table>
 				</div>
@@ -98,10 +109,16 @@ td {
 
 			</div>
 				<!-- 제품 리뷰 END -->
+    <!-- 기타 필드 -->
+    
+
 				
 		</div>
 		<!-- 카드 END -->
-		<button type="button" class="btn btn-primary btn-block mb-4" style="margin-left:90%; display:flex;" onclick="location.href='mypage'">돌아가기</button>
+		<div style="text-align: center;">
+		<button type="button" class="btn btn-outline-dark-hyunwoo mt-3 login-btn-size" onclick="location.href='mypage'">돌아가기</button>
+		<button type="submit" class="btn btn-outline-dark-hyunwoo mt-3 login-btn-size" style="margin-left: 1rem;">저장</button>
+	</div>
 		</form>
 	</div>
 	<script>

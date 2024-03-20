@@ -51,6 +51,7 @@ public class ReviewController {
 	@Autowired
 	private ServletContext servletContext;
 	
+	//구매 상세 조회 240320.10:04 주석추가
 	@RequestMapping("mypurchasedetail")
 	public String purchaseList(OrderdetailVO odv, OrderVO ov, Model model, HttpSession session) {
 		String userId=(String)session.getAttribute("userId");
@@ -66,12 +67,10 @@ public class ReviewController {
 		//주문상세목록
 		List<OrderdetailVO> orderDetailList = ods.orderdetailList();
 		model.addAttribute("orderDetailList", orderDetailList);
-		for(int i =0; i<orderDetailList.size(); i++) {			
-			System.out.println(orderDetailList.get(i));
-	}
 		return "pilling/mypage/mypurchasedetail";
 	}
 	
+	// 리뷰 작성폼 호출 240320.10:04 주석추가
 	@RequestMapping(value="newreview", method=RequestMethod.GET)
 	public String reviewList(@RequestParam("orderId") int orderId, OrderdetailVO odv, ReviewVO vo, OrderVO ov, Model model, HttpSession session, HttpServletRequest hsrequest) {
 		//int orderId = Integer.parseInt(hsrequest.getParameter("orderId"));
@@ -83,7 +82,7 @@ public class ReviewController {
 		
 		//주문 목록 모델에 추가
 		model.addAttribute("order", order);
-		
+		System.out.println(order);
 		//주문상세목록
 		List<OrderdetailVO> orderDetailList = ods.getOrderdetailListByOrderIdProductId(odv);
 		model.addAttribute("orderDetailList", orderDetailList);
@@ -103,6 +102,7 @@ public class ReviewController {
 	}*/
 
 	
+	// 리뷰 삽입 240320.10:04 주석추가
 	@RequestMapping(value="reviewwrite", method = RequestMethod.POST)
 	public String postreviewWrite(Model model, ReviewVO vo,  @RequestParam("reviewImgFile") CommonsMultipartFile reviewImg, HttpSession session) {
 
@@ -140,6 +140,7 @@ public class ReviewController {
 	    return "resources/pilling/img/" + directoryName + "/" + fileName;
 	}
 		
+		// 나의 리뷰 조회 240320.10:04 주석추가
 	@RequestMapping(value="myreview", method= RequestMethod.GET)
 	public String myreviewList(Model model, ReviewVO vo, HttpSession session) {
 		int userNo = (int)session.getAttribute("userNo");

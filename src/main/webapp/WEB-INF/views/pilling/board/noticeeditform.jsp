@@ -41,7 +41,7 @@
                     </div>
                   </td>
                 </tr>
-                <tr>
+                <tr style="display:none">
                   <td width="100"><small>첨부파일</small></td>
                   <td colspan="2">
                     <small><input type="file" class="form-control" id="file" name="file" disabled /></small>

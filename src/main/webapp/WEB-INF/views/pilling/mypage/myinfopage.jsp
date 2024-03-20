@@ -58,46 +58,6 @@
                       <th width="200">아이디</th>
                       <td width="500">${userId }</td>
                     </tr>
-
-                    <tr>
-                      <th valign="middle">비밀번호</th>
-                      <td>
-                        현재 비밀번호&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :
-                        <input class="editinput" type="password" name="pswdbox" id="currentpw" placeholder="현재 비밀번호를 입력하세요" width="60%" />
-                        <br />
-                        새 비밀번호 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:
-                        <input
-                          type="password"
-                          class="editinput"
-                          id="userPswd"
-                          name="pswdbox"
-                          placeholder="영문,숫자,특수문자 포함 8자 이상 입력해주세요."
-                          width="60%"
-                        />
-                        <br />
-                        <br />
-                        영문/숫자/특수문자 2가지 이상 조합 (8자이상)
-                        <br />
-                        3개 이상 연속되거나 동일한 문자/숫자 제외
-                        <br />
-                        아이디(이메일) 제외
-                        <br />
-                        <br />
-                        새 비밀번호 재입력 :
-                        <input
-                          type="password"
-                          class="editinput"
-                          name="pswdbox"
-                          id="passwordConfirm"
-                          placeholder="위와 동일한 비밀번호를 입력해주세요."
-                          width="60%"
-                        />
-                        <button name="pswdbox" type="button" id="pswd" style="display: block" onclick="editbutton1()">비밀번호 변경</button>
-                        <span id="passwordConfirmMsg2"></span>&nbsp;&nbsp;&nbsp;
-                        <span id="passwordConfirmMsg1"></span>
-                      </td>
-                    </tr>
-
                     <tr>
                       <th>이 름</th>
                       <td>${userLastname }${userFirstname }</td>
@@ -115,45 +75,22 @@
 
                     <tr>
                       <th>연락처</th>
-                      <td>
-                        ${userTel }<button style="float: right" class="edit-btn" id="telbtn" type="button" onclick="telinput()">연락처수정</button>
-                      </td>
+                      <td>${userTel }</td>
                     </tr>
 
                     <tr>
                       <th>이메일</th>
-                      <td>
-                        ${userEmail}<button style="float: right" class="edit-btn" id="emailbtn" type="button" onclick="emailinput()">
-                          이메일수정
-                        </button>
-                      </td>
+                      <td>${userEmail}</td>
                     </tr>
 
                     <tr>
                       <th>주소</th>
-                      <td>
-                        ${userAddr}${userAddrdetail }<button style="float: right" class="edit-btn" id="addrbtn" type="button" onclick="addrinput()">
-                          주소수정
-                        </button>
-                      </td>
+                      <td>${userAddr}${userAddrdetail }</td>
                     </tr>
 
                     <tr>
                       <th>총 구매액</th>
                       <td>${userTotalamount }원</td>
-                    </tr>
-
-                    <tr>
-                      <th>마케팅동의여부</th>
-                      <td>
-                        <c:if test="${userMarketingYn eq 'N'}"> 동의 </c:if>
-                        <button style="float: right" class="edit-btn" id="mkbtn" type="button" onclick="mkinput()">마케팅동의수정</button>
-                      </td>
-                    </tr>
-
-                    <tr>
-                      <th>탈퇴하시겠습니까?</th>
-                      <td><button class="edit-btn" type="button" onclick="location.href='withdrawal'">탈퇴하기</button></td>
                     </tr>
                   </thead>
                 </table>
@@ -161,7 +98,6 @@
                 <div align="center">
                   <!-- Submit button -->
                   <a href="outmyinfo" class="btn btn-outline-dark-hyunwoo mt-3 login-btn-size">돌아가기</a>
-                  <button type="submit" class="btn btn-outline-dark-hyunwoo mt-3 login-btn-size">저장하기</button>
                 </div>
               </div>
             </form>

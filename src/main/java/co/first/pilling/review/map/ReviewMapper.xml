@@ -23,6 +23,7 @@
 		LEFT JOIN product p
 		ON r.product_id = p.product_id
 		WHERE USER_NO=#{userNo}
+		ORDER BY review_id DESC;
 	</select>
 
 	<update id="reviewUpdate">
@@ -45,7 +46,7 @@
 		REVIEW_CONTENT,
 		REVIEW_DATE,
 		REVIEW_IMAGE,
-		REVIEWYN)
+		ORDERDETAIL_ID)
 		VALUES(
 		(SELECT MAX(a.REVIEW_ID)+1 FROM review a),
 		#{productId},
@@ -55,7 +56,7 @@
 		#{reviewContent},
 		now(),
 		#{reviewImg},
-		#{reviewYn})	
+		#{orderDetailId});
 	</insert>
 	<delete id="reviewDelete">
 		DELETE

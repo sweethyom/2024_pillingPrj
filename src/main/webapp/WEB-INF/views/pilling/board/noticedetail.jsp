@@ -40,7 +40,7 @@
                   <div class="mt-3 mb-5">${notice.noticeContent }</div>
                 </td>
               </tr>
-              <tr>
+              <tr style="display:none">
                 <td width="100"><small>첨부파일</small></td>
                 <td colspan="2"></td>
               </tr>
