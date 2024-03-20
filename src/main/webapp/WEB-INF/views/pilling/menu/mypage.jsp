@@ -113,7 +113,7 @@ td {
 									<div
 										class="text-xs font-weight-bold text-uppercase mb-1 div-center">
 										<hr>
-										<a style="color:#555555;">보유 쿠폰</a>
+										<a href="#" onclick="openViewCoupons()" style="color:#555555;">보유 쿠폰</a>
 									</div>
 								</div>
 							</div>
@@ -290,6 +290,13 @@ td {
 				dataform.submit();
 			}
 		</script>
+		
+		<script>
+		function openViewCoupons(){
+			
+			window.open("viewcoupons", "_blank", "width=800, height=300");
+		}
+		</script>
 
 		<!-- 쿠폰 관련 스크립트들 -->
 		<script>
@@ -324,9 +331,6 @@ td {
 		  			console.error('There was an error!', error);
 		  			alert('쿠폰 발급 중 오류가 발생하였습니다.');
 		  		});
-			}
-			function viewCoupons(userNo){
-				window.open("/PillingProject/src/main/webapp/WEB-INF/views/pilling/mypage/viewcoupons.jsp", '_blank', 'width=800, height=600');
 			}
 		</script>
 </body>
