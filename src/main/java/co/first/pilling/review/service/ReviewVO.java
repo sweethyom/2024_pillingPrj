@@ -19,5 +19,5 @@ public class ReviewVO {
 	private String reviewImg;
 	private LocalDate reviewDate;
 	private String productName;
-	
+	private int orderDetailId;
 }

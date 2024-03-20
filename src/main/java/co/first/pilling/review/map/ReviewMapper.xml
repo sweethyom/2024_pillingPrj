@@ -45,7 +45,8 @@
 		REVIEW_TITLE,
 		REVIEW_CONTENT,
 		REVIEW_DATE,
-		REVIEW_IMAGE)
+		REVIEW_IMAGE,
+		ORDERDETAIL_ID)
 		VALUES(
 		(SELECT MAX(a.REVIEW_ID)+1 FROM review a),
 		#{productId},
@@ -54,7 +55,8 @@
 		#{reviewTitle},
 		#{reviewContent},
 		now(),
-		#{reviewImg})	
+		#{reviewImg},
+		#{orderDetailId});
 	</insert>
 	<delete id="reviewDelete">
 		DELETE

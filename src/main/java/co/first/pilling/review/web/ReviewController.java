@@ -67,9 +67,6 @@ public class ReviewController {
 		//주문상세목록
 		List<OrderdetailVO> orderDetailList = ods.orderdetailList();
 		model.addAttribute("orderDetailList", orderDetailList);
-		for(int i =0; i<orderDetailList.size(); i++) {			
-			System.out.println(orderDetailList.get(i));
-	}
 		return "pilling/mypage/mypurchasedetail";
 	}
 	
