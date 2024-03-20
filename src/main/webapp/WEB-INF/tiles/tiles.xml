@@ -7,7 +7,7 @@
 
 	<!-- main layout 정의 시작 -->
 	<definition name="main.layout" template="/WEB-INF/views/pilling/layout.jsp">
-		<put-attribute name="title" value="pilling" />
+		<put-attribute name="title" value="Pilling" />
 		<put-attribute name="header" value="/WEB-INF/views/pilling/header.jsp" />
 		<put-attribute name="body" value="" />
 		<put-attribute name="footer" value="/WEB-INF/views/pilling/footer.jsp" />
@@ -29,7 +29,7 @@
 	
 	<!-- admin layout 정의 시작 -->
 	<definition name="admin.layout" template="/WEB-INF/views/admin/layout.jsp">
-		<put-attribute name="title" value="pilling admin" />
+		<put-attribute name="title" value="Pilling admin" />
 		<put-attribute name="menubar" value="/WEB-INF/views/admin/menubar.jsp" />
 		<put-attribute name="body" value="" />
 	</definition>

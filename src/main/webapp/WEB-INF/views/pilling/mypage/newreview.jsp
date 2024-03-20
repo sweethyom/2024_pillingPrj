@@ -83,7 +83,13 @@ td {
 								<input type="radio" placeholder="별점을 입력하세요." value="4" name="rating">4
 								<input type="radio" placeholder="별점을 입력하세요." value="5" name="rating">5
 								<input type="text" size="89%" placeholder="제목 입력하세요." class="form-control" id="reviewTitle" name="reviewTitle" required>
-								<input type="text" size="89%" placeholder="리뷰를 입력하세요." class="form-control" id="reviewContent" name="reviewContent" required>
+								<textarea
+								rows="10"
+								cols="160"
+								class="form-control"
+								placeholder="리뷰를 입력해주세요."
+								id="reviewContent" name="reviewContent"
+								required="required"></textarea>
 								<input type="file" class="form-control mb-2" id="reviewImgFile" name="reviewImgFile" accept="image/gif, image/jpeg, image/png">
 								<button type="submit" class="btn btn-primary btn-block mb-2">저장</button>
 								</td>
