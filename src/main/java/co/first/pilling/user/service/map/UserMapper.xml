@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="co.first.pilling.user.service.map.UserMapper">
+
+<select id="userSelectList"></select>
+<select id="userSelect">
+	SELECT * FROM `user` WHERE USER_ID = #{userId}
+	<if test="userPswd != null">
+		AND USER_PSWD = #{userPswd}
+	</if> 
+</select>
+<select id="userRead">
+	SELECT * FROM `user` WHERE USER_ID = #{userId}
+</select>
+<select id="getUserNoByUserId">
+	SELECT USER_NO FROM `user` WHERE USER_ID = #{userId} 
+</select>
+<insert id="userInsert">
+	INSERT INTO `user`(
+	user_id, user_pswd, user_lastname, user_firstname, user_birthdate, user_gender, user_email, user_tel, user_addr, user_addrdetail)
+		VALUES(#{userId},#{userPswd},#{userLastname},#{userFirstname},#{userBirthdate},#{userGender},#{userEmail},#{userTel},#{userAddr},#{userAddrdetail})
+</insert>
+<update id="userUpdate">
+	UPDATE `user`
+	SET user_tel=#{userTel}, user_email=#{userEmail}, user_addr=#{userAddr}, user_addrdetail=#{userAddrdetail}, user_marketingYn=#{userMarketingYn}, user_signout=#{userSignout}
+	WHERE user_id = #{userId}
+	</update>
+<update id="userPswdUpdate">
+	UPDATE `user`
+	SET user_pswd=#{userPswd}
+	WHERE user_id =#{userId}
+</update>
+<delete id="userDelete"></delete>
+<update id="userWithdraw">
+	UPDATE `user`
+	SET user_signout='Y'
+	WHERE user_id = #{userId}
+</update>
+<insert id="userWithdrawinsert">
+	INSERT INTO withdrawal(user_no, withdrawdate)
+	VALUES (#{userNo}, NOW())
+</insert>
+<select id="userPassword" parameterType="String">
+	SELECT * FROM `user` WHERE USER_ID=#{userId} AND USER_PSWD=#{userPswd}
+</select>
+<select id="selectUserRank">
+	SELECT l.level_name AS userLevel
+	FROM `user` u 
+	JOIN `level` l 
+	ON u.level_id = l.level_id 
+	WHERE u.user_id = #{userId};
+</select>
+<update id="updateUserPoint">
+	UPDATE `user`
+	SET user_point = user_point - #{usePoint}
+	WHERE user_No = #{userNo}
+</update>
+</mapper>

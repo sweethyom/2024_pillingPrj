@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper
+	namespace="co.first.pilling.admin.productmanagement.map.ProductManagementMapper">
+	
+	<!-- admin 상품목록에 조회 -->
+	<select id="productAllList">
+		SELECT *
+		FROM product;
+	</select>
+	
+	<!-- 상품 별 키워드 아이디 조회 -->
+	<select id="productKeywordMapping">
+		SELECT km.keyword_id
+		FROM keyword_mapping km 
+		JOIN product p 
+		ON km.product_id = p.product_id
+		WHERE p.product_id = #{productId};
+	</select>
+
+	<!-- product 테이블 insert -->
+	<insert id="productInsert">
+		INSERT INTO product(
+		PRODUCT_NAME,
+		PRODUCT_PRICE,
+		PRODUCT_DESCRIPTION1,
+		PRODUCT_DESCRIPTION2,
+		PRODUCT_DESCRIPTION3,
+		PRODUCT_DESCRIPTION4,
+		PRODUCT_DESCRIPTION5,
+		TAKING_METHOD,
+		DOSE_TIME,
+		FILENAME1,
+		FILEPATH1,
+		FILENAME2,
+		FILEPATH2,
+		STOCK)
+		VALUES(#{productName},
+		#{productPrice},
+		#{productDescription1},
+		#{productDescription2},
+		#{productDescription3},
+		#{productDescription4},
+		#{productDescription5},
+		#{takingMethod},
+		#{doseTime},
+		#{filename1},
+		#{filepath1},
+		#{filename2},
+		#{filepath2},
+		#{stock})
+	</insert>
+	
+	<!-- 제품과 키워드 매핑 테이블에 값 입력 -->
+	<insert id="keywordInsert">
+		INSERT INTO keyword_mapping(product_id, keyword_id)
+		SELECT MAX(product_id), #{keywordId}
+  	 	FROM product
+	</insert>
+	
+	<!-- 재고량 업데이트 -->
+	<update id="stockUpdate">
+		UPDATE product
+		SET stock = stock + #{addStock}
+		WHERE product_id = #{productId};
+	</update>
+	
+	<!-- 제품 삭제  -->
+	<delete id="productDelete">
+		DELETE FROM product
+		WHERE product_id = #{productId};
+	</delete>
+	
+	<!-- 제품 수정 -->
+	<update id="productUpadte">
+		UPDATE product 
+		SET PRODUCT_NAME = #{productName},
+		PRODUCT_PRICE = #{productPrice},
+		PRODUCT_DESCRIPTION1 = #{productDescription1},
+		PRODUCT_DESCRIPTION2 = #{productDescription2},
+		PRODUCT_DESCRIPTION3 = #{productDescription3},
+		PRODUCT_DESCRIPTION4 = #{productDescription4},
+		PRODUCT_DESCRIPTION5 = #{productDescription5},
+		TAKING_METHOD = #{takingMethod},
+		DOSE_TIME = #{doseTime},
+		FILENAME1 = #{filename1},
+		FILEPATH1 = #{filepath1},
+		FILENAME2 = #{filename2},
+		FILEPATH2 = #{filepath2},
+		STOCK = #{stock}
+		WHERE product_id = #{productId};
+	</update>
+	
+	<!-- 제품 수정 시 키워드 우선 삭제 -->
+	<delete id="keywordUpdateDelete">
+		DELETE FROM keyword_mapping
+		WHERE product_id = #{productId};
+	</delete>
+	
+	<!-- 제품 수정 시 키워드 재입력 -->
+	<insert id="keywordUpdateInsert">
+	    INSERT INTO keyword_mapping (product_id, keyword_id)
+    	VALUES (#{productId}, #{keywordId});
+	</insert>
+	
+	<select id="getProductById">
+		SELECT * 
+		FROM product 
+		WHERE product_id = #{productId};
+	</select>
+	
+</mapper>

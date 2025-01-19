@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="co.first.pilling.coupon.map.CouponMapper">
+	<select id="couponSelectList">
+		SELECT *
+		FROM coupon
+		WHERE user_no = #{userNo}
+		AND coupon_use = 'N'
+	</select>
+	<select id="couponSelect"></select>
+	<insert id="couponInsert">
+		INSERT INTO coupon (user_no, coupon_name, coupon_rate)
+		SELECT #{userNo}, 
+			CONCAT((SELECT l.level_name FROM `user` u JOIN `level` l ON u.level_id= l.level_id WHERE u.user_no = #{userNo}), '쿠폰'),
+			(SELECT l.level_accumrate FROM `user` u JOIN `level` l ON u.level_id= l.level_id WHERE u.user_no = #{userNo})
+		FROM dual 
+		WHERE NOT EXISTS (
+			SELECT *
+			FROM coupon
+			WHERE user_no = #{userNo}
+			AND DATE_FORMAT(coupon_date, '%Y-%m') = DATE_FORMAT(NOW(), '%Y-%m')
+		)
+	</insert>
+	<update id="couponUse">
+		UPDATE coupon 
+		SET coupon_use = 'Y'
+		WHERE coupon_id = #{couponId}; 
+	</update>
+	<delete id="couponDelete">
+		DELETE FROM coupon WHERE coupon_id = #{couponId}
+	</delete>
+	<select id="couponCount">
+		SELECT count(*) FROM coupon WHERE user_no = #{userNo} AND coupon_use = 'N'
+	</select>
+</mapper>

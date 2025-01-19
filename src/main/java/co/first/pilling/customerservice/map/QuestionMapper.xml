@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper
+	namespace="co.first.pilling.customerservice.map.QuestionMapper">
+	<select id="questionSelectList">
+		SELECT q.question_id AS questionId, q.user_no AS
+		userNo,
+		q.question_title AS questionTitle, q.question_content AS
+		questionContent,
+		q.question_date AS questionDate, u.user_id AS userId
+		FROM question q
+		JOIN
+		user u
+		ON q.user_no = u.user_no
+		ORDER BY
+		CAST(q.question_id AS
+		UNSIGNED)
+		DESC
+		LIMIT #{offset}, 5
+	</select>
+	<select id="questionSearchList"></select>
+	<select id="questionDetail">
+		SELECT q.question_id AS questionId, q.question_title
+		AS questionTitle,
+		q.question_content AS
+		questionContent, q.question_date
+		AS questionDate,
+		q.question_hit AS questionHit,
+		u.user_id AS userId
+		FROM
+		question q
+		JOIN
+		user u
+		ON q.user_no = u.user_no
+		WHERE question_id =
+		#{questionId}
+	</select>
+	<insert id="questionInsert">
+		INSERT INTO question (question_id, user_no,
+		question_title,
+		question_content, question_img)
+		VALUES
+		((SELECT
+		IFNULL(MAX(question_id), 0)+1 FROM (SELECT question_id FROM
+		question)
+		AS
+		dummy), #{userNo}, #{questionTitle}, #{questionContent},
+		#{questionImg})
+	</insert>
+	<update id="questionUpdate">
+		UPDATE question
+		<set>
+			question_title = #{questionTitle},
+			question_content =
+			#{questionContent}
+		</set>
+		WHERE question_id = #{questionId}
+	</update>
+	<delete id="questionDelete">
+		DELETE FROM question WHERE question_id =
+		#{questionId}
+	</delete>
+	<select id="questionSelectCount">
+		SELECT COUNT(*) AS TOTAL_RECORD_COUNT FROM question
+	</select>
+	<update id="questionUpdateHit">
+		UPDATE question
+		<set>
+			question_hit = question_hit+1
+		</set>
+		WHERE question_id = #{questionId}
+	</update>
+</mapper>

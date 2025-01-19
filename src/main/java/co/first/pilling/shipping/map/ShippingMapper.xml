@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="co.first.pilling.shipping.map.ShippingMapper">
+	<select id="shippingSelect">
+		SELECT * FROM shipping
+	</select>
+	<insert id="shippingInsert">
+		INSERT INTO shipping (order_id,
+		shipping_recipientln,
+		shipping_recipientfn, shipping_tel,
+		shipping_addr, shipping_addrdetail,
+		shipping_postcode,
+		shipping_request)
+		VALUES
+		(#{orderId},
+		#{shippingRecipientln},
+		#{shippingRecipientfn}, #{shippingTel},
+		#{shippingAddr},
+		#{shippingAddrdetail}, #{shippingPostcode},
+		#{shippingRequest})
+	</insert>
+</mapper>

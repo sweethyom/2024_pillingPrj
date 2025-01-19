@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="co.first.pilling.productdetail.map.ProductDetailReviewlistMapper">
+
+	<!-- review 테이블에서 값 가져오기  -->
+	<select id="reviewList">
+		SELECT r.*, u.user_id
+		FROM review r
+		LEFT JOIN `user` u 
+		ON r.user_no = u.user_no
+		WHERE product_id = #{productId};
+	</select>
+	
+	<!-- pagination위해 review 총 개수 가져오기 -->
+	<select id="getTotalReviewCount">
+		SELECT count(*)
+		FROM review
+		WHERE product_id = #{productId};
+	</select>
+	
+	<!-- pagination + review 가져오기  -->
+	<select id="reviewListPaged">
+		SELECT r.*, u.user_id
+		FROM review r
+		LEFT JOIN `user` u 
+		ON r.user_no = u.user_no
+		WHERE r.product_id = #{productId}
+		ORDER BY r.review_date DESC
+		LIMIT #{pageSize} OFFSET #{offset};
+	</select>
+
+</mapper>
